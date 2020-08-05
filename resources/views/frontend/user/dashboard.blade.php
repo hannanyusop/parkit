@@ -1,21 +1,31 @@
-@extends('frontend.layouts.app')
+@extends('frontend.user.layouts.app')
 
-@section('title', __('Dashboard'))
+@section('title', 'Dashboard')
 
 @section('content')
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <x-frontend.card>
-                    <x-slot name="header">
-                        @lang('Dashboard')
-                    </x-slot>
+    <section class="content">
 
-                    <x-slot name="body">
-                        @lang('You are logged in!')
-                    </x-slot>
-                </x-frontend.card>
-            </div><!--col-md-10-->
-        </div><!--row-->
-    </div><!--container-->
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">System To Use</h3>
+
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card card-widget">
+                            <div class="card-body">
+                                <img class="img-fluid pad" src="{{ asset('img/sys-logo/poll.jpg') }}" alt="Photo">
+                                <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-success btn-block btn-lg mt-5">POLL-i</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </section>
 @endsection

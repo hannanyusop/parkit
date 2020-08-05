@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.user.layouts.app')
 
 @section('title', __('Verify Your E-mail Address'))
 
@@ -14,6 +14,7 @@
                     <x-slot name="body">
                         @lang('Before proceeding, please check your email for a verification link.')
                         @lang('If you did not receive the email')
+                        <p>Email : {{ auth()->user()->email }}</p>
 
                         <x-forms.post :action="route('frontend.auth.verification.resend')" class="d-inline">
                             <button class="btn btn-link p-0 m-0 align-baseline" type="submit">@lang('click here to request another').</button>

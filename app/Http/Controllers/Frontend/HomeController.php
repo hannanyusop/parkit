@@ -14,6 +14,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.index');
+
+        if(auth()->user()){
+            return  redirect()->route('frontend.user.dashboard');
+        }else{
+            return  redirect()->route('frontend.auth.login');
+
+        }
+
+//        return view('frontend.index');
     }
 }

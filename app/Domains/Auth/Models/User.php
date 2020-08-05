@@ -8,6 +8,8 @@ use App\Domains\Auth\Models\Traits\Relationship\UserRelationship;
 use App\Domains\Auth\Models\Traits\Scope\UserScope;
 use App\Domains\Auth\Notifications\Frontend\ResetPasswordNotification;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
+use App\Models\Card;
+use App\Models\Join;
 use DarkGhostHunter\Laraguard\Contracts\TwoFactorAuthenticatable;
 use DarkGhostHunter\Laraguard\TwoFactorAuthentication;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
@@ -46,6 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
         'type',
         'name',
         'email',
+        'unique_id',
         'email_verified_at',
         'password',
         'password_changed_at',
@@ -143,5 +146,18 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     public function canBeImpersonated(): bool
     {
         return ! $this->isMasterAdmin();
+    }
+
+    public function isJoined($c_id){
+        return $this->hasOne(Join::class,'user_id', 'id')
+            ->where('campaign_id', $c_id)
+            ->first();
+    }
+    public function cardUsed($campaign_id){
+
+        return $this->hasMany(Card::class, 'user_id', 'id')
+            ->where('campaign_id', $campaign_id)
+            ->orderBy('is_won', 'DESC')
+            ->get();
     }
 }

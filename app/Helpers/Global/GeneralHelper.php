@@ -50,3 +50,64 @@ if (! function_exists('homeRoute')) {
         return 'frontend.index';
     }
 }
+
+
+function datetimeChecker($datetime){
+
+    $valid = true;
+
+    try {
+        $date = new DateTime($datetime);
+    } catch (Exception $e) {
+        $valid = false;
+    }
+
+    return $valid;
+}
+
+function badgeCampaignStatus($status){
+
+    $statuses = [
+        1 => "<span class=\"badge bg-primary\">Active</span>",
+        2 => "<span class=\"badge bg-warning\">Paused</span>",
+        3 => "<span class=\"badge bg-danger\">Inactive</span>"
+    ];
+
+    return $statuses[$status];
+}
+
+function ucGenrator(){
+
+    $exist = true;
+
+    do{
+
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 8; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $card = \App\Models\Card::where('uc_number', $randomString)
+            ->first();
+
+        if(!$card){
+            $exist = false;
+        }
+
+    }while($exist);
+
+    return $randomString;
+
+}
+
+function campaignStatus($status){
+    $statuses = [
+        1 => "Active",
+        2 => "Paused",
+        3 => "Inactive"
+    ];
+
+    return $statuses[$status];
+}
