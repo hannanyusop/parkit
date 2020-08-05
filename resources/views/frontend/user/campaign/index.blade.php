@@ -23,7 +23,7 @@
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>No.</th>
                             <th>Campaign Name</th>
                             <th>Date (Start - End)</th>
@@ -34,36 +34,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                UNDIAN PARKING SMKAL 2020<br>
-                                <small>CODE: SMKALCODE2020 <i class="text-info fa fa-link"></i> </small>
-                            </td>
-                            <td>11:00 AM 01/08/2020  <br>
-                                11:59 PM 04/08/2020</td>
-                            <td><span class="badge bg-success">Running</span></td>
-                            <td><small class="text-info"><i class="fa fa-user"></i> 34 </small></td>
-                            <td>12/31</td>
-                            <td>
-                                <a href="{{ route('frontend.user.campaign.view', '1') }}" class="btn btn-primary btn-xs">View </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                UNDIAN MEJA GURU SMKAL 2020<br>
-                                <small>CODE: SMKALGURU2020</small>
-                            </td>
-                            <td>11:00 AM 03/04/2020  <br>
-                                11:59 PM 15/04/2020</td>
-                            <td><span class="badge bg-danger">Ended</span></td>
-                            <td><small class="text-info"><i class="fa fa-user"></i> 65 </small></td>
-                            <td>65/65</td>
-                            <td>
-                                <a href="{{ route('frontend.user.campaign.view', '1') }}" class="btn btn-primary btn-xs">View</a>
-                            </td>
-                        </tr>
+                        @foreach($campaigns as $campaign)
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    {{ $campaign->name }}<br>
+                                    <small>CODE: {{ $campaign->code }} <i class="text-info fa fa-link"></i> </small>
+                                </td>
+                                <td>{{ $campaign->start }}  <br> {{ $campaign->end }}</td>
+                                <td class="text-center">{!! badgeCampaignStatus($campaign->status) !!}</td>
+                                <td class="text-center"><small class="text-info"><i class="fa fa-user"></i> {{ $campaign->target_participation }} </small></td>
+                                <td class="text-center">{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants->count() }}</td>
+                                <td>
+                                    <a href="{{ route('frontend.user.campaign.view', $campaign->id) }}" class="btn btn-success btn-xs">View </a>
+                                    <a href="{{ route('frontend.user.campaign.edit', $campaign->id) }}" class="btn btn-primary btn-xs">Edit </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

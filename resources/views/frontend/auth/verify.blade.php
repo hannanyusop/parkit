@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.apps')
 
 @section('title', __('Verify Your E-mail Address'))
 

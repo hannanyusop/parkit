@@ -11,36 +11,36 @@
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Add Campaign</h3>
+                    <h3 class="card-title">Update Campaign</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <x-forms.post :action="route('frontend.user.campaign.insert')" class="form-horizontal">
+                <x-forms.post :action="route('frontend.user.campaign.update', $campaign->id)" class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Campaign Name</label>
+                            <label for="name" class="col-sm-2 col-form-label">Campaign Name</label>
                             <div class="col-sm-10">
-                                <input name="name" type="text" class="form-control" id="name" placeholder="EX: EVENT POLL 2020">
+                                <input value="{{ $campaign->name }}" name="name" type="text" class="form-control" id="name" placeholder="EX: EVENT POLL 2020">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Campaign Code</label>
+                            <label for="code" class="col-sm-2 col-form-label">Campaign Code</label>
                             <div class="col-sm-6">
-                                <input name="code" type="text" class="form-control" id="code" placeholder="EX:EVENTPOLL2020">
+                                <input name="code" type="text" class="form-control" id="code" value="{{ $campaign->code }}" readonly>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Target Participation</label>
+                            <label for="target_participation" class="col-sm-2 col-form-label">Target Participation</label>
                             <div class="col-sm-6">
-                                <input type="number" value="1" class="form-control" name="target_participation" id="target_participation" placeholder="EX:10">
+                                <input value="{{ $campaign->target_participation }}" type="number" value="1" class="form-control" name="target_participation" id="target_participation" placeholder="EX:10">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="default_attempt" class="col-sm-2 col-form-label">Default Attempt</label>
                             <div class="col-sm-6">
-                                <input type="number" value="1" class="form-control" name="default_attempt" id="default_attempt" placeholder="EX:10">
+                                <input value="{{ $campaign->default_attempt }}" type="number" value="1" class="form-control" name="default_attempt" id="default_attempt" placeholder="EX:10">
                             </div>
                         </div>
 
@@ -51,14 +51,15 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="far fa-clock"></i></span>
                                     </div>
-                                    <input name="datetime" type="text" class="form-control float-right" id="campaigndatetime">
+                                    <input value="{{ $datetime }}" name="datetime" type="text" class="form-control float-right" id="campaigndatetime">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Add Campaign</button>
+                        <button type="submit" class="btn btn-info">Update Campaign</button>
+                        <a href="{{ route('frontend.user.campaign.index') }}" class="btn btn-primary float-right">Back </a>
                     </div>
                     <!-- /.card-footer -->
                 </x-forms.post>

@@ -9,9 +9,9 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="mt-2 float-right">
-                        <a href="#" class="btn btn-info btn-sm">Edit Campaign Details Details</a>
-                        <a href="{{ route('frontend.user.campaign.card.index', 'campaign_id') }}" class="btn btn-warning btn-sm">Manage Card</a>
-                        <a href="{{ route('frontend.user.campaign.participant.invite-search', ['campaign_id']) }}" class="btn btn-success btn-sm">Add Participant</a>
+                        <a href="{{ route('frontend.user.campaign.edit', $campaign->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Edit Campaign</a>
+                        <a href="{{ route('frontend.user.campaign.card.index', $campaign->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-ticket-alt"></i> Manage Card</a>
+                        <a href="{{ route('frontend.user.campaign.participant.invite-search', [$campaign->id]) }}" class="btn btn-success btn-sm"><i class="fas fa-user-plus"></i> Invite Participant</a>
                     </div>
 
                     <h3>Campaign Details</h3><br>
@@ -22,7 +22,7 @@
                             <!-- small card -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>32/45</h3>
+                                    <h3>{{ $campaign->cardsUsed->count() }}/{{ $campaign->cards->count() }}</h3>
                                     <p>Total Card Used</p>
                                 </div>
                                 <div class="icon">
@@ -34,7 +34,7 @@
                             <!-- small card -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>12/45</h3>
+                                    <h3>{{ $campaign->cardsWonOwned->count() }}/{{ $campaign->cardsWon->count() }}</h3>
 
                                     <p>Prize Won</p>
                                 </div>
@@ -49,7 +49,7 @@
                             <!-- small card -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>12/31</h3>
+                                    <h3>{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants->count() }}</h3>
 
                                     <p>Take Part/Registered</p>
                                 </div>
@@ -63,9 +63,9 @@
                             <!-- small card -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>4</h3>
+                                    <h3>{{ $campaign->pendingApplicants->count() }}</h3>
 
-                                    <p>Active Applicant</p>
+                                    <p>Pending Participant</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-user-plus"></i>
@@ -75,13 +75,11 @@
                     </div>
 
                     <div class="ml-5">
-                        <p>Campaign Name:<b class="ml-2">UNDIAN PARKING SMKAL 2020</b> </p>
-                        <p>Campaign Date:<b class="ml-2">11:00 AM 01/08/2020 - 11:59 PM 03/08/2020</b></p>
-                        <p>Status: <b class="ml-2"><span class="badge bg-success">Running</span></b></p>
-                        <p>Target Participation :<b class="ml-2"><small class="text-info"><i class="fa fa-user"></i> 34 </small></b></p>
-                        <p>Actual (Take Part / Registered) : <b class="ml-2">12/31</b></p>
-                        <p>Total Registered Card :<b class="ml-2">45</b></p>
-
+                        <p>Campaign Name:<b class="ml-2">{{ $campaign->name }}</b> </p>
+                        <p>Campaign Code:<b class="ml-2">{{ $campaign->code }}</b> </p>
+                        <p>Campaign Date:<b class="ml-2">{{ $campaign->start }} to {{ $campaign->end }}</b></p>
+                        <p>Status: <b class="ml-2">{!! badgeCampaignStatus($campaign->status) !!}</b></p>
+                        <p>Target Participation :<small class="text-info"><i class="fa fa-user ml-1"></i> {{ $campaign->target_participation }} </small></p>
 
                     </div>
                     <hr>
@@ -101,41 +99,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>HALIM BIN ROSLAN</td>
-                                <td>740312-05-3221</td>
-                                <td><span class="badge bg-gradient-success">Completed</span></td>
-                                <td>2/5</td>
-                                <td>PARKING LOT 17 <br><small class="font-weight-bold">HDJAELW21L</small></td>
-                                <td>
-                                    <a href="{{ route('frontend.user.campaign.participant.change-attempt', ['campaign_id', 'participant_id']) }}" class="btn btn-success btn-xs">Change Attempt Value</a>
-                                    <a href="{{ route('frontend.user.campaign.participant.dismiss', ['campaign_id', 'participant_id']) }}" onclick="return confirm('Are you sure want to remove this participant?')"  class="btn btn-warning btn-xs">Dismiss</a>
-                                    <a href="{{ route('frontend.user.campaign.participant.vote-reset', ['campaign_id', 'participant_id']) }}" onclick="return confirm('Are you sure want to reset this participant\'s vote?')" class="btn btn-danger btn-xs">Reset Vote</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>SAFINAH BINTI ALI</td>
-                                <td>680312-12-5466</td>
-                                <td><span class="badge bg-gradient-dark">Not Yet</span></td>
-                                <td>0/1</td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-warning btn-xs">Dismiss</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>ZULFAKAR BIN MOIN</td>
-                                <td>880312-12-5865</td>
-                                <td><span class="badge bg-gradient-dark">Not Yet</span></td>
-                                <td>0/1</td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-warning btn-xs">Dismiss</button>
-                                </td>
-                            </tr>
+                            @foreach($campaign->participantsActive as $key => $active)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $active->user->name }}</td>
+                                    <td>{{ $active->user->unique_id }}</td>
+                                    <td>
+                                        @if($active->user->cardUsed($campaign->id)->count() == 0)
+                                            <span class="badge bg-dark">Not Yet</span>
+                                        @elseif($active->attemp < $active->user->cardUsed($campaign->id)->count())
+                                            <span class="badge bg-info">On going</span>
+                                        @else
+                                            <span class="badge bg-success">Completed</span>
+                                        @endif
+
+                                    </td>
+                                    <td>{{ $active->user->cardUsed($campaign->id)->count() }}/{{ $active->attempt }}</td>
+                                    <td>
+                                        @foreach($active->user->cardUsed($campaign->id) as $card)
+                                            {{ $card->price }} <br><small class="font-weight-bold">{{ $card->code }}</small>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('frontend.user.campaign.participant.change-attempt', [$campaign->id, $active->user->id]) }}" class="btn btn-success btn-xs">Change Attempt Value</a>
+                                        <a href="{{ route('frontend.user.campaign.participant.dismiss', [$campaign->id, $active->user->id]) }}" onclick="return confirm('Are you sure want to remove this participant?')"  class="btn btn-warning btn-xs">Dismiss</a>
+                                        <a href="{{ route('frontend.user.campaign.participant.vote-reset', [$campaign->id, $active->user->id]) }}" onclick="return confirm('Are you sure want to reset this participant\'s vote?')" class="btn btn-danger btn-xs">Reset Vote</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
 
@@ -148,37 +139,27 @@
                             <th style="width: 10px">No</th>
                             <th>Name</th>
                             <th>NRIC / Unique ID</th>
+                            <th>Email</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($campaign->pendingApplicants as $key => $pending)
                         <tr>
-                            <td>1</td>
-                            <td>ZABDA BIN KULIK</td>
-                            <td>740312-05-3221</td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $pending->user->name }}</td>
+                            <td>{{ $pending->user->unique_id }}</td>
+                            <td>{{ $pending->user->email }}</td>
                             <td>
-                                <a href="#" class="btn btn-success btn-xs">Approve</a>
-                                <a href="#" class="btn btn-danger btn-xs">Decline</a>
+                                <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
+                                   onclick="return confirm('Are you sure want to approve {{ $pending->user->name }} to join this campaign? ')"
+                                   class="btn btn-success btn-xs">Approve</a>
+                                <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
+                                   onclick="return confirm('Are you sure want to decline  {{ $pending->user->name }}? ')"
+                                   class="btn btn-danger btn-xs">Decline</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>RAJJA TUA</td>
-                            <td>890411-12-8592</td>
-                            <td>
-                                <a href="#" class="btn btn-success btn-xs">Approve</a>
-                                <a href="#" class="btn btn-danger btn-xs">Decline</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>AMINAH BINTI KURUS</td>
-                            <td>760312-01-4234</td>
-                            <td>
-                                <a href="#" class="btn btn-success btn-xs">Approve</a>
-                                <a href="#" class="btn btn-danger btn-xs">Decline</a>
-                            </td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

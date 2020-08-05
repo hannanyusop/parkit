@@ -25,6 +25,12 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -39,9 +45,15 @@
                         <i class="fas fa-user-cog mr-2"></i> Account Setting
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('frontend.auth.logout') }}" class="dropdown-item">
-                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                    </a>
+                    <x-utils.link
+                        :text="__('Logout')"
+                        class="dropdown-item"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <x-slot name="text">
+                            @lang('Logout')
+                            <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                        </x-slot>
+                    </x-utils.link>
                 </div>
             </li>
         </ul>
@@ -61,16 +73,6 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <!-- Sidebar user (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset('lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
-            </div>
-
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
@@ -85,7 +87,7 @@
                             <p>Join Campaign</p>
                         </a>
                     </li>
-                    <li class="nav-header">MODERATOR</li>
+                    <li class="nav-header">ORGANIZER</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -115,22 +117,9 @@
     </aside>
 
     <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Blank Page</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
+        <div class="m-3">
+            @include('includes.partials.messages')
+        </div>
         @yield('content')
 
     </div>
@@ -139,7 +128,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 3.0.0
         </div>
-        <strong>Developed By <a href="#">Hannan Yusop</a></strong> For  <b>SEK. MEN. AGAMA LIMBANG</b>
+        <strong>Developed By <a href="#">HANNAN YUSOP </a></strong> for <b><img src="{{ asset('img/smkal-logo.png') }}" width="15px"> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG </b>
     </footer>
 
     <!-- Control Sidebar -->
