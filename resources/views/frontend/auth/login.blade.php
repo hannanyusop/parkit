@@ -4,7 +4,9 @@
 
 @section('content')
     <body class="hold-transition login-page"
-          style="background-image: url('{{ asset('img/lg.jpg') }}');height: 100%;
+          style="
+              background-color: #1d2832;
+              {{--background-image: url('{{ asset('img/lg.jpg') }}');height: 100%;--}}
               /*background-position: center;*/
               background-repeat: no-repeat;
               background-size: cover;">
@@ -15,7 +17,7 @@
             <div class="card-body login-card-body">
 
                 <div class="login-logo">
-                    <a href=""><b>POLL-</b>I</a>
+                    <a href=""><b>{{ appName() }}</b></a>
                 </div>
 
                 <p class="login-box-msg">Sign in to start your session</p>
@@ -49,21 +51,20 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-success btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </x-forms.post>
 
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ route('frontend.auth.register') }}" class="text-center">Register a new membership</a>
+                <p class="mt-5">
+                    <a class="font-weight-bold text-success text-sm float-right" href="{{ route('frontend.auth.password.request') }}">Reset Password</a>
+                    <a class="font-weight-bold text-success text-sm float-left" href="{{ route('frontend.auth.register') }}" class="text-center">Create Account</a>
+
                 </p>
             </div>
         </div>
-        <p class="text-white text-center">Developed By <b class="text-danger">Hannan Yusop</b> for<br> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG</p>
+        <p class="text-white font-weight-lighter text-sm text-center">Developed By <b class="text-success">Hannan Yusop</b> for<br> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG</p>
     </div>
     </body>
 @endsection

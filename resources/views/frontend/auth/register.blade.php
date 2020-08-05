@@ -4,7 +4,9 @@
 
 @section('content')
     <body class="hold-transition login-page"
-          style="background-image: url('{{ asset('img/lg.jpg') }}');height: 100%;
+          style="
+              {{--background-image: url('{{ asset('img/lg.jpg') }}');height: 100%;--}}
+              background-color: #1d2832;
               /*background-position: center;*/
               background-repeat: no-repeat;
               background-size: cover;">
@@ -13,7 +15,7 @@
             <div class="card-body login-card-body">
 
                 <div class="login-logo">
-                    <a href=""><b>POLL-</b>I</a>
+                    <a href=""><b>{{ appName() }}</b></a>
                 </div>
                 <p class="login-box-msg">Register a new membership</p>
 
@@ -70,7 +72,7 @@
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
                                 <input type="checkbox" name="terms" value="1" id="terms" class="form-check-input" required>
-                                <label class="form-check-label" for="terms">
+                                <label class="form-check-label " for="terms">
                                     @lang('I agree to the') <a href="{{ route('frontend.pages.terms') }}" target="_blank">@lang('Terms & Conditions')</a>
                                 </label>
                             </div>
@@ -88,14 +90,14 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button class="btn btn-primary" type="submit">@lang('Register')</button>
+                            <button class="btn btn-success" type="submit">@lang('Register')</button>
                         </div>
                     </div><!--form-group-->
                 </x-forms.post>
                 <p class="text-center mt-4">Already have account? <a href="{{ route('frontend.auth.login') }}" class="text-center">Login</a></p>
             </div>
         </div>
-        <p class="text-white text-center">Developed By <b class="text-danger">Hannan Yusop</b> for<br> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG</p>
+        <p class="text-white font-weight-lighter text-sm text-center">Developed By <b class="text-success">Hannan Yusop</b> for<br> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG</p>
     </div>
     </body>
 @endsection

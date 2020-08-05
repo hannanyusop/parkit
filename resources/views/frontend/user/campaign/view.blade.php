@@ -79,6 +79,17 @@
                         <p>Campaign Code:<b class="ml-2">{{ $campaign->code }}</b> </p>
                         <p>Campaign Date:<b class="ml-2">{{ $campaign->start }} to {{ $campaign->end }}</b></p>
                         <p>Status: <b class="ml-2">{!! badgeCampaignStatus($campaign->status) !!}</b></p>
+                        <p>
+                            @if($campaign->status == 1)
+                                <a href="{{ route('frontend.user.campaign.pause', $campaign->id) }}" onclick="return confirm('Are you sure want to pause this campaign?')" class="btn btn-warning btn-sm"><i class="fas fa-pause mr-2"></i> Paused</a>
+                                <a href="{{ route('frontend.user.campaign.stop', $campaign->id) }}" onclick="return confirm('Are you sure want to stop this campaign?')" class="btn btn-danger btn-sm"><i class="fas fa-stop mr-2"></i> Stop</a>
+                            @elseif($campaign->status == 2)
+                                <a href="{{ route('frontend.user.campaign.start', $campaign->id) }}" onclick="return confirm('Are you sure want to start this campaign?')" class="btn btn-success btn-sm"><i class="fas fa-play mr-2"></i> Start</a>
+                                <a href="{{ route('frontend.user.campaign.stop', $campaign->id) }}" onclick="return confirm('Are you sure want to stop this campaign?')" class="btn btn-danger btn-sm"><i class="fas fa-stop mr-2"></i> Stop</a>
+                            @elseif($campaign->status == 3)
+                            <a href="{{ route('frontend.user.campaign.start', $campaign->id) }}" onclick="return confirm('Are you sure want to start this campaign?')" class="btn btn-success btn-sm"><i class="fas fa-play mr-2"></i> Start</a>
+                            @endif
+                        </p>
                         <p>Target Participation :<small class="text-info"><i class="fa fa-user ml-1"></i> {{ $campaign->target_participation }} </small></p>
 
                     </div>
@@ -117,7 +128,7 @@
                                     <td>{{ $active->user->cardUsed($campaign->id)->count() }}/{{ $active->attempt }}</td>
                                     <td>
                                         @foreach($active->user->cardUsed($campaign->id) as $card)
-                                            {{ $card->price }} <br><small class="font-weight-bold">{{ $card->code }}</small>
+                                            {{ $card->prize }} <br><small class="font-weight-bold">{{ $card->code }}</small>
                                         @endforeach
                                     </td>
                                     <td>

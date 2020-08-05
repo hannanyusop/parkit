@@ -43,6 +43,9 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::get('{campaign_id}', [CampaignController::class, 'view'])->name('view');
             Route::get('{campaign_id}/edit', [CampaignController::class, 'edit'])->name('edit');
             Route::post('{campaign_id}/edit', [CampaignController::class, 'update'])->name('update');
+            Route::get('{campaign_id}/pause', [CampaignController::class, 'pause'])->name('pause');
+            Route::get('{campaign_id}/start', [CampaignController::class, 'start'])->name('start');
+            Route::get('{campaign_id}/stop', [CampaignController::class, 'stop'])->name('stop');
 
             Route::group(['prefix' => '{campaign_id}/card/', 'as' => 'card.'], function (){
                 Route::get('index', [CampaignCardController::class, 'index'])->name('index');

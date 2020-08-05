@@ -40,7 +40,7 @@ class VoteController extends Controller
             ->first();
 
         if(!$campaign){
-            return redirect()->route('frontend.user.vote.index' )->withSuccess('Invalid campaign!');
+            return redirect()->route('frontend.user.vote.index' )->withError('Invalid campaign!');
         }
 
         $check = Join::where('user_id', auth()->user()->id)
@@ -61,7 +61,7 @@ class VoteController extends Controller
         $join->approve = 0;
 
         if($join->save()){
-            return redirect()->route('frontend.user.vote.index' )->withSuccess('Successful! Please wait for approval from campaign management.');
+            return redirect()->route('frontend.user.vote.index' )->withFlashSuccess('Successful! Please wait for approval from campaign management.');
         }else{
             return  redirect()->route('frontend.user.vote.apply', $campaign_code)->withErrors('Failed to join campaign!');
         }
@@ -74,8 +74,26 @@ class VoteController extends Controller
             ->first();
 
         if(!$campaign){
-            return redirect()->route('frontend.user.vote.index' )->withSuccess('Invalid campaign!');
+            return redirect()->route('frontend.user.vote.index' )->withFlashSuccess('Invalid campaign!');
         }
+
+        #checkign  campaign
+        if($campaign->status == 2 || $campaign->status == 3){
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Campaign not available right now!');
+        }
+
+        $end = new \DateTime($campaign->end);
+        $start = new \DateTime($campaign->start);
+        $now = new \DateTime();
+
+        if($end < $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign end!');
+        }
+
+        if($start > $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign not started yet!Please come again on '.$campaign->start);
+        }
+        #end
 
         $join = Join::where('user_id', auth()->user()->id)
             ->where('campaign_id', $campaign->id)
@@ -94,7 +112,7 @@ class VoteController extends Controller
         if(!$join){
             return redirect()->route('frontend.user.vote.index')->withErrors('Not eligible to vote!');
         }elseif($join->approve == 0 && $join->invited == 0){
-            return redirect()->route('frontend.user.vote.index')->withErrors('Please wait for Approval from Campaign Management!');
+            return redirect()->route('frontend.user.vote.index')->withFlashSuccess('Please wait for Approval from Campaign Management!');
         }
 
         if($left <=  0){
@@ -118,6 +136,24 @@ class VoteController extends Controller
             return redirect()->route('frontend.user.vote.index' )->withErrors('Invalid campaign!');
         }
 
+        #checkign  campaign
+        if($campaign->status == 2 || $campaign->status == 3){
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Campaign not available right now!');
+        }
+
+        $end = new \DateTime($campaign->end);
+        $start = new \DateTime($campaign->start);
+        $now = new \DateTime();
+
+        if($end < $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign end!');
+        }
+
+        if($start > $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign not started yet!Please come again on '.$campaign->start);
+        }
+        #end
+
         $join = Join::where('user_id', auth()->user()->id)
             ->where('campaign_id', $campaign->id)
             ->first();
@@ -139,7 +175,7 @@ class VoteController extends Controller
         }
 
         if($left <=  0){
-            return redirect()->route('frontend.user.vote.index')->withErrors('No attempt left!');
+            return redirect()->route('frontend.user.vote.index')->withFlashWarning('No attempt left!');
         }
         #end checking
 
@@ -160,6 +196,24 @@ class VoteController extends Controller
             return redirect()->route('frontend.user.vote.index' )->withErrors('Invalid campaign!');
         }
 
+        #checkign  campaign
+        if($campaign->status == 2 || $campaign->status == 3){
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Campaign not available right now!');
+        }
+
+        $end = new \DateTime($campaign->end);
+        $start = new \DateTime($campaign->start);
+        $now = new \DateTime();
+
+        if($end < $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign end!');
+        }
+
+        if($start > $now) {
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Ops! Campaign not started yet!Please come again on '.$campaign->start);
+        }
+        #end
+
         $join = Join::where('user_id', auth()->user()->id)
             ->where('campaign_id', $campaign->id)
             ->first();
@@ -175,13 +229,13 @@ class VoteController extends Controller
         $left = $attempt-$done;
 
         if(!$join){
-            return redirect()->route('frontend.user.vote.index')->withErrors('Not eligible to vote!');
+            return redirect()->route('frontend.user.vote.index')->withFlashWarning('Not eligible to vote!');
         }elseif($join->approve == 0 && $join->invited == 0){
-            return redirect()->route('frontend.user.vote.index')->withErrors('Please wait for Approval from Campaign Management!');
+            return redirect()->route('frontend.user.vote.index')->withFlashSuccess('Please wait for Approval from Campaign Management!');
         }
 
         if($left <=  0){
-            return redirect()->route('frontend.user.vote.index')->withErrors('No attempt left!');
+            return redirect()->route('frontend.user.vote.index')->withFlashWarning('No attempt left!');
         }
         #end checking
 
@@ -202,7 +256,7 @@ class VoteController extends Controller
         $card->draw_on = now();
 
         if($card->save()){
-            return redirect()->route('frontend.user.vote.result', [$campaign_code, $request->code])->withErrors('Thank You!!');
+            return redirect()->route('frontend.user.vote.result', [$campaign_code, $request->code])->withFlashSuccess('Card picked!');
         }else{
             return redirect()->route('frontend.user.vote.index')->withErrors('Sorry! System error. Code :1X100 . Please contact administrator');
         }
@@ -235,7 +289,7 @@ class VoteController extends Controller
             ->first();
 
         if(!$join){
-            return redirect()->route('frontend.user.vote.index' )->withErrors('Please apply to join the campaign!');
+            return redirect()->route('frontend.user.vote.index' )->withFlashWarning('Please apply to join the campaign!');
         }
         $done = $join->cards($campaign->id)->count();
         $attempt = $join->attempt;
@@ -258,7 +312,7 @@ class VoteController extends Controller
             ->first();
 
         if(!$join){
-            return redirect()->route('frontend.user.vote.index' )->withErrors('Please apply to join the campaign!');
+            return redirect()->route('frontend.user.vote.index' )->withFlashInfo('Please apply to join the campaign!');
         }
 
         return view('frontend.user.vote.result-full', compact('campaign', 'join'));

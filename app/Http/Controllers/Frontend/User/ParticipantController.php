@@ -49,13 +49,12 @@ class ParticipantController extends Controller
         $join->attempt = $request->attempt;
 
         if($join->save()){
-            return redirect()->route('frontend.user.campaign.view', $campaign_id)->withSuccess('Participant attempt updated!');
+            return redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashSuccess('Participant attempt updated!');
 
         }else{
             return redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('Failed to update participant attempt!');
         }
 
-        return redirect()->route('frontend.user.campaign.participant.index', $campaign_id)->withSuccess('Attempt Changed!');
     }
 
     public function dismiss($campaign_id, $participant_id){
@@ -73,7 +72,7 @@ class ParticipantController extends Controller
             ->update(['user_id' => null]);
 
         if($join->delete()){
-            return redirect()->route('frontend.user.campaign.view', $campaign_id)->withSuccess('Successfully dismiss participant from campaign!');
+            return redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashSuccess('Successfully dismiss participant from campaign!');
         }else{
             return redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('Failed to dismiss participant from campaign!');
         }
@@ -96,7 +95,7 @@ class ParticipantController extends Controller
             ->where('user_id', $participant_id)
             ->update(['user_id' => null, 'draw_on' => null]);
 
-        return redirect()->route('frontend.user.campaign.view', $campaign_id)->withSuccess('Successfully reset participant\'s vote!');
+        return redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashSuccess('Successfully reset participant\'s vote!');
     }
 
     public function inviteSearch(Request $request, $campaign_id){
@@ -152,7 +151,7 @@ class ParticipantController extends Controller
         $join->approve = 0;
 
         if($join->save()){
-            return  redirect()->route('frontend.user.campaign.participant.invite-search', $campaign_id)->withSuccess('Successfully invite user!');
+            return  redirect()->route('frontend.user.campaign.participant.invite-search', $campaign_id)->withFlashSuccess('Successfully invite user!');
         }else{
             return  redirect()->route('frontend.user.campaign.participant.invite-search', $campaign_id)->withErrors('Failed to invite user!');
         }
@@ -186,13 +185,13 @@ class ParticipantController extends Controller
         }
 
         if($join->invited == 1){
-            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('This user already joined this campaign!');
+            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashWarning('This user already joined this campaign!');
         }
 
         $join->approve = 1;
 
         if($join->save()){
-            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('Successful!');
+            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashSuccess('Successful!');
         }
 
     }
@@ -225,11 +224,11 @@ class ParticipantController extends Controller
         }
 
         if($join->invited == 1){
-            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('You cannot decline invited participant.\!');
+            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashWarning('You cannot decline invited participant.\!');
         }
 
         if($join->delete()){
-            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('Successfully decline applicant! !');
+            return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withFlashSuccess('Successfully decline applicant! !');
         }else{
             return  redirect()->route('frontend.user.campaign.view', $campaign_id)->withErrors('Failed decline applicant! !');
         }

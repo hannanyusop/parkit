@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.user.layouts.app')
 
 @section('title', __('Two Factor Recovery Codes'))
 

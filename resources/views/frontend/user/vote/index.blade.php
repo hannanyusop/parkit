@@ -36,8 +36,11 @@
                             @foreach($joins as $key => $join)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $join->campaign->name }}</td>
-                                    <td class="text-center">{!! badgeCampaignStatus($join->campaign->id) !!}</td>
+                                    <td>
+                                        {{ $join->campaign->name }}<br>
+                                        <small>{{ $join->campaign->start." until     ".$join->campaign->end }}</small>
+                                    </td>
+                                    <td class="text-center">{!! badgeCampaignStatus($join->campaign->status) !!}</td>
                                     <td class="text-center">
 
                                         @if($join->approve == 0 && $join->invited == 0)

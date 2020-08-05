@@ -101,3 +101,13 @@ function ucGenrator(){
     return $randomString;
 
 }
+
+function campaignStatus($status){
+    $statuses = [
+        1 => "Active",
+        2 => "Paused",
+        3 => "Inactive"
+    ];
+
+    return $statuses[$status];
+}

@@ -45,7 +45,7 @@ class CampaignController extends Controller
         $campaign->end = new \DateTime($dt[1]);
 
         if($campaign->save()){
-            return redirect()->route('frontend.user.campaign.index')->withSuccess('Campaign created! Please add Term & Regulation for your campaign.');
+            return redirect()->route('frontend.user.campaign.index')->withFlashSuccess('Campaign created! Please add Term & Regulation for your campaign.');
 
         }else{
             return redirect()->route('frontend.user.campaign.add')->withErrors('Failed to create campaign!');
@@ -105,7 +105,7 @@ class CampaignController extends Controller
         $campaign->end = new \DateTime($dt[1]);
 
         if($campaign->save()){
-            return redirect()->route('frontend.user.campaign.index')->withSuccess('Campaign updated! ');
+            return redirect()->route('frontend.user.campaign.index')->withFlashSuccess('Campaign updated! ');
 
         }else{
             return redirect()->route('frontend.user.campaign.add')->withErrors('Failed to update campaign!');
@@ -114,5 +114,79 @@ class CampaignController extends Controller
 
 
     }
+
+    public function pause($campaign_id){
+
+        $campaign = Campaign::where('id', $campaign_id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        if(!$campaign){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Campaign not found!');
+        }
+
+        $campaign->status = 2;
+
+        if($campaign->save()){
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withFlashSuccess('Campaign paused!');
+        }else{
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withErrors('Failed to pause campaign!');
+
+        }
+
+    }
+
+    public function stop($campaign_id){
+
+        $campaign = Campaign::where('id', $campaign_id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        if(!$campaign){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Campaign not found!');
+        }
+
+        $campaign->status = 3;
+
+        if($campaign->save()){
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withFlashSuccess('Campaign stopped!');
+        }else{
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withErrors('Failed to stop campaign!');
+
+        }
+
+    }
+
+    public function start($campaign_id){
+
+        $campaign = Campaign::where('id', $campaign_id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        if(!$campaign){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Campaign not found!');
+        }
+
+        #check endtime
+        $date = new \DateTime($campaign->end);
+        $now = new \DateTime();
+
+        if($date < $now) {
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withErrors('End Date already past! Please changed end time for this campaign!');
+        }
+
+        $campaign->status = 1;
+
+        if($campaign->save()){
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withFlashSuccess('Campaign started!');
+        }else{
+            return  redirect()->route('frontend.user.campaign.view', $campaign->id)->withErrors('Failed to start campaign!');
+
+        }
+
+    }
+
+
+
 
 }

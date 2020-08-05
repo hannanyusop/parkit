@@ -43,7 +43,7 @@ class CampaignCardController extends Controller
 
         }while($current < $request->duplicate);
 
-        return  redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withSuccess('New Card Inserted!');
+        return  redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withFlashSuccess('New Card Inserted!');
     }
 
     public function edit($campaign_id, $id){
@@ -82,7 +82,7 @@ class CampaignCardController extends Controller
         $card->is_won = $request->won;
 
         if($card->save()){
-            return redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withSuccess('Card updated!');
+            return redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withFlashSuccess('Card updated!');
         }else{
             return redirect()->route('frontend.user.campaign.card.edit', [$campaign_id, $id])->withErrors('Failed to update card!');
         }
@@ -107,7 +107,7 @@ class CampaignCardController extends Controller
             return redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withErrors('Card does not exist!');
         }else{
             $card->delete();
-            return  redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withSuccess('Card Deleted!');
+            return  redirect()->route('frontend.user.campaign.card.index', $campaign_id)->withFlashSuccess('Card Deleted!');
 
         }
 
