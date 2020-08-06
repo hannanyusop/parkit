@@ -51,63 +51,78 @@ if (! function_exists('homeRoute')) {
     }
 }
 
+if (! function_exists('datetimeChecker')) {
 
-function datetimeChecker($datetime){
+    function datetimeChecker($datetime)
+    {
 
-    $valid = true;
+        $valid = true;
 
-    try {
-        $date = new DateTime($datetime);
-    } catch (Exception $e) {
-        $valid = false;
+        try {
+            $date = new DateTime($datetime);
+        } catch (Exception $e) {
+            $valid = false;
+        }
+
+        return $valid;
     }
-
-    return $valid;
 }
 
-function badgeCampaignStatus($status){
+if (! function_exists('badgeCampaignStatus')) {
 
-    $statuses = [
-        1 => "<span class=\"badge bg-primary\">Active</span>",
-        2 => "<span class=\"badge bg-warning\">Paused</span>",
-        3 => "<span class=\"badge bg-danger\">Inactive</span>"
-    ];
+    function badgeCampaignStatus($status)
+    {
 
-    return $statuses[$status];
+        $statuses = [
+            1 => "<span class=\"badge bg-primary\">Active</span>",
+            2 => "<span class=\"badge bg-warning\">Paused</span>",
+            3 => "<span class=\"badge bg-danger\">Inactive</span>"
+        ];
+
+        return $statuses[$status];
+    }
 }
 
-function ucGenrator(){
+if (! function_exists('ucGenrator')) {
 
-    $exist = true;
+    function ucGenrator()
+    {
 
-    do{
+        $exist = true;
 
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 8; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
+        do {
 
-        $card = \App\Models\Card::where('uc_number', $randomString)
-            ->first();
+            $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < 8; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
 
-        if(!$card){
-            $exist = false;
-        }
+            $card = \App\Models\Card::where('uc_number', $randomString)
+                ->first();
 
-    }while($exist);
+            if (!$card) {
+                $exist = false;
+            }
 
-    return $randomString;
+        } while ($exist);
 
+        return $randomString;
+
+    }
 }
 
-function campaignStatus($status){
-    $statuses = [
-        1 => "Active",
-        2 => "Paused",
-        3 => "Inactive"
-    ];
 
-    return $statuses[$status];
+if (! function_exists('campaignStatus')) {
+    function campaignStatus($status)
+    {
+        $statuses = [
+            1 => "Active",
+            2 => "Paused",
+            3 => "Inactive"
+        ];
+
+        return $statuses[$status];
+    }
 }

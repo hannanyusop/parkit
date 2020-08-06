@@ -76,11 +76,11 @@
                                     <td>
                                         @if($balance > 0)
                                             @if($join->approve != 0 || $join->invited != 0)
-                                                <a href="{{ route('frontend.user.vote.rules', $join->campaign->code) }}" class="btn btn-success btn-xs">Vote Now</a>
+                                                <a href="{{ route('frontend.user.vote.rules', $join->campaign->code) }}" class="btn btn-success btn-xs">Pick</a>
                                             @endif
                                         @endif
                                         @if($balance < $join->attempt)
-                                            <a href="{{ route('frontend.user.vote.result-full', $join->campaign->code) }}" class="btn btn-info btn-xs">View Full Result</a>
+                                            <a href="{{ route('frontend.user.vote.result-full', $join->campaign->code) }}" class="btn btn-info btn-xs">Result</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -40,7 +40,7 @@
                                 <button type="submit" class="btn btn-success">PICK CARD</button>
                             @endif
                             <br>
-                                <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-dark mt-2">BACK TO CAMPAIGN LIST</a>
+                                <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-dark mt-2">BACK</a>
                         </div>
                     </div>
                 </div>
