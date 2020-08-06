@@ -24,7 +24,7 @@
                 <x-forms.post :action="route('frontend.auth.register')">
 
                     <div class="input-group mb-3">
-                        <input name="name" id="password" type="text" class="form-control" value="{{ old('name') }}" placeholder="Name" required>
+                        <input name="name" id="password" type="text" class="form-control text-uppercase" value="{{ old('name') }}" placeholder="Name" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

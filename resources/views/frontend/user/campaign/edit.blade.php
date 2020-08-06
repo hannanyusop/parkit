@@ -20,13 +20,13 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Campaign Name</label>
                             <div class="col-sm-10">
-                                <input value="{{ $campaign->name }}" name="name" type="text" class="form-control" id="name" placeholder="EX: EVENT POLL 2020">
+                                <input value="{{ $campaign->name }}" name="name" type="text" class="form-control text-uppercase" id="name" placeholder="EX: EVENT POLL 2020">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="code" class="col-sm-2 col-form-label">Campaign Code</label>
                             <div class="col-sm-6">
-                                <input name="code" type="text" class="form-control" id="code" value="{{ $campaign->code }}" readonly>
+                                <input name="code" type="text" class="form-control text-uppercase" id="code" value="{{ $campaign->code }}" readonly>
                             </div>
                         </div>
 
