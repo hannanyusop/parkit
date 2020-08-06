@@ -26,7 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/campaign/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/campaign/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/vote/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/vote/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/vote/now.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/vote/now.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/vote/result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/vote/result.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,6 +263,7 @@
       <workItem from="1596636458008" duration="751000" />
       <workItem from="1596643444895" duration="1042000" />
       <workItem from="1596711501207" duration="442000" />
+      <workItem from="1596740264374" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>

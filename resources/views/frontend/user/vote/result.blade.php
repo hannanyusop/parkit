@@ -34,9 +34,9 @@
 
                         <div class="center m-3">
                             @if($left > 0)
-                                <a href="{{ route('frontend.user.vote.now', $campaign->code) }}" class="btn btn-success">Pick Another Card [{{ $left }} left(s)]</a>
+                                <a href="{{ route('frontend.user.vote.now', $campaign->code) }}" class="btn btn-success">Pick Card ({{ $left }} left)</a>
                             @endif
-                            <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-dark float-right">BACK TO CAMPAIGN LIST</a>
+                            <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-dark float-right">BACK</a>
                         </div>
                     </div>
                 </div>

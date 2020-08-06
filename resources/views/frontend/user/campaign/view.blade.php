@@ -9,9 +9,9 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="mt-2 float-right">
-                        <a href="{{ route('frontend.user.campaign.edit', $campaign->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Edit Campaign</a>
-                        <a href="{{ route('frontend.user.campaign.card.index', $campaign->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-ticket-alt"></i> Manage Card</a>
-                        <a href="{{ route('frontend.user.campaign.participant.invite-search', [$campaign->id]) }}" class="btn btn-success btn-sm"><i class="fas fa-user-plus"></i> Invite Participant</a>
+                        <a href="{{ route('frontend.user.campaign.edit', $campaign->id) }}" class="btn btn-info btn-sm m-1"><i class="fas fa-edit"></i> Edit Campaign</a>
+                        <a href="{{ route('frontend.user.campaign.card.index', $campaign->id) }}" class="btn btn-warning btn-sm m-1"><i class="fas fa-ticket-alt"></i> Manage Card</a>
+                        <a href="{{ route('frontend.user.campaign.participant.invite-search', [$campaign->id]) }}" class="btn btn-success btn-sm m-1"><i class="fas fa-user-plus"></i> Invite Participant</a>
                     </div>
 
                     <h3>Campaign Details</h3><br>
@@ -132,7 +132,7 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ route('frontend.user.campaign.participant.change-attempt', [$campaign->id, $active->user->id]) }}" class="btn btn-success btn-xs">Change Attempt Value</a>
+                                        <a href="{{ route('frontend.user.campaign.participant.change-attempt', [$campaign->id, $active->user->id]) }}" class="btn btn-success btn-xs">Change Attempt</a>
                                         <a href="{{ route('frontend.user.campaign.participant.dismiss', [$campaign->id, $active->user->id]) }}" onclick="return confirm('Are you sure want to remove this participant?')"  class="btn btn-warning btn-xs">Dismiss</a>
                                         <a href="{{ route('frontend.user.campaign.participant.vote-reset', [$campaign->id, $active->user->id]) }}" onclick="return confirm('Are you sure want to reset this participant\'s vote?')" class="btn btn-danger btn-xs">Reset Vote</a>
                                     </td>
