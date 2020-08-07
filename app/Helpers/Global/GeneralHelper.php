@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use LaravelQRCode\Facades\QRCode;
 
 if (! function_exists('appName')) {
     /**
@@ -125,4 +126,66 @@ if (! function_exists('campaignStatus')) {
 
         return $statuses[$status];
     }
+}
+
+if(!function_exists('getQr')){
+
+    function getQr($url){
+
+        return QRCode::url($url)
+            ->setSize(9)
+            ->setMargin(2)
+            ->svg();
+    }
+}
+
+if (! function_exists('eventTokenGenerator')) {
+
+    function eventTokenGenerator(){
+
+        $exist = true;
+
+        do {
+
+            $characters = '1234567890qwertyuiopasdfghjklzxcvbnm';
+            $charactersLength = strlen($characters);
+            $token = '';
+            for ($i = 0; $i < 8; $i++) {
+                $token .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+            $event = \App\Models\CvEvent::where('token', $token)
+                ->first();
+
+            if (!$event) {
+                $exist = false;
+            }
+
+        } while ($exist);
+
+        return $token;
+
+    }
+}
+
+if (! function_exists('badgeEventStatus')) {
+
+    function badgeEventStatus($status)
+    {
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">Active</span>",
+            2 => "<span class=\"badge bg-dark\">Inactive</span>"
+        ];
+
+        return $statuses[$status];
+    }
+}
+
+if(!function_exists('reformatDatetime')){
+
+    function reformatDatetime($datetime, $format = 'd-m-Y H:i:s'){
+        return date($format, strtotime($datetime));
+    }
+
 }
