@@ -30,13 +30,7 @@ class UpdateUserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => array_merge(
-                [
-                    'max:100',
-                    new UnusedPassword((int) $this->segment(4)),
-                ],
-                PasswordRules::changePassword($this->email)
-            ),
+            'password' => ['required', 'min:5','confirmed'],
         ];
     }
 
