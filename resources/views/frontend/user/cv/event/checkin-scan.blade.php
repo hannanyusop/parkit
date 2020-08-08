@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Manual Checkin')
+@section('title', 'Beta QR Scan Check-in')
 {{--@push('after-style')--}}
 
     <link rel="stylesheet" href=" {{ asset('plugin/html_qr/css/reset.css') }}">
@@ -76,11 +76,6 @@
         <div class="card">
             <div class="card-body text-center">
                 <div class="pageWrapper">
-
-                    <div class="text-center">
-                        <h1 id="beta">Beta Testing</h1>
-                    </div>
-
                     <div class="m-2 boxWrapper">
                         <div id="example"></div>
                     </div>

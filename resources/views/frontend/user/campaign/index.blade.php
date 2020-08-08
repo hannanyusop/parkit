@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'My Campaign List')
+@section('title', 'Campaign List')
 
 @section('content')
     <section class="content">

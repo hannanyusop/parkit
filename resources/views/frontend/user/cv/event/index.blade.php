@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'My Campaign List')
+@section('title', 'My Event List')
 
 @section('content')
     <section class="content">
@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $event->name }}<br></td>
-                                <td class="text-center">{{ $event->created_at }}</td>
+                                <td class="text-center">{{ reformatDatetime($event->created_at, "d M Y") }}</td>
                                 <td class="text-center">{!! badgeEventStatus($event->status) !!}</td>
                                 <td class="text-center"><small class="text-info"><i class="fa fa-user"></i> {{ $event->users->count() }} </small></td>
                                 <td>

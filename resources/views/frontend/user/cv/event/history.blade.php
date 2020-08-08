@@ -1,42 +1,45 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'History')
+@section('title', 'Checkin History')
 
 @section('content')
+
     <section class="content">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">History (Showing 20 latest records)</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr class="text-center">
-                            <th>No.</th>
-                            <th>Event Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Temperature</th>
-                        </tr>
-                        </thead>
-                        <tbody class="text-center">
+        <div class="container-fluid">
+            <div class="col-md-6 offset-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+
+
                         @foreach($logs as $key => $log)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $log->event->name }}</td>
-                                <td>{{ reformatDatetime($log->created_at, "d M Y") }}</td>
-                                <td>{{ reformatDatetime($log->created_at, "H:i A") }}</td>
-                                <td>{{ $log->temperature }}  °C</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            <!-- timeline time label -->
+                                <div class="time-label">
+                                    <span class="bg-navy">{{ reformatDatetime($log->created_at, "d M. Y") }}</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas fa-temperature-low bg-green"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fas fa-clock"></i> {{ reformatDatetime($log->created_at, "H:i A") }}</span>
+                                        <h3 class="timeline-header no-border">{{ $log->event->name }}
+                                            <br><p class="text-success"> Temperature :  {{ $log->temperature }}  °C</p>
+                                        </h3>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div>
+                                <i class="fas fa-clock bg-gray"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
     </section>
 @endsection

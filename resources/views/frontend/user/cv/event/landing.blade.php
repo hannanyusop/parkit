@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Event')
+@section('title', 'Event Checkin')
 
 @push('after-styles')
     <style type="text/css">
@@ -21,12 +21,14 @@
                         <h2 id="clock"></h2>
                         {{ getQr($event->token) }}
 
-                        <p><a href="{{ route('frontend.user.cv.event.checkin', $event->token ) }}">Link Check</a></p>
-                        <p>Event Name : <b class="text-uppercase">{{ $event->name }}</b></p>
-                        <p>Datetime : <b>{{ reformatDatetime($event->created_at, "d M Y") }}</b></p>
+                        <br><small>Manual Code</small>
+                        <h3 class="font-weight-bold text-danger" id="manual_token"></h3>
+
+                        <p>Event Name : <b class="text-uppercase">{{ $event->name }}</b><a href="{{ route('frontend.user.cv.event.checkin', $event->token ) }}"><i class="fa fa-link ml-2 mr-2"></i> </a></p>
+                        <p>Date : <b>{{ reformatDatetime($event->created_at, "d M Y") }}</b></p>
                         <p>Total User Checked-in  : <b id="total"></b></p>
 
-                        <h4 class="text-success">PREVIOUS USER :</h4>
+                        <h4 class="text-success">LAST CHECK-IN :</h4>
                         <h5 class="text-uppercase" id="last-user"></h5>
                     </div>
 
@@ -78,6 +80,7 @@
                     success:function(data)
                     {
                         $("#total").text(data.total);
+                        $("#manual_token").text(data.manual_token);
 
                         if(data.last_user_id == 0){
                             $("#last-user").text("NO CHECK-IN USER");

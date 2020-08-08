@@ -176,10 +176,10 @@ if (! function_exists('eventManualTokenGenerator')) {
 
         do {
 
-            $characters = '1234567890qwertyuiopasdfghjklzxcvbnm';
+            $characters = '123456789';
             $charactersLength = strlen($characters);
             $token = '';
-            for ($i = 0; $i < 4; $i++) {
+            for ($i = 0; $i < 6; $i++) {
                 $token .= $characters[rand(0, $charactersLength - 1)];
             }
 
@@ -205,7 +205,7 @@ if (! function_exists('eventStaticTokenGenerator')) {
 
         do {
 
-            $characters = '1234567890';
+            $characters = '1234567890qwertyuiopasdfghjklzxcvbnm';
             $charactersLength = strlen($characters);
             $token = '';
             for ($i = 0; $i < 6; $i++) {

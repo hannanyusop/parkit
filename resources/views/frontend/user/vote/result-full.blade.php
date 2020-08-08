@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Full Result')
 
 @section('content')
     <section class="content">

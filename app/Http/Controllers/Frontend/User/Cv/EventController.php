@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Frontend\User\Cv;
 
+use App\Export\EventExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\User\Cv\CheckinRequest;
 use App\Models\CvEvent;
 use App\Models\CvLog;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EventController extends Controller{
 
@@ -25,6 +28,17 @@ class EventController extends Controller{
         }
 
         return view('frontend.user.cv.event.view', compact('event'));
+    }
+
+    public function export($id){
+
+        $event = CvEvent::find($id);
+
+        if(!$event){
+            return redirect()->route('frontend.user.cv.event.index')->withErrors("Invalid event!");
+        }
+
+        return Excel::download(new EventExport, 'CV19-'.$event->name.reformatDatetime($event->created_at,'d M Y').'.xlsx');
     }
 
     public function add(){
@@ -184,7 +198,7 @@ class EventController extends Controller{
 
     }
 
-    public function checkinNew(Request $request, $token){
+    public function checkinNew(CheckinRequest $request, $token){
 
         #check
         $event = CvEvent::where('token', $token)->first();
@@ -225,7 +239,7 @@ class EventController extends Controller{
 
     }
 
-    public function checkinUpdate(Request $request, $token){
+    public function checkinUpdate(CheckinRequest $request, $token){
 
         #check
         $event = CvEvent::where('token', $token)->first();
@@ -262,7 +276,6 @@ class EventController extends Controller{
 
     public function checkinDone($id){
 
-
         #check
         $event = CvEvent::where('id', $id)->first();
 
@@ -290,10 +303,13 @@ class EventController extends Controller{
                 ->orderBy('created_at', 'DESC')
                 ->first();
 
+            $event = CvEvent::find($id);
+
             $data = array(
                 'last_user_id'  => ($log)? $log->user_id : 0,
                 'name' => ($log)? $log->user->name : "",
-                'total' =>  CvLog::where('event_id', $id)->count()
+                'total' =>  CvLog::where('event_id', $id)->count(),
+                'manual_token' => $event->manual_token,
 
         );
             echo json_encode($data);
@@ -328,12 +344,12 @@ class EventController extends Controller{
 
     }
 
-    public function checkinManualInsert(Request $request){
+    public function checkinManualInsert(CheckinRequest $request){
 
         $event = CvEvent::where('manual_token', $request->token)->first();
 
         if(!$event){
-            return redirect()->route('frontend.user.cv.checkin-manual')->withFlashWarning('Invalid code! Please get the code from the guard.');
+            return redirect()->route('frontend.user.cv.event.checkin-manual')->withFlashWarning('Invalid code! Please get the code from the guard.');
         }
 
         #check user

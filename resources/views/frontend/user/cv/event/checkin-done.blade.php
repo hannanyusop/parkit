@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Event')
+@section('title', 'Checkin Completed')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
@@ -61,7 +61,7 @@
 
         if(temp <= 35){
             $("#condition").text("Cool Fever").addClass("text-warning").removeClass("text-danger text-success");
-        }else if(temp >= 36.5 && temp <= 37.5){
+        }else if(temp > 35.0 && temp <= 37.5){
             $("#condition").text("Normal").addClass("text-success").removeClass("text-danger text-warning");
         }else if(temp > 37.5) {
             $("#condition").text("Fever").addClass("text-danger").removeClass("text-warning text-success");

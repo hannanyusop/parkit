@@ -111,6 +111,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
                 Route::get('', [EventController::class, 'index'])->name('index');
                 Route::get('view/{id}', [EventController::class, 'view'])->name('view');
+                Route::get('export/{id}', [EventController::class, 'export'])->name('export');
                 Route::get('add', [EventController::class, 'add'])->name('add');
                 Route::post('add', [EventController::class, 'insert'])->name('insert');
                 Route::get('edit/{id}', [EventController::class, 'edit'])->name('edit');

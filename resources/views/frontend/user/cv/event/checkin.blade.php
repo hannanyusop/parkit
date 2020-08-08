@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Event')
+@section('title', 'Checkin')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
@@ -36,7 +36,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 offset-md-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" step=".01" name="temperature" id="temperature" class="form-control" required>
+                                            <input type="number" step=".01" value="{{ old('temperature') }}" name="temperature" id="temperature" class="form-control" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">°C</span>
                                             </div>
@@ -69,14 +69,12 @@
             checkin = $("#checkin");
 
             if(temp <= 28 || temp >= 40){
-                checkin.prop("disabled",true);
                 $("#condition").text("Invalid Input").addClass("text-danger").removeClass("text-warning text-success");
 
             }else{
-                checkin.prop("disabled",false);
                 if(temp <= 35){
                     $("#condition").text("Cool Fever").addClass("text-warning").removeClass("text-danger text-success");
-                }else if(temp >= 36.5 && temp <= 37.5){
+                }else if(temp > 35 && temp <= 37.5){
                     $("#condition").text("Normal").addClass("text-success").removeClass("text-danger text-warning");
                 }else if(temp > 37.5){
                     $("#condition").text("Fever").addClass("text-danger").removeClass("text-warning text-success");

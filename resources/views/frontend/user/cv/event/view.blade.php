@@ -12,6 +12,7 @@
                         <a href="{{ route('frontend.user.cv.event.edit', $event->id) }}" class="btn btn-info btn-sm m-1"><i class="fas fa-edit"></i> Edit Event</a>
                         <a href="{{ route('frontend.user.cv.event.regenerate', $event->id) }}" onclick="return confirm('Are you sure want to regenerate this token?')" class="btn btn-warning btn-sm m-1"><i class="fa fa-key mr-2"></i>Refresh Token</a>
                         <a href="{{ route('frontend.user.cv.event.landing', $event->id) }}" class="btn btn-success btn-sm m-1"><i class="fa fa-qrcode mr-2"></i>Show QR</a>
+                        <a href="{{ route('frontend.user.cv.event.export', $event->id) }}" onclick="return confirm('Are you sure want to download excel file for this event?')" class="btn btn-dark btn-sm m-1"><i class="fa fa-file-excel mr-2"></i>Download List</a>
                     </div>
 
                     <h3>Event Details</h3><br>
