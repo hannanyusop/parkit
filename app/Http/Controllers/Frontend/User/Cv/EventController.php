@@ -309,6 +309,10 @@ class EventController extends Controller{
 
     }
 
+    public function checkinScan(){
+        return view('frontend.user.cv.event.checkin-scan');
+    }
+
     public function checkinManual(Request $request){
 
         $event = null;
