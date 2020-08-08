@@ -1,9 +1,8 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Event')
+@section('title', 'Update Event')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
 @endpush
 
 @section('content')
@@ -11,7 +10,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Add Event</h3>
+                    <h3 class="card-title">Update Event</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -26,7 +25,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Add Event</button>
+                        <button type="submit" class="btn btn-info">Update</button>
+                        <a href="{{ route('frontend.user.cv.event.index') }}" class="btn btn-dark">Back</a>
                     </div>
                     <!-- /.card-footer -->
                 </x-forms.post>
@@ -35,20 +35,4 @@
     </section>
 @endsection
 @push('after-scripts')
-    <script src="{{ asset('lte/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/daterangepicker/daterangepicker.js') }}"></script>
-
-    <script>
-        $(function () {
-            $('#campaigndatetime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'YYYY/MM/DD HH:mm'
-                }
-            })
-
-        })
-    </script>
 @endpush

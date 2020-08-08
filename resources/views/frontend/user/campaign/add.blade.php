@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Target Participation</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Target Participant</label>
                             <div class="col-sm-6">
                                 <input type="number" value="1" class="form-control" name="target_participation" id="target_participation" placeholder="EX:10">
                             </div>

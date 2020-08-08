@@ -108,6 +108,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::get('landing/{id}', [EventController::class, 'landing'])->name('landing');
 
             #for checkin
+            Route::get('checkin-manual', [EventController::class, 'checkinManual'])->name('checkin-manual');
+            Route::post('checkin-manual', [EventController::class, 'checkinManualInsert'])->name('checkin-manual-insert');
+
+
             Route::get('checkin/{token}', [EventController::class, 'checkin'])->name('checkin');
 
             Route::post('checkin-new/{token}', [EventController::class, 'checkinNew'])->name('checkin-new');

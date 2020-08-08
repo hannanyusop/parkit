@@ -130,9 +130,9 @@ if (! function_exists('campaignStatus')) {
 
 if(!function_exists('getQr')){
 
-    function getQr($url){
+    function getQr($token){
 
-        return QRCode::url($url)
+        return QRCode::url(route('frontend.user.cv.event.checkin', $token ))
             ->setSize(9)
             ->setMargin(2)
             ->svg();
@@ -155,6 +155,64 @@ if (! function_exists('eventTokenGenerator')) {
             }
 
             $event = \App\Models\CvEvent::where('token', $token)
+                ->first();
+
+            if (!$event) {
+                $exist = false;
+            }
+
+        } while ($exist);
+
+        return $token;
+
+    }
+}
+
+if (! function_exists('eventManualTokenGenerator')) {
+
+    function eventManualTokenGenerator(){
+
+        $exist = true;
+
+        do {
+
+            $characters = '1234567890qwertyuiopasdfghjklzxcvbnm';
+            $charactersLength = strlen($characters);
+            $token = '';
+            for ($i = 0; $i < 4; $i++) {
+                $token .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+            $event = \App\Models\CvEvent::where('manual_token', $token)
+                ->first();
+
+            if (!$event) {
+                $exist = false;
+            }
+
+        } while ($exist);
+
+        return $token;
+
+    }
+}
+
+if (! function_exists('eventStaticTokenGenerator')) {
+
+    function eventStaticTokenGenerator(){
+
+        $exist = true;
+
+        do {
+
+            $characters = '1234567890';
+            $charactersLength = strlen($characters);
+            $token = '';
+            for ($i = 0; $i < 6; $i++) {
+                $token .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+            $event = \App\Models\CvEvent::where('static_token', $token)
                 ->first();
 
             if (!$event) {

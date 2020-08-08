@@ -42,11 +42,8 @@
                                 <td class="text-center"><small class="text-info"><i class="fa fa-user"></i> {{ $event->users->count() }} </small></td>
                                 <td>
                                     <a href="{{ route('frontend.user.cv.event.view', $event->id) }}" class="btn btn-dark btn-xs">View </a>
-                                    <a href="{{ route('frontend.user.cv.event.edit', $event->id) }}" class="btn btn-primary btn-xs">Edit </a>
-
                                     @if($event->status == 1)
-                                        <a href="{{ route('frontend.user.cv.event.landing', $event->id) }}" class="btn btn-success btn-xs"><i class="fa fa-user-check mr-2"></i>Checkin</a>
-                                        <a href="{{ route('frontend.user.cv.event.regenerate', $event->id) }}" onclick="return confirm('Are you sure want to regenerate this token?')" class="btn btn-warning btn-xs"><i class="fa fa-key mr-2"></i>Refresh Token</a>
+                                        <a href="{{ route('frontend.user.cv.event.landing', $event->id) }}" class="btn btn-success btn-xs"><i class="fa fa-qrcode mr-2"></i>Show QR</a>
                                         <a href="{{ route('frontend.user.cv.event.deactivate', $event->id) }}" onclick="return confirm('Are you sure want to deactivate this event?')" class="btn btn-danger btn-xs">Deactivate </a>
                                     @else
                                         <a href="{{ route('frontend.user.cv.event.activate', $event->id) }}" onclick="return confirm('Are you sure want to activate this event?')" class="btn btn-success btn-xs">Activate </a>

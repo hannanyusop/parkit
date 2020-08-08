@@ -17,6 +17,16 @@ class EventController extends Controller{
         return view('frontend.user.cv.event.index', compact('events'));
     }
 
+    public function view($id){
+        $event = CvEvent::find($id);
+
+        if(!$event){
+            return redirect()->route('frontend.user.cv.event.index')->withErrors("Invalid event!");
+        }
+
+        return view('frontend.user.cv.event.view', compact('event'));
+    }
+
     public function add(){
 
         return view('frontend.user.cv.event.add');
@@ -27,7 +37,9 @@ class EventController extends Controller{
         $event = new CvEvent();
 
         $event->name = $request->name;
-        $event->token = eventTokenGenerator();
+        $event->token = eventTokenGenerator(); #TODO: refresh token every 30 seconds
+        $event->manual_token  = eventManualTokenGenerator(); #will change every time used it
+        $event->static_token = eventStaticTokenGenerator();
         $event->status = 1; #active
 
         if($event->save()){
@@ -288,13 +300,65 @@ class EventController extends Controller{
         }
     }
 
-
     #all user
 
     public function history(){
 
-        $logs = CvLog::where('user_id', auth()->user()->id);
+        $logs = CvLog::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->limit(20)->get();
         return view('frontend.user.cv.event.history', compact('logs'));
+
+    }
+
+    public function checkinManual(Request $request){
+
+        $event = null;
+
+        if($request->has('code')){
+
+            $event = CvEvent::where('manual_token', $request->code)
+                ->where('status', 1)
+                ->first();
+        }
+
+        return view('frontend.user.cv.event.checkin-manual', compact('event'));
+
+    }
+
+    public function checkinManualInsert(Request $request){
+
+        $event = CvEvent::where('manual_token', $request->token)->first();
+
+        if(!$event){
+            return redirect()->route('frontend.user.cv.checkin-manual')->withFlashWarning('Invalid code! Please get the code from the guard.');
+        }
+
+        #check user
+        $cv_logs = CvLog::where('event_id', $event->id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        #already checkin
+        if($cv_logs){
+
+            $event->update(['manual_token' => eventManualTokenGenerator()]);
+
+            $cv_logs->temperature = $request->temperature;
+            $cv_logs->save();
+            return redirect()->route('frontend.user.cv.event.checkin-done', $event->id)->withFlashWarning("You already entered this event!");
+        }
+
+        $log = new CvLog();
+        $log->user_id = auth()->user()->id;
+        $log->event_id = $event->id;
+        $log->temperature = $request->temperature;
+
+        $event->update(['manual_token' => eventManualTokenGenerator()]);
+
+        if($log->save()){
+            return redirect()->route('frontend.user.cv.checkin-done', $event->id )->withFlashSuccess('Manual check-in successful!');
+        }else{
+            return redirect()->route('frontend.user.cv.checkin-manual')->withErrors('Manual check-in failed!');
+        }
 
     }
 

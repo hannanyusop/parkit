@@ -3,7 +3,6 @@
 @section('title', 'Add Event')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
     <style type="text/css">
         #clock {
             font-family: 'Orbitron', sans-serif;
@@ -23,8 +22,6 @@
                         {{ getQr($event->token) }}
 
                         <br>
-                        <a href="{{ route('frontend.user.cv.event.checkin', $event->token ) }}" target="_blank">{{ route('frontend.user.cv.event.checkin', $event->token ) }}</a>
-
                         <p>Event Name : <b>{{ $event->name }}</b></p>
                         <p>Datetime : <b>{{ $event->created_at }}</b></p>
                         <p>Total User Checked-in  : <b id="total"></b></p>
@@ -44,22 +41,7 @@
     </section>
 @endsection
 @push('after-scripts')
-    <script src="{{ asset('lte/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/daterangepicker/daterangepicker.js') }}"></script>
-
     <script>
-        $(function () {
-            $('#campaigndatetime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'YYYY/MM/DD HH:mm'
-                }
-            })
-
-        })
-
         function currentTime() {
             var date = new Date(); /* creating object of Date class */
             var hour = date.getHours();

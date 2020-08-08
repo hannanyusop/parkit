@@ -90,7 +90,7 @@
                             <a href="{{ route('frontend.user.campaign.start', $campaign->id) }}" onclick="return confirm('Are you sure want to start this campaign?')" class="btn btn-success btn-sm"><i class="fas fa-play mr-2"></i> Start</a>
                             @endif
                         </p>
-                        <p>Target Participation :<small class="text-info"><i class="fa fa-user ml-1"></i> {{ $campaign->target_participation }} </small></p>
+                        <p>Target Participant :<small class="text-info"><i class="fa fa-user ml-1"></i> {{ $campaign->target_participation }} </small></p>
 
                     </div>
                     <hr>
@@ -144,35 +144,37 @@
                     </div>
 
                     <h3 class="mt-5">Applicant List</h3><br>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th>Name</th>
-                            <th>NRIC / Unique ID</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($campaign->pendingApplicants as $key => $pending)
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $pending->user->name }}</td>
-                            <td>{{ $pending->user->unique_id }}</td>
-                            <td>{{ $pending->user->email }}</td>
-                            <td>
-                                <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
-                                   onclick="return confirm('Are you sure want to approve {{ $pending->user->name }} to join this campaign? ')"
-                                   class="btn btn-success btn-xs">Approve</a>
-                                <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
-                                   onclick="return confirm('Are you sure want to decline  {{ $pending->user->name }}? ')"
-                                   class="btn btn-danger btn-xs">Decline</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th>Name</th>
+                                <th>NRIC / Unique ID</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($campaign->pendingApplicants as $key => $pending)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $pending->user->name }}</td>
+                                    <td>{{ $pending->user->unique_id }}</td>
+                                    <td>{{ $pending->user->email }}</td>
+                                    <td>
+                                        <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
+                                           onclick="return confirm('Are you sure want to approve {{ $pending->user->name }} to join this campaign? ')"
+                                           class="btn btn-success btn-xs">Approve</a>
+                                        <a href="{{ route('frontend.user.campaign.participant.approve', [$campaign->id, $pending->user->id]) }}"
+                                           onclick="return confirm('Are you sure want to decline  {{ $pending->user->name }}? ')"
+                                           class="btn btn-danger btn-xs">Decline</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -28,7 +28,7 @@
                             <th>Campaign Name</th>
                             <th>Date (Start - End)</th>
                             <th>Status</th>
-                            <th>Target Participation</th>
+                            <th>Target Participant</th>
                             <th>Actual (Take Part / Registered)</th>
                             <th></th>
                         </tr>

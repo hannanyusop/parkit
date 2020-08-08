@@ -62,10 +62,6 @@
     </section>
 @endsection
 @push('after-scripts')
-    <script src="{{ asset('lte/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/daterangepicker/daterangepicker.js') }}"></script>
-
     <script>
         $( "#temperature" ).keyup(function() {
 
