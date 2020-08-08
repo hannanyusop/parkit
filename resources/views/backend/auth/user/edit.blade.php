@@ -38,6 +38,17 @@
                         </div>
                     </div><!--form-group-->
 
+
+                        <div class="form-group row">
+                            <label for="unique_id" class="col-md-2 col-form-label">@lang('NRIC/ Unique ID')</label>
+
+                            <div class="col-md-10">
+                                <input type="text" name="unique_id" class="form-control" placeholder="NRIC / Unique ID" value="{{ old('unique_id') ?? $user->unique_id }}" maxlength="255" required />
+                            </div>
+                        </div><!--form-group-->
+
+
+
                     <div class="form-group row">
                         <label for="email" class="col-md-2 col-form-label">@lang('E-mail Address')</label>
 

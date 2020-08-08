@@ -28,7 +28,6 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 
