@@ -22,7 +22,7 @@
 
 
                     <div class="text-center">
-                        <h1>Check-in</h1>
+                        <h1>Checked-in</h1>
                         <h2 id="clock"></h2>
 
                         <p>Staff Name : <b class="text-uppercase">{{ auth()->user()->name }}</b></p>
@@ -42,11 +42,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
-                            <div class="">
-                                <button id="checkin" class="btn btn-dark" onclick="window.close()">Close Page</button>
-                            </div>
-                            <!-- /.card-footer -->
 
                     </div>
 

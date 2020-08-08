@@ -27,7 +27,9 @@
                             </div>
 
                             <div class="center">
-                                <p class="text-sm text-gray">The code usually contain only a number with length of 6</p>
+                                <p class="text-sm text-gray">The code usually contain only a number with length of 6
+                                    <br>Notes : System will regenerate this code after user used it.
+                                </p>
                             </div>
                         </div>
                     </x-forms.get>

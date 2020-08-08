@@ -176,7 +176,7 @@ class EventController extends Controller{
 
         #already checkin
         if($cv_logs){
-            return view('frontend.user.cv.event.checkin-done', compact('event', 'cv_logs'))->withFlashInfo();
+            return view('frontend.user.cv.event.checkin-done', compact('event', 'cv_logs'))->withFlashInfo("Already checkin!");
         }
 
         return view('frontend.user.cv.event.checkin', compact('event'));

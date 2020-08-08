@@ -32,10 +32,15 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         });
 
 
-    Route::group(['prefix' => 'poll/'], function (){
+    Route::group([
+        'prefix' => 'poll/',
+        'middleware' => 'permission:poll_can'
+    ], function (){
 
         #for moderator only
-        Route::group([], function (){
+        Route::group([
+            'middleware' => 'permission:poll_admin'
+        ], function (){
 
             #campaign
             Route::group(['prefix' => 'campaign/', 'as' => 'campaign.'], function (){
@@ -92,20 +97,31 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 
-    Route::group(['prefix' => 'cv/', 'as' => 'cv.'], function (){
+    Route::group([
+        'prefix' => 'cv/',
+        'as' => 'cv.',
+        'middleware' => 'permission:cv_can'
+    ], function (){
 
         Route::group(['prefix' => 'event/', 'as' => 'event.'], function (){
 
-            Route::get('', [EventController::class, 'index'])->name('index');
-            Route::get('view/{id}', [EventController::class, 'view'])->name('view');
-            Route::get('add', [EventController::class, 'add'])->name('add');
-            Route::post('add', [EventController::class, 'insert'])->name('insert');
-            Route::get('edit/{id}', [EventController::class, 'edit'])->name('edit');
-            Route::post('edit/{id}', [EventController::class, 'update'])->name('update');
-            Route::get('activate/{id}', [EventController::class, 'activate'])->name('activate');
-            Route::get('deactivate/{id}', [EventController::class, 'deactivate'])->name('deactivate');
-            Route::get('regenerate/{id}', [EventController::class, 'regenerate'])->name('regenerate');
-            Route::get('landing/{id}', [EventController::class, 'landing'])->name('landing');
+            Route::group([
+                'middleware' => 'permission:cv_guard'
+            ], function (){
+
+                Route::get('', [EventController::class, 'index'])->name('index');
+                Route::get('view/{id}', [EventController::class, 'view'])->name('view');
+                Route::get('add', [EventController::class, 'add'])->name('add');
+                Route::post('add', [EventController::class, 'insert'])->name('insert');
+                Route::get('edit/{id}', [EventController::class, 'edit'])->name('edit');
+                Route::post('edit/{id}', [EventController::class, 'update'])->name('update');
+                Route::get('activate/{id}', [EventController::class, 'activate'])->name('activate');
+                Route::get('deactivate/{id}', [EventController::class, 'deactivate'])->name('deactivate');
+                Route::get('regenerate/{id}', [EventController::class, 'regenerate'])->name('regenerate');
+                Route::get('landing/{id}', [EventController::class, 'landing'])->name('landing');
+                Route::get('checkin-last/{id}', [EventController::class, 'checkLast'])->name('checkin-last');
+
+            });
 
             #for checkin
             Route::get('checkin-scan', [EventController::class, 'checkinScan'])->name('checkin-scan');
@@ -123,7 +139,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::get('history/', [EventController::class, 'history'])->name('history');
 
             #ajax
-            Route::get('checkin-last/{id}', [EventController::class, 'checkLast'])->name('checkin-last');
+
 
         });
 

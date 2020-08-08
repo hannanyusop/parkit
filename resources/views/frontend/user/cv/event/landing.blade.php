@@ -21,9 +21,9 @@
                         <h2 id="clock"></h2>
                         {{ getQr($event->token) }}
 
-                        <br>
-                        <p>Event Name : <b>{{ $event->name }}</b></p>
-                        <p>Datetime : <b>{{ $event->created_at }}</b></p>
+                        <p><a href="{{ route('frontend.user.cv.event.checkin', $event->token ) }}">Link Check</a></p>
+                        <p>Event Name : <b class="text-uppercase">{{ $event->name }}</b></p>
+                        <p>Datetime : <b>{{ reformatDatetime($event->created_at, "d M Y") }}</b></p>
                         <p>Total User Checked-in  : <b id="total"></b></p>
 
                         <h4 class="text-success">PREVIOUS USER :</h4>

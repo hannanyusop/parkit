@@ -4,28 +4,45 @@
 
 @section('content')
     <section class="content">
-
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">System To Use</h3>
-
-            </div>
+        <div class="card col-md-8 offset-md-2">
             <div class="card-body">
 
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card card-widget">
-                            <div class="card-body">
-                                <img class="img-fluid pad" src="{{ asset('img/sys-logo/poll.jpg') }}" alt="Photo">
-                                <a href="{{ route('frontend.user.vote.index') }}" class="btn btn-success btn-block btn-lg mt-5">POLL-i</a>
+                    <h5 class="mb-2">System To Use (BETA)</h5>
+                    <hr><br>
+                </div>
+
+                <div class="row">
+                    @can('poll_can')
+                    <div class="col-md-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner text-center">
+                                <h3><i class="fa fa-vote-yea"></i> </h3>
+
+                                <p>Parking Vote System</p>
                             </div>
+                            <a href="{{ route('frontend.user.vote.index') }}" class="small-box-footer">Vote Now <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                    @endcan
+
+                    @can('cv_can')
+                    <div class="col-md-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner text-center">
+                                <h3><i class="fa fa-qrcode"></i> </h3>
+
+                                <p>Covid-19 Checkin</p>
+                            </div>
+                            <a href="{{ route('frontend.user.cv.event.history') }}" class="small-box-footer">Check History <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    @endcan
                 </div>
             </div>
         </div>
-        <!-- /.card -->
 
     </section>
 @endsection

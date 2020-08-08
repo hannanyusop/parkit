@@ -1,6 +1,6 @@
-{{--@extends('frontend.user.layouts.app')--}}
+@extends('frontend.user.layouts.app')
 
-{{--@section('title', 'Manual Checkin')--}}
+@section('title', 'Manual Checkin')
 {{--@push('after-style')--}}
 
     <link rel="stylesheet" href=" {{ asset('plugin/html_qr/css/reset.css') }}">
@@ -34,7 +34,7 @@
 
             Webcam.attach('#example');
 
-            $('#button').click(function () {
+            $('#snap').click(function () {
                 take_snapshot();
             });
 
@@ -71,31 +71,32 @@
     </script>
 {{--@endpush--}}
 
-{{--@section('content')--}}
-    <div class="pageWrapper">
+@section('content')
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="pageWrapper">
 
-        <div class="button">
-            <h1 id="#beta">Beta Testing</h1>
+                    <div class="text-center">
+                        <h1 id="beta">Beta Testing</h1>
+                    </div>
+
+                    <div class="m-2 boxWrapper">
+                        <div id="example"></div>
+                    </div>
+                    <div class="boxWrapper auto m-2">
+                        <div id="hiddenImg"></div>
+                        <div id="qrContent"><p></p></div>
+                    </div>
+
+
+                    <div class="m-3">
+                        <a id="snap" class="btn btn-dark text-white"><i class="fa fa-camera mr-2"></i> Scan QR code</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <div class="boxWrapper">
-            <div id="example" style="width:320px; height:240px;"></div>
-        </div>
-
-        <div class="button">
-            <a id="button">Scan QR code</a>
-        </div>
-
-        <div class="boxWrapper auto">
-            <div id="hiddenImg"></div>
-            <div id="qrContent"><p></p></div>
-        </div>
-
-        <div class="button">
-            <a href="{{ route('frontend.user.cv.event.history') }}">Back</a>
-        </div>
-
     </div>
-{{--@endsection--}}
-{{--@push('after-scripts')--}}
-{{--@endpush--}}
+@endsection
+
