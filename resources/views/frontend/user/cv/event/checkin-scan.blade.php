@@ -7,7 +7,6 @@
     <link rel="stylesheet" href=" {{ asset('plugin/html_qr/css/styles.css') }}">
     <script src="{{ asset('plugin/html_qr/js/jquery.min.js') }}"></script>
     <script src="{{ asset('plugin/html_qr/js/webcam.min.js') }}"></script>
-    <script async src="{{ asset('plugin/html_qr/js/change-cam.js') }}"></script>
 
 
 
@@ -76,14 +75,6 @@
     <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-body text-center">
-
-                <div class="select">
-                    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
-                </div>
-
-                <div class="select">
-                    <label for="videoSource">Camera source: </label><select id="videoSource"></select>
-                </div>
 
                 <div class="pageWrapper">
                     <div class="m-2 boxWrapper">
