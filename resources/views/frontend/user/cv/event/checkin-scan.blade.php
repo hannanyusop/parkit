@@ -37,6 +37,10 @@
                 take_snapshot();
             });
 
+            $('#flip').click(function () {
+
+            });
+
             qrcode.callback = showInfo;
 
         });
@@ -86,8 +90,9 @@
                     </div>
 
 
-                    <div class="m-3">
-                        <a id="snap" class="btn btn-dark text-white"><i class="fa fa-camera mr-2"></i> Scan QR code</a>
+                    <div class="row">
+                        <a id="snap" class="btn btn-dark text-white ml-3"><i class="fa fa-camera mr-2"></i> Capture</a>
+                        <a id="flip" class="btn btn-dark text-white"><i class="fa fa-sync-alt mr-2"></i> Change Camera</a>
                     </div>
 
                 </div>

@@ -25,7 +25,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x" />
+    <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Cv/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Cv/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/cv/event/checkin-scan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/cv/event/checkin-scan.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -227,19 +231,19 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event\excel" />
-      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src" />
-      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src\css" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event" />
       <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Cv" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
       <recent name="C:\laragon\www\parkit\app\Models" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event\excel" />
+      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src" />
+      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src\css" />
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event" />
     </key>
   </component>
   <component name="RunManager">
@@ -274,7 +278,8 @@
       <workItem from="1596854578195" duration="26534000" />
       <workItem from="1596899551047" duration="12558000" />
       <workItem from="1596946338215" duration="6528000" />
-      <workItem from="1596977201610" duration="2940000" />
+      <workItem from="1596977201610" duration="5573000" />
+      <workItem from="1596983818605" duration="2006000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
@@ -342,18 +347,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596478229358" />
-    <state x="477" y="145" width="581" height="534" key="find.popup" timestamp="1596957687571">
+    <state x="477" y="145" width="581" height="592" key="find.popup" timestamp="1596985800438">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="145" width="581" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1596957687571" />
+    <state x="477" y="145" width="581" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1596985800438" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1596901894121">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596901894121" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596978979054">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596984824459">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596978979054" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596984824459" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
