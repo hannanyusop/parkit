@@ -375,9 +375,9 @@ class EventController extends Controller{
         $event->update(['manual_token' => eventManualTokenGenerator()]);
 
         if($log->save()){
-            return redirect()->route('frontend.user.cv.checkin-done', $event->id )->withFlashSuccess('Manual check-in successful!');
+            return redirect()->route('frontend.user.cv.event.checkin-done', $event->id )->withFlashSuccess('Manual check-in successful!');
         }else{
-            return redirect()->route('frontend.user.cv.checkin-manual')->withErrors('Manual check-in failed!');
+            return redirect()->route('frontend.user.cv.event.checkin-manual')->withErrors('Manual check-in failed!');
         }
 
     }

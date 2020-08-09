@@ -57,23 +57,10 @@
         function showInfo(data) {
 
             if(data == "error decoding QR Code"){
-                $("#qrContent p").text(data);
+                $("#qrContent p").text("QR Not Found/Invalid");
             }else{
 
                 if(data.search("checkin")){
-
-                    (function() {
-                        var app = {
-                            launchApp: function() {
-                                window.location.replace("myapp://Convertify Demo");
-                                this.timer = setTimeout(this.openWebApp, 1000);
-                            },
-
-                            openWebApp: function() {
-                                window.location.replace(data);
-                            }
-                        };
-                    })();
 
                     window.location=data;
                 }else{
