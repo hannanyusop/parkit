@@ -326,7 +326,7 @@ class EventController extends Controller{
     }
 
     public function checkinScan(){
-        return view('frontend.user.cv.event.checkin-scan');
+        return view('frontend.user.cv.event.checkin-scan2');
     }
 
     public function checkinManual(Request $request){
