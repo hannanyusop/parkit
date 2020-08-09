@@ -78,6 +78,10 @@
             <div class="card-body text-center">
 
                 <div class="select">
+                    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+                </div>
+
+                <div class="select">
                     <label for="videoSource">Camera source: </label><select id="videoSource"></select>
                 </div>
 
