@@ -44,7 +44,7 @@
                                 <td>{{ $campaign->start }}  <br> {{ $campaign->end }}</td>
                                 <td class="text-center">{!! badgeCampaignStatus($campaign->status) !!}</td>
                                 <td class="text-center"><small class="text-info"><i class="fa fa-user"></i> {{ $campaign->target_participation }} </small></td>
-                                <td class="text-center">{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants->count() }}</td>
+                                <td class="text-center">{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants($campaign->id)->count() }}</td>
                                 <td>
                                     <a href="{{ route('frontend.user.campaign.view', $campaign->id) }}" class="btn btn-success btn-xs">View </a>
                                     <a href="{{ route('frontend.user.campaign.edit', $campaign->id) }}" class="btn btn-primary btn-xs">Edit </a>
