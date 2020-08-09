@@ -37,6 +37,10 @@
                                 <video id="qr-video" width="200px"></video>
                             </div>
                             <br>
+                            <label>
+                                <input id="show-scan-region" type="checkbox">
+                                Show scan region
+                            </label>
                         </div>
                         <div>
                             <button class="btn btn-info btn-xs" id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
