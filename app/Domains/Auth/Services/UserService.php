@@ -63,8 +63,11 @@ class UserService extends BaseService
             $cv_can = Permission::where('name', 'cv_can')
                 ->first();
 
+            $poll_can = Permission::where('name', 'poll_can')
+                ->first();
+
             if($cv_can){
-                $user->syncPermissions($data['permissions'] ?? [$cv_can->id]);
+                $user->syncPermissions($data['permissions'] ?? [$cv_can->id, $poll_can]);
             }
 
         } catch (Exception $e) {
