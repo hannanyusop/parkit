@@ -2,7 +2,7 @@
 
 'use strict';
 
-var videoElement = document.querySelector('div#example');
+var videoElement = document.querySelector('#example');
 var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
 
