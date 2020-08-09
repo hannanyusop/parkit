@@ -61,6 +61,20 @@
             }else{
 
                 if(data.search("checkin")){
+
+                    (function() {
+                        var app = {
+                            launchApp: function() {
+                                window.location.replace("myapp://Convertify Demo");
+                                this.timer = setTimeout(this.openWebApp, 1000);
+                            },
+
+                            openWebApp: function() {
+                                window.location.replace(data);
+                            }
+                        };
+                    })();
+
                     window.location=data;
                 }else{
                     $("#qrContent p").text("Invalid Url");
