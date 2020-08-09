@@ -20,8 +20,8 @@ class Campaign extends Model{
 
     public function participantsActive(){
         return $this->hasMany(Join::class, 'campaign_id', 'id')
-            ->whereIn('invited', 1)
-            ->whereIn('approve', 1);
+            ->whereIn('invited', array(1))
+            ->whereIn('approve', array(1));
     }
 
     public function participantsTakePart(){
