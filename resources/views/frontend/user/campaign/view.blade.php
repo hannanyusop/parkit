@@ -110,7 +110,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($campaign->participantsActive as $key => $active)
+                            @foreach($campaign->participantsActive($campaign->id) as $key => $active)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $active->user->name }}</td>

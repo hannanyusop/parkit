@@ -18,10 +18,12 @@ class Campaign extends Model{
         return $this->hasMany(Join::class, 'campaign_id', 'id');
     }
 
-    public function participantsActive(){
+    public function participantsActive($id){
         return $this->hasMany(Join::class, 'campaign_id', 'id')
             ->whereIn('invited', array(1))
-            ->orWhereIn('approve', array(1));
+            ->orWhereIn('approve', array(1))
+            ->where('campaign_id', $id)
+            ->get();
     }
 
     public function participantsTakePart(){

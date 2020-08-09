@@ -25,10 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Campaign.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Campaign.php" afterDir="false" />
-    </list>
+    <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,7 +273,7 @@
       <workItem from="1596805498056" duration="19625000" />
       <workItem from="1596854578195" duration="26534000" />
       <workItem from="1596899551047" duration="12558000" />
-      <workItem from="1596946338215" duration="5300000" />
+      <workItem from="1596946338215" duration="5808000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
