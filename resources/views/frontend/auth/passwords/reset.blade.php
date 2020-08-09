@@ -3,51 +3,65 @@
 @section('title', __('Reset Password'))
 
 @section('content')
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <x-frontend.card>
-                    <x-slot name="header">
-                        @lang('Reset Password')
-                    </x-slot>
+    <body class="hold-transition login-page"
+          style="
+          {{--background-image: url('{{ asset('img/lg.jpg') }}');height: 100%;--}}
+              background-color: #1d2832;
+              /*background-position: center;*/
+              background-repeat: no-repeat;
+              background-size: cover;">
 
-                    <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.password.update')">
-                            <input type="hidden" name="token" value="{{ $token }}" />
+    <div class="login-box">
 
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
+        <div class="card mt-5">
+            <div class="card-body login-card-body">
 
-                                <div class="col-md-6">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" maxlength="255" required autofocus autocomplete="email" />
-                                </div>
-                            </div><!--form-group-->
+                <div class="login-logo">
+                    <a href=""><b>{{ appName() }}</b></a>
+                </div>
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('Password')</label>
+                <p class="login-box-msg">Reset Password</p>
+                @include('includes.partials.messages')
 
-                                <div class="col-md-6">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="password" />
-                                </div>
-                            </div><!--form-group-->
+                <x-forms.post :action="route('frontend.auth.password.update')">
+                    <input type="hidden" name="token" value="{{ $token }}" />
 
-                            <div class="form-group row">
-                                <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">@lang('Password Confirmation')</label>
+                    <div class="input-group mb-3">
+                        <input name="email" id="email" type="email" class="form-control" value="{{ $email ?? old('email') }}" placeholder="Email" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
 
-                                <div class="col-md-6">
-                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" maxlength="100" required autocomplete="new-password" />
-                                </div>
-                            </div><!--form-group-->
+                    <div class="input-group mb-3">
+                        <input name="password" id="password" type="password" class="form-control" value="{{ old('password') }}" placeholder="New Password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-key"></span>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">@lang('Reset Password')</button>
-                                </div>
-                            </div><!--form-group-->
-                        </x-forms.post>
-                    </x-slot>
-                </x-frontend.card>
-            </div><!--col-md-8-->
-        </div><!--row-->
-    </div><!--container-->
+                    <div class="input-group mb-3">
+                        <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" value="{{ old('password_confirmation') }}" placeholder="New Password Confirm" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-key"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <button class="btn btn-success btn-block" type="submit">Change Password</button>
+                    </div>
+                </x-forms.post>
+                <p class="text-center mt-4 text-sm text-dark">Already remember password? <a href="{{ route('frontend.auth.login') }}" class="text-center text-success">Login</a></p>
+
+            </div>
+        </div>
+        <p class="text-white font-weight-lighter text-sm text-center">Developed By <b class="text-success">Hannan Yusop</b> for<br> SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG</p>
+    </div>
+    </body>
 @endsection

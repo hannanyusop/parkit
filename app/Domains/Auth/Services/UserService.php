@@ -8,6 +8,7 @@ use App\Domains\Auth\Events\User\UserDestroyed;
 use App\Domains\Auth\Events\User\UserRestored;
 use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Events\User\UserUpdated;
+use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\User;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
@@ -57,6 +58,15 @@ class UserService extends BaseService
 
         try {
             $user = $this->createUser($data);
+
+            #get cv_can || all registered user can use covid check-in
+            $cv_can = Permission::where('name', 'cv_can')
+                ->first();
+
+            if($cv_can){
+                $user->syncPermissions($data['permissions'] ?? [$cv_can->id]);
+            }
+
         } catch (Exception $e) {
             DB::rollBack();
 

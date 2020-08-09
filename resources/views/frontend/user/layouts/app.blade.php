@@ -122,50 +122,52 @@
                         </li>
                         @endcan
                     @endcan
-                    <li class="nav-header">CV19 CHECK-IN </li>
-                    <li class="nav-item">
-                        <a href="{{ route('frontend.user.cv.event.checkin-scan') }}" class="nav-link">
-                            <i class="nav-icon fas fa-camera"></i>
-                            <p>QR Check-in</p>
-                        </a>
-                    </li>
+                    @can('cv_can')
+                        <li class="nav-header">CV19 CHECK-IN </li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.cv.event.checkin-scan') }}" class="nav-link">
+                                <i class="nav-icon fas fa-camera"></i>
+                                <p>QR Check-in</p>
+                            </a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('frontend.user.cv.event.checkin-manual') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user-check"></i>
-                            <p>Manual Check-in</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('frontend.user.cv.event.history') }}" class="nav-link">
-                            <i class="nav-icon fas fa-history"></i>
-                            <p>History</p>
-                        </a>
-                    </li>
-                    @can('cv_guard')
-                        <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-calendar-day"></i>
-                            <p>
-                                Manage Event
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('frontend.user.cv.event.index') }}" class="nav-link">
-                                    <i class="far fa-calendar-alt nav-icon"></i>
-                                    <p>List</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('frontend.user.cv.event.add') }}" class="nav-link">
-                                    <i class="far fa-calendar-plus nav-icon"></i>
-                                    <p>Create Event</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.cv.event.checkin-manual') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-check"></i>
+                                <p>Manual Check-in</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.cv.event.history') }}" class="nav-link">
+                                <i class="nav-icon fas fa-history"></i>
+                                <p>History</p>
+                            </a>
+                        </li>
+                        @can('cv_guard')
+                            <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-day"></i>
+                                <p>
+                                    Manage Event
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('frontend.user.cv.event.index') }}" class="nav-link">
+                                        <i class="far fa-calendar-alt nav-icon"></i>
+                                        <p>List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('frontend.user.cv.event.add') }}" class="nav-link">
+                                        <i class="far fa-calendar-plus nav-icon"></i>
+                                        <p>Create Event</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endcan
                     @endcan
                 </ul>
             </nav>

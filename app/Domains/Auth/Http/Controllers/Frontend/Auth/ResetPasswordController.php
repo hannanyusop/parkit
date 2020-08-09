@@ -52,13 +52,7 @@ class ResetPasswordController extends Controller
         return [
             'token' => ['required'],
             'email' => ['required', 'max:255', 'email'],
-            'password' => array_merge(
-                [
-                    'max:100',
-                    new UnusedPassword(request('email')),
-                ],
-                PasswordRules::changePassword(request('email'))
-            ),
+            'password' => ['required', 'min:5','confirmed'],
         ];
     }
 
