@@ -49,7 +49,7 @@
                             <!-- small card -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants->count() }}</h3>
+                                    <h3>{{ $campaign->participantsTakePart->count() }}/{{ $campaign->participants($campaign->id)->count() }}</h3>
 
                                     <p>Take Part/Registered</p>
                                 </div>
