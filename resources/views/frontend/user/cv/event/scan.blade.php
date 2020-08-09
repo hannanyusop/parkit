@@ -34,7 +34,7 @@
                             <span id="cam-has-flash"></span>
                             <br>
                             <div class="">
-                                <video id="qr-video" width="400px"></video>
+                                <video id="qr-video" width="200px"></video>
                             </div>
                             <br>
                             <label>
