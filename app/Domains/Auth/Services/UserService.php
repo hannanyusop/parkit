@@ -325,7 +325,7 @@ class UserService extends BaseService
     {
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
-            'name' => $data['name'] ?? null,
+            'name' => strtoupper($data['name']) ?? null,
             'email' => $data['email'] ?? null,
             'unique_id' => $data['unique_id'] ?? null,
             'password' => $data['password'] ?? null,

@@ -122,18 +122,18 @@
                         </li>
                         @endcan
                     @endcan
-                    <li class="nav-header">CV19 CHECKIN </li>
+                    <li class="nav-header">CV19 CHECK-IN </li>
                     <li class="nav-item">
                         <a href="{{ route('frontend.user.cv.event.checkin-scan') }}" class="nav-link">
                             <i class="nav-icon fas fa-camera"></i>
-                            <p>QR Checkin</p>
+                            <p>QR Check-in</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('frontend.user.cv.event.checkin-manual') }}" class="nav-link">
                             <i class="nav-icon fas fa-user-check"></i>
-                            <p>Manual Checkin</p>
+                            <p>Manual Check-in</p>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -37,7 +37,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-qrcode"></i> </h3>
 
-                                            <p>Covid-19 Checkin</p>
+                                            <p>Covid-19 Check-in</p>
                                         </div>
                                         <a href="{{ route('frontend.user.cv.event.history') }}" class="small-box-footer">Check History <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>

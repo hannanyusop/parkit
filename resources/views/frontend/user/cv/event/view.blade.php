@@ -26,7 +26,7 @@
                             @if($event->status == 1)
                                 <a href="{{ route('frontend.user.cv.event.deactivate', $event->id) }}" onclick="return confirm('Are you sure want to deactivate this event?')" class="btn btn-warning btn-sm"><i class="fas fa-pause mr-2"></i> Deactivate</a>
                             @elseif($event->status == 2)
-                                <a href="{{ route('frontend.user.cv.event.start', $event->id) }}" onclick="return confirm('Are you sure want to activate this evenet?')" class="btn btn-success btn-sm"><i class="fas fa-play mr-2"></i> Activate</a>
+                                <a href="{{ route('frontend.user.cv.event.activate', $event->id) }}" onclick="return confirm('Are you sure want to activate this evenet?')" class="btn btn-success btn-sm"><i class="fas fa-play mr-2"></i> Activate</a>
                             @endif
                         </p>
                         <p>Total Checked-in :<small class="text-info"><i class="fa fa-user ml-1"></i> {{ $event->users->count() }} </small></p>

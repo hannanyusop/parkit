@@ -30,42 +30,44 @@
 
                     @if(!is_null($users))
                         <div class="m-2">
-                        <p>{{ $users->count() }} Result(s) found for 'AMAR'</p>
-                        <table class="table table-condensed">
-                            <thead>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>NAME</th>
-                                <th>NRIC / Unique ID</th>
-                                <th>Email</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($users as $key => $user)
-                                <tr class="bg-gray-light">
-                                    <td style="width: 10px">{{ $key+1 }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->unique_id }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @if($user->isJoined($campaign_id))
-                                            @if($user->isJoined($campaign_id)->invited == 1)
-                                                <span class="badge badge-success">Invited</span>
-                                            @elseif(($user->isJoined($campaign_id)->approve == 1))
-                                                <span class="badge badge-info">Approved</span>
-                                            @else
-                                                <span class="badge badge-dark">Waiting For Approval</span>
-                                            @endif
-                                        @else
-                                            <a href="{{ route('frontend.user.campaign.participant.invite', [$campaign_id, $user->id]) }}" onclick="return confirm('Are you sure want to invite this user?')" class="btn btn-success btn-sm"><i class="fa fa-plus ml-1"></i> Add</a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                        <p>{{ $users->count() }} Result(s) found for '{{ request('unique_id') }}'</p>
+                            <div class="table-responsive">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>NAME</th>
+                                        <th>NRIC / Unique ID</th>
+                                        <th>Email</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($users as $key => $user)
+                                        <tr class="bg-gray-light">
+                                            <td style="width: 10px">{{ $key+1 }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->unique_id }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                @if($user->isJoined($campaign_id))
+                                                    @if($user->isJoined($campaign_id)->invited == 1)
+                                                        <span class="badge badge-success">Invited</span>
+                                                    @elseif(($user->isJoined($campaign_id)->approve == 1))
+                                                        <span class="badge badge-info">Approved</span>
+                                                    @else
+                                                        <span class="badge badge-dark">Waiting For Approval</span>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('frontend.user.campaign.participant.invite', [$campaign_id, $user->id]) }}" onclick="return confirm('Are you sure want to invite this user?')" class="btn btn-success btn-sm"><i class="fa fa-plus ml-1"></i> Add</a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     @endif
                 </div>
                 </x-forms.get>

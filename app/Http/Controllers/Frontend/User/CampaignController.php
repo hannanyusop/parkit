@@ -36,8 +36,8 @@ class CampaignController extends Controller
 
         $campaign = new Campaign();
         $campaign->user_id = auth()->user()->id;
-        $campaign->name = $request->name;
-        $campaign->code = $request->code;
+        $campaign->name = strtoupper($request->name);
+        $campaign->code = strtoupper($request->code);
         $campaign->target_participation = $request->target_participation;
         $campaign->default_attempt = $request->default_attempt;
         $campaign->term = null;
@@ -98,7 +98,7 @@ class CampaignController extends Controller
         if(!$campaign){
             return  redirect()->route('frontend.user.campaign.index')->withErrors('Campaign not found!');
         }
-        $campaign->name = $request->name;
+        $campaign->name = strtoupper($request->name);
         $campaign->target_participation = $request->target_participation;
         $campaign->default_attempt = $request->default_attempt;
         $campaign->start = new \DateTime($dt[0]);

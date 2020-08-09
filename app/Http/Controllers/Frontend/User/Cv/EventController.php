@@ -50,7 +50,7 @@ class EventController extends Controller{
 
         $event = new CvEvent();
 
-        $event->name = $request->name;
+        $event->name = strtoupper($request->name);
         $event->token = eventTokenGenerator(); #TODO: refresh token every 30 seconds
         $event->manual_token  = eventManualTokenGenerator(); #will change every time used it
         $event->static_token = eventStaticTokenGenerator();
@@ -82,7 +82,7 @@ class EventController extends Controller{
             return redirect()->route('frontend.user.cv.event.index')->withErrors("Invalid event!");
         }
 
-        $event->name = $request->name;
+        $event->name = strtoupper($request->name);
 
         if($event->save()){
             return redirect()->route('frontend.user.cv.event.index')->withFlashSuccess("Event updated!");
@@ -180,7 +180,7 @@ class EventController extends Controller{
         }
 
         if($event->status == 2){
-            return redirect()->route('frontend.user.cv.event.index')->withFlashWarning("Cannot checkin on inactive event!");
+            return redirect()->route('frontend.user.cv.event.index')->withFlashWarning("Cannot check-in on inactive event!");
         }
 
         #check user
@@ -208,7 +208,7 @@ class EventController extends Controller{
         }
 
         if($event->status == 2){
-            return redirect()->route('frontend.user.cv.event.index')->withFlashWarning("Cannot checkin on inactive event!");
+            return redirect()->route('frontend.user.cv.event.index')->withFlashWarning("Cannot check-in on inactive event!");
         }
 
         #check user
