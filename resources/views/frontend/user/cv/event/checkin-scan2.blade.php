@@ -48,8 +48,8 @@
 
     <video autoplay muted playsinline></video>
 
-    <script async src="{{ asset('plugin/html_qr/js/change-cam.js') }}"></script>
-    
+    <script async src="{{ asset('plugin/html_qr/js/cam-ori.js') }}"></script>
+
 </div>
 
 
