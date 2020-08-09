@@ -46,7 +46,7 @@
                             <button id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
                         </div>
                         <div>
-                            <select id="inversion-mode-select">
+                            <select class="form-control" id="inversion-mode-select">
                                 <option value="original">Scan original (dark QR code on bright background)</option>
                                 <option value="invert">Scan with inverted colors (bright QR code on dark background)</option>
                                 <option value="both">Scan both</option>
