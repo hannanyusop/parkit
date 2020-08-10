@@ -59,7 +59,7 @@
 
                 <p class="text-sm text-center mt-3">
                     Sebarang masaalah berkenaan log masuk sistem boleh berhubung terus dengan<br>
-                    Hannan Yusop <a href="https://wa.me/+601015960586"><i class="fa fa-whatsapp-square"></i> +60105960586</a>
+                    Hannan Yusop <a href="https://wa.me/1015960586"><i class="fa fa-whatsapp-square"></i> +60105960586</a>
                 </p>
 
                 <p class="mt-5">
