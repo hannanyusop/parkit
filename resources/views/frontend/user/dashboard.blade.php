@@ -39,7 +39,7 @@
 
                                             <p>Covid-19 Check-in</p>
                                         </div>
-                                        <a href="{{ route('frontend.user.cv.event.history') }}" class="small-box-footer">Check History <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('frontend.user.cv.event.checkin-scan') }}" class="small-box-footer">Open Qr Scanner <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             @endcan
