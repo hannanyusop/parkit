@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="product-info bg-navy">
                                     <h5 class="product-title">
-                                        SEKOLAH MENEGAH KEBANGSAAN AGAMA LIMBANG
+                                        SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG
                                     </h5>
                                 </div>
                             </li>
