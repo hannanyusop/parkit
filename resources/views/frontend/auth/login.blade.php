@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input name="remember" id="remember" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
+                                <input name="remember" id="remember" class="form-check-input" type="checkbox"  checked/>
                                 <label for="remember">
                                     Remember Me
                                 </label>
