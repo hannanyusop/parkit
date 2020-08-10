@@ -8,9 +8,8 @@ class AdminBookController extends Controller{
 
     public function index(){
 
-        $books = Book::get();
 
-        return view('frontend.user.library.admin.book.index', compact('books'));
+        return view('frontend.user.library.admin.book.index');
 
     }
 
