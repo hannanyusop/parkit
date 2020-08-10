@@ -14,7 +14,7 @@
                     <form method="get">
                         <div class="m-2">
                             <div class="form-group row">
-                                <label for="form" class="col-sm-2 col-form-label">Form</label>
+                                <label for="form" class="col-sm-2 col-form-label">Tingkatan</label>
                                 <div class="col-sm-10">
                                     <select id="form" name="form" class="form-control" {{ (request()->has('form'))? "disabled='true'" : "" }}>
                                         @foreach(getForm() as $form)
@@ -27,8 +27,8 @@
                                 <div class="offset-sm-2 col-sm-10">
                                     @if(request()->has('form'))
                                     @else
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
-                                        <a href="{{ route('frontend.user.kehadiran.ct.index') }}" type="submit" class="btn btn-warning"> Back</a>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+                                        <a href="{{ route('frontend.user.kehadiran.ct.index') }}" type="submit" class="btn btn-warning"> Kembali</a>
                                     @endif
                                 </div>
                             </div>
@@ -40,26 +40,22 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Class</th>
-                                    <th>Monitor By</th>
-                                    <th>Today Attendance</th>
-                                    <th></th>
+                                    <th>Kelas</th>
+                                    <th>Guru Kelas</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @if($classes->count() > 0)
                                     @foreach($classes as $key => $class)
                                         <tr>
-                                            <td>1.</td>
-                                            <td>6 ATAS</td>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $class->genrate_name }}</td>
                                             <td>HAFIZ HASRIN</td>
-                                            <td><b>22/24</b></td>
-                                            <td><a href="#" class="btn btn-info btn-xs">View</a> </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="5" class="text-center font-weight-bold text-info">No Class Registered For This Form</td>
+                                        <td colspan="5" class="text-center font-weight-bold text-info">Tiada kelas didaftarkan bagi tingkatan ini.</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -76,20 +72,20 @@
                         <form method="get">
                             <div class="m-2">
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-4 col-form-label">Class Name</label>
+                                    <label for="name" class="col-sm-4 col-form-label">Name Kelas</label>
                                     <div class="col-sm-6">
                                         <input type="text" id="name" name="name" class="form-control text-uppercase" placeholder="Ex:Al-Biruni">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-4 col-form-label">Generated Name</label>
+                                    <label for="name" class="col-sm-4 col-form-label">Nama Unik Kelas</label>
                                     <div class="col-sm-6">
                                         <h4 class="text-success font-weight-bold" id="generate"></h4>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-success"> Add Class </button>
+                                        <button type="submit" class="btn btn-success"> Tambah Kelas </button>
                                         <a href="{{ route('frontend.user.kehadiran.ct.add-class') }}" type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Reset</a>
                                     </div>
                                 </div>

@@ -14,14 +14,14 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-body">
 
                     <div class="alert alert-info alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-info"></i> You're not Classroom Teacher!</h5>
-                        To add your class click this <b><a href="{{ route('frontend.user.kehadiran.ct.add-class') }}">link</a></b>
+                        <h5><i class="icon fas fa-info"></i>Anda Bukan Guru Kelas!</h5>
+                        Klik <b><a href="{{ route('frontend.user.kehadiran.ct.add-class') }}">pautan</a></b> ini untuk menambah kelas anda
                     </div>
 
 
@@ -30,9 +30,9 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Class</th>
-                                <th>Monitor By</th>
-                                <th style="width: 40px">Today Attendance</th>
+                                <th>Kelas</th>
+                                <th>Guru Kelas</th>
+                                <th>Kehadiran Hari Ini</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -42,14 +42,14 @@
                                 <td>6 ATAS</td>
                                 <td>HAFIZ HASRIN</td>
                                 <td><b>22/24</b></td>
-                                <td><a href="#" class="btn btn-info btn-xs">View</a> </td>
+                                <td>
+                                    <a href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', 1) }}" class="btn btn-success btn-xs">Laporan Kehadiran Hari Ini</a>
+                                    <a href="{{ route('frontend.user.kehadiran.ct.student-list', 1) }}" class="btn btn-info btn-xs">Lihat Senarai Pelajar</a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <a href="" type="submit" class="btn btn-info">Print</a>
                 </div>
                     <!-- /.card-footer -->
             </div>

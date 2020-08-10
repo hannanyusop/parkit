@@ -64,7 +64,19 @@
 
                                             <p>E-Kehadiran</p>
                                         </div>
-                                        <a href="{{ route('frontend.user.kehadiran.index') }}" class="small-box-footer">Test Tag Student <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="small-box-footer"> Class List <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-olive">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-barcode"></i> </h3>
+
+                                            <p>E-Kehadiran</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.kehadiran.ct.scan') }}" class="small-box-footer"> Scan Qr Pelajar <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
 

@@ -168,6 +168,17 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
             Route::get('', [ClassroomTeacherController::class, 'index'])->name('index');
             Route::get('add-class', [ClassroomTeacherController::class, 'addClass'])->name('add-class');
+
+            Route::get('view-today-attendance/{class_id}', [ClassroomTeacherController::class, 'viewTodayAttendance'])->name('view-today-attendance');
+            Route::get('student-list/{class_id}', [ClassroomTeacherController::class, 'studentList'])->name('student-list');
+            Route::get('print-student-card/{student_id}', [ClassroomTeacherController::class, 'printStudentCard'])->name('print-student-card');
+            Route::get('print-student-card-v2/{student_id}', [ClassroomTeacherController::class, 'printStudentCard2'])->name('print-student-card-v2');
+
+            Route::get('scan', [ClassroomTeacherController::class, 'scan'])->name('scan');
+            Route::get('scan-check/{student_id}', [ClassroomTeacherController::class, 'scanCheck'])->name('scan-check');
+            Route::post('scan-check/{student_id}', [ClassroomTeacherController::class, 'scanInsert'])->name('scan-insert');
+            Route::get('scan-complete/{student_id}', [ClassroomTeacherController::class, 'scanComplete'])->name('scan-complete');
+
         });
     });
 
