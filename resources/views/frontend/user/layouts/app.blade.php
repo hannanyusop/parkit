@@ -178,7 +178,7 @@
                     </li>
                     <li class="nav-header">E-Hadir(Coming Soon)</li>
                     <li class="nav-item">
-                        <a href="{{ route('frontend.user.kehadiran.ct.scan') }}" class="nav-link">
+                        <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
                             <p>Classroom Teacher</p>
                         </a>
