@@ -23,9 +23,9 @@
                                 <!-- END timeline item -->
                                 <!-- timeline item -->
                                 <div>
-                                    <i class="fas fa-temperature-low bg-green"></i>
+                                    <i class="fas fa-check bg-green"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fas fa-clock"></i> {{ reformatDatetime($log->created_at, "H:i A") }}</span>
+                                        <span class="time"><i class="fas fa-clock"></i> {{ reformatDatetime($log->created_at, "h:i A") }}</span>
                                         <h3 class="timeline-header no-border">{{ $log->event->name }}
                                             <br><p class="text-success"> Temperature :  {{ $log->temperature }}  °C</p>
                                         </h3>
