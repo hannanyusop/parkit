@@ -9,7 +9,13 @@ use App\Http\Controllers\Frontend\User\VoteController;
 use App\Http\Controllers\Frontend\User\CampaignCardController;
 use App\Http\Controllers\Frontend\User\ParticipantController;
 use App\Http\Controllers\Frontend\User\Cv\EventController;
-
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminBookController;
+use App\Http\Controllers\Frontend\User\Library\MainController;
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminPublisherController;
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminAuthorController;
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminGroupController;
+use App\Http\Controllers\Frontend\User\Library\BorrowController;
+use App\Http\Controllers\Frontend\User\Kehadiran\KehadiaranController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -144,6 +150,73 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
         });
 
+    });
+
+    //e-kehadiran
+
+    Route::group([
+        'as' => 'kehadiran.',
+        'prefix' => 'kehadiran/'
+    ], function (){
+        Route::get('test', [KehadiaranController::class, 'index'])->name('index');
+    });
+
+
+    //library
+
+    Route::group([
+        'as' => 'library.',
+        'prefix' => 'library/',
+    ], function (){
+
+        Route::group([], function (){
+            Route::get('', [MainController::class, 'index'])->name('index');
+        });
+
+        Route::group([
+            'as' => 'borrow.',
+            'prefix' => 'borrow/'
+        ], function (){
+            Route::get('', [BorrowController::class, 'borrowBook'])->name('borrow');
+            Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
+            Route::get('late/', [BorrowController::class, 'late'])->name('late');
+
+        });
+
+        #admin library
+        Route::group([
+            'as' => 'admin.',
+            'prefix' => 'admin/'
+        ], function (){
+            Route::group([
+                'as' => 'book.',
+                'prefix' => 'book/'
+            ], function (){
+                Route::get('', [AdminBookController::class, 'index'])->name('index');
+
+
+                Route::group([
+                    'as' => 'group.',
+                    'prefix' => 'group/'
+                ], function (){
+                    Route::get('', [AdminBookController::class, 'index'])->name('index');
+                });
+
+                Route::group([
+                    'as' => 'author.',
+                    'prefix' => 'author/'
+                ], function (){
+                    Route::get('', [AdminAuthorController::class, 'index'])->name('index');
+                });
+
+                Route::group([
+                    'as' => 'publisher.',
+                    'prefix' => 'publisher/'
+                ], function (){
+                    Route::get('', [AdminPublisherController::class, 'index'])->name('index');
+                });
+            });
+        });
     });
 
 });

@@ -43,6 +43,31 @@
                                     </div>
                                 </div>
                             @endcan
+
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-book-reader"></i> </h3>
+
+                                            <p>My-Library</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.library.index') }}" class="small-box-footer">Dashboard <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-fuchsia">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-clipboard-list"></i> </h3>
+
+                                            <p>E-Kehadiran</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.kehadiran.index') }}" class="small-box-footer">Test Tag Student <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+
                         </div>
                     </div>
                 </div>

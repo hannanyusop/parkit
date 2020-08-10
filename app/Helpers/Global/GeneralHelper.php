@@ -139,6 +139,17 @@ if(!function_exists('getQr')){
     }
 }
 
+if(!function_exists('getKehadiranStudent')){
+
+    function getKehadiranStudent($ic){
+
+        return QRCode::url(route('frontend.user.cv.event.checkin', $ic ))
+            ->setSize(4)
+            ->setMargin(2)
+            ->svg();
+    }
+}
+
 if (! function_exists('eventTokenGenerator')) {
 
     function eventTokenGenerator(){

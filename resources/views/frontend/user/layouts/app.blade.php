@@ -169,6 +169,20 @@
                         </li>
                         @endcan
                     @endcan
+                        <li class="nav-header">My-Library (Coming Soon)</li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.library.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-book-reader"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-header">E-Hadir(Coming Soon)</li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.kehadiran.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-graduate"></i>
+                                <p>Print Student Tag(Test)</p>
+                            </a>
+                        </li>
                 </ul>
             </nav>
         </div>

@@ -26,7 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/cv/event/scan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/cv/event/scan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/frontend/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/frontend/user.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,24 +228,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/user/cv/event" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img/kehadiran" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event" />
-      <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Cv" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
-      <recent name="C:\laragon\www\parkit\app\Models" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Library\Admin" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event\excel" />
       <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src" />
       <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src\css" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\public\img\kehadiran" />
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\kehadiran" />
+      <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Kehadiran" />
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\borrow" />
+      <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Library" />
     </key>
   </component>
   <component name="RunManager">
@@ -277,7 +281,8 @@
       <workItem from="1596899551047" duration="12558000" />
       <workItem from="1596946338215" duration="6528000" />
       <workItem from="1596977201610" duration="5573000" />
-      <workItem from="1596983818605" duration="4139000" />
+      <workItem from="1596983818605" duration="4475000" />
+      <workItem from="1597031616164" duration="14663000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
@@ -321,14 +326,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="x" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="917" y="217" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596643488643">
+    <state x="917" y="217" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597035386239">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="917" y="217" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1596643488643" />
-    <state x="574" y="177" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596811608443">
+    <state x="917" y="217" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1597035386239" />
+    <state x="574" y="177" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597032542449">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="177" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1596811608443" />
+    <state x="574" y="177" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1597032542449" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596558959113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -345,6 +350,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596478229358" />
+    <state x="560" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597035579408">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="560" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1597035579408" />
     <state x="477" y="145" width="581" height="592" key="find.popup" timestamp="1596988094550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -353,10 +362,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596901894121" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596987444290">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597045698379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596987444290" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597045698379" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -380,6 +389,16 @@
           <url>file://$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php</url>
           <line>100</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php</url>
+          <line>89</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Kehadiran/KehadiaranController.php</url>
+          <line>3</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
