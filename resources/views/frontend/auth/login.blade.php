@@ -57,6 +57,11 @@
                     </div>
                 </x-forms.post>
 
+                <p class="text-sm text-center mt-3">
+                    Sebarang masaalah berkenaan log masuk sistem boleh berhubung terus dengan<br>
+                    Hannan Yusop <a href="https://wa.me/01015960586"><i class="fa fa-whatsapp-square"></i> +60105960586</a>
+                </p>
+
                 <p class="mt-5">
                     <a class="font-weight-bold text-success text-sm float-right" href="{{ route('frontend.auth.password.request') }}">Reset Password</a>
                     <a class="font-weight-bold text-success text-sm float-left" href="{{ route('frontend.auth.register') }}" class="text-center">Create Account</a>
