@@ -64,7 +64,7 @@
 
                 <div class="text-center">
                     <a href="{{ asset('installer/devtech.apk') }}" download>
-                        <img src="{{ asset('img/google-play.png') }}" height="30px" >
+                        <img src="{{ asset('img/google-play.png') }}" height="50px" >
                     </a>
                     </small>
                 </div>

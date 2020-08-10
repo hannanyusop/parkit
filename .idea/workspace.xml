@@ -26,7 +26,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/auth/login.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,11 +230,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\public\installer" />
+      <recent name="C:\laragon\www\parkit\public" />
       <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Library\Admin" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event\excel" />
-      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src" />
-      <recent name="C:\laragon\www\parkit\public\plugin\qrcode\src\css" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\parkit\public\img" />
@@ -281,7 +280,7 @@
       <workItem from="1596983818605" duration="4475000" />
       <workItem from="1597031616164" duration="14663000" />
       <workItem from="1597050836316" duration="15862000" />
-      <workItem from="1597077791310" duration="647000" />
+      <workItem from="1597077791310" duration="998000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
