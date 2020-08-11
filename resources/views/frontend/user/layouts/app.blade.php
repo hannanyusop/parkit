@@ -23,7 +23,7 @@
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-olive navbar-dark">
 
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -193,9 +193,8 @@
 
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row">
                     <div class="col-sm-6">
-                        <h1>@yield('title')</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

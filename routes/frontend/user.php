@@ -216,6 +216,13 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 'prefix' => 'book/'
             ], function (){
                 Route::get('', [AdminBookController::class, 'index'])->name('index');
+                Route::get('view/{id}', [AdminBookController::class, 'view'])->name('view');
+                Route::get('add/', [AdminBookController::class, 'add'])->name('add');
+                Route::post('add/', [AdminBookController::class, 'insert'])->name('insert');
+
+                #ajax
+                Route::get('check-title', [AdminBookController::class, 'checkTitle'])->name('check-title');
+                Route::get('auto-fill', [AdminBookController::class, 'autoFill'])->name('auto-fill');
 
 
                 Route::group([

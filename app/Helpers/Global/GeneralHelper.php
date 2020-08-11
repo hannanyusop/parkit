@@ -287,3 +287,49 @@ if(!function_exists('visitorStatus')){
     }
 
 }
+
+if(!function_exists('getBookId')){
+
+    function getBookId($id){
+       return sprintf('%08d', $id);
+    }
+
+}
+
+if(!function_exists('getBarCode')){
+
+    function getBarCode($id, $width = 4, $height = 33){
+
+        return '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(getBookId($id), 'C39',$width,$height) . '" alt="'.getBookId($id).'"   /><br><small class="text-center">'.getBookId($id).'</small>';
+    }
+}
+
+if(!function_exists('barCodePrint')){
+
+    function barCodePrint($id, $width = 4, $height = 33){
+
+        $book = \App\Models\Library\Book::find($id);
+
+        return '<div class="text-center"><small>NO. PEROLEHAN '.getBookId($id).' HARGA :'.displayPrice($book->parent->price).' <br> </small><img src="data:image/png;base64,' . DNS1D::getBarcodePNG(getBookId($id), 'C39',$width,$height) . '" alt="'.getBookId($id).'"   />
+                    <br><small class="text-center"><b>'.bookShortCode($id).'</b> '.substr($book->parent->title, 0,50).'</small></div>';
+    }
+}
+
+if(!function_exists('bookShortCode')){
+
+    function bookShortCode($id){
+
+        $book = \App\Models\Library\Book::find($id);
+
+        return $book->parent->subGroup->code." ".substr($book->parent->author->name, 0,3);
+    }
+}
+
+if(!function_exists('displayPrice')){
+
+    function displayPrice($money, $currency = "RM"){
+
+        return $currency." ".number_format((float)$money, 2, '.', '');
+
+    }
+}

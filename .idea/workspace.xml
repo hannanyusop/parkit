@@ -26,9 +26,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
+      <change beforePath="$PROJECT_DIR$/.idea/parkit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parkit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/library/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/library/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Library/Admin/AdminBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Library/Admin/AdminBookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Library/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Library/Book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Library/BookParent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Library/BookParent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Library/GroupParent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Library/GroupParent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Library/GroupSub.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Library/GroupSub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/layout/side-div.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/layout/side-div.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/frontend/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/frontend/user.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,6 +225,7 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/milon/barcode" />
     </include_path>
   </component>
   <component name="ProjectId" id="1fashMyUvkzMfksEMctVzSxCizd" />
@@ -227,24 +240,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/user/library/visitor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\admin\book" />
+      <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Library" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\visitor" />
       <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Library\Admin" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\admin\setting" />
-      <recent name="C:\laragon\www\parkit\public\img" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\kehadiran\ct" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Library\Book" />
       <recent name="C:\laragon\www\parkit\public\installer" />
       <recent name="C:\laragon\www\parkit\public" />
       <recent name="C:\laragon\www\parkit\app\Http\Controllers\Frontend\User\Library\Admin" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\cv\event\excel" />
     </key>
   </component>
   <component name="RunManager">
@@ -284,7 +297,7 @@
       <workItem from="1597031616164" duration="14663000" />
       <workItem from="1597050836316" duration="15862000" />
       <workItem from="1597077791310" duration="998000" />
-      <workItem from="1597114272783" duration="7769000" />
+      <workItem from="1597114272783" duration="37902000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
@@ -360,14 +373,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="145" width="581" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597050990354" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1596901894121">
+    <state x="425" y="189" key="run.anything.popup" timestamp="1597163216833">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596901894121" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597134544067">
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597163216833" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597172367512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597134544067" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597172367512" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,6 +414,11 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Kehadiran/KehadiaranController.php</url>
           <line>3</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php</url>
+          <line>152</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
