@@ -13,7 +13,16 @@
                 <div class="card">
 
                     <div class="card-body">
-                        {!! barCodePrint($book->id, 2,50) !!}
+
+                        <p>Pelekat Belakang</p>
+                        <div class="" style="border-style: dotted;width: 450px">
+                            {!! barCodePrint($book->id, 2,50) !!}
+                        </div>
+
+                        <p>Pelekat Tepi</p>
+                        <div class="text-center" style="border-style: dotted;width: 120px">
+                            <h6 class="m-2">{{ bookShortCode($book->id) }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>

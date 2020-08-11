@@ -310,8 +310,10 @@ if(!function_exists('barCodePrint')){
 
         $book = \App\Models\Library\Book::find($id);
 
-        return '<div class="text-center"><small>NO. PEROLEHAN '.getBookId($id).' HARGA :'.displayPrice($book->parent->price).' <br> </small><img src="data:image/png;base64,' . DNS1D::getBarcodePNG(getBookId($id), 'C39',$width,$height) . '" alt="'.getBookId($id).'"   />
-                    <br><small class="text-center"><b>'.bookShortCode($id).'</b> '.substr($book->parent->title, 0,50).'</small></div>';
+        return '<div class="text-center"><small>HAK MILIK PERPUSTAKAN SMK AGAMA LIMBANG <br> </small><img src="data:image/png;base64,' . DNS1D::getBarcodePNG(getBookId($id), 'C39',$width,$height) . '" alt="'.getBookId($id).'"   />
+                  <br><small class="text-center"><b> '.bookShortCode($id).'</b> '.substr($book->parent->title, 0,50).'
+                     <br>HARGA : '.displayPrice($book->parent->price).'
+                    </small></div>';
     }
 }
 

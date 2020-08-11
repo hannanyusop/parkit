@@ -76,7 +76,7 @@
 
                                             <p>E-Kehadiran</p>
                                         </div>
-                                        <a href="{{ route('frontend.user.kehadiran.ct.scan') }}" class="small-box-footer"> Scan Qr Pelajar <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('frontend.user.kehadiran.ct.scan') }}" class="small-box-footer"> Imbas Qr Pelajar <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
 
