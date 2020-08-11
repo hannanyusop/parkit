@@ -17,6 +17,8 @@ use App\Http\Controllers\Frontend\User\Library\Admin\AdminGroupController;
 use App\Http\Controllers\Frontend\User\Library\BorrowController;
 use App\Http\Controllers\Frontend\User\Kehadiran\KehadiaranController;
 use App\Http\Controllers\Frontend\User\Kehadiran\ClassroomTeacherController;
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminSettingController;
+use App\Http\Controllers\Frontend\User\Library\Admin\VisitorController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -236,7 +238,23 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 ], function (){
                     Route::get('', [AdminPublisherController::class, 'index'])->name('index');
                 });
+
             });
+
+            Route::group([
+                'as' => 'setting.',
+                'prefix' => 'setting/',
+            ], function (){
+                Route::get('', [AdminSettingController::class, 'index'])->name('index');
+                Route::post('', [AdminSettingController::class, 'save'])->name('save');
+            });
+        });
+
+        Route::group([
+            'as' => 'visitor.',
+            'prefix' => 'visitor/',
+        ], function (){
+            Route::get('today/', [VisitorController::class, 'today'])->name('today');
         });
     });
 

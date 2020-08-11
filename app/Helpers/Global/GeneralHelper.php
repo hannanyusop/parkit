@@ -273,3 +273,17 @@ if(!function_exists('getForm')){
     }
 
 }
+
+if(!function_exists('visitorStatus')){
+
+    function visitorStatus($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">Aktif</span>",
+            2 => "<span class=\"badge bg-dark\">Daftar Keluar</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
