@@ -357,3 +357,62 @@ if(!function_exists('hideString')){
 
     }
 }
+
+if(!function_exists('isBorrow')){
+
+    function isBorrow($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">Boleh Dipinjam</span>",
+            0 => "<span class=\"badge bg-dark\">Tidak Boleh Dipinjam</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+if(!function_exists('isFiction')){
+
+    function isFiction($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">Fiksyen</span>",
+            0 => "<span class=\"badge bg-info\">Bukan Fiksyen</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+
+if(!function_exists('bookStatus')){
+
+    function bookStatus($status){
+
+        $statuses = [
+            1 => "Tersedia",
+            2 => "Dipinjam",
+            3 => "Dilupuskan"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+if(!function_exists('badgeBookStatus')){
+
+    function badgeBookStatus($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">Tersedia</span>",
+            2 => "<span class=\"badge bg-info\">Dipinjam</span>",
+            3 => "<span class=\"badge bg-info\">Dilpuskan</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}

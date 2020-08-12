@@ -60,7 +60,7 @@
                                 <th>Tajuk</th>
                                 <th>Penerbit / Pengarang</th>
                                 <th>Status</th>
-                                <th>More</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@
                                 <td>{{ getBookId($book->id) }}</td>
                                 <td>{{ $book->parent->title }}</td>
                                 <td><b>{{ $book->parent->publisher->name }}</b> <small><br>{{ $book->parent->author->name }}</small>  </td>
-                                <td><span class="badge badge-dark">Disposed</span> </td>
+                                <td>{!! badgeBookStatus($book->status) !!}</td>
                                 <td>
                                     <a href="{{ route('frontend.user.library.admin.book.view', $book->id) }}" class="text-muted">
                                         <i class="fas fa-search"></i>

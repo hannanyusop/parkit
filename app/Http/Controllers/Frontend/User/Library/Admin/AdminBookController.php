@@ -10,6 +10,7 @@ use App\Models\Library\GroupParent;
 use App\Models\Library\Payment;
 use App\Models\Library\Publisher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminBookController extends Controller{
 
@@ -34,9 +35,28 @@ class AdminBookController extends Controller{
 
     public function add(){
 
+        #continue last user input;
+        $last_book = Book::where('user_id', auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->first();
+
+        if(!$last_book){
+            $last_book = Book::orderBy('created_at', 'DESC')
+                ->first();
+        }
+
+        $last_book_id = $last_book->id;
+
+        do{
+            #prevent from error;
+            $last_book_id++;
+            $check = Book::find($last_book_id);
+
+        }while($check);
+
         $groups = GroupParent::get();
 
-        return view('frontend.user.library.admin.book.add', compact('groups'));
+        return view('frontend.user.library.admin.book.add', compact('groups', 'last_book_id'));
     }
 
     public function insert(InsertRequest $request){
@@ -100,7 +120,8 @@ class AdminBookController extends Controller{
 
             $new_parent->g_sub_id = $request->group;
             $new_parent->title = strtoupper($request->title);
-            $new_parent->is_borrow = 1;
+            $new_parent->is_borrow = ($request->is_borrow == 1)? 1 : 0;
+            $new_parent->is_fiction = ($request->is_fiction == 1)? 1 : 0;
             $new_parent->price = $request->price;
             $new_parent->pages = $request->pages;
             $new_parent->remark = "";
@@ -116,6 +137,28 @@ class AdminBookController extends Controller{
 
         if($request->no_per != "" || !is_null($request->no_per)){
             $book->id = $request->no_per;
+        }else{
+
+            #continue last user input;
+            $last_book = Book::where('user_id', auth()->user()->id)
+                ->orderBy('created_at', 'DESC')
+                ->first();
+
+            if(!$last_book){
+                $last_book = Book::orderBy('created_at', 'DESC')
+                    ->first();
+            }
+
+            $last_book_id = $last_book->id;
+
+            do{
+                #prevent from error;
+                $last_book_id++;
+                $check = Book::find($last_book_id);
+
+            }while($check);
+
+            $book->id = $last_book_id;
         }
 
         $payment = Payment::where("name", $request->payment)->first();
@@ -125,16 +168,17 @@ class AdminBookController extends Controller{
             $new_payment = new Payment();
             $new_payment->user_id = auth()->user()->id;
             $new_payment->name = strtoupper($request->payment);
-            $new_payment->receipt_ref = null;
+            $new_payment->receipt_ref = "";
 
             if(!$new_payment->save()){
                 dd('Payment error!');
             }
         }
 
-        $book->payment_id = ($payment)? $payment->id : $new_payment;
+        $book->payment_id = ($payment)? $payment->id : $new_payment->id;
         $book->parent_id = ($parent)? $parent->id : $new_parent->id;
         $book->status = 1; #available
+        $book->user_id = auth()->user()->id;
         $book->borrow_id = 0;
         $book->remark = "";
 
@@ -178,6 +222,89 @@ class AdminBookController extends Controller{
 //        }
     }
 
+    public function printLabel(Request $request){
+
+
+        $added =  (Session::has('added'))? session('added') :  Session::put('added', []);
+
+        $parents = null;
+
+        #title
+
+        if($request->has('title')){
+
+            $parents = BookParent::where('title', 'LIKE', "%".$request->title."%")
+                ->get();
+        }
+        return view('frontend.user.library.admin.book.print-label', compact('parents', 'added'));
+    }
+
+    public function addPrintLabel(Request $request){
+
+
+        if($request->has('book')){
+
+            $added =  (Session::has('added'))? session('added') :  Session::put('added', []);
+            foreach ($request->book as $book){
+
+                $check_book = Book::find($book);
+
+                if($check_book){
+                    $added[$book] = $check_book->parent->title;
+                }
+            }
+
+            session(['added' => $added]);
+            return redirect()->route('frontend.user.library.admin.book.print-label')->withFlashSuccess("Senarai buku berjaya ditambah.");
+
+
+        }else{
+            return redirect()->route('frontend.user.library.admin.book.print-label')->withErrors("Sila tanda buku yang dikhendaki!");
+        }
+
+
+    }
+
+    public function printLabelRemove($id){
+
+        $added =  (Session::has('added'))? session('added') :  Session::put('added', []);
+
+        if(isset($added[$id])){
+
+            unset($added[$id]);
+
+            session(['added' => $added]);
+            return redirect()->route('frontend.user.library.admin.book.print-label')->withFlashSuccess("Senarai buku berjaya di singkirkan.");
+        }else{
+            return redirect()->route('frontend.user.library.admin.book.print-label')->withErrors("Buku tidak wujud.");
+        }
+
+    }
+
+    public function printLabelNow(){
+
+        $added =  (Session::has('added'))? session('added') :  Session::put('added', []);
+
+        if(count($added) == 0){
+
+            return redirect()->route('frontend.user.library.admin.book.print-label')->withErrors("Sila tambah buku terlebih dahulu.");
+
+        }else{
+
+            $books = Book::whereIn('id',array_keys($added))->get();
+            return view('frontend.user.library.admin.book.print-label-now', compact('books'));
+
+        }
+
+    }
+
+    public function printLabelRemoveAll(){
+
+        session(['added' => []]);
+        return redirect()->route('frontend.user.library.admin.book.print-label')->withFlashSuccess("Senarai buku berjaya di kosongkan.");
+
+    }
+
     public function autoFill(Request $request){
 
 //        if($request->ajax()) {
@@ -196,6 +323,7 @@ class AdminBookController extends Controller{
                     'price' => $book->price,
                     'pages' => $book->pages,
                     'is_borrow' => $book->is_borrow,
+                    'is_fiction' => $book->is_fiction,
                     'payment' => ($last_insert)? $last_insert->payment->name : "",
                     'group_id' => $book->g_sub_id
                 ];

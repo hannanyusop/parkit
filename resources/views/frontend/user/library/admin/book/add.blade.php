@@ -34,6 +34,7 @@
                                         <input type="number" name="no_per" value="{{ old('no_per') }}" id="no_per" placeholder="" class="form-control">
                                     </div>
                                     <small class="text-sm text-info font-weight-bold">*Sila Kosongkan Jika Tiada | Nombor Sahaja | Maksimum 8 Digit</small>
+                                    <p class="font-weight-light">NO. Perolehan Seterusnya : {{ getBookId($last_book_id) }}</p>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -59,6 +60,36 @@
                                 </div>
                             </div>
                            <div id="other">
+                               <div class="form-group row">
+                                   <label for="author" class="col-sm-2 col-form-label">Jenis Buku</label>
+                                   <div class="col-md-4">
+                                       <div class="form-check">
+                                           <input id="fiction" class="form-check-input" value="1" type="radio" name="is_fiction" {{ (old('is_fiction') == 1)? "checked=''" : "" }}>
+                                           <label for="fiction" class="form-check-label">Fiksyen</label>
+                                       </div>
+
+                                       <div class="form-check">
+                                           <input id="not_fiction" class="form-check-input" value="0" type="radio" name="is_fiction" {{ (old('is_fiction') == 0)? "checked=''" : "" }}>
+                                           <label for="not_fiction" class="form-check-label">Bukan Fiksyen</label>
+                                       </div>
+
+                                   </div>
+                               </div>
+                               <div class="form-group row">
+                                   <label for="author" class="col-sm-2 col-form-label">Status Peminjaman</label>
+                                   <div class="col-md-4">
+                                       <div class="form-check">
+                                           <input id="borrow" class="form-check-input" value="1" type="radio" name="is_borrow" {{ (old('is_borrow') == 1)? "checked=''" : "" }}>
+                                           <label for="borrow" class="form-check-label">Boleh Dipinjam</label>
+                                       </div>
+
+                                       <div class="form-check">
+                                           <input id="cant_borrow" class="form-check-input" value="0" type="radio" name="is_borrow" {{ (old('is_borrow') == 0)? "checked=''" : "" }}>
+                                           <label for="cant_borrow" class="form-check-label">Tidak Boleh Dipinjam</label>
+                                       </div>
+
+                                   </div>
+                               </div>
                                <div class="form-group row">
                                    <label for="author" class="col-sm-2 col-form-label">Pengarang</label>
                                    <div class="col-md-4">
@@ -150,6 +181,25 @@
                         $("#price").val(item.price).prop('readonly', true);
                         $("#pages").val(item.pages).prop('readonly', true);
                         $("#payment").val(item.payment).prop('readonly', true);
+
+                        if(item.is_fiction == 1){
+                            $("#fiction").val(item.payment).prop('checked', true);
+                            $("#not_fiction").val(item.payment).prop('checked', false);
+
+                        }else{
+                            $("#not_fiction").val(item.payment).prop('checked', true);
+                            $("#fiction").val(item.payment).prop('checked', false);
+
+                        }
+
+                        if(item.is_borrow == 1){
+                            $("#borrow").val(item.payment).prop('checked', true);
+                            $("#cant_borrow").val(item.payment).prop('checked', false);
+                        }else{
+                            $("#cant_borrow").val(item.payment).prop('checked', true);
+                            $("#borrow").val(item.payment).prop('checked', false);
+
+                        }
 
                         // $('#group option').removeAttr('selected').filter('[value=' + item.group_id+ ']').attr('selected', true);
                     }

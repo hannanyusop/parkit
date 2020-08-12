@@ -222,6 +222,13 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('add/', [AdminBookController::class, 'add'])->name('add');
                 Route::post('add/', [AdminBookController::class, 'insert'])->name('insert');
 
+                Route::get('print-label/', [AdminBookController::class, 'printLabel'])->name('print-label');
+                Route::post('print-label/', [AdminBookController::class, 'addPrintLabel'])->name('add-print-label');
+                Route::get('print-label-now/', [AdminBookController::class, 'printLabelNow'])->name('print-label-now');
+                Route::get('print-label-remove/{id}', [AdminBookController::class, 'printLabelRemove'])->name('print-label-remove');
+                Route::get('print-label-remove-all', [AdminBookController::class, 'printLabelRemoveAll'])->name('print-label-remove-all');
+
+
                 #ajax
                 Route::get('check-title', [AdminBookController::class, 'checkTitle'])->name('check-title');
                 Route::get('auto-fill', [AdminBookController::class, 'autoFill'])->name('auto-fill');

@@ -19,4 +19,13 @@ class BookParent extends Model{
     public function subGroup(){
         return $this->hasOne(GroupSub::class, 'id', 'g_sub_id');
     }
+
+    public function books(){
+        return $this->hasMany(Book::class, 'parent_id', 'id');
+    }
+
+    public function booksAvailable(){
+        return $this->hasMany(Book::class, 'parent_id', 'id')
+            ->where('status', 1);
+    }
 }

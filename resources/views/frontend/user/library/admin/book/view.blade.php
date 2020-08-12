@@ -12,7 +12,58 @@
             <div class="col-md-9">
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body m-md-5">
+                        <hr>
+                        <h5>Maklumat Buku</h5>
+                        <dl class="row">
+                            <dt class="col-sm-4">Nombor Perolehan </dt>
+                            <dd class="col-sm-8">{{ getBookId($book->id) }}</dd>
+
+                            <dt class="col-sm-4">Tajuk /Judul</dt>
+                            <dd class="col-sm-8">{{ $book->parent->title }}</dd>
+
+                            <dt class="col-sm-4">Pengarang</dt>
+                            <dd class="col-sm-8">{{ $book->parent->author->name }}</dd>
+
+                            <dt class="col-sm-4">Ringkasan Pertama</dt>
+                            <dd class="col-sm-8"><b>{{ $book->parent->subGroup->parent->code }}</b> - {{ $book->parent->subGroup->parent->name }}</dd>
+
+                            <dt class="col-sm-4">Ringkasan Kedua</dt>
+                            <dd class="col-sm-8"><b>{{ $book->parent->subGroup->code }}</b> - {{ $book->parent->subGroup->name }}</dd>
+
+                            <dt class="col-sm-4">Bil. Muka Surat</dt>
+                            <dd class="col-sm-8">{{ $book->parent->pages }} m/s </dd>
+
+                            <dt class="col-sm-4">Jenis Buku</dt>
+                            <dd class="col-sm-8">{!! isFiction($book->parent->is_fiction) !!}</dd>
+
+                            <dt class="col-sm-4">Status Peminjaman</dt>
+                            <dd class="col-sm-8">{!! isBorrow($book->parent->is_borrow) !!}</dd>
+
+                            <dt class="col-sm-4">Tarikh Didaftarkan</dt>
+                            <dd class="col-sm-8">{{ reformatDatetime($book->created_at, "d M Y") }}</dd>
+
+                            <dt class="col-sm-4">Jumlah Set Buku</dt>
+                            <dd class="col-sm-8">{{ $book->parent->books->count() }}</dd>
+
+                            <dt class="col-sm-4">Jumlah Tersedia(Available)</dt>
+                            <dd class="col-sm-8">{{ $book->parent->booksAvailable->count() }}</dd>
+                        </dl>
+                        <hr>
+
+                        <h5>Maklumat Penerbit</h5>
+
+                        <dl class="row">
+                            <dt class="col-sm-4">Nama</dt>
+                            <dd class="col-sm-8">{{ $book->parent->publisher->name }}</dd>
+                            <dt class="col-sm-4">No Tel.</dt>
+                            <dd class="col-sm-8">{{ $book->parent->publisher->phone_number }}</dd>
+                            <dt class="col-sm-4">Alamat</dt>
+                            <dd class="col-sm-8">{{ $book->parent->publisher->address }}</dd>
+                        </dl>
+
+                        <hr>
+                        <h5>Pelekat Buku</h5>
 
                         <p>Pelekat Belakang</p>
                         <div class="" style="border-style: dotted;width: 450px">
