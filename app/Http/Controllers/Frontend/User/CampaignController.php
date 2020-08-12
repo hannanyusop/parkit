@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Campaign\InsertRequest;
 use App\Http\Requests\Frontend\User\Campaign\UpdateRequest;
+use App\Models\Card;
+use App\Models\Join;
 use Illuminate\Http\Request;
 use App\Models\Campaign;
 

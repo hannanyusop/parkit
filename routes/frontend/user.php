@@ -100,6 +100,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::post('check/{campaign_code}', [VoteController::class, 'check'])->name('check');
             Route::get('result/{campaign_code}/{uc}', [VoteController::class, 'result'])->name('result');
             Route::get('result-full/{campaign_code}/', [VoteController::class, 'resultFull'])->name('result-full');
+            Route::get('result-all/{campaign_code}/', [VoteController::class, 'resultAll'])->name('result-all');
+
 
         });
 

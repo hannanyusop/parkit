@@ -34,6 +34,7 @@
                             </thead>
                             <tbody>
                             @foreach($joins as $key => $join)
+                                <?php $balance =  $join->attempt - $join->cards($join->campaign_id)->count(); $ny = $balance; ?>
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>
@@ -49,7 +50,7 @@
 
                                             @if($join->user->cardUsed($join->campaign->id)->count() == 0)
                                                 <span class="badge bg-dark">Not Yet</span>
-                                            @elseif($join->attemp < $join->user->cardUsed($join->campaign->id)->count())
+                                            @elseif($balance > 0)
                                                 <span class="badge bg-info">On going</span>
                                             @else
                                                 <span class="badge bg-success">Completed</span>
@@ -66,7 +67,6 @@
                                                 @endif
                                             </a>
                                         @endforeach
-                                        <?php $balance =  $join->attempt - $join->cards($join->campaign_id)->count(); $ny = $balance; ?>
                                         @while($ny != 0)
                                             <i class="fa fa-vote-yea text-gray-dark"></i>
                                             <?php $ny-- ?>
@@ -75,13 +75,18 @@
                                     </td>
                                     <td>
                                         @if($balance > 0)
-                                            @if($join->approve != 0 || $join->invited != 0)
-                                                <a href="{{ route('frontend.user.vote.rules', $join->campaign->code) }}" class="btn btn-success btn-xs">Pick</a>
+                                            @if($join->campaign->status == 1)
+                                                @if($join->approve != 0 || $join->invited != 0)
+                                                    <a href="{{ route('frontend.user.vote.rules', $join->campaign->code) }}" class="btn btn-success btn-xs">Pick</a>
+                                                @endif
                                             @endif
                                         @endif
                                         @if($balance < $join->attempt)
                                             <a href="{{ route('frontend.user.vote.result-full', $join->campaign->code) }}" class="btn btn-info btn-xs">Result</a>
                                         @endif
+                                    @if($join->campaign->status == 3)
+                                        <a href="{{ route('frontend.user.vote.result-all', $join->campaign->code) }}" class="btn btn-dark btn-xs text-warning"><i class="fa fa-trophy"></i> Winner List</a>
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach

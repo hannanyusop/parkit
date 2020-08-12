@@ -319,6 +319,37 @@ class VoteController extends Controller
 
     }
 
+    public function resultAll($campaign_code){
+
+        $campaign = Campaign::where('code', $campaign_code)
+            ->first();
+
+        if(!$campaign){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Campaign not found!');
+        }
+
+        if($campaign->status != 3){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Result will be display after the campaign end!');
+        }
+
+        $join = Join::where('user_id', auth()->user()->id)
+            ->where('campaign_id', $campaign->id)
+            ->first();
+
+        if(!$join){
+            return  redirect()->route('frontend.user.campaign.index')->withErrors('Action prohibited!');
+        }
+
+        $card_win = Card::where('campaign_id', $campaign->id)
+            ->where('is_won', 1)
+            ->where('user_id','!=', null)
+            ->orderBy('prize', 'DESC')
+            ->get();
+
+        return view('frontend.user.vote.result-all', compact('campaign', 'card_win'));
+
+    }
+
     #ajax
     public function shuffleCard(Request $request, $campaign_code){
 

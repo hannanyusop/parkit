@@ -77,7 +77,7 @@ if (! function_exists('badgeCampaignStatus')) {
         $statuses = [
             1 => "<span class=\"badge bg-primary\">Active</span>",
             2 => "<span class=\"badge bg-warning\">Paused</span>",
-            3 => "<span class=\"badge bg-danger\">Inactive</span>"
+            3 => "<span class=\"badge bg-danger\">End</span>"
         ];
 
         return $statuses[$status];
@@ -332,6 +332,28 @@ if(!function_exists('displayPrice')){
     function displayPrice($money, $currency = "RM"){
 
         return $currency." ".number_format((float)$money, 2, '.', '');
+
+    }
+}
+
+if(!function_exists('hideString')){
+
+    function hideString($string,int $length,  $code = 'X'){
+
+        $sl = strlen($string) - $length;
+
+        $hidden = "";
+
+        if($length < $sl) {
+            while($sl >= 0){
+                $hidden .= $code;
+                $sl--;
+            }
+        }
+
+        $front = substr_replace($string, 0, -3);
+
+        return $front.$hidden;
 
     }
 }
