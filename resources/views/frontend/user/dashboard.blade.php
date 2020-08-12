@@ -58,6 +58,18 @@
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
+                                    <div class="small-box bg-gradient-navy">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-user-friends"></i> </h3>
+
+                                            <p>Data Pelajar</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.student.index') }}" class="small-box-footer"> Carian Pelajar <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
                                     <div class="small-box bg-fuchsia">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-clipboard-list"></i> </h3>

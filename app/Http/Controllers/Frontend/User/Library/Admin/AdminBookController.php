@@ -175,7 +175,7 @@ class AdminBookController extends Controller{
             }
         }
 
-        $book->payment_id = ($payment)? $payment->id : $new_payment->id;
+        $book->payment_id = ($payment)? da->id : $new_payment->id;
         $book->parent_id = ($parent)? $parent->id : $new_parent->id;
         $book->status = 1; #available
         $book->user_id = auth()->user()->id;

@@ -215,8 +215,6 @@
             }
         });
     </script>
-@endpush
-@push('after-scripts')
     <script src="{{ asset('lte/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script>

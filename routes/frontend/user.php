@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\User\Kehadiran\KehadiaranController;
 use App\Http\Controllers\Frontend\User\Kehadiran\ClassroomTeacherController;
 use App\Http\Controllers\Frontend\User\Library\Admin\AdminSettingController;
 use App\Http\Controllers\Frontend\User\Library\Admin\VisitorController;
+use App\Http\Controllers\Frontend\User\Student\StudentMainController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -158,6 +159,20 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
     });
 
     //e-kehadiran
+    Route::group([
+        'as' => 'student.',
+        'prefix' => 'student/'
+    ], function (){
+
+        Route::get('', [StudentMainController::class, 'index'])->name('index');
+
+        Route::get('add/', [StudentMainController::class, 'add'])->name('add');
+        Route::post('add/', [StudentMainController::class, 'insert'])->name('insert');
+
+        Route::get('edit/{student_id}', [StudentMainController::class, 'edit'])->name('edit');
+        Route::post('edit/{student_id}', [StudentMainController::class, 'update'])->name('update');
+
+    });
 
     Route::group([
         'as' => 'kehadiran.',
