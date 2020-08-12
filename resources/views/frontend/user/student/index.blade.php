@@ -25,6 +25,13 @@
 
                 <div class="card-body">
 
+                    @if(!is_null($users))
+                        @if($users->count() > 0)
+                        @else
+                            <h6 class="text-center">Tiada Maklumat Pelajar Dijumpai Bagi "{{ request('search') }}"</h6>
+                        @endif
+                    @endif
+
                 </div>
             </div>
         </div>
