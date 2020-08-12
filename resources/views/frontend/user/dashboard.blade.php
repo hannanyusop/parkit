@@ -6,6 +6,37 @@
     <section class="content">
 
         <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body ">
+
+                        <div class="row">
+                            <h5 class="mb-2">Quick Links</h5>
+                            <hr><br>
+                        </div>
+
+                        <div class="row">
+                            @can('cv_guard')
+                                <div class="card-body p-0">
+                                    <ul class="users-list clearfix">
+                                        @if($active_ca_events->count() > 0)
+                                            @foreach($active_ca_events as $event)
+                                                <li class="bg-warning ml-2">
+                                                    <i class="fa fa-qrcode"></i>
+                                                    <a class="users-list-name" href="{{ route('frontend.user.cv.event.landing', $event->id) }}">{{ $event->name }}</a>
+                                                    <span class="users-list-date">{{ reformatDatetime($event->created_at, "d-M") }}</span>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+
+
+                            @endcan
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
@@ -92,34 +123,6 @@
                                     </div>
                                 </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <h5 class="mb-2">Quick Links</h5>
-                            <hr><br>
-                        </div>
-
-                        <div class="row">
-
-                            @can('cv_guard')
-
-                                @if($active_ca_events->count() > 0)
-                                    <div class="card-body">
-                                        <p>Check-in QR Link</p>
-                                        <ol>
-                                            @foreach($active_ca_events as $event)
-                                                <li><a href="{{ route('frontend.user.cv.event.landing', $event->id) }}">{{ $event->name }}-{{ reformatDatetime($event->created_at, "d M Y") }}</a> </li>
-                                            @endforeach
-                                        </ol>
-                                    </div>
-                                @endif
-                            @endcan
                         </div>
                     </div>
                 </div>
