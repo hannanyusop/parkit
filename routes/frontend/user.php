@@ -239,6 +239,11 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('add/', [AdminBookController::class, 'add'])->name('add');
                 Route::post('add/', [AdminBookController::class, 'insert'])->name('insert');
 
+                Route::get('edit/{id}', [AdminBookController::class, 'edit'])->name('edit');
+                Route::post('edit/{id}', [AdminBookController::class, 'update'])->name('update');
+                Route::post('edit-parent/{id}', [AdminBookController::class, 'updateParent'])->name('update-parent');
+
+
                 Route::get('print-label/', [AdminBookController::class, 'printLabel'])->name('print-label');
                 Route::post('print-label/', [AdminBookController::class, 'addPrintLabel'])->name('add-print-label');
                 Route::get('print-label-now/', [AdminBookController::class, 'printLabelNow'])->name('print-label-now');

@@ -11,10 +11,12 @@
             </div>
             <div class="col-md-9">
                 <div class="card">
-
                     <div class="card-body m-md-5">
+                        <div class="float-right clearfix">
+                            <a href="{{ route('frontend.user.library.admin.book.edit', $book->id) }}" class="btn btn-warning">Kemaskini Maklumat Buku</a>
+                        </div>
+                        <h4>Maklumat Buku</h4>
                         <hr>
-                        <h5>Maklumat Buku</h5>
                         <dl class="row">
                             <dt class="col-sm-4">Nombor Perolehan </dt>
                             <dd class="col-sm-8">{{ getBookId($book->id) }}</dd>

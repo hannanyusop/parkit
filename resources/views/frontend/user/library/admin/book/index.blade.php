@@ -8,50 +8,33 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Book Title">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control select2" id="group" name="group">
-                                @foreach($groups as $group)
-                                    <optgroup label="{{ $group->code." - ".$group->name }}">
-                                        @foreach($group->subs as $sub)
-                                            <option value="{{ $sub->id }}" value="{{ (old('group') == $sub->id)? "checked" : "" }}">{{ $sub->code." - ".$sub->name }}</option>
-                                        @endforeach
-                                    </optgroup>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>SELECT STATUS</option>
-                                <option>Active</option>
-                                <option>Borrowed</option>
-                                <option>Disposed</option>
-                            </select>
-                        </div>
+                    <x-forms.get>
+                        <div class="card-body">
+                            <h4>Carian Buku</h4>
+                            <div class="form-group">
+                                <input type="text" name="title" value="{{ request('title') }}" class="form-control" placeholder="Tajuk Buku / No. Perolehan">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="status">
+                                    <option value="">SEMUA STATUS</option>
+                                    @foreach(bookStatus() as $key => $status)
+                                        <option value="{{ $key }}" {{ (request('status') == $key)? "selected" : "" }}>{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <button class="btn btn-success btn-block">Search</button>
+                            <div class="form-group">
+                                <button class="btn btn-success">Search</button>
+                                <a href="{{ route('frontend.user.library.admin.book.index') }}" class="btn btn-warning">Reset</a>
+                            </div>
                         </div>
-                    </div>
+                    </x-forms.get>
                     <!-- /.card-body -->
                 </div>
                 @include('frontend.user.library.admin.book.layout.side-div')
             </div>
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header border-0">
-                        <div class="card-tools">
-                            <a href="#" class="btn btn-tool btn-sm">
-                                <i class="fas fa-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-tool btn-sm">
-                                <i class="fas fa-bars"></i>
-                            </a>
-                        </div>
-                    </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-striped table-valign-middle">
                             <thead>

@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Frontend\User\Library\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Library\Book\InsertRequest;
+use App\Http\Requests\Frontend\User\Library\Book\UpdateParentRequest;
+use App\Http\Requests\Frontend\User\Library\Book\UpdateRequest;
 use App\Models\Library\Author;
 use App\Models\Library\Book;
 use App\Models\Library\BookParent;
@@ -14,12 +16,26 @@ use Illuminate\Support\Facades\Session;
 
 class AdminBookController extends Controller{
 
-    public function index(){
+    public function index(Request $request){
 
-        $books = Book::paginate(5);
-        $groups = GroupParent::get();
+        $query = Book::where(function ($q) use ($request){
 
-        return view('frontend.user.library.admin.book.index', compact('books','groups'));
+            $q->whereHas('parent', function ($q) use ($request){
+
+                $q->where('title', 'LIKE', "%".$request->title."%");
+
+            })->orWhere('id', 'LIKE', "%".$request->title."%");
+        });
+
+            if($request->status != ""){
+
+//                dd('masuk');
+                $query->where('status', $request->status);
+            }
+
+            $books = $query->paginate(20);
+
+        return view('frontend.user.library.admin.book.index', compact('books'));
     }
 
     public function view($id){
@@ -175,7 +191,7 @@ class AdminBookController extends Controller{
             }
         }
 
-        $book->payment_id = ($payment)? da->id : $new_payment->id;
+        $book->payment_id = ($payment)? $payment->id : $new_payment->id;
         $book->parent_id = ($parent)? $parent->id : $new_parent->id;
         $book->status = 1; #available
         $book->user_id = auth()->user()->id;
@@ -189,6 +205,108 @@ class AdminBookController extends Controller{
 
         }
 
+    }
+
+    public function edit($id){
+
+        $book = Book::find($id);
+
+        if(!$book){
+            return redirect()->back()->withFlashWarning("Maklumat buku tidak dijumpai.");
+        }
+
+        return view('frontend.user.library.admin.book.edit', compact('book'));
+
+    }
+
+    public function update(UpdateRequest $request, $id){
+
+        $book = Book::find($id);
+        if(!$book){
+            return redirect()->route('frontend.user.library.admin.book.index')->withFlashWarning("Maklumat buku tidak dijumpai.");
+        }
+
+        $payment = Payment::where("name", $request->payment)->first();
+
+        if(!$payment){
+            #create new
+            $new_payment = new Payment();
+            $new_payment->user_id = auth()->user()->id;
+            $new_payment->name = strtoupper($request->payment);
+            $new_payment->receipt_ref = "";
+
+            if(!$new_payment->save()){
+                dd('Payment error!');
+            }
+        }
+
+        $book->payment_id = ($payment)? $payment->id : $new_payment->id;
+        $book->remark = $request->remark;
+
+        if($book->save()){
+            return redirect()->route('frontend.user.library.admin.book.edit', $book->id)->withFlashSuccess("Salianan ".getBookId($book->id)." berjaya di kemaskini!");
+        }else{
+            return redirect()->route('frontend.user.library.admin.book.index')->withErrors("Gadal mangemaskini buku ".getBookId($book->id));
+        }
+
+    }
+
+    public function updateParent(UpdateParentRequest $request, $id){
+
+        $book = Book::find($id);
+        if(!$book){
+            return redirect()->route('frontend.user.library.admin.book.index')->withFlashWarning("Maklumat buku tidak dijumpai.");
+        }
+
+        $parent = $book->parent;
+
+        $author = Author::where("name", $request->author)->first();
+
+        if(!$author){
+            #create new author
+            $new_author = new Author();
+            $new_author->name = strtoupper($request->author);
+
+            if(!$new_author->save()){
+                dd("Create new author error!");
+            }
+
+            $parent->author_id = $new_author->id;
+
+        }else{
+            $parent->author_id = $author->id;
+        }
+
+        $publisher = Publisher::where("name", $request->publisher)->first();
+
+        if(!$publisher){
+
+            $new_pub = new Publisher();
+            $new_pub->name = strtoupper($request->publisher);
+            $new_pub->address = "";
+            $new_pub->phone_number = "";
+
+            if(!$new_pub->save()){
+                dd("Create new publisher error!");
+            }
+            $parent->publisher_id = $new_pub->id;
+
+        }else{
+            $parent->publisher_id = $publisher->id;
+        }
+
+        $parent->g_sub_id = $request->group;
+        $parent->title = strtoupper($request->title);
+        $parent->is_borrow = ($request->is_borrow == 1)? 1 : 0;
+        $parent->is_fiction = ($request->is_fiction == 1)? 1 : 0;
+        $parent->price = $request->price;
+        $parent->pages = $request->pages;
+
+        if($parent->save()){
+            return redirect()->route('frontend.user.library.admin.book.edit', $book->id)->withFlashSuccess("Buku ".$parent->title." berjaya di kemaskini!");
+        }else{
+            return redirect()->route('frontend.user.library.admin.book.index')->withErrors("Gadal mangemaskini buku".$parent->title);
+        }
     }
 
     public function checkTitle(Request $request){

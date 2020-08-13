@@ -28,14 +28,9 @@
     <list default="true" id="4c941dcb-6469-40d2-8663-272e39506236" name="Default Changelist" comment="x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Global/GeneralHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Kehadiran/ClassroomTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Kehadiran/ClassroomTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Student/StudentMainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Student/StudentMainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Classroom.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Classroom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/StudentHasClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StudentHasClass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/kehadiran/ct/add-class.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/kehadiran/ct/add-class.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/kehadiran/ct/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/kehadiran/ct/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/student/layout/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/student/layout/topbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Library/Admin/AdminBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/User/Library/Admin/AdminBookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/frontend/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/frontend/user.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,17 +230,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Frontend/User/Class" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/user/library/admin/book" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\admin\book" />
+      <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Library\Book" />
       <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User\Class" />
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user\student" />
       <recent name="C:\laragon\www\parkit\app\Http\Requests\Frontend\User" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\library\admin\book" />
-      <recent name="C:\laragon\www\parkit\resources\views\frontend\user\vote" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\parkit\resources\views\frontend\user" />
@@ -296,7 +291,7 @@
       <workItem from="1597201306363" duration="4010000" />
       <workItem from="1597234274410" duration="16705000" />
       <workItem from="1597256920377" duration="7176000" />
-      <workItem from="1597288076184" duration="13551000" />
+      <workItem from="1597288076184" duration="26187000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <created>1596644536322</created>
@@ -368,18 +363,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="560" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1597035579408" />
-    <state x="477" y="145" width="581" height="592" key="find.popup" timestamp="1597050990354">
+    <state x="477" y="145" width="581" height="592" key="find.popup" timestamp="1597338356285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="145" width="581" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597050990354" />
+    <state x="477" y="145" width="581" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597338356285" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1597163216833">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597163216833" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597301657735">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597338806235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597301657735" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597338806235" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

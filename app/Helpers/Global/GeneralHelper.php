@@ -389,7 +389,7 @@ if(!function_exists('isFiction')){
 
 if(!function_exists('bookStatus')){
 
-    function bookStatus($status){
+    function bookStatus($status = null){
 
         $statuses = [
             1 => "Tersedia",
@@ -397,7 +397,7 @@ if(!function_exists('bookStatus')){
             3 => "Dilupuskan"
         ];
 
-        return $statuses[$status];
+        return (is_null($status))? $statuses : $statuses[$status];
     }
 
 }
@@ -783,6 +783,15 @@ if(!function_exists('getCurrentClassroomTeacher')){
 
             return ($user)? $user->name : "DATA TIDAK WUJUD";
         }
+    }
+}
+
+if(!function_exists('getDewey')){
+
+    function getDewey(){
+
+        return \App\Models\Library\GroupParent::get();
+
     }
 }
 
