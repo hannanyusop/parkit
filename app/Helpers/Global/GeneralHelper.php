@@ -449,8 +449,8 @@ if(!function_exists('getGender')){
     function getGender($type = null){
 
         $types = [
-            'L' => "LELAKI",
-            'P' => "PERMPUAN"
+            'M' => "LELAKI",
+            'F' => "PERMPUAN"
         ];
 
         return (isset($type)) ? $types[$type] : $types;
@@ -513,7 +513,7 @@ if(!class_exists('MyIC')){
             if ( ! empty($ic_no))
             {
                 // if the numbers is less than 12 digits
-                if (strlen($ic_no) < 12)
+                if (strlen($ic_no) != 12)
                 {
                     return FALSE;
                 }
@@ -722,11 +722,11 @@ if(!class_exists('MyIC')){
                 // gender; odd for Male and even for Female
                 if ($code % 2 === 0)
                 {
-                    $this->gender	= 'Female';
+                    $this->gender	= 'F';
                 }
                 else
                 {
-                    $this->gender	= 'Male';
+                    $this->gender	= 'M';
                 }
             }
         }
