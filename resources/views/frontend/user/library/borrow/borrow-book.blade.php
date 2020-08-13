@@ -12,64 +12,89 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="input-group input-group-lg">
-                                <input type="text" class="form-control" placeholder="Scan Barcode / Insert 'No Perolehan'" autofocus>
-                                <span class="input-group-append">
-                                    <button type="button" class="btn btn-info btn-flat"><i class="fa fa-barcode"></i> Search</button>
+                        <x-forms.get>
+                            <div class="row">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control" value="{{ request('no_ic') }}" name="no_ic" {{ ($student)? "disabled" : "" }} placeholder="No Kad. Pengenalan Pelajar" autofocus>
+                                    <span class="input-group-append">
+                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-id-card-alt"></i> Cari</button>
                                 </span>
+                                </div>
                             </div>
-                        </div>
+                        </x-forms.get>
+                        @if(!is_null($student))
 
-                        <div class="table-responsive">
-                            <table class="table table-striped table-valign-middle mt-5">
-                                <thead>
-                                <tr>
-                                    <th>No Perolehan</th>
-                                    <th>Title</th>
-                                    <th>Publisher / Author</th>
-                                    <th>Type</th>
-                                    <th>More</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>3003202</td>
-                                    <td>Ali Baba Bujang Lapok</td>
-                                    <td><b>Pelangi Sdn. Bhd</b> <small><br>Mohd. Syar Abdullah</small>  </td>
-                                    <td><b>401 Bahasa</b>-Linguistik</td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning" onclick="return confirm('Are you user want to remove this book?')">
-                                            <i class="fas fa-times"></i> Remove
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="m-5">
+                                <h4 class="font-weight-bold mb-3">Maklumat Pelajar</h4>
+                                <dl class="row">
+                                    <dt class="col-sm-4">Nama</dt>
+                                    <dd class="col-sm-8">{{ $student->name }}</dd>
 
-                        <div class="m-5">
-                            <h4 class="font-weight-bold mb-3">Student Information</h4>
-                            <dl class="row">
-                                <dt class="col-sm-4">Name</dt>
-                                <dd class="col-sm-8">ABDUL HANNAN BIN YUSOP</dd>
+                                    <dt class="col-sm-4">Nombor Kad Pengenalan</dt>
+                                    <dd class="col-sm-8">{{ $student->no_ic }}</dd>
 
-                                <dt class="col-sm-4">NRIC/Unique ID</dt>
-                                <dd class="col-sm-8">960516131111</dd>
+                                    <dt class="col-sm-4">Kelas</dt>
+                                    <dd class="col-sm-8">{{ getStudentClass($student->class_id) }}</dd>
 
-                                <dt class="col-sm-4">CLASS</dt>
-                                <dd class="col-sm-8">4 SAINS 2</dd>
-                            </dl>
+                                    <dt class="col-sm-4">Jumlah Buku Yang Belum Dipulangkan</dt>
+                                    <dd class="col-sm-8">{{ $student->notReturnBook->count() }}</dd>
 
-                        </div>
+                                    <dt class="col-sm-4">Jumlah Buku Yang Boleh Dipinjam</dt>
+                                    <dd class="col-sm-8">{{ getLibraryOption('max_student_borrow', 2)-$student->notReturnBook->count() }}</dd>
 
-                        <div class="text-center">
-                            <h4 class="text-success font-weight-bold m-4">Return before :  18 August 2020</h4>
-                        </div>
+                                </dl>
 
-                        <div class="text-center">
-                            <button class="btn btn-success btn-lg">Proceed</button>
-                        </div>
+                            </div>
+                        <hr>
+                            <x-forms.post :action="route('frontend.user.library.borrow.borrow-add-list')">
+                                <div class="row text-center">
+                                    <div class="input-group input-group-lg">
+                                        <input type="hidden" name="no_ic" value="{{ $student->no_ic }}">
+                                        <input name="id" type="text" class="form-control" placeholder="Scan Barcode / Insert 'No Perolehan'" autofocus>
+                                        <span class="input-group-append">
+                                            <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-barcode"></i> Cari</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </x-forms.post>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-valign-middle mt-5">
+                                    <thead>
+                                    <tr>
+                                        <th>No Perolehan</th>
+                                        <th>Tajuk</th>
+                                        <th>Penerbit / Penulis</th>
+                                        <th>Kelas Dewey</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($bookList as $key => $book)
+                                        <tr>
+                                            <td>{{ getBookId($key) }}</td>
+                                            <td>{{ $book['title'] }}</td>
+                                            <td><b>{{ $book['publisher'] }}</b> <small><br>{{ $book['author'] }}</small>  </td>
+                                            <td><b>{{ $book['type'] }}</td>
+                                            <td>
+                                                <a href="{{ route('frontend.user.library.borrow.borrow-remove-list', [$student->no_ic, $key]) }}" class="btn btn-sm btn-warning" onclick="return confirm('Adakah anda pasti untuk menyingkirkan buku ini dari senarai?')">
+                                                    <i class="fas fa-times"></i> Remove
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="text-center">
+                                <h4 class="text-success font-weight-bold m-4">Tarikh Pemulangan :  {{ date('j M Y', strtotime(now(). " + ".getLibraryOption('max_student_borrow', 2)." days")) }}</h4>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="{{ route('frontend.user.library.borrow.submit', $student->no_ic) }}" class="btn btn-success btn-lg">Hantar</a>
+                            </div>
+                        @endif
                     </div>
                     <!-- /.card-body -->
                 </div>

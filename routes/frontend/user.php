@@ -220,7 +220,14 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             'prefix' => 'borrow/'
         ], function (){
             Route::get('', [BorrowController::class, 'borrowBook'])->name('borrow');
+            Route::post('add-list/', [BorrowController::class, 'borrowAddList'])->name('borrow-add-list');
+            Route::get('remove-list/{ic_no}/{book_id}', [BorrowController::class, 'borrowRemoveList'])->name('borrow-remove-list');
+            Route::get('submit/{ic_no}/', [BorrowController::class, 'borrowSubmit'])->name('submit');
+
             Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
+            Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
+
+
             Route::get('late/', [BorrowController::class, 'late'])->name('late');
 
         });

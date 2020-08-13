@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use LaravelQRCode\Facades\QRCode;
+use App\Models\Library\LibOption;
 
 if (! function_exists('appName')) {
     /**
@@ -417,7 +418,6 @@ if(!function_exists('badgeBookStatus')){
 
 }
 
-
 if(!function_exists('studentType')){
 
     function studentType($type = null   ){
@@ -793,5 +793,38 @@ if(!function_exists('getDewey')){
         return \App\Models\Library\GroupParent::get();
 
     }
+}
+
+if(!function_exists('getLibraryOption')){
+
+    function getLibraryOption($name, $default = ''){
+
+        $option = LibOption::where('name', $name)->first();
+
+        if(!$option){
+            $option = new LibOption();
+            $option->name = $name;
+            $option->value = $default;
+            $option->save();
+        }
+
+        return $option->value;
+    }
+}
+
+if(!function_exists('getStudentClass')){
+
+    function getStudentClass($class_id = null){
+
+        if(is_null($class_id)){
+            return "TIADA KELAS";
+        }
+
+        $class = \App\Models\Classroom::find($class_id);
+
+        return ($class)? $class->generate_name : "KELAS TIDAK SAH";
+
+    }
+
 }
 
