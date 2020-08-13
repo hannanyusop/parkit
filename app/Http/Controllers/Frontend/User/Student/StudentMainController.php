@@ -7,6 +7,7 @@ use App\Http\Requests\Frontend\User\Student\InsertRequest;
 use App\Http\Requests\Frontend\User\Student\UpdateRequest;
 use App\Models\Classroom;
 use App\Models\Student;
+use App\Models\StudentHasClass;
 use Illuminate\Http\Request;
 
 class StudentMainController extends Controller{
@@ -78,6 +79,9 @@ class StudentMainController extends Controller{
         $student->address = "";
 
         if($student->save()){
+
+            $this->changeStudentClass($student->id, $student->class_id);
+
             return redirect()->route('frontend.user.student.add')->withFlashSuccess('Data pelajar berjaya dimasukan.');
         }else{
             return redirect()->route('frontend.user.student.add')->withErrors('Data pelajar gagal dimasukan.');
@@ -110,14 +114,49 @@ class StudentMainController extends Controller{
         $student->no_ic = $request->no_ic;
         $student->name = strtoupper($request->name);
         $student->type = $request->type; #asrama = 1, harian = 2;
+        $student->class_id = ($request->class_id == "")? null : $request->class_id;
         $student->status  = $request->status; #1 aktif, 2#pindah, 3tamat,  4 berhenti, 5 lain2
         $student->gender = $request->gender;
         $student->address = $request->address;
 
         if($student->save()){
+            $this->changeStudentClass($student->id, $student->class_id);
             return redirect()->route('frontend.user.student.index')->withFlashSuccess('Data '.$student->name.' berjaya dikemaskini.');
         }else{
             return redirect()->route('frontend.user.student.index')->withErrors('Data pelajar gagal dikemaskini.');
+
+        }
+    }
+
+    public function changeStudentClass($student_id, $class_id){
+
+        $student_has_class = StudentHasClass::where('student_id', $student_id)
+            ->where('year', date("Y"))
+            ->first();
+
+        #class management
+        if(!is_null($class_id)){
+
+            if($student_has_class){
+                #just update class
+                $student_has_class->update(['class_id' => $class_id]);
+            }else{
+                #create new one
+                $new_has_class = new StudentHasClass();
+                $new_has_class->student_id = $student_id;
+                $new_has_class->class_id = $student_id;
+                $new_has_class->year = date('Y');
+
+                if(!$new_has_class->save()){
+                    dd("error to assign student to new class");
+                }
+            }
+        }else{
+
+            if($student_has_class){
+                $student_has_class->delete();
+            }
+            #remove data
 
         }
     }

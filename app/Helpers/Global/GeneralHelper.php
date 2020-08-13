@@ -771,3 +771,18 @@ if(!class_exists('MyIC')){
 
 }
 
+if(!function_exists('getCurrentClassroomTeacher')){
+
+    function getCurrentClassroomTeacher($user_id = null){
+
+        if(is_null($user_id)){
+            return "TIADA GURU KELAS";
+        }else{
+
+            $user = \App\Domains\Auth\Models\User::find($user_id);
+
+            return ($user)? $user->name : "DATA TIDAK WUJUD";
+        }
+    }
+}
+

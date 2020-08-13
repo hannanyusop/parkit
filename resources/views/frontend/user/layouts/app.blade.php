@@ -82,46 +82,16 @@
                             <i class="nav-icon fas fa-home"></i>Home
                         </a>
                     </li>
-                    @can('poll_can')
-                        <li class="nav-header">Parking Vote System</li>
-                        <li class="nav-item">
-                            <a href="{{ route('frontend.user.vote.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-vote-yea"></i>
-                                <p>Vote</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('frontend.user.vote.apply') }}" class="nav-link">
-                                <i class="nav-icon fas fa-file-signature"></i>
-                                <p>Join Campaign</p>
-                            </a>
-                        </li>
-                        @can('poll_admin')
-                            <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                                <p>
-                                   Manage Campaign
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('frontend.user.campaign.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View My Campaign</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('frontend.user.campaign.add') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create New Campaign</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @endcan
-                    @endcan
+                    <li class="nav-header">Sistem Maklumat Pelajar</li>
+                    <li class="nav-item">
+                        <a href="{{ route('frontend.user.student.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>Carian Pelajar
+                        </a>
+                    </li>
+                    <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                        <p>E-Hadir</p>
+                    </a>
                     @can('cv_can')
                         <li class="nav-header">CV19 CHECK-IN </li>
                         <li class="nav-item">
@@ -176,13 +146,46 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-header">E-Hadir(Coming Soon)</li>
-                    <li class="nav-item">
-                        <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                            <p>Classroom Teacher</p>
-                        </a>
-                    </li>
+                    @can('poll_can')
+                        <li class="nav-header">Coop Voting System</li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.vote.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-vote-yea"></i>
+                                <p>Vote</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.vote.apply') }}" class="nav-link">
+                                <i class="nav-icon fas fa-file-signature"></i>
+                                <p>Join Campaign</p>
+                            </a>
+                        </li>
+                        @can('poll_admin')
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                                    <p>
+                                        Manage Campaign
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('frontend.user.campaign.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View My Campaign</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('frontend.user.campaign.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Create New Campaign</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
+                    @endcan
                 </ul>
             </nav>
         </div>

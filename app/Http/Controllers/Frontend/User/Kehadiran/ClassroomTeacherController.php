@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Frontend\User\Kehadiran;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\User\Classroom\InsertRequest;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,11 @@ class ClassroomTeacherController extends Controller{
 
     public function index(){
 
-        return view('frontend.user.kehadiran.ct.index');
+        $classes = Classroom::where('is_active', 1)
+            ->orderBy('generate_name', 'ASC')
+            ->get();
+
+        return view('frontend.user.kehadiran.ct.index', compact('classes'));
 
     }
 
@@ -25,6 +30,26 @@ class ClassroomTeacherController extends Controller{
         }
 
         return view('frontend.user.kehadiran.ct.add-class', compact('classes'));
+
+    }
+
+    public function insertClass(InsertRequest $request){
+
+
+        $class = new Classroom();
+
+        $class->created_by = auth()->user()->id;
+        $class->form = $request->form;
+        $class->name = $request->name;
+        $class->generate_name = $request->generate_name;
+        $class->is_active = 1;
+
+        if($class->save()){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashSuccess("Kelas ".$class->generate_name." berjaya didaftarkan.");
+        }else{
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withErrors("Gagal daftar kelas!");
+        }
+
 
     }
 

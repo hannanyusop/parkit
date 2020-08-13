@@ -8,17 +8,19 @@
 @section('content')
     <section class="content">
         <div class="col-md-8 offset-md-2">
+            @include('frontend.user.student.layout.topbar')
             <div class="card card-info">
                 <div class="card-body">
 
                     <form method="get">
+                        <h5>Daftar Kelas</h5>
                         <div class="m-2">
                             <div class="form-group row">
                                 <label for="form" class="col-sm-2 col-form-label">Tingkatan</label>
                                 <div class="col-sm-10">
                                     <select id="form" name="form" class="form-control" {{ (request()->has('form'))? "disabled='true'" : "" }}>
                                         @foreach(getForm() as $form)
-                                            <option value="{{ $form }}">{{ $form }}</option>
+                                            <option value="{{ $form }}" {{ (request()->has('form'))? (request('form') == $form)? "selected" : "" : ""  }}>{{ $form }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -49,8 +51,8 @@
                                     @foreach($classes as $key => $class)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $class->genrate_name }}</td>
-                                            <td>HAFIZ HASRIN</td>
+                                            <td>{{ $class->generate_name }}</td>
+                                            <td>{{ getCurrentClassroomTeacher($class->user_id) }}</td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -69,8 +71,14 @@
                 <div class="card card-info">
                     <div class="card-body">
 
-                        <form method="get">
+                        <x-forms.post>
                             <div class="m-2">
+                                <div class="form-group row">
+                                    <label for="form" class="col-sm-4 col-form-label">Tingkatan</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="form" name="form" value="{{ request('form') }}" class="form-control text-uppercase" readonly>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-4 col-form-label">Name Kelas</label>
                                     <div class="col-sm-6">
@@ -80,6 +88,7 @@
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-4 col-form-label">Nama Unik Kelas</label>
                                     <div class="col-sm-6">
+                                        <input type="hidden" name="generate_name" id="generate_name">
                                         <h4 class="text-success font-weight-bold" id="generate"></h4>
                                     </div>
                                 </div>
@@ -90,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </x-forms.post>
                     </div>
                 </div>
             @endif
@@ -99,10 +108,22 @@
 @endsection
 @push('after-scripts')
     <script type="text/javascript">
-        $("#name").keyup(function () {
-            f = $("#form").val();
-            r = f+" "+$(this).val();
-            $("#generate").text(r.toUpperCase());
+
+        $(function() {
+            generateName();
         });
+
+        $("#name").keyup(function () {
+            generateName();
+        });
+
+        function generateName() {
+            f = $("#form").val();
+
+            name = ($("#name").val() == "")? "" : $("#name").val();
+            r = f+" "+name;
+            $("#generate").text(r.toUpperCase());
+            $("#generate_name").val(r.toUpperCase())
+        }
     </script>
 @endpush

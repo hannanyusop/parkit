@@ -10,6 +10,10 @@
                 <a href="{{ route('frontend.user.student.add') }}" class="btn btn-app bg-navy">
                     <i class="fas fa-user-plus"></i> Daftar Pelajar
                 </a>
+
+                <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="btn btn-app bg-orange">
+                    <i class="fas fa-school"></i> Senarai Kelas
+                </a>
             </div>
         </div>
     </div>
