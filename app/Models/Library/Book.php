@@ -19,6 +19,6 @@ class Book extends Model{
     }
 
     public function activeBorrow(){
-        return $this->hasOne(Borrow::class, 'book_id', 'id');
+        return $this->hasOne(Borrow::class, 'id', 'borrow_id');
     }
 }

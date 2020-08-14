@@ -226,6 +226,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
             Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
             Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
+            Route::get('return-fine/{fine_id}', [BorrowController::class, 'returnFine'])->name('return-fine');
 
 
             Route::get('late/', [BorrowController::class, 'late'])->name('late');

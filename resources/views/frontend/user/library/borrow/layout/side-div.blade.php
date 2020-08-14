@@ -1,32 +1,26 @@
 
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Action</h3>
-
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-            </button>
+    <div class="card-body text-center">
+        <div class="row">
+            <h3 class="card-title mb-4">Peminjaman Buku</h3>
         </div>
-    </div>
-    <div class="card-body p-0" style="display: block;">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item active">
-                <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="nav-link">
-                    <i class="fas fa-handshake"></i> Borrow
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('frontend.user.library.borrow.return') }}" class="nav-link">
-                    <i class="fas fa-hand-holding"></i> Return
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('frontend.user.library.borrow.late') }}" class="nav-link">
-                    <i class="fa fa-hand-holding-usd"></i> Late List
-                    <span class="badge bg-warning float-right">12</span>
-                </a>
-            </li>
-        </ul>
+
+        <div class="row">
+            <a href="{{ route('frontend.user.library.index') }}" class="btn btn-app bg-navy">
+                <i class="fas fa-home"></i> Utama
+            </a>
+            <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="btn btn-app bg-fuchsia">
+                <i class="fas fa-hands"></i> Peminjaman
+            </a>
+
+            <a href="{{ route('frontend.user.library.borrow.return') }}" class="btn btn-app bg-purple">
+                <i class="fas fa-handshake"></i> Pemulangan
+            </a>
+
+            <a href="{{ route('frontend.user.library.borrow.late') }}" class="btn btn-app bg-olive">
+                <i class="fas fa-balance-scale"></i> Senarai Lewat
+            </a>
+        </div>
     </div>
     <!-- /.card-body -->
 </div>

@@ -6,9 +6,11 @@ use App\Http\Requests\Frontend\User\Library\Borrow\AddListRequest;
 use App\Models\Library\Book;
 use App\Models\Library\Borrow;
 use App\Models\Library\BorrowProcess;
+use App\Models\Library\Fine;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class BorrowController extends Controller{
 
@@ -17,13 +19,14 @@ class BorrowController extends Controller{
         $student = null;
         $bookList = null;
 
+
         if($request->has('no_ic')){
 
             $student = Student::where('no_ic', $request->no_ic)
                 ->first();
 
             if(!$student){
-                return redirect()->route('frontend.user.library.borrow.borrow', ['no_ic' => $request->no_ic])->withFlashWarning("Tiada Nombor Kad Pengenalan dijumpai bagi ".$request->ic);
+                return redirect()->route('frontend.user.library.borrow.borrow')->withFlashWarning("Tiada Nombor Kad Pengenalan dijumpai bagi ".$request->no_ic);
             }
 
             $no_ic = $student->no_ic;
@@ -142,7 +145,7 @@ class BorrowController extends Controller{
             $borrow->in_id = null;
             $borrow->fine_id = null;
             $borrow->borrow_date = now();
-            $borrow->actual_return_date = date('Y-m-d', strtotime(now(). " + ".$duration." days"));
+            $borrow->actual_return_date = date('Y-m-d', strtotime(now(). " +".$duration." days"));
             $borrow->return_date = null;
 
             if(!$borrow->save()){
@@ -161,7 +164,8 @@ class BorrowController extends Controller{
 
     public function returnBook(Request $request){
 
-        $book = null;
+        $book = null; $diff = null; $late = null;
+
         if($request->has('id')){
             $book = Book::find($request->id);
 
@@ -172,8 +176,16 @@ class BorrowController extends Controller{
             if($book->borrow_id == 0 || $book->status != 2){
                 return redirect()->route('frontend.user.library.borrow.return')->withFlashWarning("Buku bukan dalam senarai dipinjam.");
             }
+
+            $now = new \DateTime(date('Y-m-d'));
+            $actual = new \DateTime($book->activeBorrow->actual_return_date);
+
+            $late = ($now > $actual)? true : false;
+            $diff = $actual->diff($now)->format("%a");
+
+
         }
-        return view('frontend.user.library.borrow.return-book', compact('book'));
+        return view('frontend.user.library.borrow.return-book', compact('book', 'diff', 'late'));
     }
 
     public function returnSubmit($book_id){
@@ -193,13 +205,48 @@ class BorrowController extends Controller{
         $borrow = Borrow::find($book->borrow_id);
         $borrow->in_id = auth()->user()->id;
         $borrow->return_date = now();
-        $borrow->save();
 
+
+
+        $now = new \DateTime(date('Y-m-d'));
+        $actual = new \DateTime($book->activeBorrow->actual_return_date);
+
+        $late = ($now > $actual)? true : false;
+        $diff = $actual->diff($now)->format("%a");
+
+        if($late){
+            $fine = new Fine();
+            $fine->student_id = $borrow->student_id;
+            $fine->borrow_id = $borrow->id;
+            $fine->type = 1; #lambat hntr
+            $fine->total_day = $diff;
+            $fine->actual_rm = $diff*getLibraryOption('fine', 0.20);
+            $fine->nego_rm = 0.00; #nego will always 0;
+            $fine->paid = 0;
+
+            $fine->save();
+            return redirect()->route('frontend.user.library.borrow.return-fine', $fine->id)->withFlashSuccess("Resit denda berjaya dijana!");
+
+        }
+
+        $borrow->save();
         $book->borrow_id = 0;
         $book->status = 1;
-
         $book->save();
+
         return redirect()->route('frontend.user.library.borrow.return')->withFlashSuccess("Buku berjaya dikembalikan!");
+    }
+
+    public function returnFine($fine_id){
+
+        $fine = Fine::where('paid', 0)
+            ->find($fine_id);
+
+        if(!$fine){
+            return redirect()->route('frontend.user.library.borrow.return')->withFlashInfo("Tiada resit saman dijumpa!");
+        }
+
+        return view('frontend.user.library.borrow.return-fine', compact('fine'));
     }
 
     public function late(){

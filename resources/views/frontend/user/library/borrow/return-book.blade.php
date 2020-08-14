@@ -12,16 +12,15 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
+                            <h5 class="text-center mb-4">Pemulangan Buku</h5>
                             <x-forms.get>
                             <div class="input-group input-group-lg">
                                     <input type="text" name="id" class="form-control" placeholder="Scan Barcode / Insert 'No Perolehan'" autofocus>
                                     <span class="input-group-append">
-                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-barcode"></i> Search</button>
+                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-barcode"></i> Cari</button>
                                 </span>
                                 </div>
                             </x-forms.get>
-                        </div>
 
                         @if(!is_null($book))
 
@@ -57,18 +56,24 @@
                                     <dd class="col-sm-8">{{ $book->activeBorrow->staffOut->name }}</dd>
 
                                     <dt class="col-sm-4">Tarikh Pemulangan Sebelum</dt>
-                                    <dd class="col-sm-8">{{ reformatDatetime($book->activeBorrow->return_actual_date, 'j M Y') }}</dd>
+                                    <dd class="col-sm-8">{{ reformatDatetime($book->activeBorrow->actual_return_date, 'j M Y') }}</dd>
 
-                                    <dt class="col-sm-4">Late (Day)</dt>
-                                    <dd class="col-sm-8"><h3 class="text-danger font-weight-bold">2</h3></dd>
+                                    @if($late)
+                                        <dt class="col-sm-4">Jumlah Hari Lewat</dt>
+                                        <dd class="col-sm-8"><h3 class="text-danger font-weight-bold">{{ $diff }} X {{ displayPrice(getLibraryOption('fine', 0.20)) }}</h3></dd>
 
-                                    <dt class="col-sm-4">Amount Of Fine</dt>
-                                    <dd class="col-sm-8"><h3 class="text-danger font-weight-bold">RM0.40</h3></dd>
+                                        <dt class="col-sm-4">Jumlah Denda</dt>
+                                        <dd class="col-sm-8"><h3 class="text-danger font-weight-bold">{{ displayPrice($diff*getLibraryOption('fine', 0.20)) }}</h3></dd>
+                                    @endif
                                 </dl>
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('frontend.user.library.borrow.return-submit', $book->id) }}" class="btn btn-danger btn-lg">Proceed</a>
+                                @if($late)
+                                    <a href="{{ route('frontend.user.library.borrow.return-submit', $book->id) }}" class="btn btn-warning btn-lg">Terima Buku & Jana Resit Denda</a>
+                                @else
+                                    <a href="{{ route('frontend.user.library.borrow.return-submit', $book->id) }}" class="btn btn-success btn-lg">Terima Buku</a>
+                                @endif
                             </div>
                         @endif
                     </div>
