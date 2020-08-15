@@ -32,7 +32,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Jumlah Pengunjung Bulan Ini</span>
-                        <span class="info-box-number">269</span>
+                        <span class="info-box-number">{{ getLibMonthAll() }}</span>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Peminjam Lewat</span>
-                        <span class="info-box-number">1</span>
+                        <span class="info-box-number">{{ getLate() }}</span>
                     </div>
                 </div>
             </div>
@@ -121,26 +121,6 @@
                         <div class="row">
                             <h5 class="mb-2">Sudut Informasi</h5>
                             <hr><br>
-                        </div>
-
-                        <div class="row">
-                            <h6 class="font-weight-bold">Senarai Peminjam Lewat</h6>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>NAMA</th>
-                                        <th>BIL. HARI LEWAT</th>
-                                    </tr>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>AHMAD MUSTAKIM</td>
-                                        <td>6</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>

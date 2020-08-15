@@ -54,7 +54,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-vote-yea"></i> </h3>
 
-                                            <p>Parking Vote System</p>
+                                            <p>Coop Voting System</p>
                                         </div>
                                         <a href="{{ route('frontend.user.vote.index') }}" class="small-box-footer">Vote Now <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>

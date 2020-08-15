@@ -4,6 +4,7 @@ use App\Models\Library\Log;
 use Carbon\Carbon;
 use LaravelQRCode\Facades\QRCode;
 use App\Models\Library\LibOption;
+use App\Models\Library\Borrow;
 
 if (! function_exists('appName')) {
     /**
@@ -901,6 +902,28 @@ if(!function_exists('getLibTodayAll')){
     function getLibTodayAll(){
 
         return Log::whereRaw('Date(created_at) = CURDATE()')
+            ->count();
+    }
+
+}
+
+if(!function_exists('getLibMonthAll')){
+
+    function getLibMonthAll(){
+
+        return Log::whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'))
+            ->count();
+    }
+
+}
+
+if(!function_exists('getLate')){
+
+    function getLate(){
+
+        return Borrow::whereRaw('Date(actual_return_date) < CURDATE()')
+            ->where('return_date', null)
             ->count();
     }
 

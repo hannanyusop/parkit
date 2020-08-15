@@ -19,6 +19,10 @@ class BorrowController extends Controller{
         $student = null;
         $bookList = null;
 
+        if(getLibraryOption('can_borrow') != 1 ){
+            return view('frontend.user.library.borrow.borrow-closed');
+        }
+
 
         if($request->has('no_ic')){
 
@@ -261,7 +265,12 @@ class BorrowController extends Controller{
     }
 
     public function late(){
-        return view('frontend.user.library.borrow.late');
+
+        $lates = Borrow::whereRaw('Date(actual_return_date) < CURDATE()')
+            ->where('return_date', null)
+            ->get();
+
+        return view('frontend.user.library.borrow.late', compact('lates'));
     }
 
     public function fine(){
