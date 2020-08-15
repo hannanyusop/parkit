@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\User\Kehadiran\ClassroomTeacherController;
 use App\Http\Controllers\Frontend\User\Library\Admin\AdminSettingController;
 use App\Http\Controllers\Frontend\User\Library\VisitorController;
 use App\Http\Controllers\Frontend\User\Student\StudentMainController;
+use App\Http\Controllers\Frontend\User\Library\Admin\AdminReportController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -295,6 +296,14 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                     Route::get('', [AdminPublisherController::class, 'index'])->name('index');
                 });
 
+            });
+
+            Route::group([
+                'as' => 'report.',
+                'prefix' => 'report/'
+            ], function (){
+                Route::get('', [AdminReportController::class, 'index'])->name('index');
+                Route::get('month', [AdminReportController::class, 'monthly'])->name('monthly');
             });
 
             Route::group([

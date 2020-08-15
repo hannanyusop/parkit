@@ -929,3 +929,26 @@ if(!function_exists('getLate')){
 
 }
 
+if(!function_exists('getMonth')){
+
+    function getMonth($month = null){
+
+        $months = [
+            1 => "Januari",
+            2 => "Februari",
+            3 => "Mac",
+            4 => "April",
+            5 => "May",
+            6 => "Jun",
+            7 => "Julai",
+            8 => "Ogos",
+            9 => "September",
+            10 => "Oktober",
+            11 => "November",
+            12 => "December"
+        ];
+
+        return (is_null($month))? $months : $months[$month];
+    }
+}
+

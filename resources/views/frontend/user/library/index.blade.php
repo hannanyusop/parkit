@@ -64,7 +64,17 @@
                                     <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
+                            <div class="col-md-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-orange">
+                                    <div class="inner text-center">
+                                        <h3><i class="fa fa-user-lock"></i> </h3>
 
+                                        <p>Pengurusan Pengunjung</p>
+                                    </div>
+                                    <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-purple">
@@ -83,20 +93,9 @@
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-chart-area"></i> </h3>
 
-                                        <p>Data Report</p>
+                                        <p>Laporan Data</p>
                                     </div>
-                                    <a href="#" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-orange">
-                                    <div class="inner text-center">
-                                        <h3><i class="fa fa-user-lock"></i> </h3>
-
-                                        <p>Pengurusan Pengunjung</p>
-                                    </div>
-                                    <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
+                                    <a href="{{ route('frontend.user.library.admin.report.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
