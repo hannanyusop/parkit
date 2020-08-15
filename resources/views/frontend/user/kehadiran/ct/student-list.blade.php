@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Classroom Teacher/ View Today Attendance')
+@section('title', ' Sisitem Maklumat Pelajar / Kelas / Senarai Pelajar')
 
 @push('after-styles')
 @endpush
@@ -10,7 +10,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-body">
-                    <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR KELAS TINGKATAN 6 ATAS <br>BAGI TAHUN 2020</p>
+                    <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR KELAS TINGKATAN {{ $class->generate_name }} <br>BAGI TAHUN {{ date('Y') }}</p>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -18,15 +18,15 @@
                                 <table class="table-borderless">
                                     <tr>
                                         <td>Bilangan Pelajar</td>
-                                        <td>: 24</td>
+                                        <td>: {{ $class->currentStudent->count() }}</td>
                                     </tr>
                                     <tr>
                                         <td>Bilagan Pelajar Lelaki</td>
-                                        <td>: 6</td>
+                                        <td>: {{ $class->currentStudentM->count() }}</td>
                                     </tr>
                                     <tr>
                                         <td>Bilangan Pelajar Perempuan</td>
-                                        <td>: 18</td>
+                                        <td>: {{ $class->currentStudentF->count() }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -41,19 +41,23 @@
                                 <th style="width: 10px">#</th>
                                 <th>NAMA</th>
                                 <th>NO. K/P</th>
+                                <th>Jantina</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($class->currentStudent as $key=> $has_student)
                             <tr>
-                                <td>1.</td>
-                                <td>MOHD AMMAR BIN BAKAR</td>
-                                <td>111111-11-1111</td>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $has_student->student->name }}</td>
+                                <td>{{ $has_student->student->no_ic }}</td>
+                                <td>{{ getGender($has_student->student->gender) }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-sm" href="{{ route('frontend.user.kehadiran.ct.print-student-card', 1) }}">Cetak Kad Pelajar v1</a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', 1) }}">QR Meja v2</a>
+                                    <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card', $has_student->student_id) }}">Cetak Kad Pelajar v1</a>
+                                    <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

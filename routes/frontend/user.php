@@ -18,7 +18,7 @@ use App\Http\Controllers\Frontend\User\Library\BorrowController;
 use App\Http\Controllers\Frontend\User\Kehadiran\KehadiaranController;
 use App\Http\Controllers\Frontend\User\Kehadiran\ClassroomTeacherController;
 use App\Http\Controllers\Frontend\User\Library\Admin\AdminSettingController;
-use App\Http\Controllers\Frontend\User\Library\Admin\VisitorController;
+use App\Http\Controllers\Frontend\User\Library\VisitorController;
 use App\Http\Controllers\Frontend\User\Student\StudentMainController;
 /*
  * These frontend controllers require the user to be logged in
@@ -227,10 +227,20 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
             Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
             Route::get('return-fine/{fine_id}', [BorrowController::class, 'returnFine'])->name('return-fine');
+            Route::get('fine/', [BorrowController::class, 'fine'])->name('fine');
 
 
             Route::get('late/', [BorrowController::class, 'late'])->name('late');
 
+        });
+
+        Route::group([
+            'as' => 'visitor.',
+            'prefix' => 'visitor/',
+        ], function (){
+            Route::get('today/', [VisitorController::class, 'today'])->name('today');
+            Route::post('check/', [VisitorController::class, 'check'])->name('check');
+            Route::get('manual-checkout/{no_ic}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
         });
 
         #admin library
@@ -296,12 +306,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             });
         });
 
-        Route::group([
-            'as' => 'visitor.',
-            'prefix' => 'visitor/',
-        ], function (){
-            Route::get('today/', [VisitorController::class, 'today'])->name('today');
-        });
     });
 
 });

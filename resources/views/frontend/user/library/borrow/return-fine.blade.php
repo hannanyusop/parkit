@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success">Terima Bayaran</button>
-                        <button type="submit" class="btn btn-primary float-right">Seterusnya</button>
+                        <a href="{{ route('frontend.user.library.borrow.return') }}" type="submit" class="btn btn-primary float-right">Seterusnya</a>
                     </div>
                     <!-- /.card-body -->
                 </div>

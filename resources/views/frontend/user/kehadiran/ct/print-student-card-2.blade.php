@@ -25,23 +25,18 @@
                             </h6>
                             <h4>MAKLUMAT PELAJAR</h4>
                             <div class="mt-2">
-                                {{ getKehadiranStudent('960516131111') }}
+                                {{ getKehadiranStudent($student->name) }}
                             </div>
                         </div>
                         <div class="text-center mt-2">
                             <p class="font-weight-bold font-size-lg">
-                                {{ auth()->user()->name }}<br>
-                                NO K/P : {{ auth()->user()->unique_id }}<br>
-                                4 SAINS 2
+                                {{ $student->name  }}<br>
+                                NO K/P : {{ $student->no_ic }}<br>
+                                {{ $student->classroom->generate_name }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <a href="{{ route('frontend.user.kehadiran.ct.student-list', 1) }}" type="submit" class="btn btn-info">Kembali</a>
-                </div>
-                    <!-- /.card-footer -->
             </div>
         </div>
     </section>

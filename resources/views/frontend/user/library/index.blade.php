@@ -12,7 +12,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Pengunjung Aktif</span>
-                        <span class="info-box-number">3</span>
+                        <span class="info-box-number">{{ getLibTodayActive() }}</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Jumlah Pengunjung Hari Ini</span>
-                        <span class="info-box-number">21</span>
+                        <span class="info-box-number">{{ getLibTodayAll() }}</span>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-handshake"></i> </h3>
 
-                                        <p>Borrow & Return</p>
+                                        <p>Peminjaman Buku</p>
                                     </div>
                                     <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
@@ -71,7 +71,7 @@
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-book"></i> </h3>
 
-                                        <p>Manage Book</p>
+                                        <p>Pegurusan Buku</p>
                                     </div>
                                     <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>

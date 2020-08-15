@@ -9,19 +9,21 @@
             <div class="col-md-4">
                 <div class="card card-success">
                     <div class="card-body">
-                        <a href="{{ route('frontend.user.library.index') }}" class="btn btn-info mb-2">BACK</a>
-                        <h5 class="text-success text-center font-weight-bold">KEDATANGAN PENGUNJUNG</h5>
-                        <h2 class="text-center mb-5" id="clock"></h2>
-                        <input class="form-control form-control-lg text-center" type="text" placeholder="NO. K/P" autofocus>
-                        <br>
-                        <button type="submit" class="btn btn-success btn-block btn-lg">CARI</button>
+                       <x-forms.post :action="route('frontend.user.library.visitor.check')">
+                           <a href="{{ route('frontend.user.library.index') }}" class="btn btn-info mb-2">BACK</a>
+                           <h5 class="text-success text-center font-weight-bold">KEDATANGAN PENGUNJUNG</h5>
+                           <h2 class="text-center mb-5" id="clock"></h2>
+                           <input class="form-control form-control-lg text-center" name="no_ic" value="{{ old('no_ic') }}" type="text" placeholder="CTH: 960516131234" autofocus>
+                           <br>
+                           <button type="submit" class="btn btn-success btn-block btn-lg">CARI</button>
+                       </x-forms.post>
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <h5 class="text-center mt-5"><b class="text-success">AKTIF : 2</b> | <b class="text-info">JUMLAH : 24</b></h5>
+                    <h5 class="text-center mt-5"><b class="text-success">AKTIF : {{ getLibTodayActive() }}</b> | <b class="text-info">JUMLAH : {{ getLibTodayAll() }}</b></h5>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -29,41 +31,25 @@
                                 <tr>
                                     <th>#</th>
                                     <th>NAMA</th>
-                                    <th>STATUS</th>
                                     <th>DAFTAR MASUK</th>
                                     <th>DAFTAR KELUAR</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($logs as $key => $log)
                                 <tr>
-                                    <td>1</td>
-                                    <td>ABDUL HANNAN BIN YUSOP</td>
-                                    <th>{!! visitorStatus(1)  !!}</th>
-                                    <td>02:43 PM</td>
-                                    <td></td>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $log->student->name }}</td>
+                                    <td>{{ reformatDatetime($log->checkin, "h:i A") }}</td>
+                                    <td>{{ (!is_null($log->checkout))? reformatDatetime($log->checkout, "h:i A") : "" }}</td>
                                     <td>
-                                        <a class="btn btn-warning btn-sm" href="">Log Keluar</a>
+                                        @if(is_null($log->checkout))
+                                            <a class="btn btn-warning btn-sm" onclick="return confirm('Adakah anda pasti log keluar {{ $log->student->name }}?')" href="{{ route('frontend.user.library.visitor.manual-checkout', $log->student->no_ic) }}">Log Keluar</a>
+                                        @endif
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>SYAKIRA SYSYA</td>
-                                    <td>{!! visitorStatus(1)  !!}</td>
-                                    <td>02:01 PM</td>
-                                    <td></td>
-                                    <td>
-                                        <a class="btn btn-warning btn-sm" href="">Log Keluar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>AMIRA SYAHIRA</td>
-                                    <td>{!! visitorStatus(2)  !!}</td>
-                                    <td>11:26 AM</td>
-                                    <td>12:02 PM</td>
-                                    <td></td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

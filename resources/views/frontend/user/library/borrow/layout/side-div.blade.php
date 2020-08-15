@@ -20,6 +20,9 @@
             <a href="{{ route('frontend.user.library.borrow.late') }}" class="btn btn-app bg-olive">
                 <i class="fas fa-balance-scale"></i> Senarai Lewat
             </a>
+            <a href="{{ route('frontend.user.library.borrow.fine') }}" class="btn btn-app bg-warning">
+                <i class="fa fa-file-invoice-dollar"></i> Denda
+            </a>
         </div>
     </div>
     <!-- /.card-body -->

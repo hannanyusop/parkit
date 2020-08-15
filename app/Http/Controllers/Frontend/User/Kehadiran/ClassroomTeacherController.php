@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User\Kehadiran;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Classroom\InsertRequest;
 use App\Models\Classroom;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ClassroomTeacherController extends Controller{
@@ -61,19 +62,46 @@ class ClassroomTeacherController extends Controller{
 
     public function studentList($class_id){
 
-        return view('frontend.user.kehadiran.ct.student-list');
+        $class = Classroom::find($class_id);
+
+        if(!$class){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Kelas tidak wujud!');
+        }
+
+
+        return view('frontend.user.kehadiran.ct.student-list', compact('class'));
 
     }
 
     public function printStudentCard($student_id){
 
-        return view('frontend.user.kehadiran.ct.print-student-card');
+        $student = Student::find($student_id);
+
+        if(!$student){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Maklumat pelajar tidak wujud!');
+        }
+
+        if(is_null($student->class_id)){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Pelajar tidak mempunyai kelas. Sila kemaskini maklumat pelajar terlebih dahulu!');
+        }
+
+        return view('frontend.user.kehadiran.ct.print-student-card', compact('student'));
 
     }
 
     public function printStudentCard2($student_id){
 
-        return view('frontend.user.kehadiran.ct.print-student-card-2');
+        $student = Student::find($student_id);
+
+        if(!$student){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Maklumat pelajar tidak wujud!');
+        }
+
+        if(is_null($student->class_id)){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Pelajar tidak mempunyai kelas. Sila kemaskini maklumat pelajar terlebih dahulu!');
+        }
+
+        return view('frontend.user.kehadiran.ct.print-student-card-2', compact('student'));
 
     }
 

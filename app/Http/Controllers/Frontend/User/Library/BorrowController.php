@@ -215,16 +215,27 @@ class BorrowController extends Controller{
         $diff = $actual->diff($now)->format("%a");
 
         if($late){
-            $fine = new Fine();
-            $fine->student_id = $borrow->student_id;
-            $fine->borrow_id = $borrow->id;
-            $fine->type = 1; #lambat hntr
-            $fine->total_day = $diff;
-            $fine->actual_rm = $diff*getLibraryOption('fine', 0.20);
-            $fine->nego_rm = 0.00; #nego will always 0;
-            $fine->paid = 0;
 
-            $fine->save();
+            $fine = Fine::updateOrCreate(
+                ['borrow_id' => $borrow->id],
+                [
+                    'student_id' => $borrow->student_id,
+                    'staff_id' => auth()->user()->id,
+                    'borrow_id' => $borrow->id,
+                    'type' => 1,
+                    'total_day' => $diff,
+                    'actual_rm' => $diff*getLibraryOption('fine', 0.20),
+                    'nego_rm' => 0.00,
+                    'paid' => 0
+                ]
+            );
+
+            $borrow->fine_id = $fine->id;
+            $borrow->save();
+            $book->borrow_id = 0;
+            $book->status = 1;
+            $book->save();
+
             return redirect()->route('frontend.user.library.borrow.return-fine', $fine->id)->withFlashSuccess("Resit denda berjaya dijana!");
 
         }
@@ -251,6 +262,14 @@ class BorrowController extends Controller{
 
     public function late(){
         return view('frontend.user.library.borrow.late');
+    }
+
+    public function fine(){
+
+        $fines = Fine::get();
+
+        return view('frontend.user.library.borrow.fine', compact('fines'));
+
     }
 
 

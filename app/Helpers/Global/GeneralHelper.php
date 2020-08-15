@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Library\Log;
 use Carbon\Carbon;
 use LaravelQRCode\Facades\QRCode;
 use App\Models\Library\LibOption;
@@ -824,6 +825,83 @@ if(!function_exists('getStudentClass')){
 
         return ($class)? $class->generate_name : "KELAS TIDAK SAH";
 
+    }
+
+}
+
+if(!function_exists('badgeLibFineType')){
+
+    function badgeLibFineType($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success\">LEWAT HANTAR</span>",
+            2 => "<span class=\"badge bg-info\">BUKU HILANG</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+if(!function_exists('libFineType')){
+
+    function libFineType($status = null){
+
+        $statuses = [
+            1 => "LEWAT HANTAR",
+            2 => "BUKU HILANG"
+        ];
+
+        return (is_null($status))? $statuses : $statuses[$status];
+    }
+
+}
+
+if(!function_exists('badgeLibFineStatus')){
+
+    function badgeLibFineStatus($status){
+
+        $statuses = [
+            0 => "<span class=\"badge bg-dark\">BELUM</span>",
+            1 => "<span class=\"badge bg-success\">SELESAI</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+if(!function_exists('libFineStatus')){
+
+    function libFineStatus($status = null){
+
+        $statuses = [
+            0 => "BELUM",
+            1 => "SELESAI"
+        ];
+
+        return (is_null($status))? $statuses : $statuses[$status];
+    }
+
+}
+
+if(!function_exists('getLibTodayActive')){
+
+    function getLibTodayActive(){
+
+        return Log::whereRaw('Date(created_at) = CURDATE()')
+            ->where('checkout', null)
+            ->count();
+    }
+
+}
+
+if(!function_exists('getLibTodayAll')){
+
+    function getLibTodayAll(){
+
+        return Log::whereRaw('Date(created_at) = CURDATE()')
+            ->count();
     }
 
 }

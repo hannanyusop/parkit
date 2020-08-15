@@ -19,5 +19,25 @@ class Classroom extends Model{
             ->where('year', date('Y'));
     }
 
+    public function currentStudentM(){
+        return $this->hasMany(StudentHasClass::class, 'class_id', 'id')
+            ->where(function ($q){
+                $q->whereHas('student',function ($q){
+                    $q->where('gender', 'M');
+                });
+            })
+            ->where('year', date('Y'));
+    }
+
+    public function currentStudentF(){
+        return $this->hasMany(StudentHasClass::class, 'class_id', 'id')
+            ->where(function ($q){
+                $q->whereHas('student',function ($q){
+                    $q->where('gender', 'F');
+                });
+            })
+            ->where('year', date('Y'));
+    }
+
 
 }
