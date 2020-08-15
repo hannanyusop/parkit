@@ -38,7 +38,7 @@ class VisitorController extends Controller{
 
                 $after1hour = Carbon::now()->addHour();
 
-                if($after1hour > $log->checkout){
+                if($after1hour < $log->checkout){
 
                     #create new log
 
