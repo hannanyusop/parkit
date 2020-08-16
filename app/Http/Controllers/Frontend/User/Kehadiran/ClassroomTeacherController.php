@@ -283,6 +283,8 @@ class ClassroomTeacherController extends Controller{
             ->where('class_id', $student->class_id)
             ->first();
 
+        dd('today');
+
         //prevent from duplicate enrty
         $update = StudentAttendance::updateOrCreate(
             ['uga_id' => $today->id, 'student_id' => $student_id],
@@ -292,7 +294,7 @@ class ClassroomTeacherController extends Controller{
                 'remark' => null,
             ]
         );
-        
+
         return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashSuccess("Kehadiran ".$student->name." berjaya dimasukkan.");
     }
 
