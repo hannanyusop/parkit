@@ -270,7 +270,7 @@ class ClassroomTeacherController extends Controller{
 
         $student = Student::where('id', $student_id)
             ->first();
-        
+
         if(!$student){
             return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Data Pelajar tidak wujud!");
         }
@@ -278,9 +278,7 @@ class ClassroomTeacherController extends Controller{
         if(is_null($student->class_id)){
             return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Pelajar tidak mempunyai kelas!");
         }
-
-        dd($student->currentClass);
-
+        
         $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
             ->where('class_id', $student->currentClass->class_id)
             ->first();
