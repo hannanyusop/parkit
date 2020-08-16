@@ -280,10 +280,8 @@ class ClassroomTeacherController extends Controller{
         }
 
         $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
-            ->where('class_id', $student->class_id)
+            ->where('class_id', $student->currentClass->class_id)
             ->first();
-
-        dd($student->class_id);
 
         //prevent from duplicate enrty
         $update = StudentAttendance::updateOrCreate(

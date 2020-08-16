@@ -20,5 +20,10 @@ class Student extends Model{
         return $this->hasOne(Classroom::class, 'id', 'class_id');
     }
 
+    public function currentClass(){
+        return $this->hasOne(StudentHasClass::class, 'student_id', 'id')
+            ->where('year', date('Y'));
+    }
+
 
 }
