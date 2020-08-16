@@ -279,6 +279,8 @@ class ClassroomTeacherController extends Controller{
             return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Pelajar tidak mempunyai kelas!");
         }
 
+        dd($student->currentClass);
+
         $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
             ->where('class_id', $student->currentClass->class_id)
             ->first();
