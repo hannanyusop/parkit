@@ -84,12 +84,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($added as $key => $item)
-                                <tr>
-                                    <td><a href="{{ route('frontend.user.library.admin.book.print-label-remove', $key) }}" class="btn btn-danger" onclick="return confirm('Adakah anda pasti untuk menyingkirkan buku ini?')"><i class="fa fa-times"></i> </a></td>
-                                    <td>{{ getBookId($key)." - ".$item }}</td>
-                                </tr>
-                                @endforeach
+                                @if(isset($added))
+                                    @foreach($added as $key => $item)
+                                        <tr>
+                                            <td><a href="{{ route('frontend.user.library.admin.book.print-label-remove', $key) }}" class="btn btn-danger" onclick="return confirm('Adakah anda pasti untuk menyingkirkan buku ini?')"><i class="fa fa-times"></i> </a></td>
+                                            <td>{{ getBookId($key)." - ".$item }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

@@ -20,7 +20,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Event Name</label>
                             <div class="col-sm-10">
-                                <input name="name" type="text" class="form-control text-uppercase" id="name" placeholder="KEDATANGAN PAGI">
+                                <input name="name" type="text" class="form-control text-uppercase" id="name" value="{{ "KEDATANGAN ".date("j-m-Y") }}" placeholder="KEDATANGAN PAGI">
                             </div>
                         </div>
                     </div>

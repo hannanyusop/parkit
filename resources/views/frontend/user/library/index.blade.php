@@ -68,9 +68,9 @@
                                 <!-- small box -->
                                 <div class="small-box bg-orange">
                                     <div class="inner text-center">
-                                        <h3><i class="fa fa-user-lock"></i> </h3>
+                                        <h3><i class="fa fa-user-clock"></i> </h3>
 
-                                        <p>Pengurusan Pengunjung</p>
+                                        <p>Rekod Pengunjung</p>
                                     </div>
                                     <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>

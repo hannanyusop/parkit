@@ -952,3 +952,23 @@ if(!function_exists('getMonth')){
     }
 }
 
+if(!function_exists('getYear')){
+
+    function getYear(){
+
+        $start = 2019;
+
+        $years = array();
+
+        do{
+
+            array_push($years, $start);
+
+            $start++;
+
+        }while($start <= date('Y'));
+
+        return $years;
+    }
+}
+

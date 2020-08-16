@@ -24,11 +24,12 @@ class AdminReportController extends Controller{
 
         $visitors = array();
         $borrows = array();
+        $days = array();
 
         do{
 
             $date = $year."-".$month."-".$start_day;
-            
+
             $v = Log::whereDate('created_at', $date)
                 ->count();
 
@@ -39,10 +40,12 @@ class AdminReportController extends Controller{
 
             array_push($borrows, $b);
 
-            $start_day++;
-        }while($start_day >= $last_day);
+            array_push($days, $start_day);
 
-        return view('frontend.user.library.admin.report.index', compact('borrows', 'visitors'));
+            $start_day++;
+        }while($start_day <= $last_day);
+
+        return view('frontend.user.library.admin.report.index', compact('borrows', 'visitors', 'days'));
 
     }
 

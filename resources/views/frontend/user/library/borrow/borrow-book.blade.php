@@ -57,19 +57,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($bookList as $key => $book)
-                                            <tr>
-                                                <td>{{ getBookId($key) }}</td>
-                                                <td>{{ $book['title'] }}</td>
-                                                <td><b>{{ $book['publisher'] }}</b> <small><br>{{ $book['author'] }}</small>  </td>
-                                                <td><b>{{ $book['type'] }}</td>
-                                                <td>
-                                                    <a href="{{ route('frontend.user.library.borrow.borrow-remove-list', [$student->no_ic, $key]) }}" class="btn btn-sm btn-warning" onclick="return confirm('Adakah anda pasti untuk menyingkirkan buku ini dari senarai?')">
-                                                        <i class="fas fa-times"></i> Remove
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        @if(isset($bookList))
+                                            @foreach($bookList as $key => $book)
+                                                <tr>
+                                                    <td>{{ getBookId($key) }}</td>
+                                                    <td>{{ $book['title'] }}</td>
+                                                    <td><b>{{ $book['publisher'] }}</b> <small><br>{{ $book['author'] }}</small>  </td>
+                                                    <td><b>{{ $book['type'] }}</td>
+                                                    <td>
+                                                        <a href="{{ route('frontend.user.library.borrow.borrow-remove-list', [$student->no_ic, $key]) }}" class="btn btn-sm btn-warning" onclick="return confirm('Adakah anda pasti untuk menyingkirkan buku ini dari senarai?')">
+                                                            <i class="fas fa-times"></i> Remove
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

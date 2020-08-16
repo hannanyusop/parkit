@@ -6,10 +6,28 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 @include('frontend.user.library.admin.report.layout.side-div')
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <x-forms.get>
+                            <div class="form-group">
+                                <select class="form-control" name="year">
+                                    @foreach(getYear() as $year)
+                                        <option value="{{ $year }}" {{ (request('year') == $year)? "SELECTED" : "" }}>{{ $year }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </x-forms.get>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div>

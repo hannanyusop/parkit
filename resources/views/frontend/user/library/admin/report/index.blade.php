@@ -6,10 +6,29 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 @include('frontend.user.library.admin.report.layout.side-div')
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center">LAPORAN HARIAN BAGI BULAN {{ request('month') }} {{ date('Y') }}</h4>
+                        <x-forms.get>
+                            <div class="form-group">
+                                <select class="form-control" name="year">
+                                    @foreach(getMonth() as $key => $month)
+                                        <option value="{{ $key }}" {{ (request('month') == $key)? "SELECTED" : "" }}>{{ $month }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </x-forms.get>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div>
@@ -25,11 +44,10 @@
     <script src="{{ asset('lte/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('lte/plugins/chart.js/utils.js') }}"></script>
     <script>
-        var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var config = {
             type: 'line',
             data: {
-                labels: MONTHS,
+                labels: @json($days),
                 datasets: [{
                     label: 'Jumlah Pengunjung',
                     backgroundColor: window.chartColors.red,

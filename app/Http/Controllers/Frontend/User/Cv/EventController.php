@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Cv\CheckinRequest;
 use App\Models\CvEvent;
 use App\Models\CvLog;
+use Carbon\Carbon;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -48,19 +49,24 @@ class EventController extends Controller{
 
     public function insert(Request $request){
 
-        $event = new CvEvent();
 
-        $event->name = strtoupper($request->name);
-        $event->token = eventTokenGenerator(); #TODO: refresh token every 30 seconds
-        $event->manual_token  = eventManualTokenGenerator(); #will change every time used it
-        $event->static_token = eventStaticTokenGenerator();
-        $event->status = 1; #active
+        CvEvent::firstOrCreate(
+            ['name' => strtoupper($request->name)],
+            [
+                'token' => eventTokenGenerator(),
+                'manual_token'  => eventManualTokenGenerator(),
+                'static_token' => eventStaticTokenGenerator(),
+                'status' => 1
+            ]
+        );
 
-        if($event->save()){
-            return redirect()->route('frontend.user.cv.event.index')->withFlashSuccess("New Event created!");
-        }else{
-            return redirect()->route('frontend.user.cv.event.add')->withErrors("Failed to create event!");
-        }
+        return redirect()->route('frontend.user.cv.event.index')->withFlashSuccess("New Event created!");
+
+
+//        if($event->save()){
+//        }else{
+//            return redirect()->route('frontend.user.cv.event.add')->withErrors("Failed to create event!");
+//        }
     }
 
     public function edit($id){

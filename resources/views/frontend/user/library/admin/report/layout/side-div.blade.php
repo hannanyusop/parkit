@@ -6,6 +6,9 @@
         </div>
 
         <div class="row">
+            <a href="{{ route('frontend.user.library.index') }}" class="btn btn-app bg-info">
+                <i class="fas fa-home"></i> Utama
+            </a>
             <a href="{{ route('frontend.user.library.admin.report.index') }}" class="btn btn-app bg-navy">
                 <i class="fas fa-moon"></i> Harian
             </a>
