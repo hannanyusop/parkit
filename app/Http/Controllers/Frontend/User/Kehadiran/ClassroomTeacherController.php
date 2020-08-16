@@ -251,8 +251,6 @@ class ClassroomTeacherController extends Controller{
                 ->where('student_id', $student->id)
                 ->first();
 
-            dd($todayAtt);
-
             if($todayAtt->status == 2){
                 return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashInfo("Kehadiran ".$student->name." telah diambil!");
             }
@@ -286,7 +284,7 @@ class ClassroomTeacherController extends Controller{
             ->first();
 
         //prevent from duplicate enrty
-        StudentAttendance::updateOrCreate(
+        $update = StudentAttendance::updateOrCreate(
             ['uga_id' => $today->id, 'student_id' => $student_id],
             [
                 'status' => 2,
@@ -296,6 +294,7 @@ class ClassroomTeacherController extends Controller{
         );
 
 
+        dd($update);
         return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashSuccess("Kehadiran ".$student->name." berjaya dimasukkan.");
     }
 
