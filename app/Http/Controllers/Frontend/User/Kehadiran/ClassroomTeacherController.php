@@ -267,12 +267,10 @@ class ClassroomTeacherController extends Controller{
     }
 
     public function scanInsert(Request $request, $student_id){
-        
+
         $student = Student::where('id', $student_id)
             ->first();
-
-        dd($student);
-
+        
         if(!$student){
             return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Data Pelajar tidak wujud!");
         }
