@@ -247,6 +247,16 @@ class ClassroomTeacherController extends Controller{
                 }
             }
 
+            //prevent from duplicate enrty
+            StudentAttendance::firstOrCreate(
+                ['uga_id' => $today->id, 'student_id' => $s->id],
+                [
+                    'status' => 1,
+                    'temperature' => null,
+                    'remark' => null,
+                ]
+            );
+
             $todayAtt = StudentAttendance::where('uga_id', $today->id)
                 ->where('student_id', $student->id)
                 ->first();
