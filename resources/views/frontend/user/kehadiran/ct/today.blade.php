@@ -22,7 +22,7 @@
                     <div class="row">
                         @if($today)
                         @else
-                            <a href="{{ route('frontend.user.kehadiran.ct.today-generate', $classroom->id) }}" onclick="return confirm('Adakah anda pasti untuk menjana senarai kehadiran hari ini?')" class="btn btn-app bg-success">
+                            <a href="{{ route('frontend.user.kehadiran.ct.today-generate', $uHasClass->class_id) }}" onclick="return confirm('Adakah anda pasti untuk menjana senarai kehadiran hari ini?')" class="btn btn-app bg-success">
                                 <i class="fas fa-user-plus"></i> Jana Kehadiran Hari Ini
                             </a>
                         @endif

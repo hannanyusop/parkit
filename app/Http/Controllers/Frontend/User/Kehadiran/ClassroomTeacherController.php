@@ -25,21 +25,21 @@ class ClassroomTeacherController extends Controller{
 
     public function today(){
 
-        $classroom = UserHasClass::where('user_id', auth()->user()->id)
+        $uHasClass = UserHasClass::where('user_id', auth()->user()->id)
             ->where('year', date('Y'))
             ->first();
 
-        if(!$classroom){
+        if(!$uHasClass){
 
             return redirect()->route('frontend.user.student.index')->withFlashWarning("Anda tidak mempunyai mana-mana kelas.");
         }
 
         $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
-            ->where('class_id', $classroom->id)
+            ->where('class_id', $uHasClass->class_id)
             ->first();
 
 
-        return view('frontend.user.kehadiran.ct.today', compact('today', 'classroom'));
+        return view('frontend.user.kehadiran.ct.today', compact('today', 'uHasClass'));
     }
 
     public function todayGenerate($class_id){
