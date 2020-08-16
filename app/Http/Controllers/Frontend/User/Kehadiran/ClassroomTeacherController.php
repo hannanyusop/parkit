@@ -292,9 +292,7 @@ class ClassroomTeacherController extends Controller{
                 'remark' => null,
             ]
         );
-
-
-        dd($update);
+        
         return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashSuccess("Kehadiran ".$student->name." berjaya dimasukkan.");
     }
 
