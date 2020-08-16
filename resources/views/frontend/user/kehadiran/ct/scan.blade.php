@@ -62,13 +62,30 @@
         const fileQrResult = document.getElementById('file-qr-result');
 
         function setResult(label, result) {
-            scanner.stop();
-            window.location='{{ route('frontend.user.kehadiran.ct.scan-check',1) }}    ';
-            label.textContent = result;
-            camQrResultTimestamp.textContent = new Date().toString();
-            label.style.color = 'teal';
-            clearTimeout(label.highlightTimeout);
-            label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+
+            let url = new URL(result);
+            let params = new URLSearchParams(url.search);
+
+            let checkParam = params.has('id') ;
+
+            if(checkParam){
+                let noic = params.get('id');
+
+                // if(noic.length == 12){
+                //
+                // }
+
+                window.location='{{ route('frontend.user.kehadiran.ct.scan-check') }}'+"?id="+noic;
+                scanner.stop();
+                label.textContent = result;
+                camQrResultTimestamp.textContent = new Date().toString();
+                label.style.color = 'teal';
+                clearTimeout(label.highlightTimeout);
+                label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+
+            }
+
+
         }
 
         // ####### Web Cam Scanning #######

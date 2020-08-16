@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Classroom\InsertRequest;
 use App\Models\Classroom;
 use App\Models\Student;
+use App\Models\StudentAttendance;
+use App\Models\StudentHasClass;
+use App\Models\UserGenerateAttendance;
+use App\Models\UserHasClass;
 use Illuminate\Http\Request;
 
 class ClassroomTeacherController extends Controller{
@@ -19,6 +23,80 @@ class ClassroomTeacherController extends Controller{
 
     }
 
+    public function today(){
+
+        $classroom = UserHasClass::where('user_id', auth()->user()->id)
+            ->where('year', date('Y'))
+            ->first();
+
+        if(!$classroom){
+
+            return redirect()->route('frontend.user.student.index')->withFlashWarning("Anda tidak mempunyai mana-mana kelas.");
+        }
+
+        $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
+            ->where('class_id', $classroom->id)
+            ->first();
+
+
+        return view('frontend.user.kehadiran.ct.today', compact('today', 'classroom'));
+    }
+
+    public function todayGenerate($class_id){
+
+        $classroom = UserHasClass::where('user_id', auth()->user()->id)
+            ->where('year', date('Y'))
+            ->where('class_id', $class_id)
+            ->first();
+
+
+        if(!$classroom){
+
+            return redirect()->route('frontend.user.student.index')->withFlashWarning("Kelas ini bukan dibawah pemantauan anda.");
+        }
+
+        $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
+            ->where('class_id', $classroom->id)
+            ->first();
+
+        if($today){
+            return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashWarning("Kehadiran untuk kelas ".$classroom->generate_name. " sudah dijana.");
+        }
+
+        //create
+        $today = new UserGenerateAttendance();
+        $today->class_id = $classroom->id;
+        $today->user_id = auth()->user()->id;
+
+        if(!$today->save()){
+            dd("Failed to save user generate att");
+        }
+
+        $students = StudentHasClass::where('class_id', $classroom->id)
+            ->where('year', date('Y'))
+            ->get();
+
+        if($students->count() == 0){
+            return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashWarning("Kelas ".$classroom->generate_name. " tidak mempunyai pelajar.");
+        }
+
+        foreach ($students as $student){
+
+
+            //prevent from duplicate enrty
+            StudentAttendance::updateOrCreate(
+                ['uga_id' => $today->id, 'student_id' => $student->id],
+                [
+                    'status' => 1,
+                    'temperature' => null,
+                    'remark' => null,
+                ]
+            );
+        }
+
+        return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashSuccess("Senrai kehadiran bagi kelas ".$classroom->generate_name." berjaya dijana.");
+
+    }
 
     public function addClass(Request $request){
 
@@ -110,18 +188,115 @@ class ClassroomTeacherController extends Controller{
         return view('frontend.user.kehadiran.ct.scan');
     }
 
-    public function scanCheck($student_id){
-        return view('frontend.user.kehadiran.ct.scan-check');
+    public function scanCheck(Request $request){
+
+        if($request->has('id')){
+
+            $student = Student::where('no_ic', $request->id)
+                ->first();
+
+            if(!$student){
+                return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Data Pelajar tidak wujud!");
+            }
+
+            if(is_null($student->class_id)){
+                return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Pelajar tidak mempunyai kelas!");
+            }
+
+            $uHasClass = UserHasClass::where('class_id', $student->class_id)
+                ->where('user_id', auth()->user()->id)
+                ->where('year', date('Y'))
+                ->first();
+
+            if(!$uHasClass){
+                return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Maaf! Hanya guru kelas dibenarkan!");
+            }
+
+            $classroom = Classroom::find($student->class_id);
+
+            $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
+                ->where('class_id', $classroom->id)
+                ->first();
+
+            if(!$today){
+                $today = new UserGenerateAttendance();
+                $today->class_id = $classroom->id;
+                $today->user_id = auth()->user()->id;
+
+                if(!$today->save()){
+                    dd("Failed to save user generate att");
+                }
+
+                $students = StudentHasClass::where('class_id', $classroom->id)
+                    ->where('year', date('Y'))
+                    ->get();
+
+                foreach ($students as $s){
+
+
+                    //prevent from duplicate enrty
+                    StudentAttendance::updateOrCreate(
+                        ['uga_id' => $today->id, 'student_id' => $s->id],
+                        [
+                            'status' => 1,
+                            'temperature' => null,
+                            'remark' => null,
+                        ]
+                    );
+                }
+            }
+
+            $todayAtt = StudentAttendance::where('uga_id', $today->id)
+                ->where('student_id', $student->id)
+                ->first();
+
+            if($todayAtt->status == 2){
+                return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashInfo("Kehadiran ".$student->name." telah diambil!");
+            }
+
+
+            return view('frontend.user.kehadiran.ct.scan-check', compact('student'));
+
+        }else{
+
+            return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("QR Tidak Sah!");
+        }
 
 //        return redirect()->route('frontend.user.kehadiran.ct.scan-complete', 1)->withFlashSuccess("Kehadiran AMAR MAKRUF berjaya dimasukkan.");
     }
 
-    public function scanInsert($student_id){
-        return redirect()->route('frontend.user.kehadiran.ct.scan-complete', 1)->withFlashSuccess("Kehadiran AMAR MAKRUF berjaya dimasukkan.");
+    public function scanInsert(Request $request, $student_id){
+
+        $student = Student::find($student_id)
+            ->first();
+
+        if(!$student){
+            return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Data Pelajar tidak wujud!");
+        }
+
+        if(is_null($student->class_id)){
+            return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Pelajar tidak mempunyai kelas!");
+        }
+
+        $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
+            ->where('class_id', $student->class_id)
+            ->first();
+
+        //prevent from duplicate enrty
+        StudentAttendance::updateOrCreate(
+            ['uga_id' => $today->id, 'student_id' => $student_id],
+            [
+                'status' => 2,
+                'temperature' => $request->temperature,
+                'remark' => null,
+            ]
+        );
+
+
+        return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashSuccess("Kehadiran ".$student->name." berjaya dimasukkan.");
     }
 
     public function scanComplete($student_id){
-        return view('frontend.user.kehadiran.ct.scan-complete');
         return view('frontend.user.kehadiran.ct.scan-complete');
     }
 

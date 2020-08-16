@@ -23,12 +23,12 @@
                     <div class="text-center">
                         <h1>Kehadiran Pelajar</h1>
 
-                        <p>Nama Pelajar : <b>AMAR MAKRUF</b></p>
-                        <p>No. K/P : <b>111111-11-111</b></p>
-                        <p>Kelas : <b>4 SAINS 2</b></p>
+                        <p>Nama Pelajar : <b>{{ $student->name }}</b></p>
+                        <p>No. K/P : <b>{{ $student->no_ic }}</b></p>
+                        <p>Kelas : <b>{{ getStudentClass($student->class_id) }}</b></p>
                         <h3>Temperature</h3>
 
-                        <x-forms.post :action="route('frontend.user.kehadiran.ct.scan-insert', 1)" class="form-horizontal">
+                        <x-forms.post :action="route('frontend.user.kehadiran.ct.scan-insert', $student->id)" class="form-horizontal">
                             <div class="">
                                 <div class="form-group row">
                                     <div class="col-md-4 offset-md-4">

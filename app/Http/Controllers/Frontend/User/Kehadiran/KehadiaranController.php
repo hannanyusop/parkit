@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Frontend\User\Kehadiran;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserHasClass;
 
 class KehadiaranController extends Controller{
 

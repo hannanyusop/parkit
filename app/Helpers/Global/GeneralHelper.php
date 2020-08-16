@@ -146,7 +146,7 @@ if(!function_exists('getKehadiranStudent')){
 
     function getKehadiranStudent($ic){
 
-        return QRCode::url(route('frontend.user.cv.event.checkin', $ic ))
+        return QRCode::url(route('frontend.student-info', ['id'=> $ic]))
             ->setSize(4)
             ->setMargin(2)
             ->svg();
@@ -970,5 +970,21 @@ if(!function_exists('getYear')){
 
         return $years;
     }
+}
+
+if(!function_exists('attendanceStatus')){
+
+    function attendanceStatus($status = null){
+
+        $statuses = [
+            1 => "TIDAK HADIR",
+            2 => "HADIR",
+            3 => "CUTI SAKIT",
+            4 => "LAIN-LAIN"
+        ];
+
+        return (is_null($status))? $statuses : $statuses[$status];
+    }
+
 }
 

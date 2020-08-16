@@ -14,6 +14,9 @@
                 <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="btn btn-app bg-orange">
                     <i class="fas fa-school"></i> Senarai Kelas
                 </a>
+                <a href="{{ route('frontend.user.kehadiran.ct.today') }}" class="btn btn-app bg-teal">
+                    <i class="fas fa-users"></i> Kehadiran Pelajar
+                </a>
             </div>
         </div>
     </div>

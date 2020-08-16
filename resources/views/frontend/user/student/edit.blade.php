@@ -89,7 +89,7 @@
                                 <select class="form-control select2" id="class_id" name="class_id">
                                     <option value="">--SILA ABAIKAN JIKA TIADA--</option>
                                     @foreach($classes as $class)
-                                        <option value="{{ $class->id }}" value="{{ ($student->class_id == $class->id)? "checked" : "" }}">{{ $class->generate_name }}</option>
+                                        <option value="{{ $class->id }}" {{ ($student->class_id == $class->id)? "selected=''" : "" }}>{{ $class->generate_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

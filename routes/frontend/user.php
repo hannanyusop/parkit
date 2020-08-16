@@ -179,7 +179,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         'as' => 'kehadiran.',
         'prefix' => 'kehadiran/'
     ], function (){
-        Route::get('test', [KehadiaranController::class, 'index'])->name('index');
 
         Route::group([
             'prefix' => 'classroom-teacher/',
@@ -196,8 +195,12 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             Route::get('print-student-card/{student_id}', [ClassroomTeacherController::class, 'printStudentCard'])->name('print-student-card');
             Route::get('print-student-card-v2/{student_id}', [ClassroomTeacherController::class, 'printStudentCard2'])->name('print-student-card-v2');
 
+            Route::get('today/', [ClassroomTeacherController::class, 'today'])->name('today');
+            Route::get('today-generate/{class_id}', [ClassroomTeacherController::class, 'todayGenerate'])->name('today-generate');
+
+
             Route::get('scan', [ClassroomTeacherController::class, 'scan'])->name('scan');
-            Route::get('scan-check/{student_id}', [ClassroomTeacherController::class, 'scanCheck'])->name('scan-check');
+            Route::get('scan-check', [ClassroomTeacherController::class, 'scanCheck'])->name('scan-check');
             Route::post('scan-check/{student_id}', [ClassroomTeacherController::class, 'scanInsert'])->name('scan-insert');
             Route::get('scan-complete/{student_id}', [ClassroomTeacherController::class, 'scanComplete'])->name('scan-complete');
 

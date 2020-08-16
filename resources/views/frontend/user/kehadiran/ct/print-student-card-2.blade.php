@@ -25,7 +25,7 @@
                             </h6>
                             <h4>MAKLUMAT PELAJAR</h4>
                             <div class="mt-2">
-                                {{ getKehadiranStudent($student->name) }}
+                                {{ getKehadiranStudent($student->no_ic) }}
                             </div>
                         </div>
                         <div class="text-center mt-2">
