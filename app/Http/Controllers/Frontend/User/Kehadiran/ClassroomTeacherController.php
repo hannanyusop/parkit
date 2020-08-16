@@ -271,6 +271,8 @@ class ClassroomTeacherController extends Controller{
         $student = Student::find($student_id)
             ->first();
 
+        dd($student);
+
         if(!$student){
             return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashWarning("Data Pelajar tidak wujud!");
         }
