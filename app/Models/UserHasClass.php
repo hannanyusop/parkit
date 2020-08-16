@@ -8,5 +8,9 @@ class UserHasClass extends Model{
 
     protected $table = 'user_has_class';
 
+    public function classroom(){
+        return $this->hasOne(Classroom::class, 'id', 'class_id');
+    }
+
 
 }

@@ -44,19 +44,19 @@ class ClassroomTeacherController extends Controller{
 
     public function todayGenerate($class_id){
 
-        $classroom = UserHasClass::where('user_id', auth()->user()->id)
+        $uHasClass = UserHasClass::where('user_id', auth()->user()->id)
             ->where('year', date('Y'))
             ->where('class_id', $class_id)
             ->first();
 
 
-        if(!$classroom){
+        if(!$uHasClass){
 
             return redirect()->route('frontend.user.student.index')->withFlashWarning("Kelas ini bukan dibawah pemantauan anda.");
         }
 
         $today = UserGenerateAttendance::whereDate('created_at', '=', date('Y-m-d'))
-            ->where('class_id', $classroom->id)
+            ->where('class_id', $uHasClass->class_id)
             ->first();
 
         if($today){
@@ -65,19 +65,19 @@ class ClassroomTeacherController extends Controller{
 
         //create
         $today = new UserGenerateAttendance();
-        $today->class_id = $classroom->id;
+        $today->class_id = $uHasClass->class_id;
         $today->user_id = auth()->user()->id;
 
         if(!$today->save()){
             dd("Failed to save user generate att");
         }
 
-        $students = StudentHasClass::where('class_id', $classroom->id)
+        $students = StudentHasClass::where('class_id', $uHasClass->class_id)
             ->where('year', date('Y'))
             ->get();
 
         if($students->count() == 0){
-            return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashWarning("Kelas ".$classroom->generate_name. " tidak mempunyai pelajar.");
+            return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashWarning("Kelas ".$uHasClass->classroom->generate_name. " tidak mempunyai pelajar.");
         }
 
         foreach ($students as $student){
@@ -94,7 +94,7 @@ class ClassroomTeacherController extends Controller{
             );
         }
 
-        return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashSuccess("Senrai kehadiran bagi kelas ".$classroom->generate_name." berjaya dijana.");
+        return redirect()->route('frontend.user.kehadiran.ct.today')->withFlashSuccess("Senrai kehadiran bagi kelas ".$uHasClass->classroom->generate_name." berjaya dijana.");
 
     }
 
