@@ -283,7 +283,7 @@ class ClassroomTeacherController extends Controller{
             ->where('class_id', $student->class_id)
             ->first();
 
-        dd('today');
+        dd($today);
 
         //prevent from duplicate enrty
         $update = StudentAttendance::updateOrCreate(
