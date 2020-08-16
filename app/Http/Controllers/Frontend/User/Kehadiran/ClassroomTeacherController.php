@@ -218,7 +218,6 @@ class ClassroomTeacherController extends Controller{
                 ->where('class_id', $classroom->id)
                 ->first();
 
-            dd($today);
 
             if(!$today){
                 $today = new UserGenerateAttendance();
@@ -251,6 +250,8 @@ class ClassroomTeacherController extends Controller{
             $todayAtt = StudentAttendance::where('uga_id', $today->id)
                 ->where('student_id', $student->id)
                 ->first();
+
+            dd($todayAtt);
 
             if($todayAtt->status == 2){
                 return redirect()->route('frontend.user.kehadiran.ct.scan')->withFlashInfo("Kehadiran ".$student->name." telah diambil!");
