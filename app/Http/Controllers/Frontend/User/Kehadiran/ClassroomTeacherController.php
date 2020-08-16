@@ -218,6 +218,8 @@ class ClassroomTeacherController extends Controller{
                 ->where('class_id', $classroom->id)
                 ->first();
 
+            dd($today);
+
             if(!$today){
                 $today = new UserGenerateAttendance();
                 $today->class_id = $classroom->id;
