@@ -267,10 +267,8 @@ class ClassroomTeacherController extends Controller{
     }
 
     public function scanInsert(Request $request, $student_id){
-
-        dd($student_id);
-
-        $student = Student::find($student_id)
+        
+        $student = Student::where('id', $student_id)
             ->first();
 
         dd($student);
