@@ -121,9 +121,9 @@ class StudentMainController extends Controller{
 
         if($student->save()){
             $this->changeStudentClass($student->id, $student->class_id);
-            return redirect()->route('frontend.user.student.index')->withFlashSuccess('Data '.$student->name.' berjaya dikemaskini.');
+            return redirect()->back()->withFlashSuccess('Data '.$student->name.' berjaya dikemaskini.');
         }else{
-            return redirect()->route('frontend.user.student.index')->withErrors('Data pelajar gagal dikemaskini.');
+            return redirect()->back()->withErrors('Data pelajar gagal dikemaskini.');
 
         }
     }

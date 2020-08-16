@@ -53,6 +53,7 @@
                                 <td>{{ $has_student->student->no_ic }}</td>
                                 <td>{{ getGender($has_student->student->gender) }}</td>
                                 <td>
+                                    <a href="{{ route('frontend.user.student.edit', $has_student->student_id) }}" class="btn btn-info btn-sm">Kemaskini</a>
                                     <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card', $has_student->student_id) }}">Cetak Kad Pelajar v1</a>
                                     <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
                                 </td>
