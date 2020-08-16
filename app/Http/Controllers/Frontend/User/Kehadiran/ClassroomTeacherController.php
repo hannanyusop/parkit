@@ -249,7 +249,7 @@ class ClassroomTeacherController extends Controller{
 
             //prevent from duplicate enrty
             StudentAttendance::firstOrCreate(
-                ['uga_id' => $today->id, 'student_id' => $s->id],
+                ['uga_id' => $today->id, 'student_id' => $student->id],
                 [
                     'status' => 1,
                     'temperature' => null,
