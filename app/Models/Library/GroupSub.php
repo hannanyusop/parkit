@@ -11,4 +11,8 @@ class GroupSub extends Model{
     public function parent(){
         return $this->hasOne(GroupParent::class, 'id', 'g_parent_id');
     }
+
+    public function books(){
+        return $this->hasMany(BookParent::class, 'g_sub_id', 'id');
+    }
 }

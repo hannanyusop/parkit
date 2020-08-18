@@ -4,6 +4,8 @@
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('lte/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endpush
 
 @section('content')
@@ -45,13 +47,63 @@
                                 <input name="max_student_borrow" type="number" step="1" class="form-control" id="max_student_borrow" value="{{ getLibraryOption('max_student_borrow', 2) }}" placeholder="EX: 2">
                             </div>
                         </div>
+                        <hr>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <a href="{{ route('frontend.user.library.index') }}" class="btn btn-warning"> Kembali Menu Utama</a>
                         <button type="submit" class="btn btn-success float-right"><i class="fa fa-save"></i> Simpan Tetapan</button>
                     </div>
                     <!-- /.card-footer -->
+                </x-forms.post>
+            </div>
+            <div class="card">
+                <x-forms.post :action="route('frontend.user.library.admin.setting.add-prefect')" class="form-horizontal">
+                    <div class="card-body">
+                        <h5>Pengawas Perpustakan</h5>
+                        <div class="form-group row">
+                            <label for="max_student_borrow" class="col-sm-4 col-form-label">Tambah Pengawas:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control select2" id="no_ic" name="no_ic">
+                                    <option>-- PILIH PELAJAR --</option>
+                                    @foreach($students as $student)
+                                        <option value="{{ $student->no_ic }}" value="{{ (old('no_ic') == $student->no_ic)? "checked" : "" }}">{{ $student->no_ic." - ".$student->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="max_student_borrow" class="col-sm-4 col-form-label"></label>
+
+                            <div class="col-sm-8">
+                                <button type="submit" class="btn btn-success float-right">Tambah Senarai</button>
+                            </div>
+                        </div>
+
+                        <div class="table-reponsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>NAMA</th>
+                                    <th>NO. K/P</th>
+                                    <td></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($prefects as $ic => $name)
+                                    <tr>
+                                        <td>{{ $ic }}</td>
+                                        <td>{{ $name }}</td>
+                                        <td><a class="btn btn-danger btn-sm" href="{{ route('frontend.user.library.admin.setting.remove-prefect', $ic) }}" onclick="return confirm('adakah anda pasti untuk membuang pelajar ini dari senarai kelas?')">Padam</a> </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('frontend.user.library.index') }}" class="btn btn-warning"> Kembali Menu Utama</a>
+                    </div>
                 </x-forms.post>
             </div>
         </div>
@@ -61,6 +113,19 @@
     <script src="{{ asset('lte/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
     <script src="{{ asset('lte/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('lte/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
 
     <script>
         $(function () {

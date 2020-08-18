@@ -213,44 +213,55 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
     Route::group([
         'as' => 'library.',
         'prefix' => 'library/',
+        'middleware' => 'permission:lib_can'
     ], function (){
 
-        Route::group([], function (){
+
+        #for pengawas
+        Route::get('pengawas-login', [MainController::class, 'prefectLogin'])->name('prefect-login');
+
+        Route::group([
+            'middleware' => 'checkPrefects'
+        ], function (){
             Route::get('', [MainController::class, 'index'])->name('index');
-        });
-
-        Route::group([
-            'as' => 'borrow.',
-            'prefix' => 'borrow/'
-        ], function (){
-            Route::get('', [BorrowController::class, 'borrowBook'])->name('borrow');
-            Route::post('add-list/', [BorrowController::class, 'borrowAddList'])->name('borrow-add-list');
-            Route::get('remove-list/{ic_no}/{book_id}', [BorrowController::class, 'borrowRemoveList'])->name('borrow-remove-list');
-            Route::get('submit/{ic_no}/', [BorrowController::class, 'borrowSubmit'])->name('submit');
-
-            Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
-            Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
-            Route::get('return-fine/{fine_id}', [BorrowController::class, 'returnFine'])->name('return-fine');
-            Route::get('fine/', [BorrowController::class, 'fine'])->name('fine');
 
 
-            Route::get('late/', [BorrowController::class, 'late'])->name('late');
+            Route::group([
+                'as' => 'borrow.',
+                'prefix' => 'borrow/'
+            ], function (){
+                Route::get('', [BorrowController::class, 'borrowBook'])->name('borrow');
+                Route::post('add-list/', [BorrowController::class, 'borrowAddList'])->name('borrow-add-list');
+                Route::get('remove-list/{ic_no}/{book_id}', [BorrowController::class, 'borrowRemoveList'])->name('borrow-remove-list');
+                Route::get('submit/{ic_no}/', [BorrowController::class, 'borrowSubmit'])->name('submit');
 
-        });
+                Route::get('return/', [BorrowController::class, 'returnBook'])->name('return');
+                Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
+                Route::get('return-fine/{fine_id}', [BorrowController::class, 'returnFine'])->name('return-fine');
+                Route::get('fine/', [BorrowController::class, 'fine'])->name('fine');
 
-        Route::group([
-            'as' => 'visitor.',
-            'prefix' => 'visitor/',
-        ], function (){
-            Route::get('today/', [VisitorController::class, 'today'])->name('today');
-            Route::post('check/', [VisitorController::class, 'check'])->name('check');
-            Route::get('manual-checkout/{no_ic}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
+
+                Route::get('late/', [BorrowController::class, 'late'])->name('late');
+
+            });
+
+            Route::group([
+                'as' => 'visitor.',
+                'prefix' => 'visitor/',
+            ], function (){
+                Route::get('today/', [VisitorController::class, 'today'])->name('today');
+                Route::post('check/', [VisitorController::class, 'check'])->name('check');
+                Route::get('manual-checkout/{no_ic}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
+            });
+
+
         });
 
         #admin library
         Route::group([
             'as' => 'admin.',
-            'prefix' => 'admin/'
+            'prefix' => 'admin/',
+            'middleware' => 'permission:lib_admin,lib_staff'
         ], function (){
             Route::group([
                 'as' => 'book.',
@@ -282,7 +293,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                     'as' => 'group.',
                     'prefix' => 'group/'
                 ], function (){
-                    Route::get('', [AdminBookController::class, 'index'])->name('index');
+                    Route::get('', [AdminGroupController::class, 'index'])->name('index');
                 });
 
                 Route::group([
@@ -303,18 +314,27 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
             Route::group([
                 'as' => 'report.',
-                'prefix' => 'report/'
+                'prefix' => 'report/',
+                'middleware' => 'permission:lib_admin'
             ], function (){
                 Route::get('', [AdminReportController::class, 'index'])->name('index');
                 Route::get('month', [AdminReportController::class, 'monthly'])->name('monthly');
+                Route::get('monthly-borrow', [AdminReportController::class, 'monthlyBorrow'])->name('student-top-borrower-monthly');
+                Route::get('yearly-borrow', [AdminReportController::class, 'YearlyBorrow'])->name('student-top-borrower-yearly');
+
             });
 
             Route::group([
                 'as' => 'setting.',
                 'prefix' => 'setting/',
+                'middleware' => 'permission:lib_admin'
             ], function (){
                 Route::get('', [AdminSettingController::class, 'index'])->name('index');
                 Route::post('', [AdminSettingController::class, 'save'])->name('save');
+                Route::post('add-prefect', [AdminSettingController::class, 'addPrefect'])->name('add-prefect');
+                Route::get('remove-prefect/{no_ic}', [AdminSettingController::class, 'removePrefect'])->name('remove-prefect');
+
+
             });
         });
 

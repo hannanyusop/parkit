@@ -9,4 +9,9 @@ class MainController extends Controller{
         return view('frontend.user.library.index');
     }
 
+    public function prefectLogin(){
+        dd('aSA');
+        return view('frontend.user.library.prefect-login');
+    }
+
 }

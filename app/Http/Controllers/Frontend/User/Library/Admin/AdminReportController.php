@@ -6,6 +6,7 @@ use App\Models\Library\Book;
 use App\Models\Library\Borrow;
 use App\Models\Library\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminReportController extends Controller{
 
@@ -81,5 +82,46 @@ class AdminReportController extends Controller{
         return view('frontend.user.library.admin.report.monthly', compact('borrows', 'visitors'));
 
     }
+
+    public function monthlyBorrow(Request $request){
+
+        if(!isset($request->month)){
+            return redirect()->route('frontend.user.library.admin.report.student-top-borrower-monthly', ['month' => date('m')]);
+        }
+
+        $year = date('Y');
+        $month = $request->month;
+
+        $topBorrower = Borrow::select(DB::raw('count(*) as total'), 'student_id')
+            ->groupBy('student_id')
+            ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.student-top-borrower-monthly', compact('topBorrower'));
+
+    }
+
+    public function yearlyBorrow(Request $request){
+
+        if(!isset($request->year)){
+            return redirect()->route('frontend.user.library.admin.report.student-top-borrower-yearly', ['year' => date('Y')]);
+        }
+
+        $year = $request->year;
+
+        $topBorrower = Borrow::select(DB::raw('count(*) as total'), 'student_id')
+            ->groupBy('student_id')
+            ->whereYear('created_at', $year)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.student-top-borrower-yearly', compact('topBorrower'));
+
+    }
+
 
 }

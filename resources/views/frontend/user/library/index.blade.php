@@ -75,6 +75,7 @@
                                     <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
+                            @can(['lib_staff', 'lib_admin'])
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-purple">
@@ -86,7 +87,9 @@
                                     <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
+                            @endcan
 
+                            @can('lib_admin')
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-info">
@@ -109,6 +112,7 @@
                                     <a href="{{ route('frontend.user.library.admin.setting.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
+                            @endcan
                         </div>
                     </div>
                 </div>

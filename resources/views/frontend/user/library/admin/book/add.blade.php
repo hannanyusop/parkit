@@ -20,13 +20,13 @@
                         <div class="card-body">
 
                             <h4 class="text-center mb-4">Daftar Buku</h4>
-                            <div class="form-group row">
-                                <label for="title" class="col-sm-2 col-form-label">Salin Buku Berdaftar</label>
-                                <div class="col-md-10">
-                                    <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="" autofocus>
-                                    <span class="text-sm text-info font-weight-bold">*Sila Imbas Kod Bar Atau Masukan Nombor Perolehan Buku</span>
-                                </div>
-                            </div>
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="title" class="col-sm-2 col-form-label">Salin Buku Berdaftar</label>--}}
+{{--                                <div class="col-md-10">--}}
+{{--                                    <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="" autofocus>--}}
+{{--                                    <span class="text-sm text-info font-weight-bold">*Sila Imbas Kod Bar Atau Masukan Nombor Perolehan Buku</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group row">
                                 <label for="no_per" class="col-sm-2 col-form-label">No. Perolehan</label>
                                 <div class="col-md-10">

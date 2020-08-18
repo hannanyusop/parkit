@@ -146,6 +146,7 @@
                         </li>
                         @endcan
                     @endcan
+                    @can('lib_can')
                     <li class="nav-header">My-Library (Coming Soon)</li>
                     <li class="nav-item">
                         <a href="{{ route('frontend.user.library.index') }}" class="nav-link">
@@ -153,6 +154,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    @endcan
                     @can('poll_can')
                         <li class="nav-header">Coop Voting System</li>
                         <li class="nav-item">

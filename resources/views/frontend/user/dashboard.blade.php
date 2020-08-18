@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             @endcan
-
+                            @can('lib_can')
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-success">
@@ -86,6 +86,7 @@
                                         <a href="{{ route('frontend.user.library.index') }}" class="small-box-footer">Dashboard <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
+                            @endcan
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->

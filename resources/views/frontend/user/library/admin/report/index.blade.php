@@ -21,7 +21,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success">CARI</button>
                         </x-forms.get>
                     </div>
                 </div>

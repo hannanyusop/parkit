@@ -19,12 +19,6 @@
             <a href="{{ route('frontend.user.library.admin.book.group.index') }}" class="btn btn-app bg-pink">
                 <i class="fa fa-bookmark"></i> Pengkelasan
             </a>
-            <a href="{{ route('frontend.user.library.admin.book.author.index') }}" class="btn btn-app bg-fuchsia">
-                <i class="fa fa-signature"></i> Penulis Buku
-            </a>
-            <a href="{{ route('frontend.user.library.admin.book.publisher.index') }}" class="btn btn-app bg-navy">
-                <i class="fa fa-people-carry"></i> Penerbit Buku
-            </a>
         </div>
     </div>
 </div>
