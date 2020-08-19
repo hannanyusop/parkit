@@ -11,14 +11,13 @@ class checkPrefects
     {
         if(auth()->user()->can('lib_prefects')){
 
-            if(\Session::has('prefects')){
-                dd("dah");
+            if(\Session::has('prefect')){
+                return $next($request);
 
             }else{
                 return redirect()->route('frontend.user.library.prefect-login')->withFlashInfo('Sila masukan nombor kad pengenalan bertugas!');
             }
         }
 
-        return $next($request);
     }
 }

@@ -52,6 +52,13 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
+
+                        <div class="row">
+                            @can('lib_prefects')
+                                <p class="">Selamat datang, {{ session('prefect')['name'] }}</p>
+                                <small><a class="" onclick="return confirm('Adakah anda pasti untuk log keluar ID ini?')" href="{{ route('frontend.user.library.prefect-logout') }}">Log Keluar</a></small>
+                            @endcan
+                        </div>
                         <div class="row">
                             <div class="col-md-3 col-6">
                                 <!-- small box -->

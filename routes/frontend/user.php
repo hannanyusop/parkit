@@ -219,6 +219,9 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
         #for pengawas
         Route::get('pengawas-login', [MainController::class, 'prefectLogin'])->name('prefect-login');
+        Route::post('pengawas-login', [MainController::class, 'prefectLoginCheck'])->name('prefect-login-check');
+        Route::get('pengawas-logout', [MainController::class, 'prefectLogout'])->name('prefect-logout');
+
 
         Route::group([
             'middleware' => 'checkPrefects'
