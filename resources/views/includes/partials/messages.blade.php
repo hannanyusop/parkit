@@ -10,7 +10,7 @@
         "closeButton": false,
         "debug": false,
         "newestOnTop": false,
-        "progressBar": true,
+        "progressBar": false,
         "positionClass": "toast-top-full-width",
         "preventDuplicates": false,
         "onclick": null,

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Library\Book;
 use App\Models\Library\Borrow;
 use App\Models\Library\Log;
+use App\Models\Library\LogStaff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -122,6 +123,47 @@ class AdminReportController extends Controller{
         return view('frontend.user.library.admin.report.student-top-borrower-yearly', compact('topBorrower'));
 
     }
+
+    public function staffMonthlyVisit(Request $request){
+
+        if(!isset($request->month)){
+            return redirect()->route('frontend.user.library.admin.report.staff-monthly-visit', ['month' => date('m')]);
+        }
+
+        $year = date('Y');
+        $month = $request->month;
+
+        $data = LogStaff::select(DB::raw('count(*) as total'), 'user_id')
+            ->groupBy('user_id')
+            ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.staff-monthly-visit', compact('data'));
+
+    }
+
+    public function staffYearlyVisit(Request $request){
+
+        if(!isset($request->year)){
+            return redirect()->route('frontend.user.library.admin.report.staff-yearly-visit', ['year' => date('Y')]);
+        }
+
+        $year = $request->year;
+
+        $data = LogStaff::select(DB::raw('count(*) as total'), 'user_id')
+            ->groupBy('user_id')
+            ->whereYear('created_at', $year)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.staff-yearly-visit', compact('data'));
+
+    }
+
 
 
 }

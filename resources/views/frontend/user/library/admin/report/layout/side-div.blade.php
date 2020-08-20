@@ -28,6 +28,18 @@
                 <i class="fas fa-calendar"></i> Tahun
             </a>
         </div>
+
+        <div class="row">
+            <h3 class="card-title mb-4">Laporan Keharian (Staff)</h3>
+        </div>
+        <div class="row">
+            <a href="{{ route('frontend.user.library.admin.report.staff-monthly-visit') }}" class="btn btn-app bg-navy">
+                <i class="fas fa-moon"></i> Bulan
+            </a>
+            <a href="{{ route('frontend.user.library.admin.report.staff-yearly-visit') }}" class="btn btn-app bg-fuchsia">
+                <i class="fas fa-calendar"></i> Tahun
+            </a>
+        </div>
     </div>
     <!-- /.card-body -->
 </div>

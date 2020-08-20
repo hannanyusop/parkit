@@ -23,6 +23,9 @@
             <a href="{{ route('frontend.user.library.borrow.fine') }}" class="btn btn-app bg-warning">
                 <i class="fa fa-file-invoice-dollar"></i> Denda
             </a>
+            <a href="{{ route('frontend.user.library.borrow.history') }}" class="btn btn-app bg-success">
+                <i class="fa fa-history"></i> Log Peminjam
+            </a>
         </div>
     </div>
     <!-- /.card-body -->

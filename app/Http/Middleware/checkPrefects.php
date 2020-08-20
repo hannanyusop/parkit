@@ -17,6 +17,9 @@ class checkPrefects
             }else{
                 return redirect()->route('frontend.user.library.prefect-login')->withFlashInfo('Sila masukan nombor kad pengenalan bertugas!');
             }
+        }else{
+            return $next($request);
+
         }
 
     }

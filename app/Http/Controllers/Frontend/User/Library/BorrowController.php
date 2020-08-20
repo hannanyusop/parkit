@@ -151,6 +151,13 @@ class BorrowController extends Controller{
             $borrow->borrow_date = now();
             $borrow->actual_return_date = date('Y-m-d', strtotime(now(). " +".$duration." days"));
             $borrow->return_date = null;
+            $borrow->remark = json_encode([]);
+
+            #remark for pengawas perpustakaan
+            if(auth()->user()->can('lib_prefects')){
+
+                $borrow->remark = json_encode(['peminjaman' => Session::get('prefect')]);
+            }
 
             if(!$borrow->save()){
                 return redirect()->route('frontend.user.library.borrow.borrow', ['no_ic' => $no_ic])->withFlashWarning("Gagal memasukan data buku :".getBookId($key));
@@ -210,7 +217,13 @@ class BorrowController extends Controller{
         $borrow->in_id = auth()->user()->id;
         $borrow->return_date = now();
 
+        #remark for pengawas perpustakaan
+        if(auth()->user()->can('lib_prefects')){
 
+            $remark = json_decode($borrow->remark, true);
+            $remark['Pemulangan'] = Session::get('prefect');
+            $borrow->remark = json_encode($remark);
+        }
 
         $now = new \DateTime(date('Y-m-d'));
         $actual = new \DateTime($book->activeBorrow->actual_return_date);
@@ -278,6 +291,20 @@ class BorrowController extends Controller{
         $fines = Fine::get();
 
         return view('frontend.user.library.borrow.fine', compact('fines'));
+
+    }
+
+    public function history(Request $request){
+
+        $borrows = Borrow::get();
+        return view('frontend.user.library.borrow.history', compact('borrows'));
+
+    }
+
+    public function historyView($id){
+
+        $borrow = Borrow::findOrFail($id);
+        return view('frontend.user.library.borrow.history-view', compact('borrow'));
 
     }
 

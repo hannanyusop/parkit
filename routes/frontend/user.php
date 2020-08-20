@@ -242,6 +242,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('return-submit/{book_id}', [BorrowController::class, 'returnSubmit'])->name('return-submit');
                 Route::get('return-fine/{fine_id}', [BorrowController::class, 'returnFine'])->name('return-fine');
                 Route::get('fine/', [BorrowController::class, 'fine'])->name('fine');
+                Route::get('history/', [BorrowController::class, 'history'])->name('history');
+                Route::get('history/view/{id}', [BorrowController::class, 'historyView'])->name('history-view');
+
+
 
 
                 Route::get('late/', [BorrowController::class, 'late'])->name('late');
@@ -254,7 +258,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ], function (){
                 Route::get('today/', [VisitorController::class, 'today'])->name('today');
                 Route::post('check/', [VisitorController::class, 'check'])->name('check');
-                Route::get('manual-checkout/{no_ic}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
+                Route::get('manual-checkout/{no_ic}/{staff?}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
             });
 
 
@@ -324,6 +328,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('month', [AdminReportController::class, 'monthly'])->name('monthly');
                 Route::get('monthly-borrow', [AdminReportController::class, 'monthlyBorrow'])->name('student-top-borrower-monthly');
                 Route::get('yearly-borrow', [AdminReportController::class, 'YearlyBorrow'])->name('student-top-borrower-yearly');
+                Route::get('staff-monthly-visit', [AdminReportController::class, 'staffMonthlyVisit'])->name('staff-monthly-visit');
+                Route::get('staff-yearly-visit', [AdminReportController::class, 'staffYearlyVisit'])->name('staff-yearly-visit');
 
             });
 
