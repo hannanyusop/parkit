@@ -18,26 +18,25 @@
         </div>
 
         <div class="row">
-            <h3 class="card-title mb-4">Laporan Peminjam Buku (Pelajar)</h3>
+            <h3 class="card-title mb-4">Laporan Data Pelajar</h3>
         </div>
         <div class="row">
-            <a href="{{ route('frontend.user.library.admin.report.student-top-borrower-monthly') }}" class="btn btn-app bg-navy">
-                <i class="fas fa-moon"></i> Bulan
+            <a href="{{ route('frontend.user.library.admin.report.student-top-borrower-monthly') }}" class="btn btn-app bg-pink">
+                <i class="fas fa-book-reader"></i> Peminjaman Buku
             </a>
-            <a href="{{ route('frontend.user.library.admin.report.student-top-borrower-yearly') }}" class="btn btn-app bg-fuchsia">
-                <i class="fas fa-calendar"></i> Tahun
-            </a>
+            <div class="row">
+                <a href="{{ route('frontend.user.library.admin.report.student-monthly-visit') }}" class="btn btn-app bg-navy">
+                    <i class="fas fa-user-check"></i> Kunjungan
+                </a>
+            </div>
         </div>
 
         <div class="row">
-            <h3 class="card-title mb-4">Laporan Keharian (Staff)</h3>
+            <h3 class="card-title mb-4">Laporan Data Staff</h3>
         </div>
         <div class="row">
             <a href="{{ route('frontend.user.library.admin.report.staff-monthly-visit') }}" class="btn btn-app bg-navy">
-                <i class="fas fa-moon"></i> Bulan
-            </a>
-            <a href="{{ route('frontend.user.library.admin.report.staff-yearly-visit') }}" class="btn btn-app bg-fuchsia">
-                <i class="fas fa-calendar"></i> Tahun
+                <i class="fas fa-user-check"></i> Kunjungan
             </a>
         </div>
     </div>

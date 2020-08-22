@@ -16,6 +16,9 @@
             <a href="{{ route('frontend.user.library.admin.book.print-label') }}" class="btn btn-app bg-blue">
                 <i class="fa fa-print"></i> Cetak Label
             </a>
+            <a target="_blank" href="{{ route('frontend.user.library.admin.book.print-list') }}" class="btn btn-app bg-warning">
+                <i class="fa fa-table"></i> Cetak Senarai
+            </a>
             <a href="{{ route('frontend.user.library.admin.book.group.index') }}" class="btn btn-app bg-pink">
                 <i class="fa fa-bookmark"></i> Pengkelasan
             </a>

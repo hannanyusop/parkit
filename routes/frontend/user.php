@@ -290,6 +290,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('print-label-remove/{id}', [AdminBookController::class, 'printLabelRemove'])->name('print-label-remove');
                 Route::get('print-label-remove-all', [AdminBookController::class, 'printLabelRemoveAll'])->name('print-label-remove-all');
 
+                Route::get('print-list/', [AdminBookController::class, 'printList'])->name('print-list');
 
                 #ajax
                 Route::get('check-title', [AdminBookController::class, 'checkTitle'])->name('check-title');
@@ -330,6 +331,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 Route::get('yearly-borrow', [AdminReportController::class, 'YearlyBorrow'])->name('student-top-borrower-yearly');
                 Route::get('staff-monthly-visit', [AdminReportController::class, 'staffMonthlyVisit'])->name('staff-monthly-visit');
                 Route::get('staff-yearly-visit', [AdminReportController::class, 'staffYearlyVisit'])->name('staff-yearly-visit');
+
+                Route::get('student-monthly-visit', [AdminReportController::class, 'studentMonthlyVisit'])->name('student-monthly-visit');
+                Route::get('student-yearly-visit', [AdminReportController::class, 'studentYearlyVisit'])->name('student-yearly-visit');
+
 
             });
 

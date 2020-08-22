@@ -13,8 +13,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="text-center">
-                            LAPORAN PENGUNJUNG BAGI BULAN {{ request('month') }} {{ date('Y') }}<br>
-                            (STAFF)
+                            LAPORAN KUNJUNGAN STAFF TAHUN {{ date('Y') }}<br>
                         </h4>
                         <x-forms.get>
                             <div class="form-group">
@@ -25,6 +24,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success">Cari</button>
+                            <a href="{{ route('frontend.user.library.admin.report.staff-monthly-visit') }}" class="btn btn-info">Lihat Laporan Bulanan</a>
                         </x-forms.get>
                     </div>
                 </div>

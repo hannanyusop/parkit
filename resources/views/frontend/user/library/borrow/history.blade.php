@@ -12,23 +12,14 @@
                         <div class="card-body">
                             <h4>Carian Log Peminjaman</h4>
                             <div class="form-group">
-                                <input type="text" name="title" value="{{ request('title') }}" class="form-control" placeholder="NAMA / NO. KAD PENGENALAN">
+                                <input type="text" name="no_ic" value="{{ request('no_ic') }}" class="form-control" placeholder="NAMA / NO. KAD PENGENALAN">
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="status">
-                                    <option value="">SEMUA JENIS DENDA</option>
-                                    @foreach(libFineType() as $key => $status)
-                                        <option value="{{ $key }}" {{ (request('status') == $key)? "selected" : "" }}>{{ $status }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                    <option value="">STATUS PEMULANGAN</option>
+                                    <option value="1" {{ (request('status') == 1)? "SELECTED" : "" }}>BELUM DIPULANGKAN</option>
+                                    <option value="2" {{ (request('status') == 2)? "SELECTED" : "" }}>SUDAH DIPULANGKAN</option>
 
-                            <div class="form-group">
-                                <select class="form-control" name="status">
-                                    <option value="">STATUS BAYARAN</option>
-                                    @foreach(libFineStatus() as $key => $status)
-                                        <option value="{{ $key }}" {{ (request('status') == $key)? "selected" : "" }}>{{ $status }}</option>
-                                    @endforeach
                                 </select>
                             </div>
 

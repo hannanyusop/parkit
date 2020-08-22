@@ -6,10 +6,10 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 @include('frontend.user.library.admin.report.layout.side-div')
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
                         <x-forms.get>
@@ -24,10 +24,6 @@
                         </x-forms.get>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div>

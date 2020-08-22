@@ -13,6 +13,7 @@ use App\Models\Library\Payment;
 use App\Models\Library\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use phpDocumentor\Reflection\Types\Compound;
 
 class AdminBookController extends Controller{
 
@@ -458,6 +459,19 @@ class AdminBookController extends Controller{
                 ));
             }
 //        }
+
+    }
+
+    public function printList(Request $request){
+
+        $books = null;
+        if(!is_null($request->start) && !is_null($request->end)){
+
+            $books = Book::whereBetween('id', [$request->start, $request->end])
+                ->get();
+        }
+
+        return view('frontend.user.library.admin.book.print-list', compact('books'));
 
     }
 

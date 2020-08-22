@@ -35,9 +35,6 @@
                                     <td>{{ $late->book->parent->title }}</td>
                                     <td>{{ reformatDatetime($late->actual_return_date, "j-m-Y") }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-warning" onclick="return confirm('Are you user want to remove this book?')">
-                                            <i class="fas fa-times"></i> Remove
-                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -25,6 +25,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success">Cari</button>
+                            <a href="{{ route('frontend.user.library.admin.report.student-top-borrower-yearly') }}" class="btn btn-info">Lihat Laporan Tahunan</a>
                         </x-forms.get>
                     </div>
                 </div>

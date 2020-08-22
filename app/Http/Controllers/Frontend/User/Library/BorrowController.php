@@ -297,6 +297,25 @@ class BorrowController extends Controller{
     public function history(Request $request){
 
         $borrows = Borrow::get();
+
+        if($request->no_ic || $request->status){
+
+            $query = Borrow::whereHas('borrower', function ($q) use ($request){
+                $q->where('no_ic', 'LIKE', "%$request->no_ic%");
+                $q->orWhere('name', 'LIKE', "%$request->no_ic%");
+            });
+
+            if($request->status != ""){
+                if($request->status == 1){
+                    $query->where('in_id', null);
+                }else{
+                    $query->where('in_id', '!=', null);
+                }
+            }
+
+            $borrows = $query->get();
+
+        }
         return view('frontend.user.library.borrow.history', compact('borrows'));
 
     }

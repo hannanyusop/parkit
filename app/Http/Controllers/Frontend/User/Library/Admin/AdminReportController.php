@@ -164,6 +164,46 @@ class AdminReportController extends Controller{
 
     }
 
+    public function studentMonthlyVisit(Request $request){
+
+        if(!isset($request->month)){
+            return redirect()->route('frontend.user.library.admin.report.student-monthly-visit', ['month' => date('m')]);
+        }
+
+        $year = date('Y');
+        $month = $request->month;
+
+        $data = Log::select(DB::raw('count(*) as total'), 'student_id')
+            ->groupBy('student_id')
+            ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.student-monthly-visit', compact('data'));
+
+    }
+
+    public function studentYearlyVisit(Request $request){
+
+        if(!isset($request->year)){
+            return redirect()->route('frontend.user.library.admin.report.student-yearly-visit', ['year' => date('Y')]);
+        }
+
+        $year = $request->year;
+
+        $data = Log::select(DB::raw('count(*) as total'), 'student_id')
+            ->groupBy('student_id')
+            ->whereYear('created_at', $year)
+            ->orderBy('total', 'DESC')
+            ->limit(30)
+            ->get();
+
+        return view('frontend.user.library.admin.report.student-yearly-visit', compact('data'));
+
+    }
+
 
 
 }

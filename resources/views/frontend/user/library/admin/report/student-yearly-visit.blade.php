@@ -13,19 +13,18 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="text-center">
-                            LAPORAN PEMINJAM BUKU BAGI TAHUN {{ request('month') }} {{ date('Y') }}<br>
-                            (PELAJAR)
+                            LAPORAN KUNJUNGAN PELAJAR TAHUN {{ date('Y') }}<br>
                         </h4>
                         <x-forms.get>
                             <div class="form-group">
                                 <select class="form-control" name="year">
-                                    @foreach(getYear() as $year)
-                                        <option value="{{ $year }}" {{ (request('year') == $year)? "SELECTED" : "" }}>{{ $year }}</option>
+                                    @foreach(getYear() as $key => $year)
+                                        <option value="{{ $key }}" {{ (request('year') == $key)? "SELECTED" : "" }}>{{ $year }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success">Cari</button>
-                            <a href="{{ route('frontend.user.library.admin.report.student-top-borrower-monthly') }}" class="btn btn-info">Lihat Laporan Bulanan</a>
+                            <a href="{{ route('frontend.user.library.admin.report.student-monthly-visit') }}" class="btn btn-info">Lihat Laporan Bulanan</a>
                         </x-forms.get>
                     </div>
                 </div>
@@ -41,11 +40,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($topBorrower as $key => $borrower)
+                                @foreach($data as $key => $user)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $borrower->borrower->name }}</td>
-                                        <td>{{ $borrower->total }}</td>
+                                        <td>{{ $user->student->name }}</td>
+                                        <td>{{ $user->total }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
