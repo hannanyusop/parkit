@@ -10,7 +10,9 @@
                 <div class="card card-success">
                     <div class="card-body">
                        <x-forms.post :action="route('frontend.user.library.visitor.check')">
-                           <a href="{{ route('frontend.user.library.index') }}" class="btn btn-info mb-2">BACK</a>
+                           <a href="{{ route('frontend.user.library.index') }}" class="btn btn-warning mb-2">KEMBALI</a>
+                           <a href="{{ route('frontend.user.library.visitor.checkin') }}" onclick="return confirm('Adakah anda pasti untuk mengaktifkan mod SELF-LOGIN?')" class="btn btn-success mb-2"><i class="fa fa-child"></i> SELF-LOGIN</a>
+
                            <h5 class="text-success text-center font-weight-bold">KEDATANGAN PENGUNJUNG</h5>
                            <h2 class="text-center mb-5" id="clock"></h2>
                            <input class="form-control form-control-lg text-center" name="no_ic" value="{{ old('no_ic') }}" type="text" placeholder="CTH: 960516131234" autofocus>

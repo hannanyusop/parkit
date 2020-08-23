@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Domains\Auth\Models\User;
+use App\Http\Middleware\checkLibNoSelfLogin;
+use App\Http\Middleware\checkLibSelfLogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
@@ -86,7 +88,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'type' => \App\Domains\Auth\Http\Middleware\UserTypeCheck::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'checkPrefects' => \App\Http\Middleware\checkPrefects::class
+        'checkPrefects' => \App\Http\Middleware\checkPrefects::class,
+        'checkLibSelfLogin' => checkLibSelfLogin::class,
+        'checkLibNoSelfLogin' => checkLibNoSelfLogin::class,
     ];
 
     /**

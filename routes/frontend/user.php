@@ -26,7 +26,8 @@ use App\Http\Controllers\Frontend\User\Library\Admin\AdminReportController;
  * All route names are prefixed with 'frontend.'
  * These routes can not be hit if the user has not confirmed their email
  */
-Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', config('boilerplate.access.middleware.verified')]], function () {
+Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'password.expires', config('boilerplate.access.middleware.verified')]],
+    function () {
     Route::get('dashboard', [DashboardController::class, 'index'])
         ->middleware('is_user')
         ->name('dashboard')
@@ -353,5 +354,21 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         });
 
     });
+
+});
+
+Route::group([
+    'middleware' => ['auth', 'checkLibNoSelfLogin'],
+    'as' => 'user.library.visitor.',
+    'prefix' => 'library/visitor/',
+], function (){
+
+    Route::get('checkin/', [VisitorController::class, 'checkin'])->name('checkin');
+
+    Route::get('self/', [VisitorController::class, 'self'])->name('self');
+    Route::post('self-check/', [VisitorController::class, 'selfCheck'])->name('self-check');
+
+    Route::get('checkout/', [VisitorController::class, 'checkout'])->name('checkout');
+    Route::post('checkout/', [VisitorController::class, 'checkoutCheck'])->name('checkout-check');
 
 });
