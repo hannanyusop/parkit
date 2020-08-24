@@ -260,6 +260,9 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
                 Route::get('today/', [VisitorController::class, 'today'])->name('today');
                 Route::post('check/', [VisitorController::class, 'check'])->name('check');
                 Route::get('manual-checkout/{no_ic}/{staff?}', [VisitorController::class, 'manualCheckout'])->name('manual-checkout');
+
+                Route::get('checkin/', [VisitorController::class, 'checkin'])->name('checkin');
+
             });
 
 
@@ -363,7 +366,6 @@ Route::group([
     'prefix' => 'library/visitor/',
 ], function (){
 
-    Route::get('checkin/', [VisitorController::class, 'checkin'])->name('checkin');
 
     Route::get('self/', [VisitorController::class, 'self'])->name('self');
     Route::post('self-check/', [VisitorController::class, 'selfCheck'])->name('self-check');

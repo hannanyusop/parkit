@@ -1,16 +1,8 @@
-<footer class="c-footer">
-    <div>
-        <strong>
-            @lang('Copyright') &copy; {{ date('Y') }}
-            <x-utils.link href="http://laravel-boilerplate.com" target="_blank" :text="__(appName())" />
-        </strong>
-
-        @lang('All Rights Reserved')
+<footer class="main-footer">
+    <div class="footer-left">
+        Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
     </div>
+    <div class="footer-right">
 
-    <div class="mfs-auto">
-        @lang('Powered by')
-        <x-utils.link href="http://laravel-boilerplate.com" target="_blank" :text="__(appName())" /> &
-        <x-utils.link href="https://coreui.io" target="_blank" text="CoreUI" />
     </div>
 </footer>
