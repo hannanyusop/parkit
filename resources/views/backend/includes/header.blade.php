@@ -22,7 +22,7 @@
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <x-slot name="text">
                             @lang('Logout')
-                            <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                            <x-forms.get :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
                         </x-slot>
                     </x-utils.link>
             </div>

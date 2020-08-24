@@ -60,7 +60,7 @@
                         <x-slot name="text">
                             <i class="fas fa-sign-out-alt mr-2"></i>
                             @lang('Logout')
-                            <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                            <x-forms.get :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
                         </x-slot>
                     </x-utils.link>
                 </div>
