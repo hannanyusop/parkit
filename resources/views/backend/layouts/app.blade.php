@@ -29,11 +29,18 @@
                 <div class="section-header">
                     <h1>@yield('title')</h1>
                 </div>
-                @include('includes.partials.read-only')
-                @include('includes.partials.logged-in-as')
-                @include('includes.partials.announcements')
-                @include('includes.partials.messages')
-                @yield('content')
+
+                <div class="row">
+                    <div class="col-12">
+                        @include('includes.partials.read-only')
+                        @include('includes.partials.logged-in-as')
+                        @include('includes.partials.announcements')
+                        @include('includes.partials.messages')
+                    </div>
+                    <div class="col-12">
+                        @yield('content')
+                    </div>
+                </div>
             </section>
         </div>
             @include('backend.includes.footer')
