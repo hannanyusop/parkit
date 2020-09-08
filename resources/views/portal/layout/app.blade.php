@@ -94,27 +94,7 @@
 @yield('content')
 <div id="back-to-top" class="back-to-top">up</div>
 
-<footer class="footer">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-3">
-                    <a href="#"><img class="img-fluid" src="{{ asset('img/portal/logo.png') }}" alt="logo"></a>
-                </div>
-                <div class="col-sm-9 text-sm-right mt-4 mt-sm-0">
-                    <ul class="list-unstyled mb-0 social-icon">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-                        <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4 my-sm-5 pb-0">
-        </div>
-    </div>
+<footer class="footer mt-3">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
@@ -168,7 +148,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p class="mb-0">©Copyright 2020 <a href="#">hi-soft</a> SMK Agama Limbang</p>
+                    <p class="mb-0">©Copyright 2020 <a href="{{ route('frontend.portal.home') }}">SMK Agama Limbang</a></p>
                 </div>
             </div>
         </div>

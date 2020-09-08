@@ -20,20 +20,7 @@
         @include('portal.include.kemudahan')
     </section>
 
-    <section class="space-ptb">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-9">
-                    <div class="section-title text-center">
-                        <h2>Established 2010 in Hi-soft has been offering world-class information technology.</h2>
-                        <p class="px-xl-5">Positive pleasure-oriented goals are much more powerful motivators than negative fear-based ones. Although each is successful separately, the right combination of both is the most powerful motivational force known to humankind.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="space-pb">
+    <section class="space-pb mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-4 order-lg-1 order-1">

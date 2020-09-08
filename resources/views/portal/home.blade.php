@@ -1,6 +1,96 @@
 @extends('portal.layout.app')
 
 @section('content')
+    <style type="text/css">
+
+        .title {
+            font-family: inherit;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: inherit;
+            color: #252b46;
+        }
+        .bg-none{
+            background-color: #ffffff;
+        }
+        .paragraph {
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: inherit;
+            color: #9194a1;
+        }
+        .tab {
+            width: 100%;
+            height: auto;
+            padding: 8rem 0;
+            margin: 25px;
+        }
+        .tab-menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-bottom: 1.3px solid #dbdbdb;
+            transition: all 0.3s ease;
+        }
+        .tab-menu-link {
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: inherit;
+            cursor: pointer;
+            width: calc(100% / 4);
+            height: auto;
+            padding: 1rem 0;
+            border-bottom: 2.5px solid transparent;
+            color: #9194a1;
+            background: #fff;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            transition: all 0.3s ease;
+        }
+        .tab-menu-link::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 2;
+        }
+        .tab-menu-link.active {
+            bottom: 0px;
+            z-index: 0;
+            overflow: hidden;
+            border-bottom: 2.5px solid #fa5757;
+            border-top: none;
+            color: #252b46;
+            background: #fff;
+        }
+        .tab-bar {
+            padding: 2.5rem 0;
+            overflow: hidden;
+            background: #fff;
+        }
+        .tab-bar-content {
+            display: none;
+            width: 100%;
+            min-height: 10rem;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .tab-bar-content.active {
+            display: block;
+        }
+
+    </style>
     <section class="banner">
         <div class="swiper-container">
             <div class="swiper-wrapper h-700 h-sm-500">
@@ -30,53 +120,55 @@
         </div>
     </section>
 
-    <section class="space-ptb bg-light">
+    <section class="">
         <div class="container">
-            <div class="row justify-content-center pb-4 pb-md-5">
-                <div class="col-lg-10">
-                    <div class="d-md-flex align-items-center">
-                        <div class="mr-3">
-                            <h2 class="mb-0"></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="d-flex h-100">
-                        <div class="nav flex-column nav-pills w-100 align-self-lg-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link" id="mission-and-vision-tab" data-toggle="pill" href="#mission-and-vision" role="tab" aria-controls="mission-and-vision" aria-selected="true"><span class="data-hover" data-title="Sebut Harga/Tender">Sebut Harga/Tender</span></a>
-                            <a class="nav-link active" id="our-challenges-tab" data-toggle="pill" href="#our-challenges" role="tab" aria-controls="our-challenges" aria-selected="false"><span class="data-hover" data-title="Bakal Pelajar">Bakal Pelajar</span></a>
-                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#technology-partners" role="tab" aria-controls="technology-partners" aria-selected="false"><span class="data-hover" data-title="Pelajar">Pelajar</span></a>
-                            <a class="nav-link" id="meet-the-our-team-tab" data-toggle="pill" href="#meet-the-our-team" role="tab" aria-controls="meet-the-our-team" aria-selected="false"><span class="data-hover" data-title="Staff Tetap / Kontrak">Staff Tetap / Kontrak</span></a>
-                            <a class="nav-link" id="careers-with-us-tab" data-toggle="pill" href="#careers-with-us" role="tab" aria-controls="careers-with-us" aria-selected="false"><span class="data-hover" data-title="Muat Trun Borang">Muat Trun Borang</span></a>
-                        </div>
+                <div class="tab">
+                    <div class="tab-menu">
+                        <button class="tab-menu-link active" data-content="tender">
+                            <span data-title="tender">Sebut Harga / Tender</span>
+                        </button>
+                        <button class="tab-menu-link" data-content="student">
+                            <span data-title="student">Pelajar</span>
+                        </button>
+                        <button class="tab-menu-link" data-content="staff">
+                            <span data-title="staff">Staff Tetap/ Kontrak</span>
+                        </button>
+                        <button class="tab-menu-link" data-content="download">
+                            <span data-title="download">Muat Turun </span>
+                        </button>
                     </div>
-                </div>
-                <div class="col-md-9 mt-3 mt-md-0">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade" id="mission-and-vision" role="tabpanel" aria-labelledby="mission-and-vision-tab">
-                            <div class="row">
-
+                    <div class="tab-bar">
+                        <div class="tab-bar-content active" id="tender">
+                            <div class="texts">
+                                <h2 class="title">Sebut Harga / Senarai Tender.</h2>
+                                <p class="paragraph">
+                                   Tiada Pengunguman Buat Masa Kini
+                                </p>
                             </div>
                         </div>
-                        <div class="tab-pane  fade show active" id="our-challenges" role="tabpanel" aria-labelledby="our-challenges-tab">
-                            <div class="row">
-
+                        <div class="tab-bar-content" id="student">
+                            <div class="texts">
+                                <h2 class="title">Pelajar / Bakal Pelajar</h2>
+                                <p class="paragraph">
+                                    Tiada Pengunguman Buat Masa Kini
+                                </p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="technology-partners" role="tabpanel">
-                            <div class="row">
+                        <div class="tab-bar-content" id="staff">
+                            <div class="texts">
+                                <h2 class="title">Staff Tetap / Kontrak</h2>
+                                <p class="paragraph">
+                                    Tiada Pengunguman Buat Masa Kini
+                                </p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="meet-the-our-team" role="tabpanel" aria-labelledby="meet-the-our-team-tab">
-                            <div class="row">
-
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="careers-with-us" role="tabpanel" aria-labelledby="careers-with-us-tab">
-                            <div class="row">
-
+                        <div class="tab-bar-content" id="download">
+                            <div class="texts">
+                                <h2 class="title">Muat Turun Borang</h2>
+                                <p class="paragraph">
+                                    Tiada Pengunguman Buat Masa Kini
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -84,4 +176,30 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        // Tabs Action
+        const tabLink = document.querySelectorAll(".tab-menu-link");
+        const tabContent = document.querySelectorAll(".tab-bar-content");
+
+        tabLink.forEach((el) => {
+            el.addEventListener("click", activeTab);
+        });
+
+        function activeTab(el) {
+            const btnTarget = el.currentTarget;
+            const content = btnTarget.dataset.content;
+
+            tabContent.forEach((el) => {
+                el.classList.remove("active");
+            });
+
+            tabLink.forEach((el) => {
+                el.classList.remove("active");
+            });
+
+            document.querySelector("#" + content).classList.add("active");
+            btnTarget.classList.add("active");
+        }
+
+    </script>
 @endsection
