@@ -15,7 +15,7 @@
                         <h4 class="text-center">LAPORAN HARIAN BAGI BULAN {{ request('month') }} {{ date('Y') }}</h4>
                         <x-forms.get>
                             <div class="form-group">
-                                <select class="form-control" name="year">
+                                <select class="form-control" name="month">
                                     @foreach(getMonth() as $key => $month)
                                         <option value="{{ $key }}" {{ (request('month') == $key)? "SELECTED" : "" }}>{{ $month }}</option>
                                     @endforeach

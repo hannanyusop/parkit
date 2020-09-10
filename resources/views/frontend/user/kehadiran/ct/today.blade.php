@@ -37,7 +37,7 @@
                                 <th>Status Kehadiran</th>
                                 <th>Suhu (°C)</th>
                                 <th>Nota</th>
-                                <th></th>
+                                <th>Tarikh</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,12 +49,12 @@
                                         <td>{{ attendanceStatus($attendance->status) }}</td>
                                         <td>{{ $attendance->temperature }}</td>
                                         <td>{{ $attendance->remark }}</td>
-                                        <td></td>
+                                        <td>{{ reformatDatetime($attendance->created_at, 'H:i:s') }}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td class="text-center" colspan="4">Tiada Kehadiran Hari Ini</td>
+                                    <td class="text-center" colspan="6">Tiada Kehadiran Hari Ini</td>
                                 </tr>
                             @endif
                             </tbody>

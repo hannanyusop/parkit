@@ -85,7 +85,7 @@
                                             <td><small>{{ $book->payment->name }}</small></td>
                                             <td><small>{{ reformatDatetime($book->created_at, 'd-m-Y') }}</small></td>
                                             <td></td>
-                                            <td><small>{{ $book->payment->name }}</small></td>
+                                            <td><small>{{ $book->parent->pages }}</small></td>
                                             <td></td>
                                         </tr>
                                     @endforeach
