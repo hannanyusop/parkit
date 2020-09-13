@@ -21,6 +21,8 @@ use App\Http\Controllers\Frontend\User\Library\Admin\AdminSettingController;
 use App\Http\Controllers\Frontend\User\Library\VisitorController;
 use App\Http\Controllers\Frontend\User\Student\StudentMainController;
 use App\Http\Controllers\Frontend\User\Library\Admin\AdminReportController;
+use App\Http\Controllers\Frontend\User\Portal\PortalController;
+use App\Http\Controllers\Frontend\User\Portal\SmkalController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -157,6 +159,54 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
 
         });
+
+    });
+
+    Route::group([
+        'prefix' => 'manage-portal/',
+        'as' => 'portal.',
+//        'middleware' => 'permission:portal_can'
+    ], function (){
+
+        Route::get('', [PortalController::class, 'index'])->name('index');
+        Route::get('/{group}', [PortalController::class, 'group'])->name('group');
+
+        Route::get('edit/{page_id}', [PortalController::class, 'edit'])->name('edit');
+
+        Route::group([
+            'prefix' => 'edit/{page_id}/',
+            'as' => 'edit.'
+        ], function (){
+
+            Route::get('{text_id}', [PortalController::class, 'editText'])->name('text');
+            Route::post('{text_id}', [PortalController::class, 'updateText'])->name('updateText');
+
+        });
+
+//        Route::get('/', [PortalController::class, 'home'])->name('home');
+//        Route::post('/', [PortalController::class, 'homeUpdate'])->name('home-update');
+
+
+//        Route::group([
+//            'prefix' => 'smkal/',
+//            'as' => 'smkal.'
+//        ], function (){
+//
+//            Route::get('pengenalan/', [SmkalController::class, 'pengenalan'])->name('pengenalan');
+//            Route::post('pengenalan/', [SmkalController::class, 'pengenalanUpdate'])->name('pengenalan-update');
+//
+//            Route::get('pengetua/', [SmkalController::class, 'pengetua'])->name('pengetua');
+//            Route::post('pengetua/', [SmkalController::class, 'pengetuaUpdate'])->name('pengetua-udate');
+//
+//            Route::get('organisasi', [SmkalController::class, 'organisasi'])->name('organisasi');
+//            Route::post('organisasi', [SmkalController::class, 'organisasiUpdate'])->name('organisasi-update');
+//
+//            Route::get('visi/', [SmkalController::class, 'pengetua'])->name('visi');
+//            Route::post('visi/', [SmkalController::class, 'pengetuaUpdate'])->name('visi-update');
+//
+//
+//
+//        });
 
     });
 

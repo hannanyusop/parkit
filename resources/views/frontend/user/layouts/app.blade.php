@@ -155,6 +155,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('portal_can')
+                        <li class="nav-header">Portal</li>
+                        <li class="nav-item">
+                            <a href="{{ route('frontend.user.portal.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>Manage Portal
+                            </a>
+                        </li>
+                    @endcan
                     @can('poll_can')
                         <li class="nav-header">Coop Voting System</li>
                         <li class="nav-item">

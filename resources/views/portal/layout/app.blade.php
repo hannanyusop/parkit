@@ -67,7 +67,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.smkal.pengenalan') }}">Pengenalan<i class="fas fa-arrow-right"></i></a></li>
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.smkal.pengetua') }}">Perutusan Pengetua<i class="fas fa-arrow-right"></i></a></li>
-                            <li><a class="dropdown-item" href="{{ route('frontend.portal.smkal.organisasi') }}">Carta Organisasi<i class="fas fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="{{ route('frontend.portal.smkal.pengetua') }}">Carta Organisasi<i class="fas fa-arrow-right"></i></a></li>
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.smkal.visi') }}">Visi Misi<i class="fas fa-arrow-right"></i></a></li>
                         </ul>
                     </li>
