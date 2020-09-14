@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AnnouncementSeeder::class);
 
         Model::reguard();
+        $this->call(LibGParentsTableSeeder::class);
+        $this->call(LibGSubsTableSeeder::class);
+        $this->call(LibOptionsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
     }
 }

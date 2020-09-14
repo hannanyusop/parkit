@@ -47,7 +47,7 @@
                                             <td>{{ $student->no_ic }}</td>
                                             <td>{{ $student->name }}</td>
                                             <td>{{ getGender($student->gender) }}</td>
-                                            <td>{!! badgeStudentType($student->type) !!}</td>
+                                            <td>{!! badgeStudentType($student->is_hostel) !!}</td>
                                             <td>{!! badgeStudentStatus($student->status) !!}</td>
                                             <td><a href="{{ route('frontend.user.student.edit', $student->id) }}" class="btn btn-info btn-sm">Kemaskini</a> </td>
                                         </tr>

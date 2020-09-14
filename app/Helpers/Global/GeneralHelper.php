@@ -439,7 +439,7 @@ if(!function_exists('badgeStudentType')){
 
         $types = [
             1 => "<span class=\"badge bg-success\">ASRAMA</span>",
-            2 => "<span class=\"badge bg-info\">HARIAN</span>",
+            0 => "<span class=\"badge bg-info\">HARIAN</span>",
         ];
 
         return $types[$type];
