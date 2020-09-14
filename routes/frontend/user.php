@@ -179,7 +179,12 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
         ], function (){
 
             Route::get('{text_id}', [PortalController::class, 'editText'])->name('text');
-            Route::post('{text_id}', [PortalController::class, 'updateText'])->name('updateText');
+            Route::post('{text_id}', [PortalController::class, 'updateText'])->name('update-text');
+
+            Route::get('addDirectory', [PortalController::class, 'addDirectory'])->name('add-directory');
+            Route::post('addDirectory', [PortalController::class, 'insertDirectory'])->name('insert-directory');
+
+
 
         });
 

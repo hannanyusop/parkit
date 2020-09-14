@@ -21,6 +21,7 @@
 
     <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('lte/plugins/toastr/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.css') }}">
 
 
 

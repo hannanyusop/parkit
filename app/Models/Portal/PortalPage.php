@@ -18,7 +18,8 @@ class PortalPage extends Model{
 
     public function directories(){
 
-        return $this->hasMany(PortalDirectory::class, 'page_id', 'id');
+        return $this->hasMany(PortalDirectory::class, 'page_id', 'id')
+            ->orderBy('order', 'ASC');
     }
 
 }
