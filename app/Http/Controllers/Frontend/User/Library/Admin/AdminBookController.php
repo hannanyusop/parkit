@@ -60,9 +60,19 @@ class AdminBookController extends Controller{
         if(!$last_book){
             $last_book = Book::orderBy('created_at', 'DESC')
                 ->first();
+
+            if(!$last_book){
+                
+                $last_book_id = 1;
+            }else{
+
+                $last_book_id = $last_book->id;
+            }
+        }else{
+
+            $last_book_id = $last_book->id;
         }
 
-        $last_book_id = $last_book->id;
 
         do{
             #prevent from error;
