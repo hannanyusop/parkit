@@ -10,6 +10,28 @@ class Student extends Model{
 
     protected $table = 'students';
 
+    public $fillable = [
+        'name',
+        'no_ic',
+        'birth_certificate',
+        'dob',
+        'class_id',
+        'status',
+        'gender',
+        'dlp_status',
+        'religion',
+        'race',
+        'nationality',
+        'is_orphans',
+        'is_hostel',
+        'is_oku',
+        'oku_no',
+        'oku_type',
+        'oku_register_date',
+        'address',
+        'image_url',
+    ];
+
     public function notReturnBook(){
         return $this->hasMany(Borrow::class, 'student_id', 'id')
             ->where('return_date', null)

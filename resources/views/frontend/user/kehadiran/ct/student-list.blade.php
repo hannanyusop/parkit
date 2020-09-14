@@ -7,10 +7,10 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             <div class="card card-info">
                 <div class="card-body">
-                    <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR KELAS TINGKATAN {{ $class->generate_name }} <br>BAGI TAHUN {{ date('Y') }}</p>
+                    <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR {{ $class->generate_name }} <br>BAGI TAHUN {{ date('Y') }}</p>
 
                     <div class="row">
                         <div class="col-md-6">

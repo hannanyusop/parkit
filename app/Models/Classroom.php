@@ -9,6 +9,14 @@ class Classroom extends Model{
 
     protected $table = 'classes';
 
+    public $fillable = [
+        'generate_name',
+        'form',
+        'name',
+        'user_id',
+        'is_active'
+    ];
+
     #classroom teacher
     public function ct(){
         return $this->hasOne(User::class, 'id', 'user_id');

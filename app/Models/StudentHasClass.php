@@ -9,7 +9,7 @@ class StudentHasClass extends Model{
 
     protected $table = 'student_has_class';
 
-    protected $fillable = ['class_id'];
+    protected $fillable = ['class_id', 'student_id', 'year'];
 
     public function student(){
         return $this->hasOne(Student::class, 'id', 'student_id');

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Frontend\User\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Student\InsertRequest;
 use App\Http\Requests\Frontend\User\Student\UpdateRequest;
+use App\Import\StudentImport;
 use App\Models\Classroom;
 use App\Models\Student;
 use App\Models\StudentHasClass;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentMainController extends Controller{
 
@@ -159,5 +161,20 @@ class StudentMainController extends Controller{
             #remove data
 
         }
+    }
+
+    public function import(){
+
+        return view('frontend.user.student.import');
+
+    }
+
+    public function upload(Request $request){
+
+       $result = Excel::import(new StudentImport(), $request->file('file'));
+
+       return redirect()->route('frontend.user.student.index')->withFlashSuccess('Data pelajar berjaya dikemaskini');
+
+
     }
 }

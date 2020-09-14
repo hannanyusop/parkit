@@ -17,6 +17,10 @@
                 <a href="{{ route('frontend.user.kehadiran.ct.today') }}" class="btn btn-app bg-teal">
                     <i class="fas fa-users"></i> Kehadiran Pelajar
                 </a>
+
+                <a href="{{ route('frontend.user.student.import') }}" class="btn btn-app bg-dark">
+                    <i class="fas fa-upload"></i> Import Data Pelajar
+                </a>
             </div>
         </div>
     </div>
