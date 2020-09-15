@@ -41,6 +41,7 @@
                             <label for="image" class="col-sm-2 col-form-label">Image</label>
                             <div class="col-sm-6">
                                 <input name="image" value="" type="file" class="form-control text-uppercase" id="image">
+                                <span class="text-center font-weight-normal text-sm">Ukuran Gambar : 400 x 430</span>
                             </div>
                         </div>
 
