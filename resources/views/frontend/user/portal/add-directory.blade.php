@@ -13,16 +13,16 @@
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Pelajar</h3>
+                    <h3 class="card-title">Tambah Directory</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <x-forms.post :action="route('frontend.user.portal.edit.add-directory', [ $directory->page_id])" class="form-horizontal">
+                <x-forms.post :action="route('frontend.user.portal.edit.insert-directory', [$page_id])" class="form-horizontal" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="group" class="col-sm-2 col-form-label">Kumpulan</label>
                             <div class="col-sm-10">
-                                <input name="group" value="{{ old('group') }}"  type="text" class="form-control text-uppercase" id="group" required>
+                                <input name="group" value="{{ old('group') }}"  type="text" class="form-control" id="group" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -60,6 +60,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Hantar</button>
+                        <a class="btn btn-info btn-warning" href="{{ route('frontend.user.portal.edit', $page_id) }}">Kembali</a>
                     </div>
                 </x-forms.post>
             </div>

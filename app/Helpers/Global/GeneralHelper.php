@@ -988,3 +988,17 @@ if(!function_exists('attendanceStatus')){
 
 }
 
+if(!function_exists('downloadGroups')){
+
+    function downloadGroups($group_id = null){
+
+        $groups = [
+            1 => "STAFF",
+            2 => "PELAJAR",
+            3 => "IBU-BAPA"
+        ];
+
+        return ($group_id)? $groups[$group_id] : $groups;
+    }
+}
+

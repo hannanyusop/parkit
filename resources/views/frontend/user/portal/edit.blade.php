@@ -4,7 +4,13 @@
 
 @section('content')
     <section class="content">
-        <p>{{ $page->name }}</p>
+        <div class="row">
+            <div class="float-left">
+                <p>{{ $page->name }}</p>
+            </div>
+            <div class="float-right m-2">
+                <a href="{{ route('frontend.user.portal.index') }}" class="btn btn-info">Utama</a>
+            </div></div>
        <div class="row">
            @if(!is_null($texts))
            <div class="col-md-12">

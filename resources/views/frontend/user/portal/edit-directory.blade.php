@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="group" class="col-sm-2 col-form-label">Kumpulan</label>
                             <div class="col-sm-10">
-                                <input name="group" value="{{ $directory->group }}"  type="text" class="form-control text-uppercase" id="group" required>
+                                <input name="group" value="{{ $directory->group }}"  type="text" class="form-control" id="group" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -60,6 +60,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Hantar</button>
+                        <a class="btn btn-info btn-warning" href="{{ route('frontend.user.portal.edit', $directory->page_id) }}">Kembali</a>
                     </div>
                 </x-forms.post>
             </div>

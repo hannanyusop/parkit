@@ -3,6 +3,7 @@
 
  use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\Portal\EditDirectoryRequest;
+use App\Http\Requests\Frontend\User\Portal\InsertDirectoryRequest;
 use App\Models\Portal\PortalDirectory;
 use App\Models\Portal\PortalPage;
 use App\Models\Portal\PortalText;
@@ -72,26 +73,33 @@ class PortalController extends Controller{
 
      }
 
-     public function addDir(){
+     public function addDirectory($page_id){
 
-         dd('fsd');
          return view('frontend.user.portal.add-directory', compact('page_id'));
-
      }
 
-     public function insertDirectory(Request $request, $page_id){
+     public function insertDirectory(InsertDirectoryRequest $request, $page_id){
 
          $directory = new PortalDirectory();
+
+
+         $timestamp = time();
+         $extension = $request->image->extension();
+
+         $request->image->storeAs('/public', $timestamp.".".$extension);
+         $url = Storage::url($timestamp.".".$extension);
+         Storage::delete($directory->image);
+
+         $directory->image = $url;
 
          $directory->page_id = $page_id;
          $directory->group   = $request->group;
          $directory->name   = strtoupper($request->name);
          $directory->position = strtoupper($request->position);
-         $directory->image = $request->image;
          $directory->order = $request->order;
          $directory->save();
 
-         return redirect()->route('frontend.user.portal.edit', $directory->page_id)->withFlashSuccess('Berjaya dikemaskini!');
+         return redirect()->route('frontend.user.portal.edit', $directory->page_id)->withFlashSuccess('Berjaya ditambah!');
 
      }
 
