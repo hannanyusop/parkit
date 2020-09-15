@@ -106,55 +106,6 @@
 <div id="back-to-top" class="back-to-top">up</div>
 
 <footer class="footer mt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
-                <h5 class="text-primary mb-2 mb-sm-4">Pautan Atas Talian</h5>
-                <div class="footer-link">
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#">Sapskara</a></li>
-
-                    </ul>
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#">Sistem Maklumat Sekolah</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-2 mb-4 mb-lg-0">
-                <h5 class="text-primary mb-2 mb-sm-4"></h5>
-                <div class="footer-link">
-                    <ul class="list-unstyled mb-0">
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-2 mb-4 mb-sm-0">
-                <h5 class="text-primary mb-2 mb-sm-4"></h5>
-                <div class="footer-link">
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="footer-contact-info">
-                    <h5 class="text-primary mb-3">Hubungi Kami</h5>
-                    <div class="contact-address">
-                        <div class="contact-item">
-                            <label>Address:</label>
-                            <p>Km 11.7,Jalan Pandaruan, Peti Surat 493, 98700, Limbang
-                            </p>
-                        </div>
-                        <div class="contact-item">
-                            <label>Phone:</label>
-                            <h4 class="mb-0 font-weight-bold"><a href="#">+60 11657 50592</a></h4>
-                        </div>
-                        <div class="contact-item">
-                            <label>Email:</label>
-                            <a class="text-dark" href="#">admin@smkal.my</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="footer-bottom py-sm-5 py-4">
         <div class="container">
             <div class="row">

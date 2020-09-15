@@ -24,7 +24,8 @@
         @endif
 
         <x-slot name="body">
-            <livewire:users-table />
+            @livewire('search-users')
+            {{--            <livewire:users-table />--}}
         </x-slot>
     </x-backend.card>
 @endsection
