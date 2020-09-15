@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Classroom Teacher')
+@section('title', 'Senarai Kelas')
 
 @push('after-styles')
     <style type="text/css">
@@ -14,17 +14,14 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             @include('frontend.user.student.layout.topbar')
-            <div class="card card-info">
+            <div class="card">
                 <div class="card-body">
-
-                    <div class="row">
-                        <a href="{{ route('frontend.user.kehadiran.ct.add-class') }}" class="btn btn-app bg-success">
-                            <i class="fas fa-user-plus"></i> Daftar Kelas
-                        </a>
-                    </div>
-
+                    <a href="{{ route('frontend.user.kehadiran.ct.add-class') }}" class="btn btn-sm btn-link float-right mb-3">Tambah Kelas
+                        <i class="fa fa-plus ml-1"></i>
+                    </a>
+                    <h4 class="header-title mt-2">Senarai Kelas</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -44,8 +41,13 @@
                                 <td>{{ getCurrentClassroomTeacher($class->user_id) }}</td>
                                 <td class="text-center">{{ $class->currentStudent->count() }}</td>
                                 <td>
-                                    <a href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', $class->id) }}" class="btn btn-success btn-xs">Laporan Kehadiran Hari Ini</a>
-                                    <a href="{{ route('frontend.user.kehadiran.ct.student-list', $class->id) }}" class="btn btn-info btn-xs">Lihat Senarai Pelajar</a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', $class->id) }}">Laporan Kehadiran</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', $class->id) }}">Senarai Pelajar</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

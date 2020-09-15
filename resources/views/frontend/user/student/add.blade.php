@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Campaign')
+@section('title', 'Daftar Pelajar')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/select2/css/select2.min.css') }}">
@@ -10,7 +10,7 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             @include('frontend.user.student.layout.topbar')
             <div class="card card-info">
                 <div class="card-header">

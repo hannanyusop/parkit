@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Campaign')
+@section('title', 'Import Data Pelajar')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/select2/css/select2.min.css') }}">
@@ -10,18 +10,21 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             @include('frontend.user.student.layout.topbar')
+        </div>
+        <div class="col-md-8 offset-md-2">
             <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title">Kemaskini Maklumat Pelajar</h3>
-                </div>
                 <x-forms.post :action="route('frontend.user.student.upload')" class="form-horizontal"  enctype="multipart/form-data" >
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="name" class="col-sm-2 col-form-label">Dokumen</label>
                             <div class="col-sm-10">
-                                <input name="file" type="file" class="form-control text-uppercase" id="file" required>
+                                <div class="custom-file">
+                                    <input type="file" name="file" class="custom-file-input" id="file">
+                                    <label class="custom-file-label" for="file">Pilih</label>
+                                </div>
+                                <span class="font-13 text-muted">Sila rujuk panduan sebelum memuatnaik data</span>
                             </div>
                         </div>
 

@@ -7,7 +7,7 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             <div class="card card-info">
                 <div class="card-body">
                     <p class="text-center text-uppercase font-weight-bold">REKOD KEHADIRAN KELAS TINGKATAN 6 ATAS BAGI<br> {{ date('d M Y') }}</p>

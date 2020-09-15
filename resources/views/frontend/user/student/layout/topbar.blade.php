@@ -2,23 +2,22 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4>Sistem Maklumat Pelajar</h4>
-                <a href="{{ route('frontend.user.student.index') }}" class="btn btn-app bg-purple">
+                <a href="{{ route('frontend.user.student.index') }}" class="btn btn-app">
                     <i class="fas fa-search"></i> Carian Pelajar
                 </a>
 
-                <a href="{{ route('frontend.user.student.add') }}" class="btn btn-app bg-navy">
+                <a href="{{ route('frontend.user.student.add') }}" class="btn btn-app">
                     <i class="fas fa-user-plus"></i> Daftar Pelajar
                 </a>
 
-                <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="btn btn-app bg-orange">
+                <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="btn btn-app">
                     <i class="fas fa-school"></i> Senarai Kelas
                 </a>
-                <a href="{{ route('frontend.user.kehadiran.ct.today') }}" class="btn btn-app bg-teal">
+                <a href="{{ route('frontend.user.kehadiran.ct.today') }}" class="btn btn-app">
                     <i class="fas fa-users"></i> Kehadiran Pelajar
                 </a>
 
-                <a href="{{ route('frontend.user.student.import') }}" class="btn btn-app bg-dark">
+                <a href="{{ route('frontend.user.student.import') }}" class="btn btn-app">
                     <i class="fas fa-upload"></i> Import Data Pelajar
                 </a>
             </div>

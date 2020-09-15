@@ -7,43 +7,48 @@
 
         <div class="row">
             <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="fa fa-user-check"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Pengunjung Aktif</span>
-                        <span class="info-box-number">{{ getLibTodayActive() }}</span>
-                    </div>
+                <div class="card tilebox-one">
+                    <div class="card-body">
+                        <p class="mb-0 text-muted">
+                            <span class="text-nowrap">Pengunjung Aktif</span>
+                        </p>
+                        <i class="uil uil-users-alt float-right"></i>
+                        <h6 class="text-uppercase mt-0"></h6>
+                        <h2 class="my-2" id="active-users-count">{{ getLibTodayActive() }}</h2>
+                    </div> <!-- end card-body-->
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-gradient-maroon">
-                    <span class="info-box-icon"><i class="fa fa-user-friends"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Jumlah Pengunjung Hari Ini</span>
-                        <span class="info-box-number">{{ getLibTodayAll() }}</span>
-                    </div>
+                <div class="card tilebox-one">
+                    <div class="card-body">
+                        <p class="mb-0 text-muted">
+                            <span class="text-nowrap">Jumlah Pengunjung Hari Ini</span>
+                        </p>
+                        <i class="uil uil-users-alt float-right"></i>
+                        <h2 class="my-2" id="active-users-count">{{ getLibTodayAll() }}</h2>
+                    </div> <!-- end card-body-->
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-indigo">
-                    <span class="info-box-icon"><i class="fa fa-users"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Jumlah Pengunjung Bulan Ini</span>
-                        <span class="info-box-number">{{ getLibMonthAll() }}</span>
-                    </div>
+                <div class="card tilebox-one">
+                    <div class="card-body">
+                        <p class="mb-0 text-muted">
+                            <span class="text-nowrap">Jumlah Pengunjung Bulan Ini</span>
+                        </p>
+                        <i class="uil uil-users-alt float-right"></i>
+                        <h2 class="my-2" id="active-users-count">{{ getLibMonthAll() }}</h2>
+                    </div> <!-- end card-body-->
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-gradient-fuchsia">
-                    <span class="info-box-icon"><i class="fa fa-clock"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Peminjam Lewat</span>
-                        <span class="info-box-number">{{ getLate() }}</span>
-                    </div>
+                <div class="card tilebox-one">
+                    <div class="card-body">
+                        <p class="mb-0 text-muted">
+                            <span class="text-nowrap">Peminjam Lewat</span>
+                        </p>
+                        <i class="uil uil-users-alt float-right"></i>
+                        <h2 class="my-2" id="active-users-count">{{ getLate() }}</h2>
+                    </div> <!-- end card-body-->
                 </div>
             </div>
         </div>
@@ -59,10 +64,12 @@
                                 <small><a class="" onclick="return confirm('Adakah anda pasti untuk log keluar ID ini?')" href="{{ route('frontend.user.library.prefect-logout') }}">Log Keluar</a></small>
                             @endcan
                         </div>
+
+                        <div class="row icons-list-demo"></div>
                         <div class="row">
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-warning">
+                                <div class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-handshake"></i> </h3>
 
@@ -73,7 +80,7 @@
                             </div>
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-orange">
+                                <div class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-user-clock"></i> </h3>
 
@@ -85,7 +92,7 @@
                             @can(['lib_staff', 'lib_admin'])
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-purple">
+                                <div class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-book"></i> </h3>
 
@@ -99,7 +106,7 @@
                             @can('lib_admin')
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-info">
+                                <div class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-chart-area"></i> </h3>
 
@@ -110,7 +117,7 @@
                             </div>
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-danger">
+                                <div class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-cogs"></i> </h3>
 

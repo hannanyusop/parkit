@@ -14,19 +14,16 @@
 
 @section('content')
     <section class="content">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             @include('frontend.user.student.layout.topbar')
-            <div class="card card-info">
+            <div class="card">
                 <div class="card-body">
-
-                    <div class="row">
-                        @if($today)
-                        @else
-                            <a href="{{ route('frontend.user.kehadiran.ct.today-generate', $uHasClass->class_id) }}" onclick="return confirm('Adakah anda pasti untuk menjana senarai kehadiran hari ini?')" class="btn btn-app bg-success">
-                                <i class="fas fa-user-plus"></i> Jana Kehadiran Hari Ini
-                            </a>
-                        @endif
-                    </div>
+                    @if($today)
+                    @else
+                        <a href="{{ route('frontend.user.kehadiran.ct.today-generate', $uHasClass->class_id) }}" onclick="return confirm('Adakah anda pasti untuk menjana senarai kehadiran hari ini?')" class="btn btn-sm btn-link float-right mb-3">Jana Senarai
+                            <i class="fa fa-list ml-1"></i>
+                        </a>
+                    @endif
 
                     <div class="table-responsive">
                         <table class="table table-bordered">

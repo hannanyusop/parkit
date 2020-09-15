@@ -26,19 +26,24 @@
 </script>
 @if(session()->get('flash_success'))
     <script type="text/javascript">
-        toastr.success("{{ session()->get('flash_success') }}");
+        {{--toastr.success("{{ session()->get('flash_success') }}");--}}
     </script>
 @endif
 
 @if(session()->get('flash_warning'))
     <script type="text/javascript">
-        toastr.warning("{{ session()->get('flash_warning') }}");
+        {{--toastr.warning("{{ session()->get('flash_warning') }}");--}}
     </script>
 @endif
 
 @if(session()->get('flash_info') || session()->get('flash_message'))
     <script type="text/javascript">
-        toastr.info("{{ session()->get('flash_info') }}");
+        iziToast.warning({
+            title: 'Hello, world!',
+            message: "{{ session()->get('flash_info') }}",
+            position: 'topRight'
+        });
+        {{--toastr.info("{{ session()->get('flash_info') }}");--}}
     </script>
 @endif
 
