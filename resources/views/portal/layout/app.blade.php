@@ -30,20 +30,21 @@
     <div class="topbar">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="d-block d-md-flex align-items-center text-center">
-                        <div class="mr-4 d-inline-block py-1">
-                            <a href="#"><i class="far fa-envelope mr-2 fa-flip-horizontal text-primary"></i>admin@smkal.edu.my</a>
-                        </div>
-                        <div class="mr-auto d-inline-block py-1">
-                            <a href="tel:1-800-555-1234"><i class="fas fa-map-marker-alt text-primary mr-2"></i>Km 11.7,Jalan Pandaruan, Peti Surat 493, 98700, Limbang</a>
-                        </div>
-                        <div class="d-inline-block py-1">
-                            <ul class="list-unstyled">
-                                <li><a href="{{ route('frontend.auth.login') }}">Log Masuk Staff</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-12 text-center">
+                    <img style="width: 100%;height: auto;"  src="{{ asset('img/header.PNG') }}">
+{{--                    <div class="d-block d-md-flex align-items-center text-center">--}}
+{{--                        <div class="mr-4 d-inline-block py-1">--}}
+{{--                            <a href="#"><i class="far fa-envelope mr-2 fa-flip-horizontal text-primary"></i>admin@smkal.edu.my</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="mr-auto d-inline-block py-1">--}}
+{{--                            <a href="tel:1-800-555-1234"><i class="fas fa-map-marker-alt text-primary mr-2"></i>Km 11.7,Jalan Pandaruan, Peti Surat 493, 98700, Limbang</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="d-inline-block py-1">--}}
+{{--                            <ul class="list-unstyled">--}}
+{{--                                <li><a href="{{ route('frontend.auth.login') }}">Log Masuk Staff</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -83,6 +84,16 @@
                         <a href="#" class="nav-link" data-toggle="dropdown">Muat Turun Borang</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.download.borang') }}">Senarai Borang<i class="fas fa-arrow-right"></i></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown">Sistem Atas Talian</a>
+                        <ul class="dropdown-menu">
+                            @if(auth())
+                                <li><a class="dropdown-item" href="{{ route('frontend.user.dashboard') }}">Sistem Maklumat Sekolah(Logged in)<i class="fas fa-arrow-right"></i></a></li>
+                            @else
+                                <li><a class="dropdown-item" href="{{ route('frontend.auth.login') }}">Sistem Maklumat Sekolah<i class="fas fa-arrow-right"></i></a></li>
+                            @endif
                         </ul>
                     </li>
                 </ul>
