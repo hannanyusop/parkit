@@ -22,7 +22,7 @@ class InsertDirectoryRequest extends FormRequest
             'group' => 'required',
             'name' => 'required',
             'position' => 'required',
-            'image' => 'required|max:1014',
+            'image' => 'required',
             'order' => 'numeric',
             'email' => '',
             'phone' => ''

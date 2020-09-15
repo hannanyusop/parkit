@@ -22,7 +22,7 @@ class EditDirectoryRequest extends FormRequest
             'group' => 'required',
             'name' => 'required',
             'position' => 'required',
-            'image' => 'mimes:jpeg,png|max:1014',
+            'image' => 'mimes:jpeg,png',
             'order' => 'numeric',
             'email' => '',
             'phone' => ''
