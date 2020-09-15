@@ -2,10 +2,12 @@
  namespace App\Http\Controllers\Frontend\User\Portal;
 
  use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\User\Portal\EditDirectoryRequest;
 use App\Models\Portal\PortalDirectory;
 use App\Models\Portal\PortalPage;
 use App\Models\Portal\PortalText;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PortalController extends Controller{
 
@@ -70,8 +72,9 @@ class PortalController extends Controller{
 
      }
 
-     public function addDirectory($page_id){
+     public function addDir(){
 
+         dd('fsd');
          return view('frontend.user.portal.add-directory', compact('page_id'));
 
      }
@@ -86,14 +89,52 @@ class PortalController extends Controller{
          $directory->position = strtoupper($request->position);
          $directory->image = $request->image;
          $directory->order = $request->order;
-
-
          $directory->save();
 
          return redirect()->route('frontend.user.portal.edit', $directory->page_id)->withFlashSuccess('Berjaya dikemaskini!');
 
      }
 
+    public function editDirectory($page_id, $directory_id){
+
+
+         $directory = PortalDirectory::where('page_id', $page_id)
+             ->findOrFail($directory_id);
+
+        return view('frontend.user.portal.edit-directory', compact('directory'));
+
+    }
+
+    public function updateDirectory(EditDirectoryRequest $request, $page_id, $directory_id){
+
+
+        $directory = PortalDirectory::where('page_id', $page_id)
+            ->findOrFail($directory_id);
+
+
+        if($request->has('image')){
+
+            $timestamp = time();
+            $extension = $request->image->extension();
+            $request->image->storeAs('/public', $timestamp.".".$extension);
+            $url = Storage::url($timestamp.".".$extension);
+            Storage::delete($directory->image);
+
+            $directory->image = $url;
+
+        }
+
+
+        $directory->group   = $request->group;
+        $directory->name   = strtoupper($request->name);
+        $directory->position = strtoupper($request->position);
+        $directory->order = $request->order;
+        $directory->save();
+
+        return redirect()->route('frontend.user.portal.edit', $directory->page_id)->withFlashSuccess('Berjaya dikemaskini!');
+
+
+    }
  }
 
 ?>

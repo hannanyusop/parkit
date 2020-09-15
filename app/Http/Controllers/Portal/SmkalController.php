@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Models\Portal\PortalDirectory;
 use App\Models\Portal\PortalPage;
 use App\Models\Portal\PortalText;
 
@@ -38,7 +39,15 @@ class SmkalController extends Controller{
 
     public function organisasi(){
 
-        return view('portal.smkal.organisasi');
+        $route = request()->route()->getName();
+        $page = PortalPage::where('route', $route)->first();
+
+        $staffs = PortalDirectory::where('page_id', $page->id)
+            ->where('group', 'staff')
+            ->orderBy('order', 'ASC')
+            ->get();
+
+        return view('portal.smkal.organisasi', compact('staffs'));
     }
 
     public function visi(){

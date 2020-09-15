@@ -13,28 +13,28 @@
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Pelajar</h3>
+                    <h3 class="card-title">Kemaskini Direktori Staff</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <x-forms.post :action="route('frontend.user.portal.edit.add-directory', [ $directory->page_id])" class="form-horizontal">
+                <x-forms.post :action="route('frontend.user.portal.edit.update-directory', [ $directory->page_id, $directory->id])" class="form-horizontal" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="group" class="col-sm-2 col-form-label">Kumpulan</label>
                             <div class="col-sm-10">
-                                <input name="group" value="{{ old('group') }}"  type="text" class="form-control text-uppercase" id="group" required>
+                                <input name="group" value="{{ $directory->group }}"  type="text" class="form-control text-uppercase" id="group" required>
                             </div>
                         </div>
                         <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <input name="name" value="{{ old('name') }}"  type="text" class="form-control text-uppercase" id="name" required>
+                                <input name="name" value="{{ $directory->name }}"  type="text" class="form-control text-uppercase" id="name" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="position" class="col-sm-2 col-form-label">Position</label>
                             <div class="col-sm-10">
-                                <input name="position" value="{{ old('position') }}"  type="text" class="form-control text-uppercase" id="position">
+                                <input name="position" value="{{ $directory->position }}"  type="text" class="form-control text-uppercase" id="position">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -47,14 +47,14 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-6">
-                                <input name="email" value="{{ old('email') }}" type="email" class="form-control text-uppercase" id="email">
+                                <input name="email" value="{{ $directory->email }}" type="email" class="form-control text-uppercase" id="email">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="order" class="col-sm-2 col-form-label">Urutan Ke</label>
                             <div class="col-sm-6">
-                                <input name="order" value="{{ old('order') }}" type="number" step="1" class="form-control text-uppercase" id="order">
+                                <input name="order" value="{{ $directory->order }}" type="number" step="1" class="form-control text-uppercase" id="order">
                             </div>
                         </div>
                     </div>

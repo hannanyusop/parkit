@@ -39,7 +39,7 @@
                    <div class="col-md-12">
                        <div class="card">
                            <div class="card-header">
-                               <h3 class="card-title">Isi kandungan</h3>
+                               <h3 class="card-title">Directory</h3>
                            </div>
                            <div class="card-body">
                                <div class="m-2 float-right">
@@ -62,11 +62,11 @@
                                        <tr>
                                            <td>{{ $key+1 }}</td>
                                            <td>{{ $directory->group }}</td>
-                                           <td><img src="{{ $directory->image }}"></td>
+                                           <td><img width="100px" src="{{ asset($directory->image) }}"></td>
                                            <td>{{ $directory->name }}</td>
                                            <td>{{ $directory->position }}</td>
                                            <td>{{ $directory->order }}</td>
-                                           <td><a href="{{ route('frontend.user.portal.edit.text', [$directory->page_id, $directory->id]) }}" class="btn btn-info btn-sm">Kemaskini</a> </td>
+                                           <td><a href="{{ route('frontend.user.portal.edit.edit-directory', [$directory->page_id, $directory->id]) }}" class="btn btn-info btn-sm">Kemaskini</a> </td>
                                        </tr>
                                    @endforeach
                                    </tbody>
