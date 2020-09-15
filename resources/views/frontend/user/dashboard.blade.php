@@ -21,7 +21,7 @@
                                     <ul class="users-list clearfix">
                                         @if($active_ca_events->count() > 0)
                                             @foreach($active_ca_events as $event)
-                                                <li class="bg-warning ml-2">
+                                                <li class="bg-white ml-2">
                                                     <i class="fa fa-qrcode"></i>
                                                     <a class="users-list-name" href="{{ route('frontend.user.cv.event.landing', $event->id) }}">{{ $event->name }}</a>
                                                     <span class="users-list-date">{{ reformatDatetime($event->created_at, "d-M") }}</span>
@@ -42,7 +42,7 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <h5 class="mb-2">System To Use (BETA)</h5>
+                            <h5 class="mb-2">Module Sistem</h5>
                             <hr><br><br>
                         </div>
 
@@ -50,7 +50,7 @@
                             @can('poll_can')
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-info">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-vote-yea"></i> </h3>
 
@@ -64,7 +64,7 @@
                             @can('cv_can')
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-danger">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-qrcode"></i> </h3>
 
@@ -77,7 +77,7 @@
                             @can('lib_can')
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-success">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-book-reader"></i> </h3>
 
@@ -90,7 +90,7 @@
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-gradient-navy">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-user-friends"></i> </h3>
 
@@ -102,7 +102,7 @@
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-fuchsia">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-clipboard-list"></i> </h3>
 
@@ -114,7 +114,7 @@
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-gradient-olive">
+                                    <div class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-barcode"></i> </h3>
 

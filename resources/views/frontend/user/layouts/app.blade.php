@@ -10,13 +10,15 @@
     @yield('meta')
 
     @stack('before-styles')
-    <link rel="stylesheet" href="{{ asset('ui/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/izitoast/css/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/components.css') }}">
     @stack('after-styles')
-    <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('ui/modules/izitoast/js/iziToast.min.js') }}"></script>
+
 
 </head>
 <div id="app">
@@ -176,11 +178,13 @@
 </div>
 
 @stack('before-scripts')
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>--}}
-<script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>--}}
+<script src="{{ asset('ui/modules/popper.js') }}"></script>
+<script src="{{ asset('ui/modules/tooltip.js') }}"></script>
+<script src="{{ asset('ui/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('ui/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+<script src="{{ asset('ui/modules/moment.min.js') }}"></script>
 <script src="{{ asset('ui/js/stisla.js') }}"></script>
+
 <script src="{{ asset('ui/js/scripts.js') }}"></script>
 <script src="{{ asset('ui/js/custom.js') }}"></script>
 @stack('after-scripts')

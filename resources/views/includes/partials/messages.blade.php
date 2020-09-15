@@ -1,49 +1,37 @@
 @if(isset($errors) && $errors->any())
         @foreach($errors->all() as $error)
             <script type="text/javascript">
-                toastr.error("{{ $error }}");
+                iziToast.error({
+                    message: "{{ $error }}",
+                    position: 'topRight'
+                });
             </script>
         @endforeach
 @endif
-<script type="text/javascript">
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-top-full-width",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-</script>
 @if(session()->get('flash_success'))
     <script type="text/javascript">
-        {{--toastr.success("{{ session()->get('flash_success') }}");--}}
+        iziToast.success({
+            message: "{{ session()->get('flash_success') }}",
+            position: 'topRight'
+        });
     </script>
 @endif
 
 @if(session()->get('flash_warning'))
     <script type="text/javascript">
-        {{--toastr.warning("{{ session()->get('flash_warning') }}");--}}
+        iziToast.warning({
+            message: "{{ session()->get('flash_warning') }}",
+            position: 'topRight'
+        });
     </script>
 @endif
 
 @if(session()->get('flash_info') || session()->get('flash_message'))
     <script type="text/javascript">
-        iziToast.warning({
-            title: 'Hello, world!',
+        iziToast.info({
             message: "{{ session()->get('flash_info') }}",
             position: 'topRight'
         });
-        {{--toastr.info("{{ session()->get('flash_info') }}");--}}
     </script>
 @endif
 
