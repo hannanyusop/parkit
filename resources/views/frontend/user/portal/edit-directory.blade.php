@@ -46,6 +46,16 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="image" class="col-sm-2 col-form-label">Tools</label>
+                            <div class="col-sm-6">
+                                <p>
+                                    <a href="https://www.remove.bg/upload" target="_blank">Remove Background</a> |
+                                    <a href="https://www.img2go.com/crop-image" target="_blank">Image Cropper</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-6">
                                 <input name="email" value="{{ $directory->email }}" type="email" class="form-control text-uppercase" id="email">
