@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="{{ asset('ui/modules/izitoast/css/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/jquery-selectric/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/fullcalendar/fullcalendar.min.css') }}">
+
     @stack('after-styles')
     <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('ui/modules/izitoast/js/iziToast.min.js') }}"></script>
@@ -184,6 +192,14 @@
 <script src="{{ asset('ui/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
 <script src="{{ asset('ui/modules/moment.min.js') }}"></script>
 <script src="{{ asset('ui/js/stisla.js') }}"></script>
+
+<script src="{{ asset('ui/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('ui/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+<script src="{{ asset('ui/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('ui/modules/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('ui/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('ui/modules/fullcalendar/fullcalendar.min.js') }}"></script>
 
 <script src="{{ asset('ui/js/scripts.js') }}"></script>
 <script src="{{ asset('ui/js/custom.js') }}"></script>

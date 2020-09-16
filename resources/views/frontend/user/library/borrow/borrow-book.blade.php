@@ -16,11 +16,11 @@
                         <h5 class="text-center mb-4">Peminjaman Buku</h5>
                         <x-forms.get>
                             <div class="row">
-                                <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control" value="{{ request('no_ic') }}" name="no_ic" {{ ($student)? "disabled" : "" }} placeholder="No Kad. Pengenalan Pelajar" autofocus>
-                                    <span class="input-group-append">
-                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-id-card-alt"></i> Cari</button>
-                                </span>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="no_ic" value="{{ request('no_ic') }}" placeholder="No Kad. Pengenalan Pelajar" {{ ($student)? "disabled" : "" }} autofocus>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><i class="fa fa-id-card-alt"></i> Cari</button>
+                                    </div>
                                 </div>
                             </div>
                         </x-forms.get>

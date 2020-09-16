@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\User\Student\StudentMainController;
 use App\Http\Controllers\Frontend\User\Library\Admin\AdminReportController;
 use App\Http\Controllers\Frontend\User\Portal\PortalController;
 use App\Http\Controllers\Frontend\User\Portal\SmkalController;
+use App\Http\Controllers\Frontend\User\Library\BookingController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -416,6 +417,24 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
                 Route::post('add-prefect', [AdminSettingController::class, 'addPrefect'])->name('add-prefect');
                 Route::get('remove-prefect/{no_ic}', [AdminSettingController::class, 'removePrefect'])->name('remove-prefect');
 
+
+            });
+
+            Route::group([
+                'as' => 'booking.',
+                'prefix' => 'booking/',
+            ], function (){
+
+                Route::get('', [BookingController::class, 'index'])->name('index');
+                Route::get('create', [BookingController::class, 'create'])->name('create');
+                Route::post('create', [BookingController::class, 'insert'])->name('insert');
+                Route::get('delete/{id}', [BookingController::class, 'delete'])->name('delete');
+
+                Route::group(['middleware' => 'permission:lib_admin'], function (){
+
+                    Route::get('applicant-list', [BookingController::class, 'applicantList'])->name('applicant-list');
+                    Route::get('action/{id}/{status}', [BookingController::class, 'action'])->name('action');
+                });
 
             });
         });

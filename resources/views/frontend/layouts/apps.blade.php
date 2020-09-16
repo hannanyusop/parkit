@@ -17,13 +17,12 @@
     <link rel="stylesheet" href="{{ asset('lte/ionicons/2.0.1/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lte/plugins/toastr/toastr.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <livewire:styles />
     @stack('after-styles')
-
-    <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/toastr/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('ui/modules/izitoast/css/iziToast.min.css') }}">
+    <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('ui/modules/izitoast/js/iziToast.min.js') }}"></script>
 </head>
 
 @yield('content')

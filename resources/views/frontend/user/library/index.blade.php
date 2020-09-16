@@ -53,6 +53,7 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
@@ -66,6 +67,7 @@
                         </div>
 
                         <div class="row icons-list-demo"></div>
+
                         <div class="row">
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
@@ -90,17 +92,28 @@
                                 </div>
                             </div>
                             @can(['lib_staff', 'lib_admin'])
-                            <div class="col-md-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-white">
-                                    <div class="inner text-center">
-                                        <h3><i class="fa fa-book"></i> </h3>
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-white">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-swatchbook"></i> </h3>
 
-                                        <p>Pegurusan Buku</p>
+                                            <p>Tempahan Slot</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.library.admin.booking.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
-                                    <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div>
+                                <div class="col-md-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-white">
+                                        <div class="inner text-center">
+                                            <h3><i class="fa fa-book"></i> </h3>
+
+                                            <p>Pegurusan Buku</p>
+                                        </div>
+                                        <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
                             @endcan
 
                             @can('lib_admin')

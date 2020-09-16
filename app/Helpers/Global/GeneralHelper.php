@@ -1002,3 +1002,31 @@ if(!function_exists('downloadGroups')){
     }
 }
 
+if(!function_exists('libGetBookingStatus')){
+
+    function libGetBookingStatus($status = null){
+
+        $statuses = [
+            1 => 'PENDING',
+            2 => 'APPROVED',
+            3 => 'REJECTED'
+        ];
+
+        return (is_null($status))? $statuses : $statuses[$status];
+
+    }
+}
+
+if (!function_exists('libGetPendingBookingsCount')){
+
+    function libGetPendingBookingsCount(){
+
+        $bookings = \App\Models\Library\Booking::where('status', 1)
+            ->whereYear('date', date('Y'))
+            ->count();
+
+        return $bookings;
+    }
+
+}
+

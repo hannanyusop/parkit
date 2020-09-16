@@ -1,32 +1,16 @@
 
 <div class="card">
-    <div class="card-body text-center">
-        <div class="row">
-            <h5 class="card-title mb-4">Peminjaman Buku</h5>
-        </div>
-
-        <div class="row">
-            <a href="{{ route('frontend.user.library.index') }}" class="btn btn-app bg-white">
-                <i class="fas fa-home"></i> Utama
-            </a>
-            <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="btn btn-app bg-white">
-                <i class="fas fa-hands"></i> Peminjaman
-            </a>
-
-            <a href="{{ route('frontend.user.library.borrow.return') }}" class="btn btn-app bg-white">
-                <i class="fas fa-handshake"></i> Pemulangan
-            </a>
-
-            <a href="{{ route('frontend.user.library.borrow.late') }}" class="btn btn-app bg-white">
-                <i class="fas fa-balance-scale"></i> Senarai Lewat
-            </a>
-            <a href="{{ route('frontend.user.library.borrow.fine') }}" class="btn btn-app bg-white">
-                <i class="fa fa-file-invoice-dollar"></i> Denda
-            </a>
-            <a href="{{ route('frontend.user.library.borrow.history') }}" class="btn btn-app bg-white">
-                <i class="fa fa-history"></i> Log Peminjam
-            </a>
-        </div>
+    <div class="card-header">
+        <h4>Peminjaman</h4>
     </div>
-    <!-- /.card-body -->
+    <div class="card-body">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item"><a href="{{ route('frontend.user.library.index') }}" class="nav-link">Utama</a></li>
+            <li class="nav-item"><a href="{{ route('frontend.user.library.borrow.borrow') }}" class="nav-link {{ (request()->route()->getName() == "frontend.user.library.borrow.borrow")? "active" : "" }}">Peminjaman</a></li>
+            <li class="nav-item"><a href="{{ route('frontend.user.library.borrow.return') }}" class="nav-link {{ (request()->route()->getName() == "frontend.user.library.borrow.return")? "active" : "" }}">Pemulangan</a></li>
+            <li class="nav-item"><a href="{{ route('frontend.user.library.borrow.late') }}" class="nav-link {{ (request()->route()->getName() == "frontend.user.library.borrow.late")? "active" : "" }}">Senarai Lewat</a></li>
+            <li class="nav-item"><a href="{{ route('frontend.user.library.borrow.fine') }}" class="nav-link {{ (request()->route()->getName() == "frontend.user.library.borrow.fine")? "active" : "" }}">Denda</a></li>
+            <li class="nav-item"><a href="{{ route('frontend.user.library.borrow.history') }}" class="nav-link {{ (request()->route()->getName() == "frontend.user.library.borrow.history")? "active" : "" }}">Log Peminjam</a></li>
+        </ul>
+    </div>
 </div>
