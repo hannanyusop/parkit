@@ -139,7 +139,7 @@ class BookingController extends Controller{
 
         if($booking->status == 1 && in_array($status, $pending)){
 
-            $str = ($status == 1)? "DITERIMA" : "DITOLAK";
+            $str = ($status == 2)? "DITERIMA" : "DITOLAK";
             $booking->status = $status;
             $booking->admin_id = auth()->user()->id;
             $booking->save();
