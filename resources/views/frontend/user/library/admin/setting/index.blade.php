@@ -11,7 +11,7 @@
 @section('content')
     <section class="content">
         <div class="col-md-8 offset-md-2">
-            <div class="card card-info">
+            <div class="card">
                 <x-forms.post :action="route('frontend.user.library.admin.setting.save')" class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
@@ -80,13 +80,13 @@
                             </div>
                         </div>
 
-                        <div class="table-reponsive">
+                        <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th>NAMA</th>
                                     <th>NO. K/P</th>
-                                    <td></td>
+                                    <th>#</th>
                                 </tr>
                                 </thead>
                                 <tbody>
