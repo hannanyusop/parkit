@@ -24,8 +24,8 @@
                             </div>
 
                             <div class="form-group">
-                                <button class="btn btn-success">Search</button>
-                                <a href="{{ route('frontend.user.library.admin.book.index') }}" class="btn btn-warning">Reset</a>
+                                <button class="btn btn-primary">Cari</button>
+                                <a href="{{ route('frontend.user.library.admin.book.index') }}" class="btn btn-white">Reset</a>
                             </div>
                         </div>
                     </x-forms.get>

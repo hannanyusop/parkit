@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Add Campaign')
+@section('title', 'Tetapan')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
