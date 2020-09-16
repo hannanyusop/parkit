@@ -141,6 +141,7 @@ class BookingController extends Controller{
 
             $str = ($status == 1)? "DITERIMA" : "DITOLAK";
             $booking->status = $status;
+            $booking->admin_id = auth()->user()->id;
             $booking->save();
 
             $applicant = $booking->applicant;
