@@ -55,6 +55,10 @@ Route::group([
     ], function (){
 
         Route::get('direktori/', [AsramaController::class, 'direktori'])->name('direktori');
+        Route::get('halatuju/', [AsramaController::class, 'halatuju'])->name('halatuju');
+        Route::get('dokumentasi/', [AsramaController::class, 'dokumentasi'])->name('dokumentasi');
+        Route::get('dokumentasi/fail/{name}', [AsramaController::class, 'dokumentasiFail'])->name('dokumentasi-fail');
+
         Route::get('kemudahan/', [AsramaController::class, 'kemudahan'])->name('kemudahan');
         Route::get('dewan-makan/', [AsramaController::class, 'dewanMakan'])->name('dewan-makan');
         Route::get('surau/', [AsramaController::class, 'surau'])->name('surau');

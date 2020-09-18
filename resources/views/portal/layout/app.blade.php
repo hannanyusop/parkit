@@ -76,6 +76,7 @@
                         <a href="#" class="nav-link" data-toggle="dropdown">Asrama</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.direktori') }}">Direktori Asrama<i class="fas fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.halatuju') }}">Hala Tuju<i class="fas fa-arrow-right"></i></a></li>
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.kemudahan') }}">Kemudahan<i class="fas fa-arrow-right"></i></a></li>
 
                         </ul>

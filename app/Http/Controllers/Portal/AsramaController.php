@@ -35,4 +35,22 @@ class AsramaController extends Controller{
 
         return view('portal.asrama.surau');
     }
+
+    public function dokumentasi(){
+
+        return view('portal.asrama.dokumentasi');
+    }
+
+    public function dokumentasiFail($name){
+
+        $doc = portalGetDocs($name);
+
+        return view('portal.asrama.dokumentasiFail', compact('doc'));
+    }
+
+    public function halatuju(){
+
+        return view('portal.asrama.halatuju');
+
+    }
 }

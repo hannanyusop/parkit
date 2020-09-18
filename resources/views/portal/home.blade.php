@@ -41,8 +41,8 @@
             position: relative;
             overflow: hidden;
             font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 200;
             line-height: inherit;
             cursor: pointer;
             width: calc(100% / 4);
@@ -75,7 +75,7 @@
             background: #fff;
         }
         .tab-bar {
-            padding: 2.5rem 0;
+            padding: 0.5rem 0;
             overflow: hidden;
             background: #fff;
         }
@@ -93,7 +93,7 @@
     </style>
     <section class="banner">
         <div class="swiper-container">
-            <div class="swiper-wrapper h-700 h-sm-500">
+            <div class="swiper-wrapper h-500 h-sm-300">
                 <div class="swiper-slide align-items-center d-flex responsive-overlap-md bg-overlay-black-30" style="background-image:url({{ asset('img/portal/sekolah/7.jpg') }}); background-size: cover; background-position: center center;">
                     <div class="swipeinner container">
                         <div class="row justify-content-center">
@@ -120,7 +120,7 @@
         </div>
     </section>
 
-    <section class="">
+    <section class="mt--3">
         <div class="container">
             <div class="row">
                 <div class="tab">
@@ -142,23 +142,25 @@
                                             Tiada Pengunguman Buat Masa Kini
                                         @else
                                             <div class="col-lg-12">
-                                                @foreach($announcements as $announcement)
-                                                    <div class="testimonial-style-03 border-radius bg-light p-4 mt-4 mt-lg-0">
-                                                        <div class="testimonial-item p-2">
-                                                            <div class="testimonial-author">
-                                                                <div class="testimonial-name">
-                                                                    <h6 class="mb-1">{{ $announcement->title }}<small> Tarikh :{{ reformatDatetime($announcement->date, 'd-m-Y') }}</small></h6>
+                                                <div class="accordion" id="group-{{ $key }}">
+                                                    @foreach($announcements as $announcement)
+
+                                                        <div class="card">
+                                                            <div class="accordion-icon card-header" id="heading-{{ $key }}">
+                                                                <h4 class="mb-0">
+                                                                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#{{ $key."-".$announcement->id }}" aria-expanded="false" aria-controls="{{ $key."-".$announcement->id }}">{{ $announcement->title }}</button>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="{{ $key."-".$announcement->id }}" class="collapse" aria-labelledby="heading-{{ $key }}" data-parent="#group-{{ $key }}" style="">
+                                                                <div class="card-body">
+                                                                    <p class="mb-0">{!! $announcement->text !!}</p><small> Tarikh :{{ reformatDatetime($announcement->date, 'd-m-Y') }}</small>
                                                                 </div>
                                                             </div>
-                                                            <div class="testimonial-content">
-                                                                    <p class="testimonial-des">{!! $announcement->text !!}</p>
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                @endforeach
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         @endif
-                                    </p>
                                 </div>
                             </div>
                         @endforeach

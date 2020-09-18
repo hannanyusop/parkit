@@ -20,7 +20,7 @@ class InsertRequest extends FormRequest
     {
         return [
             'group' => 'required',
-            'title' => 'required|max:50',
+            'title' => 'required|max:100',
             'text' => 'required',
             'is_show' => '',
             'show_until' => 'required|date|after:date',

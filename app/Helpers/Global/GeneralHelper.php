@@ -1088,3 +1088,38 @@ if(!function_exists('portalMainPageList')){
     }
 }
 
+if(!function_exists('portalGetDocs')){
+
+    function portalGetDocs($name = null){
+
+        $docs = [
+            'sst' => [
+                'name' => 'Surat Setuju Terima (SST)',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ],
+            'bekalanBermasak' => [
+                'name' => 'Dokumen Perjanjian Kontrak Bekalan Makan Bermasak',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ],
+            'borangPesanan' => [
+                'name' => 'Borang Pesanan (Jadual 8)',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ],
+            'laporanBulanan' => [
+                'name' => 'Laporan Bulanan(Format 2/ Lampiran B)',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ],
+            'laporanHarian' => [
+                'name' => 'Laporan Harian (Format 1/ Lampiran A)',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ],
+            'laporanPrestasiKontraktor' => [
+                'name' => 'Laporan Prestasi Kontraktor',
+                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
+            ]
+        ];
+
+        return (is_null($name))? $docs : $docs[$name];
+    }
+}
+

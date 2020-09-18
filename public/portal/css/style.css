@@ -1189,9 +1189,9 @@ hr.light-bg {
   display: -ms-flexbox;
   display: flex;
   background: #ef3139;
-  font-size: 18px;
+  font-size: 13px;
   color: #ffffff;
-  padding: 32px 30px 32px 62px;
+  padding: 12px 30px 12px 52px;
   width: 100%;
   text-align: left;
   border: none;
@@ -1940,9 +1940,9 @@ hr.light-bg {
   display: -ms-flexbox;
   display: flex;
   background: #ef3139;
-  font-size: 18px;
+  font-size: 13px;
   color: #ffffff;
-  padding: 32px 30px 32px 62px;
+  padding: 12px 15px 12px 32px;
   width: 100%;
   text-align: left;
   border: none;
@@ -2157,8 +2157,8 @@ hr.light-bg {
 
 @media (max-width: 575px) {
   .accordion .accordion-icon.card-header button {
-    font-size: 16px;
-    padding: 20px;
+    font-size: 12px;
+    padding: 8px;
     line-height: 22px; }
   .accordion .card-body {
     padding: 20px; } }
