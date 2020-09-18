@@ -125,52 +125,43 @@
             <div class="row">
                 <div class="tab">
                     <div class="tab-menu">
-                        <button class="tab-menu-link active" data-content="tender">
-                            <span data-title="tender">Sebut Harga / Tender</span>
+                        @foreach(portalGetAnnouncementGroup() as $key => $group)
+                        <button class="tab-menu-link {{ ($key == "pelajar")? "active" : "" }}" data-content="{{ $key }}">
+                            <span data-title="tender">{{ $group }}</span>
                         </button>
-                        <button class="tab-menu-link" data-content="student">
-                            <span data-title="student">Pelajar</span>
-                        </button>
-                        <button class="tab-menu-link" data-content="staff">
-                            <span data-title="staff">Staff Tetap/ Kontrak</span>
-                        </button>
-                        <button class="tab-menu-link" data-content="download">
-                            <span data-title="download">Muat Turun </span>
-                        </button>
+                        @endforeach
                     </div>
                     <div class="tab-bar">
-                        <div class="tab-bar-content active" id="tender">
-                            <div class="texts">
-                                <h2 class="title">Sebut Harga / Senarai Tender.</h2>
-                                <p class="paragraph">
-                                   Tiada Pengunguman Buat Masa Kini
-                                </p>
+                        @foreach(portalGetAnnouncementGroup() as $key => $group)
+                            <div class="tab-bar-content {{ ($key == "pelajar")? "active" : "" }}" id="{{ $key }}">
+                                <div class="texts">
+                                    <p class="paragraph">
+
+                                        <?php $announcements = portalGetAnnouncementsByGroup($key); ?>
+                                        @if($announcements->count() == 0)
+                                            Tiada Pengunguman Buat Masa Kini
+                                        @else
+                                            <div class="col-lg-12">
+                                                @foreach($announcements as $announcement)
+                                                    <div class="testimonial-style-03 border-radius bg-light p-4 mt-4 mt-lg-0">
+                                                        <div class="testimonial-item p-2">
+                                                            <div class="testimonial-author">
+                                                                <div class="testimonial-name">
+                                                                    <h6 class="mb-1">{{ $announcement->title }}<small> Tarikh :{{ reformatDatetime($announcement->date, 'd-m-Y') }}</small></h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="testimonial-content">
+                                                                    <p class="testimonial-des">{!! $announcement->text !!}</p>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-bar-content" id="student">
-                            <div class="texts">
-                                <h2 class="title">Pelajar / Bakal Pelajar</h2>
-                                <p class="paragraph">
-                                    Tiada Pengunguman Buat Masa Kini
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-bar-content" id="staff">
-                            <div class="texts">
-                                <h2 class="title">Staff Tetap / Kontrak</h2>
-                                <p class="paragraph">
-                                    Tiada Pengunguman Buat Masa Kini
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-bar-content" id="download">
-                            <div class="texts">
-                                <h2 class="title">Muat Turun Borang</h2>
-                                <p class="paragraph">
-                                    Tiada Pengunguman Buat Masa Kini
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

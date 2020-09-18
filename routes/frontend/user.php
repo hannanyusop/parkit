@@ -24,6 +24,7 @@ use App\Http\Controllers\Frontend\User\Library\Admin\AdminReportController;
 use App\Http\Controllers\Frontend\User\Portal\PortalController;
 use App\Http\Controllers\Frontend\User\Portal\SmkalController;
 use App\Http\Controllers\Frontend\User\Library\BookingController;
+use App\Http\Controllers\Frontend\User\Portal\AnnouncementController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -190,6 +191,20 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
             Route::get('delete-directory/{directory_id}/', [PortalController::class, 'editDirectory'])->name('delete-directory');
 
+
+        });
+
+        Route::group([
+            'prefix' => 'announcement/',
+            'as' => 'announcement.'
+        ], function (){
+            Route::get('index', [AnnouncementController::class, 'index'])->name('index');
+            Route::get('view/{id}/', [AnnouncementController::class, 'view'])->name('view');
+            Route::get('create/', [AnnouncementController::class, 'create'])->name('create');
+            Route::post('create/', [AnnouncementController::class, 'insert'])->name('insert');
+            Route::get('edit/{id}', [AnnouncementController::class, 'edit'])->name('edit');
+            Route::post('edit/{id}', [AnnouncementController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [AnnouncementController::class, 'delete'])->name('delete');
 
         });
 

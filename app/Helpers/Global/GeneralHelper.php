@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use LaravelQRCode\Facades\QRCode;
 use App\Models\Library\LibOption;
 use App\Models\Library\Borrow;
+use App\Models\Portal\PortalAnnouncement;
 
 if (! function_exists('appName')) {
     /**
@@ -1028,5 +1029,62 @@ if (!function_exists('libGetPendingBookingsCount')){
         return $bookings;
     }
 
+}
+
+if(!function_exists('portalGetAnnouncementGroup')){
+
+    function portalGetAnnouncementGroup(){
+
+        $groups = [
+            'pelajar' => 'Pelajar',
+            'bakal_pelajar' => 'Bakal Pelajar',
+            'ibubapa' => 'Ibubapa/Penjaga',
+            'staff' => 'Staff Tetap/Kontrak',
+            'tender' => 'Tender / Kontrak'
+        ];
+
+        return $groups;
+    }
+}
+
+if(!function_exists('portalGetAnnouncementsByGroup')){
+
+    function portalGetAnnouncementsByGroup($group){
+
+        return $announcements = PortalAnnouncement::where('group', $group)
+            ->where('is_show', 1)
+//            ->whereDate('show_until', '<', today())
+            ->orderBy('date', 'DESC')
+            ->limit(10)
+            ->get();
+
+    }
+}
+
+if(!function_exists('portalMainPageList')){
+
+    function portalMainPageList(){
+
+        $groups = [
+            'utama' => [
+                'route' => route('frontend.user.portal.group', 'utama'),
+                'image' => ''
+            ],
+            'smkal' => [
+                'route' => route('frontend.user.portal.group', 'smkal'),
+                'image' => ''
+            ],
+            'asrama' => [
+                'route' => route('frontend.user.portal.group', 'asrama'),
+                'image' => ''
+            ],
+            'pengunguman' => [
+                'route' => route('frontend.user.portal.announcement.index'),
+                'image' => ''
+            ]
+        ];
+
+        return $groups;
+    }
 }
 

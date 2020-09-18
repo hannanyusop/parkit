@@ -1,44 +1,34 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Pengurusan Portal')
 
 @section('content')
     <section class="content">
-
        <div class="row">
            <div class="col-md-12">
                <div class="card">
                    <div class="card-header">
-                       <h3 class="card-title">Senarai Bahgian</h3>
+                       <h3 class="card-title">Senarai Halaman</h3>
                    </div>
-                   <!-- /.card-header -->
-                   <div class="card-body">
-                       <table class="table table-bordered">
-                           <thead>
-                           <tr>
-                               <th style="width: 10px">#</th>
-                               <th>Kumpulan</th>
-                               <th>Pautan</th>
-                               <th style="width: 40px">Label</th>
-                           </tr>
-                           </thead>
-                           <tbody>
-                           @foreach($pages as $key => $page)
-                               <tr>
-                               <td>{{ $key+1 }}</td>
-                               <td>{{ $page->group }}</td>
-                               <td><a href="{{ route($page->route) }}" target="_blank">{{ route($page->route) }}</a> </td>
-                               <td><a href="{{ route('frontend.user.portal.group', $page->group) }}" class="btn btn-info btn-sm">Pilih</a> </td>
-                           </tr>
-                           @endforeach
-                           </tbody>
-                       </table>
-                   </div>
-                   <!-- /.card-body -->
                </div>
-               <!-- /.card -->
-               <!-- /.card -->
            </div>
+           @foreach($lists as $key => $page)
+               <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                   <article class="article">
+                       <div class="article-header">
+                           <div class="article-image" data-background="{{ $page['route'] }}" style="background-image: url({{ $page['route'] }});"></div>
+                           <div class="article-title">
+                               <h2><a href="#">{{ strtoupper($key) }}</a></h2>
+                           </div>
+                       </div>
+                       <div class="article-details">
+                           <div class="article-cta">
+                               <a href="{{ $page['route'] }}" class="btn btn-primary">Kemaskini</a>
+                           </div>
+                       </div>
+                   </article>
+               </div>
+           @endforeach
        </div>
 
     </section>

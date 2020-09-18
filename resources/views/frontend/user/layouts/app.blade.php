@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('ui/modules/jquery-selectric/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/fullcalendar/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/summernote/summernote-bs4.css') }}">
+
 
     @stack('after-styles')
     <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
@@ -165,7 +167,14 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>@yield('title')</h1>
+                    <h5>@yield('title')</h5>
+                    <div class="section-header-breadcrumb">
+                        @if(isset($breadcrumbs))
+                            @foreach($breadcrumbs as $name => $url)
+                                <div class="breadcrumb-item {{ ($url != "#")? "active" : "" }}"><a href="{{ $url }}">{{ $name }}</a></div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
 
                 <div class="row">
@@ -200,9 +209,40 @@
 <script src="{{ asset('ui/modules/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('ui/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
 <script src="{{ asset('ui/modules/fullcalendar/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('ui/modules/summernote/summernote-bs4.js') }}"></script>
+<script src="{{ asset('ui/modules/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('ui/js/scripts.js') }}"></script>
 <script src="{{ asset('ui/js/custom.js') }}"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var submit_buttons = $("[data-delete]");
+        submit_buttons.on('click', function (e) {
+
+            e.preventDefault();
+
+            var button = $(this); // Get the button
+            var msg = button.data('delete'); // Get the confirm message
+            var title = button.data('title');
+            var url = button.data('url');
+
+            swal({
+                title: title,
+                text: msg,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            }).then((result) => {
+                    if (result.isConfirmed) {
+                    }else{
+                        window.location=url;
+                    }
+                });
+        });
+
+    });
+</script>
 @stack('after-scripts')
 </body>
 </html>

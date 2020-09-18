@@ -14,9 +14,9 @@ class PortalController extends Controller{
 
      public function index(){
 
-         $pages = PortalPage::get();
+         $lists = portalMainPageList();
 
-         return view('frontend.user.portal.index', compact('pages'));
+         return view('frontend.user.portal.index', compact('lists'));
      }
 
      public function group($group){
