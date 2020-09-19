@@ -28,7 +28,7 @@
             <div class="col-lg-8">
                 <div class="section-title text-center">
                     <h5>Senarai Dokumen/Bahan Untuk Semakan</h5>
-                    <p>{{ $doc['name'] }}</p>
+                    <p>{{ $doc->name }}</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="row text-center">
                 <div class="col-md-6 offset-md-3">
                     <div class='embed-responsive' style='padding-bottom:150%'>
-                        <object data='{{ $doc['file'] }}' type='application/pdf' width='100%' height='100%'></object>
+                        <object data='{{ getFile($doc->file) }}' type='application/pdf' width='100%' height='100%'></object>
                     </div>
                 </div>
             </div>

@@ -53,7 +53,7 @@
         <div class="container-fluid">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><i class="fas fa-align-left"></i></button>
             <a class="navbar-brand" href="{{ route('frontend.portal.home') }}">
-                <img class="img-fluid" src="{{ asset('img/portal/logo.png') }}" alt="logo">
+                <img class="img-fluid" src="{{ asset('img/white.png') }}" alt="logo">
             </a>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -25,6 +25,7 @@ use App\Http\Controllers\Frontend\User\Portal\PortalController;
 use App\Http\Controllers\Frontend\User\Portal\SmkalController;
 use App\Http\Controllers\Frontend\User\Library\BookingController;
 use App\Http\Controllers\Frontend\User\Portal\AnnouncementController;
+use App\Http\Controllers\Frontend\User\Portal\DocumentController;
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
@@ -205,6 +206,20 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::get('edit/{id}', [AnnouncementController::class, 'edit'])->name('edit');
             Route::post('edit/{id}', [AnnouncementController::class, 'update'])->name('update');
             Route::get('delete/{id}', [AnnouncementController::class, 'delete'])->name('delete');
+
+        });
+
+        Route::group([
+            'prefix' => 'document/',
+            'as' => 'document.'
+        ], function (){
+            Route::get('index', [DocumentController::class, 'index'])->name('index');
+            Route::get('view/{id}/', [DocumentController::class, 'view'])->name('view');
+            Route::get('create/', [DocumentController::class, 'create'])->name('create');
+            Route::post('create/', [DocumentController::class, 'insert'])->name('insert');
+            Route::get('edit/{id}', [DocumentController::class, 'edit'])->name('edit');
+            Route::post('edit/{id}', [DocumentController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [DocumentController::class, 'delete'])->name('delete');
 
         });
 

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('ui/modules/izitoast/css/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/fullcalendar/fullcalendar.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/summernote/summernote-bs4.css') }}">
-
 
     @stack('after-styles')
     <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
@@ -203,7 +203,6 @@
 <script src="{{ asset('ui/js/stisla.js') }}"></script>
 
 <script src="{{ asset('ui/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('ui/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
 <script src="{{ asset('ui/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
 <script src="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('ui/modules/select2/dist/js/select2.full.min.js') }}"></script>
@@ -242,6 +241,16 @@
         });
 
     });
+    $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    })
 </script>
 @stack('after-scripts')
 </body>

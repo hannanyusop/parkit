@@ -71,73 +71,67 @@
                         <div class="row">
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-white">
+                                <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-handshake"></i> </h3>
 
                                         <p>Peminjaman Buku</p>
                                     </div>
-                                    <a href="{{ route('frontend.user.library.borrow.borrow') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-white">
+                                <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-user-clock"></i> </h3>
 
                                         <p>Rekod Pengunjung</p>
                                     </div>
-                                    <a href="{{ route('frontend.user.library.visitor.today') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                </a>
                             </div>
                             @can(['lib_staff', 'lib_admin'])
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-white">
+                                    <a href="{{ route('frontend.user.library.admin.booking.index') }}" class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-swatchbook"></i> </h3>
 
                                             <p>Tempahan Slot</p>
                                         </div>
-                                        <a href="{{ route('frontend.user.library.admin.booking.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-white">
+                                    <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box bg-white">
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-book"></i> </h3>
 
                                             <p>Pegurusan Buku</p>
                                         </div>
-                                        <a href="{{ route('frontend.user.library.admin.book.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
+                                    </a>
                                 </div>
                             @endcan
 
                             @can('lib_admin')
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-white">
+                                <a href="{{ route('frontend.user.library.admin.report.index') }}" class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-chart-area"></i> </h3>
 
                                         <p>Laporan Data</p>
                                     </div>
-                                    <a href="{{ route('frontend.user.library.admin.report.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-3 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-white">
+                                <a href="{{ route('frontend.user.library.admin.setting.index') }}" class="small-box bg-white">
                                     <div class="inner text-center">
                                         <h3><i class="fa fa-cogs"></i> </h3>
 
                                         <p>Tetapan</p>
                                     </div>
-                                    <a href="{{ route('frontend.user.library.admin.setting.index') }}" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                </a>
                             </div>
                             @endcan
                         </div>
@@ -148,14 +142,24 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <div class="row">
-                            <h5 class="mb-2">Sudut Informasi</h5>
-                            <hr><br>
+                        <h6>Tempahan Slot Hari Ini</h6>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr class="bg-primary">
+                                    <th>Masa</th>
+                                    <th>PIC</th>
+                                </tr>
+                                @foreach($bookings as $booking)
+                                    <tr>
+                                        <td>{{ $booking->start." - ".$booking->end }}</td>
+                                        <td>{{ $booking->applicant->name }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 @endsection

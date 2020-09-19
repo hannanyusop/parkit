@@ -2,6 +2,14 @@
 
 @section('title', 'Library')
 
+<?php
+$breadcrumbs = [
+    'Dashboard' => route('frontend.user.dashboard'),
+    'Perpustakaan' => route('frontend.user.library.index'),
+    'Tempahan Slot' => route('frontend.user.library.admin.booking.index'),
+];
+?>
+
 @section('content')
     <section class="content">
 

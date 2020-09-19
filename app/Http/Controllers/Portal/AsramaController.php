@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portal\PortalDirectory;
+use App\Models\Portal\PortalDownload;
 use App\Models\Portal\PortalPage;
 
 class AsramaController extends Controller{
@@ -38,12 +39,16 @@ class AsramaController extends Controller{
 
     public function dokumentasi(){
 
-        return view('portal.asrama.dokumentasi');
+        $docs = PortalDownload::where('group', 'dokumen-asrama')
+            ->get();
+
+        return view('portal.asrama.dokumentasi', compact('docs'));
     }
 
-    public function dokumentasiFail($name){
+    public function dokumentasiFail($id){
 
-        $doc = portalGetDocs($name);
+        $doc = PortalDownload::where('group', 'dokumen-asrama')
+            ->findOrFail($id);
 
         return view('portal.asrama.dokumentasiFail', compact('doc'));
     }

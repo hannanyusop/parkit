@@ -6,6 +6,7 @@ use LaravelQRCode\Facades\QRCode;
 use App\Models\Library\LibOption;
 use App\Models\Library\Borrow;
 use App\Models\Portal\PortalAnnouncement;
+use App\Models\Portal\PortalDownload;
 
 if (! function_exists('appName')) {
     /**
@@ -1047,6 +1048,57 @@ if(!function_exists('portalGetAnnouncementGroup')){
     }
 }
 
+if(!function_exists('portalGetDocumentGroup')){
+
+    function portalGetDocumentGroup($group = null){
+
+        $groups = [
+            'dokumen-asrama' => 'Senarai Dokumen/Bahan Semakan Asrama',
+            'muaturun-pelajar' => 'Dokumen Berkaitan Pelajar',
+            'muaturun-asrama' => 'Dokumen Berkaitan Asrama',
+            'muaturun-ibubapa' => 'Dokumen Berkaitan Ibubapa',
+            'muaturun-staff' => 'Dokumen Berkaitan Staff Tetap/Kontrak',
+            'muaturun-awam' => 'Dokumen Untuk Orang Awam',
+            'muaturun-tender' => 'Dokumen Berkaitan Tender',
+
+        ];
+
+
+
+        return (is_null($group))? $groups : $groups[$group];
+    }
+}
+
+if(!function_exists('portalGetDownloadGroup')){
+
+    function portalGetDownloadGroup($group = null){
+
+        $groups = [
+            'muaturun-pelajar' => 'Dokumen Pelajar',
+            'muaturun-asrama' => 'Dokumen Berkaitan Asrama',
+            'muaturun-ibubapa' => 'Dokumen Berkaitan Ibubapa',
+            'muaturun-staff' => 'Dokumen Berkaitan Staff Tetap/Kontrak',
+            'muaturun-awam' => 'Dokumen Untuk Orang Awam',
+            'muaturun-tender' => 'Dokumen Berkaitan Tender',
+
+        ];
+
+
+
+        return (is_null($group))? $groups : $groups[$group];
+    }
+}
+
+if(!function_exists('portalGetDownload')){
+
+    function portalGetDownload($group){
+
+        return PortalDownload::where('group', $group)
+            ->where('is_show', 1)
+            ->get();
+    }
+}
+
 if(!function_exists('portalGetAnnouncementsByGroup')){
 
     function portalGetAnnouncementsByGroup($group){
@@ -1087,39 +1139,11 @@ if(!function_exists('portalMainPageList')){
         return $groups;
     }
 }
+if(!function_exists('getFile')){
 
-if(!function_exists('portalGetDocs')){
+    function getFile($file){
 
-    function portalGetDocs($name = null){
+        return '/storage/'.$file;
 
-        $docs = [
-            'sst' => [
-                'name' => 'Surat Setuju Terima (SST)',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ],
-            'bekalanBermasak' => [
-                'name' => 'Dokumen Perjanjian Kontrak Bekalan Makan Bermasak',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ],
-            'borangPesanan' => [
-                'name' => 'Borang Pesanan (Jadual 8)',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ],
-            'laporanBulanan' => [
-                'name' => 'Laporan Bulanan(Format 2/ Lampiran B)',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ],
-            'laporanHarian' => [
-                'name' => 'Laporan Harian (Format 1/ Lampiran A)',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ],
-            'laporanPrestasiKontraktor' => [
-                'name' => 'Laporan Prestasi Kontraktor',
-                'file' => asset('img/portal/documents/kontrak-bekalan-bermasak.pdf')
-            ]
-        ];
-
-        return (is_null($name))? $docs : $docs[$name];
     }
 }
-
