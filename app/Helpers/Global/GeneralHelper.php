@@ -1133,6 +1133,10 @@ if(!function_exists('portalMainPageList')){
             'pengunguman' => [
                 'route' => route('frontend.user.portal.announcement.index'),
                 'image' => ''
+            ],
+            'dokumen' => [
+                'route' => route('frontend.user.portal.document.index'),
+                'image' => ''
             ]
         ];
 

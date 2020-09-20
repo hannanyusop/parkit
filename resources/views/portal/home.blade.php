@@ -45,7 +45,7 @@
                                     <div class="owl-stage" style="transform: translate3d(-1180px, 0px, 0px); transition: all 1s ease 0s; width: 1770px;">
                                         <div class="owl-item cloned" style="width: 78px; margin-right: 40px;">
                                             <div class="item">
-                                                <img class="img-fluid center-block mx-auto" src="{{ asset('portal/images/client-logo/light/04.svg') }}" alt="">
+                                                <img class="img-fluid center-block mx-auto" src="{{ asset('portal/heimages/client-logo/light/04.svg') }}" alt="">
                                             </div>
                                         </div>
                                     </div>
