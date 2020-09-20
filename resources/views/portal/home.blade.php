@@ -1,96 +1,6 @@
 @extends('portal.layout.app')
 
 @section('content')
-    <style type="text/css">
-
-        .title {
-            font-family: inherit;
-            font-size: 2rem;
-            font-weight: 600;
-            line-height: inherit;
-            color: #252b46;
-        }
-        .bg-none{
-            background-color: #ffffff;
-        }
-        .paragraph {
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: normal;
-            line-height: inherit;
-            color: #9194a1;
-        }
-        .tab {
-            width: 100%;
-            height: auto;
-            padding: 8rem 0;
-            margin: 25px;
-        }
-        .tab-menu {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-            border-bottom: 1.3px solid #dbdbdb;
-            transition: all 0.3s ease;
-        }
-        .tab-menu-link {
-            position: relative;
-            overflow: hidden;
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 200;
-            line-height: inherit;
-            cursor: pointer;
-            width: calc(100% / 4);
-            height: auto;
-            padding: 1rem 0;
-            border-bottom: 2.5px solid transparent;
-            color: #9194a1;
-            background: #fff;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            transition: all 0.3s ease;
-        }
-        .tab-menu-link::before {
-            position: absolute;
-            content: "";
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: auto;
-            z-index: 2;
-        }
-        .tab-menu-link.active {
-            bottom: 0px;
-            z-index: 0;
-            overflow: hidden;
-            border-bottom: 2.5px solid #fa5757;
-            border-top: none;
-            color: #252b46;
-            background: #fff;
-        }
-        .tab-bar {
-            padding: 0.5rem 0;
-            overflow: hidden;
-            background: #fff;
-        }
-        .tab-bar-content {
-            display: none;
-            width: 100%;
-            min-height: 10rem;
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-        .tab-bar-content.active {
-            display: block;
-        }
-
-    </style>
     <section class="banner">
         <div class="swiper-container">
             <div class="swiper-wrapper h-500 h-sm-300">
@@ -119,9 +29,44 @@
             <div class="swiper-button-next"><i class="fas fa-arrow-right icon-btn"></i></div>
         </div>
     </section>
+    <section class="mt-n5 z-index-9 position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="our-clients our-clients-style-02 bg-dark">
+                        <div class="client-title pl-4">
+                            <h5 class="text-white">Sistem Atas Talian</h5>
+                            <div class="svg-item">
+                            </div>
+                        </div>
+                        <div class="brand-logo pl-4">
+                            <div class="owl-carousel testimonial-center owl-nav-bottom-center owl-loaded owl-drag" data-nav-arrow="false" data-items="5" data-md-items="4" data-sm-items="4" data-xs-items="3" data-xx-items="2" data-space="40" data-autoheight="true">
+                                <div class="owl-stage-outer owl-height" style="height: 34px;">
+                                    <div class="owl-stage" style="transform: translate3d(-1180px, 0px, 0px); transition: all 1s ease 0s; width: 1770px;">
+                                        <div class="owl-item cloned" style="width: 78px; margin-right: 40px;">
+                                            <div class="item">
+                                                <img class="img-fluid center-block mx-auto" src="{{ asset('portal/images/client-logo/light/04.svg') }}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="mt--3">
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-9 col-lg-10">
+                    <div class="section-title text-center">
+                        <h2>Info Semasa</h2>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="tab">
                     <div class="tab-menu">
@@ -169,6 +114,7 @@
             </div>
         </div>
     </section>
+
     <script type="text/javascript">
         // Tabs Action
         const tabLink = document.querySelectorAll(".tab-menu-link");

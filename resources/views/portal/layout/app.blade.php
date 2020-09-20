@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('portal/css/animate/animate.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('portal/css/magnific-popup/magnific-popup.css') }}" />
     <link rel="stylesheet" href="{{ asset('portal/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('portal/css/custom.css') }}" />
 
 </head>
 <body>
@@ -57,12 +58,7 @@
             </a>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utama</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li class="active"><a class="dropdown-item" href="{{ route('frontend.portal.home') }}">Utama<i class="fas fa-arrow-right"></i></a></li>
-                        </ul>
-                    </li>
+                    <a class="nav-link" href="{{ route('frontend.portal.home') }}">Utama</a>
                     <li class="dropdown nav-item">
                         <a href="#" class="nav-link" data-toggle="dropdown">Mengenai SMKAL</a>
                         <ul class="dropdown-menu">
@@ -81,16 +77,11 @@
 
                         </ul>
                     </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="nav-link" data-toggle="dropdown">Muat Turun Borang</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('frontend.portal.download.borang') }}">Senarai Borang<i class="fas fa-arrow-right"></i></a></li>
-                        </ul>
-                    </li>
+                    <a class="nav-link" href="{{ route('frontend.portal.download.borang') }}">Muat Turun Borang</a>
                     <li class="dropdown nav-item">
                         <a href="#" class="nav-link" data-toggle="dropdown">Sistem Atas Talian</a>
                         <ul class="dropdown-menu">
-                            @if(auth())
+                            @if(auth()->user())
                                 <li><a class="dropdown-item" href="{{ route('frontend.user.dashboard') }}">Sistem Maklumat Sekolah(Logged in)<i class="fas fa-arrow-right"></i></a></li>
                             @else
                                 <li><a class="dropdown-item" href="{{ route('frontend.auth.login') }}">Sistem Maklumat Sekolah<i class="fas fa-arrow-right"></i></a></li>
@@ -106,11 +97,31 @@
 @yield('content')
 <div id="back-to-top" class="back-to-top">up</div>
 
-<footer class="footer mt-3">
-    <div class="footer-bottom py-sm-5 py-4">
+{{--<footer class="footer mt-3">--}}
+{{--    <div class="footer-bottom py-sm-5 py-4">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12 text-center">--}}
+{{--                    <p class="mb-0">©Copyright 2020 <a href="{{ route('frontend.portal.home') }}">SMK Agama Limbang</a></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</footer>--}}
+
+<footer class="footer space-ptb bg-light mt-n5">
+    <div class="footer-bottom mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    <ul class="list-unstyled mb-3 mb-md-5 social-icon social-icon-lg">
+                        <li><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fab fa-github fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fab fa-dribbble fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fab fa-behance fa-2x"></i></a></li>
+                    </ul>
                     <p class="mb-0">©Copyright 2020 <a href="{{ route('frontend.portal.home') }}">SMK Agama Limbang</a></p>
                 </div>
             </div>
