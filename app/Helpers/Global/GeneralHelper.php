@@ -1151,3 +1151,47 @@ if(!function_exists('getFile')){
 
     }
 }
+
+if(!function_exists('getUgaType')){
+
+    function getUgaType($type=null){
+
+        $types = [
+            0 => 'Kegunaan Sendiri',
+            1 => 'Kegunaan Ramai'
+        ];
+
+        return (is_null($type))? $types : $types[$type];
+    }
+}
+
+if (! function_exists('kehadiranCodeGenerator')) {
+
+    function kehadiranCodeGenerator(){
+
+        $exist = true;
+
+        do {
+
+            $characters = 'qwertyuiopasdfghjklzxcvbnm';
+            $charactersLength = strlen($characters);
+            $token = '';
+            for ($i = 0; $i < 8; $i++) {
+                $token .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+
+
+            $att = \App\Models\UserGenerateAttendance::where('code', $token)
+                ->first();
+
+            if (!$att) {
+                $exist = false;
+            }
+
+        } while ($exist);
+
+        return $token;
+
+    }
+}

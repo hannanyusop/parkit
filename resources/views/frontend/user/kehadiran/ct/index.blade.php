@@ -2,6 +2,13 @@
 
 @section('title', 'Senarai Kelas')
 
+<?php
+$breadcrumbs = [
+    'Dashboard' => route('frontend.user.dashboard'),
+    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
+];
+?>
+
 @push('after-styles')
     <style type="text/css">
         #clock {

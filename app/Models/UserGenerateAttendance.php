@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserGenerateAttendance extends Model{
 
+    protected $fillable = ['tag'];
+
     protected $table = 'user_generate_attendance';
 
     public function staff(){

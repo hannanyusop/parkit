@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="{{ asset('ui/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/jquery-selectric/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('ui/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/fullcalendar/fullcalendar.min.css') }}">
     <link rel="stylesheet" href="{{ asset('ui/modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ui/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
     @stack('after-styles')
     <script src="{{ asset('ui/modules/jquery.min.js') }}"></script>
@@ -211,9 +211,21 @@
 <script src="{{ asset('ui/modules/summernote/summernote-bs4.js') }}"></script>
 <script src="{{ asset('ui/modules/sweetalert/sweetalert.min.js') }}"></script>
 
+
+<script src="{{ asset('ui/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('ui/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('ui/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('ui/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+
 <script src="{{ asset('ui/js/scripts.js') }}"></script>
 <script src="{{ asset('ui/js/custom.js') }}"></script>
 <script type="text/javascript">
+
+    $("#datable").dataTable({
+        "columnDefs": [
+            { "sortable": false, "targets": [2,3] }
+        ]
+    });
 
     $(document).ready(function () {
         var submit_buttons = $("[data-delete]");
@@ -241,7 +253,6 @@
         });
 
     });
-    $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
     $(function () {
         //Initialize Select2 Elements
         $('.select2').select2()

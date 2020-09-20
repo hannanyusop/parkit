@@ -1,58 +1,65 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Event Checkin')
+@section('title', 'Senarai Kelas')
 
-@push('after-styles')
-    <style type="text/css">
-        #clock {
-            font-family: 'Orbitron', sans-serif;
-            color: #000000;
-            text-align: center;
-        }
-    </style>
-@endpush
+<?php
+$breadcrumbs = [
+    'Dashboard' => route('frontend.user.dashboard'),
+    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
+];
+?>
 
 @section('content')
     <section class="content">
-        <div class="col-md-4 offset-md-4">
-            <div class="card card-info">
-                <div class="card-body bg-navy">
-                    <div>
-
-                        <ul class="products-list product-list-in-card pl-2 pr-2 bg-navy">
-                            <li class="item bg-navy">
-                                <div class="product-img">
-                                    <img src="{{ asset('img/smkal-logo.png') }}" alt="Product Image" class="img-size-50">
-                                </div>
-                                <div class="product-info bg-navy">
-                                    <h5 class="product-title">
-                                        SEKOLAH MENENGAH KEBANGSAAN AGAMA LIMBANG
-                                    </h5>
-                                </div>
-                            </li>
+        <div class="col-md-12">
+            @include('frontend.user.student.layout.topbar')
+            <div class="card">
+                <div class="card-header">
+                    <h4></h4>
+                    <div class="card-header-action dropdown">
+                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Action</a>
+                        <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(75px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <li><a href="{{ route('frontend.user.kehadiran.create') }}" class="dropdown-item">Jana Kehadiran</a></li>
+                            <li><a href="#" class="dropdown-item">This Year</a></li>
                         </ul>
-
-                        <div class="text-center">
-
-                            <h4>KAD PEAJAR</h4>
-                            <img width="100px" src="{{ asset('img/kehadiran/test.jpg') }}"><br>
-                            <div class="mt-2">
-                                {{ getKehadiranStudent('960516131111') }}
-                            </div>
-                        </div>
-                        <div class="text-center mt-2">
-                            <p class="font-weight-bold font-size-lg">
-                                {{ auth()->user()->name }}<br>
-                                NO K/P : {{ auth()->user()->unique_id }}<br>
-                                4 SAINS 2
-                            </p>
-                        </div>
                     </div>
-
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <a href="" type="submit" class="btn btn-info">Print</a>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Tajuk</th>
+                                <th>Tarikh</th>
+                                <th>Satus</th>
+                                <th>Jumlah Pelahjar</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($generated as $key => $data)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $data->title }}</td>
+                                <td>{{ reformatDatetime('created_at', $data->created_at) }}</td>
+                                <td class="text-center">{{ $data->status }}</td>
+                                <td>{{ $data->attendances->count() }}</td>
+                                <td>
+                                    <a href="{{ route('frontend.user.kehadiran.checkin', $data->id) }}" class="btn btn-icon btn-success"> Kehadiran</a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', $data->id) }}">Laporan Kehadiran</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', $data->id) }}">Senarai Pelajar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                     <!-- /.card-footer -->
             </div>

@@ -9,7 +9,7 @@ class StudentAttendance extends Model{
 
     protected $table = 'student_attendance';
 
-    protected $fillable = ['uga_id', 'student_id', 'status', 'temperature', 'remark'];
+    protected $fillable = ['uga_id', 'student_id', 'status', 'checkin','checkout', 'remark'];
 
     public function UGA(){
         return $this->hasOne(UserGenerateAttendance::class, 'id', 'uga_id');

@@ -277,6 +277,19 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
     ], function (){
 
         Route::group([
+
+        ], function (){
+            Route::get('', [KehadiaranController::class, 'index'])->name('index');
+            Route::get('view/{id}', [KehadiaranController::class, 'view'])->name('view');
+            Route::get('create/', [KehadiaranController::class, 'create'])->name('create');
+            Route::post('create/', [KehadiaranController::class, 'insert'])->name('insert');
+            Route::get('delete/{id}', [KehadiaranController::class, 'delete'])->name('delete');
+
+            Route::get('checkin/{id}', [KehadiaranController::class, 'checkin'])->name('checkin');
+            Route::get('checkin-insert/{id}', [KehadiaranController::class, 'checkinInsert'])->name('checkin-insert');
+        });
+
+        Route::group([
             'prefix' => 'classroom-teacher/',
             'as' => 'ct.'
         ], function (){
@@ -284,7 +297,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::get('', [ClassroomTeacherController::class, 'index'])->name('index');
             Route::get('add-class', [ClassroomTeacherController::class, 'addClass'])->name('add-class');
             Route::post('add-class', [ClassroomTeacherController::class, 'insertClass'])->name('insert-class');
-
 
             Route::get('view-today-attendance/{class_id}', [ClassroomTeacherController::class, 'viewTodayAttendance'])->name('view-today-attendance');
             Route::get('student-list/{class_id}', [ClassroomTeacherController::class, 'studentList'])->name('student-list');
