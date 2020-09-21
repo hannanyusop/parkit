@@ -88,7 +88,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.ct.index') }}">
+                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.index') }}">
                             <i class="fas fa-chalkboard-teacher"></i> <span>E-Hadir</span>
                         </a>
                     </li>
