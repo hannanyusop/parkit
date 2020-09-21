@@ -110,9 +110,9 @@ class StudentImport implements ToModel{
 
             $form = str_split($row[9])[0];
 
-            $class = Classroom::updateOrCreate(['generate_name' => $row[8]], [
+            $class = Classroom::updateOrCreate(['generate_name' => $row[9]], [
                 'form' => (is_numeric($form))? $form : 0,
-                'name' => $row[8],
+                'name' => $row[9],
                 'user_id' => null,
                 'is_active' => 1,
             ]);

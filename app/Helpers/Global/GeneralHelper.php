@@ -7,6 +7,7 @@ use App\Models\Library\LibOption;
 use App\Models\Library\Borrow;
 use App\Models\Portal\PortalAnnouncement;
 use App\Models\Portal\PortalDownload;
+use App\Models\Classroom;
 
 if (! function_exists('appName')) {
     /**
@@ -1193,5 +1194,52 @@ if (! function_exists('kehadiranCodeGenerator')) {
 
         return $token;
 
+    }
+}
+
+if(!function_exists('formList')){
+
+    function formList($form = null){
+
+        $forms = [
+            1 => 'TINGKATAN 1',
+            2 => 'TINGKATAN 2',
+            3 => 'TINGKATAN 3',
+            4 => 'TINGKATAN 4',
+            5 => 'TINGKATAN 5',
+            6 => 'TINGKATAN 6'
+        ];
+
+        return (is_null($form))? $forms : $forms[$form];
+    }
+}
+
+if(!function_exists('getFormClass')){
+
+    function getFormClass(int $form){
+
+        return Classroom::where('form', $form)
+            ->where('is_active', 1)
+            ->get();
+    }
+
+}
+
+if(!function_exists('getTag')){
+
+    function getTag($json){
+
+        $decode = json_decode($json);
+
+        dd($decode);
+    }
+}
+
+if(!function_exists('getClass')){
+
+    function getClass($id){
+
+        return Classroom::where('id',$id)
+            ->first();
     }
 }

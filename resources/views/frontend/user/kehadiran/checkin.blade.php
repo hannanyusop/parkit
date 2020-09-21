@@ -5,7 +5,7 @@
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'Pengurusan Portal' => route('frontend.user.kehadiran.index'),
+    'E-Hadir' => route('frontend.user.kehadiran.index'),
     'Pendaftaran' => '#',
 ];
 ?>
@@ -25,7 +25,7 @@ $breadcrumbs = [
                         <div class="input-group mb-2 mr-sm-2">
                             <button type="submit" class="btn btn-primary">Daftar Masuk</button>
                         </div>
-                    </form> 
+                    </form>
                 </div>
             </div>
             <div class="card">
@@ -36,8 +36,14 @@ $breadcrumbs = [
                     $total = $uga->attendances->count();
                     $absent = $uga->absents->count();
 
-
+                    $tag = json_decode($uga->tag);
                     @endphp
+
+                    <div class="badges">
+                        @foreach($tag->kelas as $class_id)
+                            <span class="badge badge-primary">{{ getClass($class_id)->generate_name }}</span>
+                        @endforeach
+                    </div>
 
                     <div class="statistic-details m-sm-4">
                         <div class="statistic-details-item">

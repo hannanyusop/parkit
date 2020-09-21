@@ -46,6 +46,30 @@ class KehadiaranController extends Controller{
 
     public function insert(InsertRequest $request){
 
+
+        $formAll = ($request->has('form'))? $request->form : [];
+        $customClass = ($request->has('class'))? $request->class : [];
+
+        $ids = [];
+        foreach (formList() as $form => $forName){
+
+            if(in_array($form, $formAll)){
+
+                $formClassId = Classroom::where('form', $form)
+                    ->pluck('id')->toArray();
+            }else{
+
+                $formClassId = (isset($customClass[$form]))? $customClass[$form] : [];
+
+            }
+
+
+            foreach ($formClassId as $id){
+
+                $ids[] = (int)$id;
+            }
+        }
+
         $generate = new UserGenerateAttendance();
 
         $generate->user_id = auth()->user()->id;
@@ -60,7 +84,7 @@ class KehadiaranController extends Controller{
 
         $generate->save();
 
-        $class_id = [1,2,3,5];
+        $class_id = $ids;
 
         $tag['kelas'] = $class_id;
         $tag['jantina'] = 'Lelaki & Perempuan';
@@ -108,9 +132,9 @@ class KehadiaranController extends Controller{
        }
 
        if($failed > 0){
-           return redirect()->route('frontend.user.kehadiaran.index')->withFlashWarning('Kehadiran berjaya dijana.Data rosak:'.$failed);
+           return redirect()->route('frontend.user.kehadiran.index')->withFlashWarning('Kehadiran berjaya dijana.Data rosak:'.$failed);
        }else{
-           return redirect()->route('frontend.user.kehadiaran.index')->withFlashSuccess('Kehadiran berjaya dijana');
+           return redirect()->route('frontend.user.kehadiran.index')->withFlashSuccess('Kehadiran berjaya dijana');
        }
 
     }
@@ -152,4 +176,3 @@ class KehadiaranController extends Controller{
 
 
 }
-;

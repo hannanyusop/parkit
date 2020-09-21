@@ -17,7 +17,8 @@ class InsertRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'class' => 'required',
+            'form' => '',
+            'class' => 'required_without:form',
             'hostel' => 'required',
             'gender' => 'required',
             'start' => 'required',

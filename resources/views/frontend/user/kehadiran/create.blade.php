@@ -23,12 +23,34 @@ $breadcrumbs = [
                         </div>
                         <div class="form-group row">
                             <label for="class" class="col-sm-2 col-form-label">Senarai Kelas</label>
-                            <div class="col-sm-10 text-primaryh">
-                                <select name="class" id="class[]" class="form-control select2" multiple="">
-                                    @foreach($classes as $class)
-                                        <option value="{{ $class->id }}" {{ (old('class[]') == $class->id)? "checked" : "" }}>{{ $class->generate_name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="col-sm-10">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Tingkatan</th>
+                                            <th>Senarai Kelas</th>
+                                        </tr>
+                                        @foreach(formList() as $form => $formName)
+                                            <tr>
+                                                <td class="font-weight-bold">{{ $formName }}</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" name="form[{{ $form }}]" type="checkbox" id="all-{{ $form }}" value="{{ $form }}">
+                                                            <label class="form-check-label" for="all-{{ $form }}">SEMUA</label>
+                                                        </div>
+                                                        @foreach(getFormClass($form) as $class)
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" data-form="{{ $form }}" name="class[{{ $form }}][]" type="checkbox" id="class-{{ $class->id }}" value="{{ $class->id }}">
+                                                                <label class="form-check-label" for="class-{{ $class->id }}">{{ strtoupper($class->generate_name) }}</label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
