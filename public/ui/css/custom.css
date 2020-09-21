@@ -1,3 +1,17 @@
 a.small-box{
     text-decoration: none;
 }
+
+hr {
+    margin-top: 32px;
+}
+input[type="file"] {
+    display: block;
+    margin-bottom: 16px;
+}
+div {
+    margin-bottom: 16px;
+}
+#flash-toggle {
+    display: none;
+}

@@ -1,14 +1,19 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', ' Sisitem Maklumat Pelajar / Kelas / Senarai Pelajar')
+@section('title', 'Senarai Pelajar')
 
-@push('after-styles')
-@endpush
+<?php
+$breadcrumbs = [
+    'Dashboard' => route('frontend.user.dashboard'),
+    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
+    'Senarai Kelas' => '#'
+];
+?>
 
 @section('content')
     <section class="content">
         <div class="col-md-12">
-            <div class="card card-info">
+            <div class="card">
                 <div class="card-body">
                     <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR {{ $class->generate_name }} <br>BAGI TAHUN {{ date('Y') }}</p>
 
@@ -35,13 +40,14 @@
 
                     <b>Senarai Pelajar</b><br><br>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="datable">
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>NAMA</th>
                                 <th>NO. K/P</th>
                                 <th>Jantina</th>
+                                <th>QR</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -52,10 +58,16 @@
                                 <td>{{ $has_student->student->name }}</td>
                                 <td>{{ $has_student->student->no_ic }}</td>
                                 <td>{{ getGender($has_student->student->gender) }}</td>
+                                <td> {{ getKehadiranStudent($has_student->student->no_ic) }}</td>
                                 <td>
-                                    <a href="{{ route('frontend.user.student.edit', $has_student->student_id) }}" class="btn btn-info btn-sm">Kemaskini</a>
-                                    <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card', $has_student->student_id) }}">Cetak Kad Pelajar v1</a>
-                                    <a class="btn btn-info btn-sm" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $has_student->student_id) }}">Kemaskini</a>
+                                            <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card', $has_student->student_id) }}">Cetak Kad Pelajar</a>
+                                            <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

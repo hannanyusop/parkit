@@ -2,16 +2,6 @@
 
 @section('title', 'Event Checkin')
 
-@push('after-styles')
-    <style type="text/css">
-        #clock {
-            font-family: 'Orbitron', sans-serif;
-            color: #000000;
-            text-align: center;
-        }
-    </style>
-@endpush
-
 @section('content')
     <section class="content">
         <div class="col-md-4 offset-md-4">
@@ -20,8 +10,8 @@
                     <div>
                         <ul class="products-list product-list-in-card pl-2 pr-2">
                             <li class="item">
-                                <div class="product-img">
-                                    <img src="{{ asset('img/smkal-logo.png') }}" alt="Product Image" class="img-size-50">
+                                <div class="brand-image-xs">
+                                    <img  src="{{ asset('img/smkal-logo.png') }}" alt="Product Image" class="img-size-50">
                                 </div>
                                 <div class="product-info">
                                     <h5 class="product-title">

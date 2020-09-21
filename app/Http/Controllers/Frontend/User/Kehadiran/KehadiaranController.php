@@ -141,7 +141,7 @@ class KehadiaranController extends Controller{
 
     public function checkin($id){
 
-        $uga = UserGenerateAttendance::findOrFail($id);
+        $uga = UserGenerateAttendance::findOrFail(decrypt($id));
 
         return view('frontend.user.kehadiran.checkin', compact('uga'));
     }
@@ -171,6 +171,57 @@ class KehadiaranController extends Controller{
 
         $sa->update(['checkin' => now(), 'status' => 2]);
         return redirect()->route('frontend.user.kehadiran.checkin', $id)->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+
+    }
+
+    public function checkinQr($id){
+
+        $uga = UserGenerateAttendance::find(decrypt($id));
+
+        if(!$uga){
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
+        }
+
+        return view('frontend.user.kehadiran.checkin-qr', compact('uga'));
+    }
+
+    public function checkinQrCheck(Request $request, $id){
+
+        $uga = UserGenerateAttendance::find(decrypt($id));
+
+        if(!$uga){
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
+        }
+
+
+        if($request->has('id')){
+
+            $student = Student::where('no_ic', $request->id)->first();
+
+            if(!$student){
+                return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+            }
+
+            $sa = StudentAttendance::where('uga_id', $uga->id)
+                ->where('student_id', $student->id)
+                ->first();
+
+            if(!$sa){
+
+                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withErrors('Pelajar tiada dalam senarai.');
+            }
+
+            if(!is_null($sa->checkin)){
+                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashWarning('Pelajar sudah didaftar masuk.');
+            }
+
+            $sa->update(['checkin' => now(), 'status' => 2]);
+            return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+
+        }else{
+            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Parameter tidak sah!');
+
+        }
 
     }
 

@@ -6,7 +6,7 @@
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
     'E-Hadir' => route('frontend.user.kehadiran.index'),
-    'Pendaftaran' => '#',
+    'Senarai Kehadiran' => '#',
 ];
 ?>
 
@@ -29,6 +29,12 @@ $breadcrumbs = [
                 </div>
             </div>
             <div class="card">
+                <div class="card-header">
+                    <h4></h4>
+                    <div class="card-header-action dropdown">
+                        <a href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($uga->id)) }}" class="btn btn-info">SCAN</a>
+                    </div>
+                </div>
                 <div class="card-body">
 
                     @php
@@ -36,11 +42,14 @@ $breadcrumbs = [
                     $total = $uga->attendances->count();
                     $absent = $uga->absents->count();
 
-                    $tag = json_decode($uga->tag);
+                    $tag = json_decode($uga->tag, true);
                     @endphp
 
+                    <p class="">JANTINA : {{ $tag['jantina'] }}</p>
+                    <p class="">STATUS PELAJAR : {{ $tag['status pelajar'] }}</p>
+
                     <div class="badges">
-                        @foreach($tag->kelas as $class_id)
+                        @foreach($tag['kelas'] as $class_id)
                             <span class="badge badge-primary">{{ getClass($class_id)->generate_name }}</span>
                         @endforeach
                     </div>

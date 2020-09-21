@@ -286,6 +286,9 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::get('delete/{id}', [KehadiaranController::class, 'delete'])->name('delete');
 
             Route::get('checkin/{id}', [KehadiaranController::class, 'checkin'])->name('checkin');
+            Route::get('checkin-qr/{id}', [KehadiaranController::class, 'checkinQr'])->name('checkin-qr');
+            Route::get('checkin-qr-check/{id}', [KehadiaranController::class, 'checkinQrCheck'])->name('checkin-qr-check');
+
             Route::get('checkin-insert/{id}', [KehadiaranController::class, 'checkinInsert'])->name('checkin-insert');
         });
 
