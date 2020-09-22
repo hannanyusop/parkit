@@ -18,7 +18,7 @@ $breadcrumbs = [
             <div class="col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h6>Daftar Masuk E-hadir</h6>
+                        <h6>Daftar Keluar E-hadir</h6>
                         <div>
                             <b>Device has camera: </b>
                             <span id="cam-has-camera"></span>
@@ -82,7 +82,7 @@ $breadcrumbs = [
             if(checkParam){
                 let noic = params.get('id');
 
-                window.location='{{ route('frontend.user.kehadiran.checkin-qr-check', encrypt($uga->id)) }}'+"?id="+noic;
+                window.location='{{ route('frontend.user.kehadiran.checkout-qr-check', encrypt($uga->id)) }}'+"?id="+noic;
                 scanner.stop();
                 label.textContent = result;
                 camQrResultTimestamp.textContent = new Date().toString();

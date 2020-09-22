@@ -11,7 +11,7 @@ class UserGenerateAttendance extends Model{
 
     protected $table = 'user_generate_attendance';
 
-    public function staff(){
+    public function admin(){
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
@@ -34,6 +34,12 @@ class UserGenerateAttendance extends Model{
 
         return $this->hasMany(StudentAttendance::class,'uga_id', 'id')
             ->where('status', 1);
+    }
+
+    public function checkouts(){
+
+        return $this->hasMany(StudentAttendance::class,'uga_id', 'id')
+            ->where('checkout', '!=', null);
     }
 
     public function mc(){

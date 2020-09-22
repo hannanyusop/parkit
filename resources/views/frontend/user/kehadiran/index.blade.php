@@ -31,9 +31,10 @@ $breadcrumbs = [
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Tajuk</th>
-                                <th>Tarikh</th>
-                                <th>Satus</th>
-                                <th>Jumlah Pelahjar</th>
+                                <th>Admin</th>
+                                <th class="text-center">Satus</th>
+                                <th class="text-center">Jumlah Pelajar Terlibat</th>
+                                <th class="text-center">Peratus Kehadiran</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -41,17 +42,25 @@ $breadcrumbs = [
                             @foreach($generated as $key => $data)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $data->title }}</td>
-                                <td>{{ reformatDatetime('created_at', $data->created_at) }}</td>
-                                <td class="text-center">{{ $data->status }}</td>
-                                <td>{{ $data->attendances->count() }}</td>
+                                <td>
+                                    {{ $data->title }}<br>
+                                    <small>{{ reformatDatetime('created_at', $data->created_at) }}</small>
+                                </td>
+                                <td>{{ $data->admin->name }}</td>
+                                <td class="text-center">{!! attendanceGetUgaStatus($data->status) !!}</td>
+                                <td class="text-center">{{ $data->attendances->count() }}</td>
+                                <td class="text-center">{{ number_format((float)$data->attends->count()/$data->attendances->count()*100, 2, '.', '') }}%</td>
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin', encrypt($data->id)) }}">Kehadiran</a>
-{{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', encrypt($data->id)) }}">Laporan Kehadiran</a>--}}
-{{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', encrypt($data->id)) }}">Senarai Pelajar</a>--}}
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin', encrypt($data->id)) }}">Lihat</a>
+                                            @if($data->status == 1)
+                                                <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($data->id)) }}">Scan Masuk</a>
+                                                @if($data->is_checkout == 1)
+                                                    <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkout-qr', encrypt($data->id)) }}">Scan Keluar</a>
+                                                @endif
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

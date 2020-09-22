@@ -253,7 +253,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
     //e-kehadiran
     Route::group([
         'as' => 'student.',
-        'prefix' => 'student/'
+        'prefix' => 'student/',
+        'middleware' => 'permission:hostel_can',
     ], function (){
 
         Route::get('', [StudentMainController::class, 'index'])->name('index');
@@ -266,14 +267,12 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
         Route::get('import', [StudentMainController::class, 'import'])->name('import');
         Route::post('import', [StudentMainController::class, 'upload'])->name('upload');
-
-
-
     });
 
     Route::group([
         'as' => 'kehadiran.',
-        'prefix' => 'kehadiran/'
+        'prefix' => 'kehadiran/',
+        'middleware' => 'permission:hostel_can'
     ], function (){
 
         Route::group([
@@ -283,19 +282,27 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::get('view/{id}', [KehadiaranController::class, 'view'])->name('view');
             Route::get('create/', [KehadiaranController::class, 'create'])->name('create');
             Route::post('create/', [KehadiaranController::class, 'insert'])->name('insert');
+            Route::get('edit/{id}', [KehadiaranController::class, 'edit'])->name('edit');
+            Route::post('edit/{id}', [KehadiaranController::class, 'update'])->name('update');
             Route::get('delete/{id}', [KehadiaranController::class, 'delete'])->name('delete');
+
+            Route::get('join/{code}', [KehadiaranController::class, 'code'])->name('join');
 
             Route::get('checkin/{id}', [KehadiaranController::class, 'checkin'])->name('checkin');
             Route::get('checkin/list/{id}', [KehadiaranController::class, 'checkinList'])->name('checkin-list');
             Route::get('checkin-qr/{id}', [KehadiaranController::class, 'checkinQr'])->name('checkin-qr');
             Route::get('checkin-qr-check/{id}', [KehadiaranController::class, 'checkinQrCheck'])->name('checkin-qr-check');
 
+            Route::get('checkout-qr/{id}', [KehadiaranController::class, 'checkoutQr'])->name('checkout-qr');
+            Route::get('checkout-qr-check/{id}', [KehadiaranController::class, 'checkoutQrCheck'])->name('checkout-qr-check');
+
             Route::get('checkin-insert/{id}', [KehadiaranController::class, 'checkinInsert'])->name('checkin-insert');
         });
 
         Route::group([
             'prefix' => 'classroom-teacher/',
-            'as' => 'ct.'
+            'as' => 'ct.',
+            'middleware' => 'permission:hostel_can'
         ], function (){
 
             Route::get('', [ClassroomTeacherController::class, 'index'])->name('index');

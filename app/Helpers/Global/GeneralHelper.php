@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Library\Log;
+use App\Models\UgaAccess;
 use Carbon\Carbon;
 use LaravelQRCode\Facades\QRCode;
 use App\Models\Library\LibOption;
@@ -1255,10 +1256,39 @@ if(!function_exists('attendanceStatusList')){
         ];
 
         if($is_checkout == 1) {
-            $statuses  = [ 3 =>  'Belum Log Keluar'];
+            $statuses = [
+                0 => 'Semua',
+                1 => 'Tidak Hadir',
+                2 => 'Hadir',
+                3 =>  'Belum Log Keluar'
+            ];
         }
 
         return (is_null($status))? $statuses : $statuses[$status];
 
     }
 }
+
+if(!function_exists('getUgaAccess')){
+
+    function getUgaAccess(){
+
+        return UgaAccess::where('user_id', auth()->user()->id)->pluck('uga_id');
+    }
+}
+
+if(!function_exists('kehadiranGetUgaStatus')){
+
+    function attendanceGetUgaStatus($status){
+
+        $statuses = [
+            1 => "<span class=\"badge bg-success text-white\">Aktif</span>",
+            2 => "<span class=\"badge bg-dark\">Tidak Aktif</span>"
+        ];
+
+        return $statuses[$status];
+    }
+
+}
+
+

@@ -107,6 +107,19 @@ $breadcrumbs = [
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-2 col-form-label">Jenis kehadiran</label>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <label class="custom-switch mt-2">
+                                        <input type="checkbox" name="is_checkout" class="custom-switch-input" {{ (old('is_checkout'))? "checked" : "" }}>
+                                        <span class="custom-switch-indicator"></span>
+                                        <span class="custom-switch-description">Log Masuk Sahaja</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Hantar</button>
