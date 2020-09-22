@@ -116,7 +116,7 @@ $breadcrumbs = [
                             @if($uga->is_checkout == 1)
                                 <div class="statistic-details-item">
                                     <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{ number_format((float)($checkouts/$total*100), 2, '.', '') }}%</span>
-                                    <div class="detail-value">{{ $attend }}</div>
+                                    <div class="detail-value">{{ $checkouts }}</div>
                                     <div class="detail-name">Daftar Keluar</div>
                                 </div>
                             @endif
