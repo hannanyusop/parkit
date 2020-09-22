@@ -1277,7 +1277,7 @@ if(!function_exists('getUgaAccess')){
     }
 }
 
-if(!function_exists('kehadiranGetUgaStatus')){
+if(!function_exists('attendanceGetUgaStatus')){
 
     function attendanceGetUgaStatus($status){
 
