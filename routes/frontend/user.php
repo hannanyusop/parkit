@@ -416,6 +416,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
                     'prefix' => 'group/'
                 ], function (){
                     Route::get('', [AdminGroupController::class, 'index'])->name('index');
+                    Route::post('insert', [AdminGroupController::class, 'insert'])->name('insert');
                 });
 
                 Route::group([

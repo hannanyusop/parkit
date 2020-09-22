@@ -12,10 +12,31 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body table-responsive">
+
+                        <h6>Tambah Dewey</h6>
+                        <x-forms.post :action="route('frontend.user.library.admin.book.group.insert')" class="form-inline" enctype="multipart/form-data">
+                            <label class="sr-only" for="first_dewey">Kelas Pertama</label>
+                            <select name="first_dewey" class="form-control mb-2 mr-sm-2 col-lg-4" id="first_dewey">
+                                @foreach($parents as $parent)
+                                    <option value="{{ $parent->id }}" {{ (old('first_dewey') == $parent->id)? "selected" : "" }}>{{ $parent->code."-".$parent->name }}</option>
+                                @endforeach
+                            </select>
+
+                            <label class="sr-only" for="dewey_code">Kod Dewey</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input name="dewey_code" type="number" class="form-control" id="dewey_code" value="{{ old('dewey_code') }}" placeholder="Cth:220" required>
+                            </div>
+                            <label class="sr-only" for="dewey_name">Nama Pengekelasan</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input name="dewey_name" type="text" class="form-control" id="dewey_name" value="{{ old('dewey_name') }}" placeholder="Nama Pengkelasan" required>
+                            </div>
+                            <input type="submit" class="btn btn-primary mb-2 mr-sm-2" value="Tambah">
+                        </x-forms.post>
+
                         <h4 class="m-4 text-center">Jumlah Buku Mengikut Pengkelasan Dewey</h4>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="datable">
                             <thead>
-                            <tr class="bg-success">
+                            <tr class="">
                                 <th></th>
                                 <th>Pengkelasan Kedua</th>
                                 <th>Pengkelasan Pertama</th>
@@ -24,7 +45,7 @@
                             </thead>
                             <tbody>
                             @foreach($subGroups as $key => $sub)
-                            <tr class="{{ ($sub->books->count() ==  0)? 'bg-dark' : 'bg-white' }}" >
+                            <tr class="{{ ($sub->books->count() ==  0)? '' : 'bg-white' }}" >
                                 <td>{{ $key+1 }}</td>
                                 <td><b>{!! $sub->code."</b> ".$sub->name !!}</td>
                                 <td><b>{!! $sub->parent->code."</b> ".$sub->parent->name !!}</td>

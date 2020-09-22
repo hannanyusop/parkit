@@ -92,6 +92,22 @@
                             <i class="fas fa-chalkboard-teacher"></i> <span>E-Hadir</span>
                         </a>
                     </li>
+                    @can('lib_can')
+                        <li class="menu-header">Perpustakaan</li>
+                        <li>
+                            <a class="nav-link" href="{{ route('frontend.user.library.index') }}">
+                                <i class="fas fa-book-reader"></i> <span>Laman Utama</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('portal_can')
+                        <li class="menu-header">Portal</li>
+                        <li>
+                            <a class="nav-link" href="{{ route('frontend.user.portal.index') }}">
+                                <i class="fas fa-pencil-ruler"></i> <span>Pengurusan Portal</span>
+                            </a>
+                        </li>
+                    @endcan
                     @can('cv_can')
                         <li class="menu-header">CV19 CHECK-IN</li>
                         <li>
@@ -118,22 +134,6 @@
                                 </ul>
                             </li>
                         @endcan
-                    @endcan
-                    @can('lib_can')
-                        <li class="menu-header">My-Library</li>
-                        <li>
-                            <a class="nav-link" href="{{ route('frontend.user.library.index') }}">
-                                <i class="fas fa-book-reader"></i> <span>Laman</span>
-                            </a>
-                        </li>
-                    @endcan
-                    @can('portal_can')
-                        <li class="menu-header">Portal</li>
-                        <li>
-                            <a class="nav-link" href="{{ route('frontend.user.portal.index') }}">
-                                <i class="fas fa-pencil-ruler"></i> <span>Pengurusan Portal</span>
-                            </a>
-                        </li>
                     @endcan
                     @can('poll_can')
                         <li class="menu-header">Voting System</li>
@@ -167,7 +167,7 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h5>@yield('title')</h5>
+                    <h6>@yield('title')</h6>
                     <div class="section-header-breadcrumb">
                         @if(isset($breadcrumbs))
                             @foreach($breadcrumbs as $name => $url)
