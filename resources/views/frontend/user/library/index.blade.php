@@ -89,7 +89,7 @@
                                     </div>
                                 </a>
                             </div>
-                            @can(['lib_staff', 'lib_admin'])
+                            @if(auth()->user()->can('lib_staff') && auth()->user()->can('lib_admin'))
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
                                     <a href="{{ route('frontend.user.library.admin.booking.index') }}" class="small-box bg-white">
@@ -110,7 +110,7 @@
                                         </div>
                                     </a>
                                 </div>
-                            @endcan
+                            @endif
 
                             @can('lib_admin')
                             <div class="col-md-3 col-6">
