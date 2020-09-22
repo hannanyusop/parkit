@@ -31,6 +31,8 @@ $breadcrumbs = [
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($uga->id)) }}" class="btn btn-success btn-sm mb-2">QR SCAN</a>
+                        <a href="{{ route('frontend.user.kehadiran.checkin-list', encrypt($uga->id)) }}" class="btn btn-primary btn-sm mb-2">Senarai Penuh</a>
+
 
                         @php
                             $attend = $uga->attends->count();

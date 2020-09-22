@@ -335,7 +335,7 @@ hr.light-bg {
 
 /* Page section margin padding */
 .space-ptb {
-  padding: 100px 0; }
+  padding: 40px 0; }
 
 .space-pt {
   padding: 100px 0 0; }
@@ -1750,11 +1750,12 @@ hr.light-bg {
   margin: 0px auto 40px; }
 
 .testimonial .testimonial-item .testimonial-content {
-  margin-bottom: 30px; }
+  margin-bottom: 10px; }
   .testimonial .testimonial-item .testimonial-content p {
-    font-size: 26px;
-    color: #022d62;
-    line-height: 1.4; }
+    font-size: 1.0em !important;
+    color: #000000;
+    line-height: 1.4;
+  }
 
 .testimonial .testimonial-item .testimonial-author .testimonial-name h6 {
   font-weight: 700; }
@@ -5545,9 +5546,9 @@ ul.category-list {
 
 @media (max-width: 991px) {
   .space-ptb {
-    padding: 70px 0; }
+    padding: 20px 0; }
   .space-pt {
-    padding-top: 70px; }
+    padding-top: 20px; }
   .space-pb {
     padding-bottom: 70px; }
   .footer .container-fluid {
@@ -5575,7 +5576,7 @@ ul.category-list {
   h6 {
     font-size: 17px; }
   .space-ptb {
-    padding: 50px 0; }
+    padding: 20px 0; }
   .display-2 {
     font-size: 3rem !important; }
   .display-4 {

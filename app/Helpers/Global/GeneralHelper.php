@@ -1243,3 +1243,22 @@ if(!function_exists('getClass')){
             ->first();
     }
 }
+
+if(!function_exists('attendanceStatusList')){
+
+    function attendanceStatusList($status = null, $is_checkout = 0){
+
+        $statuses = [
+            0 => 'Semua',
+            1 => 'Tidak Hadir',
+            2 => 'Hadir',
+        ];
+
+        if($is_checkout == 1) {
+            $statuses  = [ 3 =>  'Belum Log Keluar'];
+        }
+
+        return (is_null($status))? $statuses : $statuses[$status];
+
+    }
+}

@@ -185,6 +185,39 @@ class KehadiaranController extends Controller{
         return view('frontend.user.kehadiran.checkin-qr', compact('uga'));
     }
 
+    public function checkinList(Request $request, $id){
+
+        $uga = UserGenerateAttendance::findOrFail(decrypt($id));
+
+
+        if($request->status == 1){
+
+            $attendances = StudentAttendance::where('uga_id', $uga->id)
+                ->where('checkin', null)
+                ->get();
+
+        }elseif($request->status == 2){
+
+            $attendances = StudentAttendance::where('uga_id', $uga->id)
+                ->where('checkin', '!=', null)
+                ->get();
+        }elseif($uga->is_checkout == 1 && $request->status == 3){
+
+            $attendances = StudentAttendance::where('uga_id', $uga->id)
+                ->where('checkin', '!=', null)
+                ->where('checkout', null)
+                ->get();
+
+        }else{
+
+            $attendances = StudentAttendance::where('uga_id', $uga->id)
+                ->get();
+        }
+
+        return view('frontend.user.kehadiran.checkin-list', compact('uga', 'attendances'));
+
+    }
+
     public function checkinQrCheck(Request $request, $id){
 
         $uga = UserGenerateAttendance::find(decrypt($id));

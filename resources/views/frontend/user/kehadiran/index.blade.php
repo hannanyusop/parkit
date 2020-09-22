@@ -50,8 +50,8 @@ $breadcrumbs = [
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
                                             <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin', encrypt($data->id)) }}">Kehadiran</a>
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', encrypt($data->id)) }}">Laporan Kehadiran</a>
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', encrypt($data->id)) }}">Senarai Pelajar</a>
+{{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', encrypt($data->id)) }}">Laporan Kehadiran</a>--}}
+{{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', encrypt($data->id)) }}">Senarai Pelajar</a>--}}
                                         </div>
                                     </div>
                                 </td>

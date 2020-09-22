@@ -117,10 +117,6 @@
                     <ul class="list-unstyled mb-3 mb-md-5 social-icon social-icon-lg">
                         <li><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fab fa-github fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fab fa-dribbble fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fab fa-behance fa-2x"></i></a></li>
                     </ul>
                     <p class="mb-0">©Copyright 2020 <a href="{{ route('frontend.portal.home') }}">SMK Agama Limbang</a></p>
                 </div>

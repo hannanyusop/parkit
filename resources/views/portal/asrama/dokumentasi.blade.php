@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-4">
             @foreach($docs as $key => $doc)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ route('frontend.portal.asrama.dokumentasi-fail', $doc->id)  }}" class="bg-light p-4 text-center border-radius mb-4 d-block">
@@ -31,6 +31,7 @@
                 </div>
             @endforeach
         </div>
+        <br><br><br>
     </div>
 
 @endsection
