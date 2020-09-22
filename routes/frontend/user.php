@@ -384,23 +384,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             'prefix' => 'admin/',
             'middleware' => 'permission:lib_admin,lib_staff'
         ], function (){
-
-            Route::group([
-                'as' => 'booking.',
-                'prefix' => 'booking/',
-            ], function (){
-
-                Route::get('', [BookingController::class, 'index'])->name('index');
-                Route::get('create', [BookingController::class, 'create'])->name('create');
-                Route::post('create', [BookingController::class, 'insert'])->name('insert');
-                Route::get('delete/{id}', [BookingController::class, 'delete'])->name('delete');
-
-                Route::group(['middleware' => 'permission:lib_admin'], function (){
-
-                    Route::get('applicant-list', [BookingController::class, 'applicantList'])->name('applicant-list');
-                    Route::get('action/{id}/{status}', [BookingController::class, 'action'])->name('action');
-                });
-                
             Route::group([
                 'as' => 'book.',
                 'prefix' => 'book/'
@@ -481,6 +464,22 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
 
             });
+
+            Route::group([
+                'as' => 'booking.',
+                'prefix' => 'booking/',
+            ], function (){
+
+                Route::get('', [BookingController::class, 'index'])->name('index');
+                Route::get('create', [BookingController::class, 'create'])->name('create');
+                Route::post('create', [BookingController::class, 'insert'])->name('insert');
+                Route::get('delete/{id}', [BookingController::class, 'delete'])->name('delete');
+
+                Route::group(['middleware' => 'permission:lib_admin'], function (){
+
+                    Route::get('applicant-list', [BookingController::class, 'applicantList'])->name('applicant-list');
+                    Route::get('action/{id}/{status}', [BookingController::class, 'action'])->name('action');
+                });
 
             });
         });
