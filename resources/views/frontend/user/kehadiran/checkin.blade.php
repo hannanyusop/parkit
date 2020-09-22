@@ -150,7 +150,7 @@ $breadcrumbs = [
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $attend->student->name }}</td>
                                         <td class="text-center">{{ (is_null($attend->checkin))? "" :  reformatDatetime($attend->checkin, 'h:i A')  }}</td>
-                                        @if($uga->checkout == 1)
+                                        @if($uga->is_checkout == 1)
                                             <td class="text-center">{{ (is_null($attend->checkout))? "" :  reformatDatetime($attend->checkout, 'h:i A')  }}</td>
                                         @endif
                                     </tr>
