@@ -12,7 +12,6 @@ $breadcrumbs = [
     'Scan QR' => '#'
 ];
 ?>
-
 @section('content')
     <section class="content">
         <div class="row">
@@ -21,6 +20,12 @@ $breadcrumbs = [
                     <div class="card-body text-center">
                         <h6>Scan E-hadir</h6>
                         <div>
+                            <b>Device has camera: </b>
+                            <span id="cam-has-camera"></span>
+                            <br>
+                            <b>Device has flash: </b>
+                            <span id="cam-has-flash"></span>
+                            <br>
                             <div class="">
                                 <video id="qr-video" width="200px"></video>
                             </div>
@@ -29,9 +34,19 @@ $breadcrumbs = [
                         <div>
                             <button class="btn btn-info btn-xs" id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
                         </div>
+                        <div>
+                            <select class="form-control" id="inversion-mode-select">
+                                <option value="original">Scan original (dark QR code on bright background)</option>
+                                <option value="invert">Scan with inverted colors (bright QR code on dark background)</option>
+                                <option value="both">Scan both</option>
+                            </select>
+                            <br>
+                        </div>
                         <b>Detected QR code: </b>
-
                         <span id="cam-qr-result">None</span>
+                        <br>
+                        <b>Last detected at: </b>
+                        <span id="cam-qr-result-timestamp"></span>
                         <hr>
 
                         <a href="{{ route('frontend.user.kehadiran.checkin', encrypt($uga->id)) }}" class="btn btn-primary">
@@ -58,6 +73,7 @@ $breadcrumbs = [
 
         function setResult(label, result) {
 
+
             let url = new URL(result);
             let params = new URLSearchParams(url.search);
 
@@ -65,10 +81,6 @@ $breadcrumbs = [
 
             if(checkParam){
                 let noic = params.get('id');
-
-                // if(noic.length == 12){
-                //
-                // }
 
                 window.location='{{ route('frontend.user.kehadiran.checkin-qr-check', encrypt($uga->id)) }}'+"?id="+noic;
                 scanner.stop();
@@ -79,8 +91,6 @@ $breadcrumbs = [
                 label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
 
             }
-
-
         }
 
         // ####### Web Cam Scanning #######
@@ -117,9 +127,18 @@ $breadcrumbs = [
             scanner.setInversionMode(event.target.value);
         });
 
+        document.getElementById('start-button').addEventListener('click', () => {
+            scanner.start();
+        });
+
+        document.getElementById('stop-button').addEventListener('click', () => {
+            scanner.stop();
+        });
 
 
     </script>
 
 @endsection
+
+
 
