@@ -19,7 +19,7 @@ class CheckRequest extends FormRequest
     public function rules()
     {
         return [
-            'no_ic' => 'required|exists:students'
+//            'no_ic' => 'required|exists:students'
         ];
     }
 

@@ -36,15 +36,17 @@ $breadcrumbs = [
                                                 <td>
                                                     <div class="form-group">
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" name="form[{{ $form }}]" type="checkbox" id="all-{{ $form }}" value="{{ $form }}">
+                                                            <input class="all form-check-input" name="form[{{ $form }}]" type="checkbox" data-form="{{ $form }}" id="all-{{ $form }}" value="{{ $form }}">
                                                             <label class="form-check-label" for="all-{{ $form }}">SEMUA</label>
                                                         </div>
-                                                        @foreach(getFormClass($form) as $class)
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" data-form="{{ $form }}" name="class[{{ $form }}][]" type="checkbox" id="class-{{ $class->id }}" value="{{ $class->id }}">
-                                                                <label class="form-check-label" for="class-{{ $class->id }}">{{ strtoupper($class->generate_name) }}</label>
-                                                            </div>
-                                                        @endforeach
+                                                        <div id="group-{{ $form }}">
+                                                            @foreach(getFormClass($form) as $class)
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form form-check-input form-{{ $form }}" data-form="{{ $form }}" name="class[{{ $form }}][]" type="checkbox" id="form-{{ $class->id }}" value="{{ $class->id }}">
+                                                                    <label class="form-check-label" for="class-{{ $class->id }}">{{ strtoupper($class->generate_name) }}</label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -59,7 +61,7 @@ $breadcrumbs = [
                                 <div class="selectgroup">
                                     @foreach($hostels as $key => $hostel)
                                         <label class="selectgroup-item">
-                                            <input type="radio" name="hostel" value="{{ $key }}" class="selectgroup-input" {{ (old('hostel') == $key)? "checked" : "" }}>
+                                            <input type="radio" name="hostel" value="{{ $key }}" class="selectgroup-input" {{ (old('hostel') == $key)? "checked" : "" }} required>
                                             <span class="selectgroup-button">{{ $hostel }}</span>
                                         </label>
                                     @endforeach
@@ -72,7 +74,7 @@ $breadcrumbs = [
                                 <div class="selectgroup">
                                     @foreach($genders as $key => $gender)
                                         <label class="selectgroup-item">
-                                            <input type="radio" name="gender" value="{{ $key }}" class="selectgroup-input" {{ (old('gender') == $key)? "checked" : "" }}>
+                                            <input type="radio" name="gender" value="{{ $key }}" class="selectgroup-input" {{ (old('gender') == $key)? "checked" : "" }} required>
                                             <span class="selectgroup-button">{{ $gender }}</span>
                                         </label>
                                     @endforeach
@@ -97,7 +99,7 @@ $breadcrumbs = [
                                 <div class="selectgroup">
                                     @foreach(getUgaType() as $key => $type)
                                         <label class="selectgroup-item">
-                                            <input type="radio" name="type" value="{{ $key }}" class="selectgroup-input" {{ (old('type') == $key)? "checked" : "" }}>
+                                            <input type="radio" name="type" value="{{ $key }}" class="selectgroup-input" {{ (old('type') == $key)? "checked" : "" }} required>
                                             <span class="selectgroup-button">{{ $type }}</span>
                                         </label>
                                     @endforeach
@@ -116,6 +118,20 @@ $breadcrumbs = [
     </section>
 @endsection
 @push('after-scripts')
+    <script type="text/javascript">
+        $("input[type='checkbox'].all").each(function(){
+            $(this).click(function(){
+                var form_id = $(this).data("form");
+
+                if($(this).is(":checked")){
+                    $("#group-"+form_id).hide();
+                }else{
+                    $("#group-"+form_id).show();
+
+                }
+            })
+        })
+    </script>
 
 @endpush
 

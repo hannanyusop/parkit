@@ -21,8 +21,8 @@ class InsertRequest extends FormRequest
             'class' => 'required_without:form',
             'hostel' => 'required',
             'gender' => 'required',
-            'start' => 'required',
-            'end' => 'required|after:start',
+//            'start' => 'required',
+//            'end' => 'required|after:start',
             'type' => 'required'
         ];
     }
