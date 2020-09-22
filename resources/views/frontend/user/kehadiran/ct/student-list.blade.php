@@ -47,7 +47,6 @@ $breadcrumbs = [
                                 <th>NAMA</th>
                                 <th>NO. K/P</th>
                                 <th>Jantina</th>
-                                <th>QR</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -58,9 +57,9 @@ $breadcrumbs = [
                                 <td>{{ $has_student->student->name }}</td>
                                 <td>{{ $has_student->student->no_ic }}</td>
                                 <td>{{ getGender($has_student->student->gender) }}</td>
-                                <td> {{ getKehadiranStudent($has_student->student->no_ic) }}</td>
                                 <td>
                                     <div class="btn-group">
+                                        <a target="_blank" href="{{ route('frontend.user.kehadiran.ct.download-qr', $has_student->student->no_ic) }}" class="btn btn-icon btn-primary"><i class="fa fa-qrcode"></i> </a>
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
                                             <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $has_student->student_id) }}">Kemaskini</a>

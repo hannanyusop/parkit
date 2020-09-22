@@ -10,6 +10,7 @@ use App\Models\StudentHasClass;
 use App\Models\UserGenerateAttendance;
 use App\Models\UserHasClass;
 use Illuminate\Http\Request;
+use LaravelQRCode\Facades\QRCode;
 
 class ClassroomTeacherController extends Controller{
 
@@ -148,6 +149,20 @@ class ClassroomTeacherController extends Controller{
 
 
         return view('frontend.user.kehadiran.ct.student-list', compact('class'));
+
+    }
+
+    public function downloadQR($student_ic){
+
+        $student = Student::where('no_ic', $student_ic)
+            ->firstOrFail();
+
+       $image = QRCode::url(route('frontend.student-info', ['id'=> $student->no_ic]))
+            ->setSize(4)
+            ->setMargin(2)
+            ->png();
+
+        return response($image)->header('Content-type','image/png');
 
     }
 
