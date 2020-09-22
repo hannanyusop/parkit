@@ -382,7 +382,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
         Route::group([
             'as' => 'admin.',
             'prefix' => 'admin/',
-            'middleware' => 'permissions:lib_admin,lib_staff'
+//            'middleware' => 'permission:lib_admin,lib_staff'
         ], function (){
             Route::group([
                 'as' => 'book.',
