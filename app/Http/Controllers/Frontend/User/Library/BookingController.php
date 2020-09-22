@@ -108,6 +108,7 @@ class BookingController extends Controller{
 
         $bookings = Booking::whereYear('date', date('Y'))
             ->orderBy('status', 'ASC')
+            ->orderBy('date', 'DESC')
             ->get();
 
         $events = array();
