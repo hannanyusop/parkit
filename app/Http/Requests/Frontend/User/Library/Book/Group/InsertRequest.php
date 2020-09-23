@@ -20,7 +20,7 @@ class InsertRequest extends FormRequest
     {
         return [
             'first_dewey' => 'required|exists:lib_g_subs,id',
-            'dewey_code' => 'integer|min:0|max:1000|unique:lib_g_subs,code',
+            'dewey_code' => 'integer|min:0|max:2000|unique:lib_g_subs,code',
             'dewey_name' => 'required|unique:lib_g_subs,name',
         ];
     }
