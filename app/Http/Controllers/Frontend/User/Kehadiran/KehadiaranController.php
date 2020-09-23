@@ -279,6 +279,8 @@ class KehadiaranController extends Controller{
 
             $student = Student::where('no_ic', $request->id)->first();
 
+            dd($student);
+
             if(!$student){
                 return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
             }
