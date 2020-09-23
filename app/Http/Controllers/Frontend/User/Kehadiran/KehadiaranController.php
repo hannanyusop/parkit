@@ -16,9 +16,7 @@ class KehadiaranController extends Controller{
 
     public function index(){
 
-        $generated = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->orderBy('created_at', 'DESC')
+        $generated = UserGenerateAttendance::orderBy('created_at', 'DESC')
             ->get();
 
         return view('frontend.user.kehadiran.index', compact('generated'));
@@ -180,18 +178,14 @@ class KehadiaranController extends Controller{
 
     public function checkin($id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->findOrFail(decrypt($id));
+        $uga = UserGenerateAttendance::findOrFail(decrypt($id));
 
         return view('frontend.user.kehadiran.checkin', compact('uga'));
     }
 
     public function checkinList(Request $request, $id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->findOrFail(decrypt($id));
+        $uga = UserGenerateAttendance::findOrFail(decrypt($id));
 
         if($request->status == 1){
 
@@ -223,9 +217,7 @@ class KehadiaranController extends Controller{
 
     public function checkinInsert(Request $request, $id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->findOrFail($id);
+        $uga = UserGenerateAttendance::findOrFail($id);
 
         $student = Student::where('no_ic', $request->ic)->first();
 
@@ -253,9 +245,7 @@ class KehadiaranController extends Controller{
 
     public function checkinQr($id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->find(decrypt($id));
+        $uga = UserGenerateAttendance::find(decrypt($id));
 
         if(!$uga){
             return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
@@ -266,9 +256,7 @@ class KehadiaranController extends Controller{
 
     public function checkinQrCheck(Request $request, $id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->find(decrypt($id));
+        $uga = UserGenerateAttendance::find(decrypt($id));
 
         if(!$uga){
             return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
@@ -310,9 +298,7 @@ class KehadiaranController extends Controller{
 
     public function checkoutQr($id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->find(decrypt($id));
+        $uga = UserGenerateAttendance::find(decrypt($id));
 
         if(!$uga){
             return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
@@ -327,9 +313,7 @@ class KehadiaranController extends Controller{
 
     public function checkoutQrCheck(Request $request, $id){
 
-        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
-            ->orWhereIn('id', getUgaAccess())
-            ->find(decrypt($id));
+        $uga = UserGenerateAttendance::find(decrypt($id));
 
         if(!$uga){
             return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
