@@ -47,5 +47,11 @@ class Student extends Model{
             ->where('year', date('Y'));
     }
 
+    public function parents(){
+
+        return $this->hasMany(StudentHasParent::class, 'student_id', 'id')
+            ->orderBy('is_first', "DESC");
+    }
+
 
 }

@@ -17,6 +17,10 @@ class StudentHasParent extends Model{
         'relation',
     ];
 
+    public function parent(){
+        return $this->hasOne(StudentParent::class, 'id', 'parent_id');
+    }
+
 
 
 }

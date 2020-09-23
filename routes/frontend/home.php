@@ -3,7 +3,7 @@
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TermsController;
 use Tabuna\Breadcrumbs\Trail;
-use App\Http\Controllers\Frontend\StudentInfoController;
+use App\Http\Controllers\Frontend\FrontendStudentController;
 use App\Http\Controllers\Portal\MainController;
 use App\Http\Controllers\Portal\AsramaController;
 use App\Http\Controllers\Portal\DownloadController;
@@ -12,13 +12,11 @@ use App\Http\Controllers\Portal\SmkalController;
  * Frontend Controllers
  * All route names are prefixed with 'frontend.'.
  */
-Route::get('/', [HomeController::class, 'index'])
-    ->name('index')
-    ->breadcrumbs(function (Trail $trail) {
-        $trail->push(__('Home'), route('frontend.index'));
-    });
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('student-information', [StudentInfoController::class, 'index'])->name('student-info');
+Route::get('student-information/', [FrontendStudentController::class, 'info'])->name('student-info');
+Route::get('search', [FrontendStudentController::class, 'search'])->name('student-search');
+
 
 Route::get('terms', [TermsController::class, 'index'])
     ->name('pages.terms')
@@ -28,6 +26,8 @@ Route::get('terms', [TermsController::class, 'index'])
     });
 
 Route::get('test', function (){
+
+    dd('test');
 });
 
 Route::group([

@@ -16,7 +16,13 @@ class HomeController extends Controller
     {
 
         if(auth()->user()){
-            return  redirect()->route('frontend.user.dashboard');
+
+            if(auth()->user()->isAdmin()){
+
+                return  redirect()->route('admin.dashboard');
+            }else{
+                return  redirect()->route('frontend.user.dashboard');
+            }
         }else{
             return  redirect()->route('frontend.auth.login');
 
