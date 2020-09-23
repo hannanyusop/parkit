@@ -1,17 +1,7 @@
 
-
-@extends('frontend.user.layouts.app')
+@extends('frontend.user.layouts.app-no-side-bar')
 
 @section('title', 'Scan E-Kehadiran Murid')
-
-<?php
-$breadcrumbs = [
-    'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.index'),
-    'Senarai Kehadiran' => route('frontend.user.kehadiran.checkin', encrypt($uga->id)),
-    'Scan QR' => '#'
-];
-?>
 @section('content')
     <section class="content">
         <div class="row">

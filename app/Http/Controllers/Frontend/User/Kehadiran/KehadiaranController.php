@@ -178,6 +178,11 @@ class KehadiaranController extends Controller{
 
     public function checkin($id){
 
+        if(!session()->has('att_manual_tab')){
+
+            session()->put('att_manual_tab', 'checkin');
+        }
+
         $uga = UserGenerateAttendance::findOrFail(decrypt($id));
 
         return view('frontend.user.kehadiran.checkin', compact('uga'));
@@ -217,12 +222,14 @@ class KehadiaranController extends Controller{
 
     public function checkinInsert(Request $request, $id){
 
+        session()->put('att_manual_tab', 'checkin');
+
         $uga = UserGenerateAttendance::findOrFail($id);
 
         $student = Student::where('no_ic', $request->ic)->first();
 
         if(!$student){
-            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
         }
 
         $sa = StudentAttendance::where('uga_id', $uga->id)
@@ -231,15 +238,54 @@ class KehadiaranController extends Controller{
 
         if(!$sa){
 
-            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Pelajar tiada dalam senarai.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Pelajar tiada dalam senarai.');
         }
 
         if(!is_null($sa->checkin)){
-            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withFlashWarning('Pelajar sudah didaftar masuk.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar sudah didaftar masuk.');
         }
 
         $sa->update(['checkin' => now(), 'status' => 2]);
-        return redirect()->route('frontend.user.kehadiran.checkin', $id)->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+
+    }
+
+    public function checkoutInsert(Request $request, $id){
+
+        session()->put('att_manual_tab', 'checkout');
+
+        $uga = UserGenerateAttendance::findOrFail($id);
+
+        if($uga->is_checkout == 0){
+
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Program ini tidak mempunyai modul daftar keluar.');
+        }
+
+        $student = Student::where('no_ic', $request->ic)->first();
+
+        if(!$student){
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+        }
+
+        $sa = StudentAttendance::where('uga_id', $uga->id)
+            ->where('student_id', $student->id)
+            ->first();
+
+        if(!$sa){
+
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Pelajar tiada dalam senarai.');
+        }
+
+        if(is_null($sa->checkin)){
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar belum di daftar masuk.');
+        }
+
+        if(!is_null($sa->checkout)){
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar sudah belum di daftar keluar.');
+        }
+
+        $sa->update(['checkout' => now(), 'status' => 2]);
+        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar keluar.');
 
     }
 

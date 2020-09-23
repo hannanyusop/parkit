@@ -19,26 +19,34 @@ $breadcrumbs = [
                     <div class="card-body">
                         <ul class="nav nav-pills" id="myTab3" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="masuk" data-toggle="tab" href="#masuk" role="tab" aria-controls="masuk" aria-selected="true">Daftar Masuk</a>
+                                <a class="nav-link {{ (session('att_manual_tab') == "checkin")? "active" : "" }}" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="{{ (session('att_manual_tab') == "checkin")? "true" : "false" }}">Daftar Masuk</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="keluar" data-toggle="tab" href="#keluar" role="tab" aria-controls="keluar" aria-selected="false">Daftar Keluar</a>
-                            </li>
+                            @if($uga->is_checkout == 1)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ (session('att_manual_tab') == "checkout")? "active" : "" }}" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="{{ (session('att_manual_tab') == "checkout")? "true" : "false" }}">Daftar Keluar</a>
+                                </li>
+                            @endif
                         </ul>
                         <div class="tab-content" id="myTabContent2">
-                            <div class="tab-pane fade show active" id="tab-masuk" role="tabpanel" aria-labelledby="masuk">
+                            <div class="tab-pane fade {{ (session('att_manual_tab') == "checkin")? "show active" : "" }}" id="home3" role="tabpanel" aria-labelledby="home-tab3">
                                 <form class="form-inline mb-3" action="{{ route('frontend.user.kehadiran.checkin-insert', $uga->id) }}" method="get">
-                                    <label class="sr-only" for="ic">NO K/P Pelajar</label>
-                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="title" value="{{ request('ic') }}" placeholder="NO. K/P Pelajar">
+                                    <label class="sr-only" for="ic-checkin">NO K/P Pelajar</label>
+                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkin" value="{{ old('ic') }}" placeholder="NO. K/P Pelajar">
 
-                                    <div class="input-group mb-2 mr-sm-2">
-                                        <button type="submit" class="btn btn-primary">Daftar Masuk Manual</button>
+                                    <div class="input-group mr-sm-2">
+                                        <button type="submit" class="btn btn-success btn-block">Daftar Masuk Manual</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane fade" id="keluar" role="tabpanel" aria-labelledby="keluar">
-                                Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor,
-                                ac efficitur est lobortis quis.
+                            <div class="tab-pane fade {{ (session('att_manual_tab') == "checkout")? "show active" : "" }}" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+                                <form class="form-inline mb-3" action="{{ route('frontend.user.kehadiran.checkout-insert', $uga->id) }}" method="get">
+                                    <label class="sr-only" for="ic-checkout">NO K/P Pelajar</label>
+                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkout" value="{{ old('ic') }}" placeholder="NO. K/P Pelajar">
+
+                                    <div class="input-group mr-sm-2">
+                                        <button type="submit" class="btn btn-danger btn-block">Daftar Keluar Manual</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
