@@ -41,8 +41,9 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <h5 class="mb-2">Submodul Sistem</h5>
-                            <hr><br><br>
+                            <div class="col-12">
+                                <h5 class="m-2 text-center">Submodul Sistem</h5>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -53,7 +54,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-vote-yea"></i> </h3>
 
-                                            <p>Coop Voting System</p>
+                                            <p>Modul Undian Parking</p>
                                         </div>
                                     </a>
                                 </div>
@@ -66,7 +67,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-qrcode"></i> </h3>
 
-                                            <p>Covid-19 Check-in</p>
+                                            <p>Modul Pengawasan CV-19</p>
                                         </div>
                                     </a>
                                 </div>
@@ -78,7 +79,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-book-reader"></i> </h3>
 
-                                            <p>My-Library</p>
+                                            <p>Modul Pengurusan Perpustakaan</p>
                                         </div>
                                     </a>
                                 </div>
@@ -88,20 +89,20 @@
                                     <!-- small box -->
                                     <a href="{{ route('frontend.user.student.index') }}" class="small-box bg-white">
                                         <div class="inner text-center">
-                                            <h3><i class="fa fa-user-friends"></i> </h3>
+                                            <h3><i class="fa fa-database"></i> </h3>
 
-                                            <p>Data Pelajar</p>
+                                            <p>Pangkalan Data Pelajar</p>
                                         </div>
                                     </a>
                                 </div>
 
                                 <div class="col-md-3 col-6">
                                     <!-- small box -->
-                                    <a href="{{ route('frontend.user.kehadiran.ct.index') }}" class="small-box bg-white">
+                                    <a href="{{ route('frontend.user.kehadiran.index') }}" class="small-box bg-white">
                                         <div class="inner text-center">
-                                            <h3><i class="fa fa-clipboard-list"></i> </h3>
+                                            <h3><i class="fa fa-chalkboard-teacher"></i> </h3>
 
-                                            <p>E-Kehadiran</p>
+                                            <p>Modul Rekod Kehadiran</p>
                                         </div>
                                     </a>
                                 </div>
