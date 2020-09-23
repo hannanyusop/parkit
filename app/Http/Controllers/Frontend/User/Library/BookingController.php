@@ -51,6 +51,7 @@ class BookingController extends Controller{
 
         $check = Booking::where('start', '>=', $start)
             ->where('end', '<=', $end)
+            ->where('status', 2)
             ->first();
 
         if($check){

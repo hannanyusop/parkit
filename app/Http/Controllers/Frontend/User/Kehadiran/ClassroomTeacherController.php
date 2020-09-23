@@ -157,7 +157,7 @@ class ClassroomTeacherController extends Controller{
         $student = Student::where('no_ic', $student_ic)
             ->firstOrFail();
 
-       $image = QRCode::url(route('frontend.student-info', ['id'=> $student->no_ic]))
+           $image = QRCode::url(route('frontend.student-info', ['id'=> $student->no_ic]))
             ->setSize(4)
             ->setMargin(2)
             ->png();
