@@ -15,7 +15,7 @@
                 </a>
 
                 <a href="{{ route('frontend.user.kehadiran.index') }}" class="btn btn-app">
-                    <i class="fas fa-users"></i> Kehadiran
+                    <i class="fas fa-users"></i> Modul Rekod Kehadiran (MRK)
                 </a>
 
                 @can('Portal Admin')

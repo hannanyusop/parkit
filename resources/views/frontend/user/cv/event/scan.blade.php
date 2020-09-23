@@ -57,6 +57,7 @@
                         <br>
                         <button class="btn btn-success" id="start-button">Start</button>
                         <button class="btn btn-danger" id="stop-button">Stop</button>
+                        <a class="btn btn-dark" href="{{ route('frontend.user.cv.event.checkin-manual') }}">Manual</a>
                         <hr>
                     </div>
                 </div>

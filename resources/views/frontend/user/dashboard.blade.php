@@ -36,12 +36,12 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <div class="card">
                     <div class="card-body">
 
                         <div class="row">
-                            <h5 class="mb-2">Module Sistem</h5>
+                            <h5 class="mb-2">Submodul Sistem</h5>
                             <hr><br><br>
                         </div>
 
@@ -105,18 +105,6 @@
                                         </div>
                                     </a>
                                 </div>
-
-                                <div class="col-md-3 col-6">
-                                    <!-- small box -->
-                                    <a href="{{ route('frontend.user.kehadiran.ct.scan') }}" class="small-box bg-white">
-                                        <div class="inner text-center">
-                                            <h3><i class="fa fa-barcode"></i> </h3>
-
-                                            <p>E-Kehadiran</p>
-                                        </div>
-                                    </a>
-                                </div>
-
                         </div>
                     </div>
                 </div>

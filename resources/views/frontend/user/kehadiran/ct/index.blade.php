@@ -53,6 +53,7 @@ $breadcrumbs = [
                                         <div class="dropdown-menu" style="">
 {{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', $class->id) }}">Laporan Kehadiran</a>--}}
                                             <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', $class->id) }}">Senarai Pelajar</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.printQrByClass', $class->id) }}">Print QR</a>
                                         </div>
                                     </div>
                                 </td>

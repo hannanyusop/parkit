@@ -7,10 +7,16 @@
         <div class="col-md-8 offset-md-2">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"> Campaign List</h3>
+                    <h4 class="card-title"> Campaign List</h4>
+                    <div class="card-header-action">
+                        <div class="dropdown">
+                            <a class="btn btn-primary" href="{{ route('frontend.user.vote.apply') }}">Join Campaign</a>
+                        </div>
+                    </div>
                 </div>
+
                 <!-- /.card-header -->
-                <div class="card-body p-0">
+                <div class="card-body">
 
                     <div class="ml-4 mt-2">
                        <p>
@@ -51,9 +57,9 @@
                                             @if($join->user->cardUsed($join->campaign->id)->count() == 0)
                                                 <span class="badge bg-dark">Not Yet</span>
                                             @elseif($balance > 0)
-                                                <span class="badge bg-info">On going</span>
+                                                <span class="badge bg-info text-white">On going</span>
                                             @else
-                                                <span class="badge bg-success">Completed</span>
+                                                <span class="badge bg-success text-white">Completed</span>
                                             @endif
                                         @endif
                                     </td>

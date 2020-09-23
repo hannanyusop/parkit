@@ -105,6 +105,8 @@ class LoginController extends Controller
             return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account has been deactivated.'));
         }
 
+        session()->put('login_message', 'Sistem ini masih dalam fasa pembangunan dan percubaan. Sebarang ralat amatlah dikesali.');
+
         event(new UserLoggedIn($user));
 
         if (config('boilerplate.access.user.single_login')) {

@@ -152,6 +152,20 @@ class ClassroomTeacherController extends Controller{
 
     }
 
+    public function printQrByClass($class_id){
+
+        $class = Classroom::find($class_id);
+
+        if(!$class){
+            return redirect()->route('frontend.user.kehadiran.ct.index')->withFlashError('Kelas tidak wujud!');
+        }
+
+
+        return view('frontend.user.kehadiran.ct.print-qr', compact('class'));
+
+    }
+
+
     public function downloadQR($student_ic){
 
         $student = Student::where('no_ic', $student_ic)

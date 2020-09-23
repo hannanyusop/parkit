@@ -89,7 +89,7 @@
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('frontend.user.kehadiran.index') }}">
-                            <i class="fas fa-chalkboard-teacher"></i> <span>E-Hadir</span>
+                            <i class="fas fa-chalkboard-teacher"></i> <span>Modul Rekod Kehadiran</span>
                         </a>
                     </li>
                     @can('lib_can')
@@ -116,11 +116,6 @@
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link" href="{{ route('frontend.user.cv.event.checkin-manual') }}">
-                                <i class="fas fa-user-check"></i> <span>Manual Check-in</span>
-                            </a>
-                        </li>
-                        <li>
                             <a class="nav-link" href="{{ route('frontend.user.cv.event.history') }}">
                                 <i class="fas fa-history"></i> <span>History</span>
                             </a>
@@ -142,12 +137,6 @@
                                 <i class="fas fa-vote-yea"></i> <span>Voting</span>
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="{{ route('frontend.user.vote.apply') }}">
-                                <i class="fas fa-file-signature"></i> <span>Join Campaign</span>
-                            </a>
-                        </li>
-
                         @can('poll_admin')
                             <li class="dropdown">
                                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-day"></i><span>Manage Event</span></a>
@@ -220,6 +209,11 @@
 <script src="{{ asset('ui/js/scripts.js') }}"></script>
 <script src="{{ asset('ui/js/custom.js') }}"></script>
 <script type="text/javascript">
+
+    @if(session()->has('login_message'))
+        swal('Pengunguman', '{{ session()->get('login_message') }}', 'info');
+     <?php session()->forget('login_message'); ?>
+    @endif
 
     $("#datable").dataTable({
         "columnDefs": [

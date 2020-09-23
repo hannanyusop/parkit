@@ -20,11 +20,16 @@ $breadcrumbs = [
                         <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Action</a>
                         <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(75px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
                             <li><a href="{{ route('frontend.user.kehadiran.create') }}" class="dropdown-item">Jana Kehadiran</a></li>
-                            <li><a href="#" class="dropdown-item">This Year</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="alert alert-light">
+                        <div class="alert-body">
+                            Modul Rekod Kehadiran ini masih dalam fasa pembinaan dan percubaan. Jika anda menghadapi ralat sistem sila
+                            <i>screenshot</i> dan laporkan kepada pihak teknikal kami.
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datable">
                             <thead>

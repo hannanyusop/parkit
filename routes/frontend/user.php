@@ -312,6 +312,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
             Route::get('view-today-attendance/{class_id}', [ClassroomTeacherController::class, 'viewTodayAttendance'])->name('view-today-attendance');
             Route::get('student-list/{class_id}', [ClassroomTeacherController::class, 'studentList'])->name('student-list');
+            Route::get('printQrByClass/{class_id}', [ClassroomTeacherController::class, 'printQrByClass'])->name('printQrByClass');
+
 
             Route::get('download-qr/{student_ic}', [ClassroomTeacherController::class, 'downloadQR'])->name('download-qr');
 

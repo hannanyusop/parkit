@@ -1291,4 +1291,18 @@ if(!function_exists('attendanceGetUgaStatus')){
 
 }
 
+if(!function_exists('limitString')){
+
+    function limitString($string, $limit = 50, $replace = ''){
+
+        if (strlen($string) <=$limit) {
+            return $string;
+        } else {
+            return substr($string, 0, 50) . $replace;
+        }
+    }
+}
+
+
+
 
