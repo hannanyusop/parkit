@@ -8,24 +8,27 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-center">
 
-                        <div class="statistic-details mt-sm-4">
-                            <div class="statistic-details-item">
-                                <div class="detail-value">{{ getLibTodayActive() }}</div>
-                                <div class="detail-name">Pengunjung Aktif</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <div class="detail-value">{{ getLibTodayAll() }}</div>
-                                <div class="detail-name">Pengunjung Hari Ini</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <div class="detail-value">{{ getLibMonthAll() }}</div>
-                                <div class="detail-name">Pengunjung Bulan Ini</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <div class="detail-value">{{ getLate() }}</div>
-                                <div class="detail-name">Peminjam Lewat</div>
+                        <h6 class="d-inline mb-2">Statistik Pengunjung</h6>
+                        <div class="bg-light">
+                            <div class="statistic-details mt-sm-4">
+                                <div class="statistic-details-item">
+                                    <div class="detail-value">{{ getLibTodayActive() }}</div>
+                                    <div class="detail-name">Pengunjung Aktif</div>
+                                </div>
+                                <div class="statistic-details-item">
+                                    <div class="detail-value">{{ getLibTodayAll() }}</div>
+                                    <div class="detail-name">Pengunjung Hari Ini</div>
+                                </div>
+                                <div class="statistic-details-item">
+                                    <div class="detail-value">{{ getLibMonthAll() }}</div>
+                                    <div class="detail-name">Pengunjung Bulan Ini</div>
+                                </div>
+                                <div class="statistic-details-item">
+                                    <div class="detail-value">{{ getLate() }}</div>
+                                    <div class="detail-name">Peminjam Lewat</div>
+                                </div>
                             </div>
                         </div>
 
