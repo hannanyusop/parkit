@@ -11,7 +11,7 @@
                     <div class="card-body text-center">
 
                         <h6 class="d-inline mb-2">Statistik Pengunjung</h6>
-                        <div class="bg-light">
+                        <div class="bg-light m-4">
                             <div class="statistic-details mt-sm-4">
                                 <div class="statistic-details-item">
                                     <div class="detail-value">{{ getLibTodayActive() }}</div>
