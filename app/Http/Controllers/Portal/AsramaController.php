@@ -47,9 +47,12 @@ class AsramaController extends Controller{
 
     public function dokumentasiFail($id){
 
-        $doc = PortalDownload::where('group', 'dokumen-asrama')
-            ->findOrFail($id);
+        $doc = PortalDownload::where('id', $id)
+            ->first();
 
+        if(!$doc){
+            return  redirect()->back()->withErrors('Dokumen tidak dijumpai!');
+        }
         return view('portal.asrama.dokumentasiFail', compact('doc'));
     }
 
