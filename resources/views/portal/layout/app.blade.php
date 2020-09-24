@@ -111,22 +111,78 @@
 {{--    </div>--}}
 {{--</footer>--}}
 
-<footer class="footer space-ptb bg-light mt-n5">
-    <div class="footer-bottom mt-5">
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-9 text-sm-right mt-4 mt-sm-0">
+                    <ul class="list-unstyled mb-0 social-icon">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 my-sm-5 pb-0">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <h5 class="text-primary mb-2 mb-sm-4">Portal</h5>
+                <div class="footer-link">
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="{{ route('frontend.portal.home') }}">Utama</a></li>
+                        <li><a href="{{ route('frontend.portal.smkal.pengenalan') }}">SMKAL</a></li>
+                    </ul>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="{{ route('frontend.portal.asrama.direktori') }}">Asrama</a></li>
+                        <li><a href="{{ route('frontend.portal.download.borang') }}">Muat Turun Borang</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <h5 class="text-primary mb-2 mb-sm-4">Sistem Atas Talian</h5>
+                <div class="footer-link">
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="{{ route('frontend.auth.login') }}">Sistem Maklumat Sekolah<span class="badge badge-success ml-2">Baru</span></a></li>
+                        <li><a href="https://apdm.moe.gov.my/index.php?modul=action&muka=login">Apliaksi Pangkalan Data Murid</a></li>
+                        <li><a href="https://sapsnkra.moe.gov.my/">Sistem Analisis Peperiksaan Sekolah</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="footer-contact-info">
+                    <h5 class="text-primary mb-3">SMK AGAMA LIMBANG</h5>
+                    <div class="contact-address">
+                        <div class="contact-item">
+                            <label>Alamat:</label>
+                            <p>KM 11.7, jalan Pandaruan, Peti Surat 493, Limbang, 98700</p>
+                        </div>
+                        <div class="contact-item">
+                            <label>No. Tel. Pejabat:</label>
+                            <h4 class="mb-0 font-weight-bold"><a href="#">014-588 6130</a></h4>
+                        </div>
+                        <div class="contact-item">
+                            <label>Email:</label>
+                            <a class="text-dark" href="#">admin@smkal.my</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom py-sm-5 py-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <ul class="list-unstyled mb-3 mb-md-5 social-icon social-icon-lg">
-                        <li><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter fa-2x"></i></a></li>
-                    </ul>
-                    <p class="mb-0">©Copyright 2020 <a href="{{ route('frontend.portal.home') }}">SMK Agama Limbang</a></p>
+                    <p class="mb-0">©Copyright 2019 <a href="#">SMKALIM</a> All Rights Reserved</p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
 
 <script src="{{ asset('portal/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('portal/js/popper/popper.min.js') }}"></script>
