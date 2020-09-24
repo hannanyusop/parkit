@@ -15,8 +15,11 @@
                         <div class="row">
                             @foreach($books as $book)
                                 <div class="col-md-6">
-                                    <div class="" style="border-style: dotted;width: 450px">
+                                    <div class="" style="border-style: dotted;width: 410px">
                                         {!! barCodePrint($book->id, 2,50) !!}
+                                    </div>
+                                    <div class="text-center" style="border-style: dotted;height:35px;width: 110px;margin-top: -17px;margin-bottom: -17px">
+                                        <h6 class="m-1">{{ bookShortCode($book->id) }}</h6>
                                     </div>
                                 </div>
                             @endforeach

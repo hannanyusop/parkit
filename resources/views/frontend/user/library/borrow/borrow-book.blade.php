@@ -89,13 +89,33 @@
                                             <dt class="col-sm-4">Kelas</dt>
                                             <dd class="col-sm-8">{{ getStudentClass($student->class_id) }}</dd>
 
-                                            <dt class="col-sm-4">Jumlah Buku Yang Belum Dipulangkan</dt>
-                                            <dd class="col-sm-8">{{ $student->notReturnBook->count() }}</dd>
-
                                             <dt class="col-sm-4">Jumlah Buku Yang Boleh Dipinjam</dt>
                                             <dd class="col-sm-8">{{ getLibraryOption('max_student_borrow', 2)-$student->notReturnBook->count() }}</dd>
 
+                                            <dt class="col-sm-4">Jumlah Buku Yang Belum Dipulangkan</dt>
+                                            <dd class="col-sm-8">{{ $student->notReturnBook->count() }}</dd>
                                         </dl>
+                                        <div class="table-responsive">
+                                            <h5>Senarai Buku Yang Belum Dipulangkan</h5>
+                                            <table class="table table-striped table-valign-middle table-sm">
+                                                <thead>
+                                                <tr>
+                                                    <th>No Perolehan</th>
+                                                    <th>Tajuk</th>
+                                                    <th>Tarikh Peminjaman</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($student->notReturnBook as $key => $book)
+                                                    <tr>
+                                                        <td>{{ getBookId($book->book->id) }}</td>
+                                                        <td>{{ $book->book->parent->title }}</td>
+                                                        <td>{{ reformatDatetime($book->borrow_date, 'j M Y') }}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
 
                                     </div>
                                 </div>

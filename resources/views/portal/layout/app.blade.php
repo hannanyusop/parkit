@@ -74,6 +74,8 @@
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.direktori') }}">Direktori Asrama<i class="fas fa-arrow-right"></i></a></li>
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.halatuju') }}">Hala Tuju<i class="fas fa-arrow-right"></i></a></li>
                             <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.kemudahan') }}">Kemudahan<i class="fas fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="{{ route('frontend.portal.asrama.bmb') }}">Perkhidmatan Kontrak<i class="fas fa-arrow-right"></i></a></li>
+
 
                         </ul>
                     </li>

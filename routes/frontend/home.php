@@ -59,6 +59,17 @@ Route::group([
         Route::get('dokumentasi/', [AsramaController::class, 'dokumentasi'])->name('dokumentasi');
         Route::get('dokumentasi/fail/{name}', [AsramaController::class, 'dokumentasiFail'])->name('dokumentasi-fail');
 
+        Route::group([
+            'prefix' => 'perkhidmatan-kontrak'
+        ], function (){
+
+            Route::get('bmb/', [AsramaController::class, 'bmb'])->name('bmb');
+            Route::get('bkb/', [AsramaController::class, 'bkb'])->name('bkb');
+            Route::get('ppk/', [AsramaController::class, 'ppk'])->name('ppk');
+
+        });
+
+
         Route::get('kemudahan/', [AsramaController::class, 'kemudahan'])->name('kemudahan');
         Route::get('dewan-makan/', [AsramaController::class, 'dewanMakan'])->name('dewan-makan');
         Route::get('surau/', [AsramaController::class, 'surau'])->name('surau');

@@ -3,22 +3,20 @@
 @section('title', __('Role Management'))
 
 @section('content')
-    <x-backend.card>
-        <x-slot name="header">
-            @lang('Role Management')
-        </x-slot>
+    <div class="card">
 
-        <x-slot name="headerActions">
-            <x-utils.link
-                icon="c-icon cil-plus"
-                class="card-header-action"
-                :href="route('admin.auth.role.create')"
-                :text="__('Create Role')"
-            />
-        </x-slot>
+        <div class="card-header">
+            <h4>@lang('Role Management')</h4>
+            <div class="card-header-action dropdown">
+                @if ($logged_in_user->hasAllAccess())
+                    <a href="{{ route('admin.auth.role.create') }}" class="btn btn-primary btn-round">Create Role</a>
+                @endif
+            </div>
+        </div>
 
-        <x-slot name="body">
+
+        <div class="card-body">
             <livewire:roles-table />
-        </x-slot>
-    </x-backend.card>
+        </div>
+    </div>
 @endsection

@@ -1,9 +1,6 @@
 <div>
-    <input wire:model="search" type="text" class="form-control" placeholder="Search users..."/>
-
-
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="datable">
             <thead>
             <tr>
                 <th>#</th>

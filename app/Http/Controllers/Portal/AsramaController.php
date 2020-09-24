@@ -58,4 +58,28 @@ class AsramaController extends Controller{
         return view('portal.asrama.halatuju');
 
     }
+
+    public function bmb(){
+
+        $docs = PortalDownload::where('group', 'bmb')
+            ->get();
+
+        return view('portal.asrama.perkhidmatan-kontrak.bmb', compact('docs'));
+    }
+
+    public function bkb(){
+
+        $docs = PortalDownload::where('group', 'bkb')
+            ->get();
+
+        return view('portal.asrama.perkhidmatan-kontrak.bkb', compact('docs'));
+    }
+
+    public function ppk(){
+
+        $docs = PortalDownload::where('group', 'ppk')
+            ->get();
+
+        return view('portal.asrama.perkhidmatan-kontrak.ppk', compact('docs'));
+    }
 }

@@ -37,7 +37,7 @@ class KehadiaranController extends Controller{
 
         $genders = [
             'S' => 'SEMUA',
-            'M' => 'LEKAKI SAHAJA',
+            'M' => 'LELAKI SAHAJA',
             'F' => 'PEREMPUAN SAHAJA'
         ];
 
