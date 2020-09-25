@@ -265,6 +265,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
         Route::get('edit/{student_id}', [StudentMainController::class, 'edit'])->name('edit');
         Route::post('edit/{student_id}', [StudentMainController::class, 'update'])->name('update');
 
+        Route::get('view/{student_id}', [StudentMainController::class, 'view'])->name('view');
+
         Route::get('import', [StudentMainController::class, 'import'])->name('import');
         Route::post('import', [StudentMainController::class, 'upload'])->name('upload');
     });

@@ -29,6 +29,16 @@ class StudentMainController extends Controller{
 
     }
 
+    public function view($student_id){
+
+        $student = Student::find($student_id);
+
+        if(!$student){
+            return redirect()->back()->withErrors('Data Pelajar tidak wujud');
+        }
+        return view('frontend.user.student.view', compact('student'));
+    }
+
     public function add(Request $request){
 
         $check = false; $no_ic = ""; $detail = [];

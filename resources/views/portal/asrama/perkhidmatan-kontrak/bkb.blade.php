@@ -7,7 +7,7 @@
                 <div class="col-md-8">
                     <div class="header-inner-title text-center">
                         <h1 class="text-white font-weight-normal">PERKHIDAMATAN KONTRAK</h1>
-                        <p class="text-white mb-0">Perkhidmatan Kebersihan Bangunan & Kawasan (BKB)</p>
+                        <p class="text-white mb-0">Perkhidmatan Kebersihan Bangunan & Kawasan (KBK)</p>
                     </div>
                 </div>
             </div>
