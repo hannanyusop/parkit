@@ -6,7 +6,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="header-inner-title text-center">
-                        <h1 class="text-white font-weight-normal">PERKHIDAMATAN KONTRAK</h1>
+                        <h1 class="text-white font-weight-normal">PERKHIDMATAN KONTRAK</h1>
                         <p class="text-white mb-0">Bantuan Makanan Bermasak (BMB)</p>
                     </div>
                 </div>
