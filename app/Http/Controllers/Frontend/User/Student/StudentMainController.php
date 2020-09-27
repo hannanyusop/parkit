@@ -173,18 +173,18 @@ class StudentMainController extends Controller{
         }
     }
 
-    public function import(){
-
-        return view('frontend.user.student.import');
-
-    }
-
-    public function upload(Request $request){
-
-       $result = Excel::import(new StudentImport(), $request->file('file'));
-
-       return redirect()->route('frontend.user.student.index')->withFlashSuccess('Data pelajar berjaya dikemaskini');
-
-
-    }
+//    public function import(){
+//
+//        return view('frontend.user.student.import');
+//
+//    }
+//
+//    public function upload(Request $request){
+//
+//       $result = Excel::import(new StudentImport(), $request->file('file'));
+//
+//       return redirect()->route('frontend.user.student.index')->withFlashSuccess('Data pelajar berjaya dikemaskini');
+//
+//
+//    }
 }

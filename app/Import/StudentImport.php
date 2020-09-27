@@ -12,7 +12,11 @@ class StudentImport implements ToModel{
 
     public function model(array $row){
 
+        if(count($row) != 62){
+            return  redirect()->route('admin.student.upload')->withErrors('Dokumen Excel tidak menepati syarat!');
+        }
 
+        $year = (session()->has('year'))? session('year') : date('Y');
 
         if(!is_null($row[0]) && is_numeric($row[0])){
 
@@ -120,7 +124,7 @@ class StudentImport implements ToModel{
             $studenthasClass = StudentHasClass::firstOrCreate(['student_id' => $student->id, 'class_id' => $class->id], [
                 'student_id' => $student->id,
                 'class_id' => $class->id,
-                'year' => date('Y')
+                'year' => $year
             ]);
 
             $student->update(['class_id' => $class->id]);

@@ -430,7 +430,7 @@ if(!function_exists('studentType')){
 
         $types = [
            1 => "ASRAMA",
-            2 => "HARIAN"
+            0 => "HARIAN"
         ];
 
         return (isset($type)) ? $types[$type] : $types;

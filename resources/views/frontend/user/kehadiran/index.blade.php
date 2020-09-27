@@ -1,11 +1,11 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Senarai Kelas')
+@section('title', 'MRK')
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
+    'MRK' => route('frontend.user.kehadiran.ct.index'),
 ];
 ?>
 

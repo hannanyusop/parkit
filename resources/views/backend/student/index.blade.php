@@ -1,37 +1,20 @@
-@extends('frontend.user.layouts.app')
+@extends('backend.layouts.app')
 
 @section('title', 'Carian Pelajar')
 
 <?php
 $breadcrumbs = [
-    'Dashboard' => route('frontend.user.dashboard'),
-    'Pelajar' => route('frontend.user.student.index'),
-    'Carian Pelajar' => route('frontend.user.student.index'),
+    'Dashboard' => route('admin.dashboard'),
+    'Pelajar' => route('admin.student.index'),
 ];
 ?>
 
 @section('content')
     <section class="content">
-        @include('frontend.user.student.layout.topbar')
+        @include('backend.student.layout.topbar')
         <!-- Default box -->
         <div class="card">
             <div class="card-body">
-                <form method="get" class="form-horizontal">
-                    <div class="card-body">
-
-                        <h4 class="text-center mb-4">Carian Pelajar</h4>
-                        <div class="col-md-6 offset-md-3">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" value="{{ request('search') }}" placeholder="MASUKAN NAMA / NO KAD PENGENALAN PELAJAR" name="search">
-                                    <span class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">Cari</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
 
                 <div class="card-body">
 
@@ -39,7 +22,7 @@ $breadcrumbs = [
                         @if($students->count() > 0)
                             <p class="text-center font-weight-bold">{{ $students->count() }} Pelajar dijumpai</p>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="datable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
@@ -64,8 +47,8 @@ $breadcrumbs = [
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{ route('frontend.user.student.view', $student->id) }}">Lihat</a>
-                                                        <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $student->id) }}">Kemaskini</a>
+                                                        <a class="dropdown-item" href="{{ route('admin.student.view', $student->id) }}">Lihat</a>
+                                                        <a class="dropdown-item" href="{{ route('admin.student.edit', $student->id) }}">Kemaskini</a>
                                                     </div>
                                                 </div>
                                             </td>

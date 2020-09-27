@@ -8,7 +8,7 @@
         </div>
         <ul class="sidebar-menu">
             <li>
-                <a class="nav-link {{ (Route::is('admin.dashboard')? 'actibve' : '') }}" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link {{ (Route::is('admin.dashboard')? 'active' : '') }}" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-home"></i> <span>Dashboard</span>
                 </a>
             </li>
@@ -42,6 +42,11 @@
                 </ul>
             </li>
             @endif
+            <li>
+                <a class="nav-link {{ (Route::is('admin.student.index')? 'active' : '') }}" href="{{ route('admin.student.index') }}">
+                    <i class="fas fa-users"></i> <span>Student</span>
+                </a>
+            </li>
             @if ($logged_in_user->hasAllAccess())
                 <li class="menu-header">Logs</li>
 

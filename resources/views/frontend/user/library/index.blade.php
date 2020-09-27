@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body text-center">
 
-                        <h6 class="d-inline mb-2">Statistik Penguparnjung</h6>
+                        <h6 class="d-inline mb-2">Statistik Pengunjung</h6>
                         <div class="bg-light m-4">
                             <div class="statistic-details mt-sm-4">
                                 <div class="statistic-details-item">

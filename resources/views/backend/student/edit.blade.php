@@ -1,25 +1,22 @@
-@extends('frontend.user.layouts.app')
+@extends('backend.layouts.app')
 
 @section('title', 'Kemaskini Data Pelajar')
 
 <?php
 $breadcrumbs = [
-    'Dashboard' => route('frontend.user.dashboard'),
-    'Pelajar' => route('frontend.user.student.index'),
-    'Carian Pelajar' => route('frontend.user.student.index'),
-    'Kemaskini Pelajar' => ''
+    'Dashboard' => route('admin.dashboard'),
+    'Senarai Pelajar' => route('admin.student.index'),
+    'Kemaskini' => "",
+    $student->no_ic => ""
 ];
 ?>
 
 @section('content')
     <section class="content">
         <div class="col-md-12">
-            @include('frontend.user.student.layout.topbar')
+            @include('backend.student.layout.topbar')
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Kemaskini Maklumat Pelajar</h3>
-                </div>
-                <x-forms.post :action="route('frontend.user.student.update', $student->id   )" class="form-horizontal">
+                <x-forms.post :action="route('admin.student.update', $student->id)" class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Nama</label>

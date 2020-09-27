@@ -5,30 +5,20 @@
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
+    'Pangkalan Data Pelajar' => '',
+    'Senarai Kelas' => route('frontend.user.kehadiran.ct.index')
 ];
 ?>
-
-@push('after-styles')
-    <style type="text/css">
-        #clock {
-            font-family: 'Orbitron', sans-serif;
-            color: #000000;
-            text-align: center;
-        }
-    </style>
-@endpush
 
 @section('content')
     <section class="content">
         <div class="col-md-12">
             @include('frontend.user.student.layout.topbar')
             <div class="card">
+                <div class="card-header">
+                    <h4>Senarai Kelas</h4>
+                </div>
                 <div class="card-body">
-                    <a href="{{ route('frontend.user.kehadiran.ct.add-class') }}" class="btn btn-sm btn-link float-right mb-3">Tambah Kelas
-                        <i class="fa fa-plus ml-1"></i>
-                    </a>
-                    <h4 class="header-title mt-2">Senarai Kelas</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datable">
                             <thead>
