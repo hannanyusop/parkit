@@ -18,8 +18,8 @@
                                     <div class="" style="border-style: dotted;width: 410px">
                                         {!! barCodePrint($book->id, 2,50) !!}
                                     </div>
-                                    <div class="text-center" style="border-style: dotted;height:35px;width: 110px;margin-top: -17px;margin-bottom: -17px">
-                                        <h6 class="m-1">{{ bookShortCode($book->id) }}</h6>
+                                    <div class="text-center" style="border-style: dotted;height:70px;width: 110px;margin-top: -17px;margin-bottom: -17px;">
+                                        <h4 class="mt-3">{{ bookShortCode($book->id) }}</h4>
                                     </div>
                                 </div>
                             @endforeach
