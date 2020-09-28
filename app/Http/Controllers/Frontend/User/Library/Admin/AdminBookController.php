@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\User\Library\Book\UpdateRequest;
 use App\Models\Library\Author;
 use App\Models\Library\Book;
 use App\Models\Library\BookParent;
+use App\Models\Library\Borrow;
 use App\Models\Library\GroupParent;
 use App\Models\Library\Payment;
 use App\Models\Library\Publisher;
@@ -491,6 +492,55 @@ class AdminBookController extends Controller{
         }
 
         return view('frontend.user.library.admin.book.print-list', compact('books'));
+
+    }
+
+    public function deleteParent($parent_id){
+
+        $parent = BookParent::findOrFail($parent_id);
+
+        $books = Book::where('parent_id', $parent_id)->get();
+
+        foreach ($books as $book){
+
+            $borrows = Borrow::where('book_id', $book->id)->get();
+
+            foreach ($borrows as $borrow){
+
+                if($borrow->fine){
+
+                    $borrow->fine->delete();
+                }
+                $borrow->delete();
+            }
+            $book->delete();
+        }
+
+        $parent->delete();
+
+        return redirect()->route('frontend.user.library.admin.book.index')->withFlashSuccess('Semua Buku '.$parent->title." berjaya dipadam");
+
+    }
+
+    public function deleteChild($book_id){
+
+        $book = Book::findOrFail($book_id);
+
+        $borrows = Borrow::where('book_id', $book->id)->get();
+
+        foreach ($borrows as $borrow){
+
+            if($borrow->fine){
+
+                $borrow->fine->delete();
+            }
+            $borrow->delete();
+        }
+
+
+        $book->delete();
+
+        return redirect()->route('frontend.user.library.admin.book.index')->withFlashSuccess('Buku '.getBookId($book->id)." berjaya dipadam");
 
     }
 

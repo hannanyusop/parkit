@@ -12,18 +12,14 @@ use App\Http\Controllers\Portal\SmkalController;
  * Frontend Controllers
  * All route names are prefixed with 'frontend.'.
  */
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('index', [HomeController::class, 'index'])->name('index');
 
 Route::get('student-information/', [FrontendStudentController::class, 'info'])->name('student-info');
 Route::get('search', [FrontendStudentController::class, 'search'])->name('student-search');
 
 
 Route::get('terms', [TermsController::class, 'index'])
-    ->name('pages.terms')
-    ->breadcrumbs(function (Trail $trail) {
-        $trail->parent('frontend.index')
-            ->push(__('Terms & Conditions'), route('frontend.pages.terms'));
-    });
+    ->name('pages.terms');
 
 Route::get('test', function (){
 

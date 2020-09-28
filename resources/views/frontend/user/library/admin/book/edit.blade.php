@@ -102,6 +102,12 @@
                                        <input type="number" step="0.01" name="price" value="{{ $book->parent->price }}" id="price" class="form-control">
                                    </div>
                                </div>
+                               <div class="form-group row">
+                                   <label for="group" class="col-sm-2 col-form-label form">Padam</label>
+                                   <div class="col-md-6">
+                                       <button class="btn btn-danger" data-url="{{ route('frontend.user.library.admin.book.delete-parent', $book->parent->id) }}" data-title="Amaran" data-delete="Adakah anda ingin memadam ini semua buku dibawah induk ini?"><i class="fa fa-trash"></i> Padam Induk</button>
+                                   </div>
+                               </div>
                            </div>
                         </div>
                         <!-- /.card-body -->
@@ -118,6 +124,13 @@
                             <h4 class="text-center mb-4">B. Kemaskini Malumat Salinan</h4>
 
                             <div class="form-group row">
+                                <label for="book_id" class="col-sm-2 col-form-label">No Perolehan Buku</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="book_id" value="{{ getBookId($book->id) }}" id="book_id" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="payment" class="col-sm-2 col-form-label">Punca Bayaran</label>
                                 <div class="col-md-4">
                                     <input type="text" name="payment" value="{{ $book->payment->name }}" id="payment" class="form-control">
@@ -128,6 +141,12 @@
                                 <label for="remark" class="col-sm-2 col-form-label">Tanda Buku</label>
                                 <div class="col-md-10">
                                     <textarea name="remark" id="remark" class="form-control">{{ $book->remark }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="group" class="col-sm-2 col-form-label form">Padam</label>
+                                <div class="col-md-6">
+                                    <button class="btn btn-danger" data-url="{{ route('frontend.user.library.admin.book.delete-child', $book->id) }}" data-title="Amaran" data-delete="Adakah anda ingin memadam buku ini?"><i class="fa fa-trash"></i> Padam Salinan Sahaja</button>
                                 </div>
                             </div>
                         </div>

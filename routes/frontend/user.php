@@ -410,6 +410,9 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
                 Route::post('add/', [AdminBookController::class, 'insert'])->name('insert');
 
                 Route::get('edit/{id}', [AdminBookController::class, 'edit'])->name('edit');
+                Route::get('delete-parent/{parent_id}', [AdminBookController::class, 'deleteParent'])->name('delete-parent');
+                Route::get('delete-child/{book_id}', [AdminBookController::class, 'deleteChild'])->name('delete-child');
+
                 Route::post('edit/{id}', [AdminBookController::class, 'update'])->name('update');
                 Route::post('edit-parent/{id}', [AdminBookController::class, 'updateParent'])->name('update-parent');
 

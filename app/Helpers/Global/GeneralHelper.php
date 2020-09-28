@@ -319,7 +319,7 @@ if(!function_exists('barCodePrint')){
 
         return '<div class="text-center"><small>HAK MILIK PERPUSTAKAN SMK AGAMA LIMBANG <br> </small><img src="data:image/png;base64,' . DNS1D::getBarcodePNG(getBookId($id), 'C39',$width,$height) . '" alt="'.getBookId($id).'"   />
                   <br><small class="text-center"><b> '.bookShortCode($id).'</b> '.substr($book->parent->title, 0,50).'
-                     <br>HARGA : '.displayPrice($book->parent->price).' | <b>'.getBookId($id).'<b>
+                     <br>HARGA : '.displayPrice($book->parent->price).' | '.getBookId($id).'
                     </small></div>';
     }
 }

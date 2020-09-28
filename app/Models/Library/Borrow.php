@@ -18,6 +18,11 @@ class Borrow extends Model{
         return $this->hasOne(Book::class, 'id', 'book_id');
     }
 
+    public function fine(){
+
+        return $this->hasOne(Fine::class,'borrower_id', 'id');
+    }
+
     public function staffOut(){
         return $this->hasOne(User::class, 'id', 'out_id');
     }
