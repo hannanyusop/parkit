@@ -20,7 +20,7 @@ class Borrow extends Model{
 
     public function fine(){
 
-        return $this->hasOne(Fine::class,'borrower_id', 'id');
+        return $this->hasOne(Fine::class,'borrow_id', 'id');
     }
 
     public function staffOut(){
