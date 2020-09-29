@@ -112,7 +112,8 @@ class StudentImport implements ToModel{
                 'image_url' => 'img/student/default.png',
             ]);
 
-            $form = str_split($row[9])[0];
+            preg_match_all('!\d+!', $row[9], $matches);
+            $form = (isset($matches[0][0]))? $matches[0][0] : 0;
 
             $class = Classroom::updateOrCreate(['generate_name' => $row[9]], [
                 'form' => (is_numeric($form))? $form : 0,

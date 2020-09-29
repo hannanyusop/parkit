@@ -60,7 +60,7 @@ Route::group([
         ], function (){
 
             Route::get('bmb/', [AsramaController::class, 'bmb'])->name('bmb');
-            Route::get('bkb/', [AsramaController::class, 'bkb'])->name('bkb');
+            Route::get('kbk/', [AsramaController::class, 'bkb'])->name('bkb');
             Route::get('ppk/', [AsramaController::class, 'ppk'])->name('ppk');
 
         });

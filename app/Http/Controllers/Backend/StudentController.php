@@ -83,8 +83,7 @@ class StudentController extends Controller{
 
         if(!in_array($request->year, $years)){
 
-
-            dd('not in');
+            return  redirect()->route('admin.student.upload')->withErrors('Tahun tidak tersenarai.');
         }
 
         session()->put('year', $request->year);

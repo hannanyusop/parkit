@@ -83,6 +83,29 @@
     <!--=================================
     About -->
 
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/1.png') }}" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-uppercase text-mutedq">Years of experience </span>
+                    <h3>Website development</h3>
+                    <p>The following outlines our web-development process, which can be split into several sensible elements:</p>
+                    <ul class="list-unstyled list-number mb-0">
+                        <li class="mb-2"><span>01</span> Technical analysis</li>
+                        <li class="mb-2"><span>02</span> Planning and Idea</li>
+                        <li class="mb-2"><span>03</span> Design and Copywriting</li>
+                        <li class="mb-2"><span>04</span> Front- &amp; Back-End Coding</li>
+                        <li class="mb-2"><span>05</span> Quality Assurance</li>
+                        <li class="mb-2"><span>06</span> Testing and Launch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="space-pb">
         <div class="container">
             <div class="row d-lg-flex align-items-center justify-content-center pb-4 pb-md-5">

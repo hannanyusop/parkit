@@ -1,7 +1,7 @@
 @extends('portal.layout.app')
 
 @section('content')
-    <section class="header-inner header-inner-menu bg-overlay-black-50" style="background-image: url('{{ asset('img/portal/dewan makan/5.jpg') }}');">
+    <section class="header-inner header-inner-menu bg-overlay-black-50" style="background-image: url('{{ asset('img/portal/asrama/pkk/5.jpg') }}');">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="feature-info-content">
                             <p>
-                                Memastikan semua peralatan dalam keadaan yang baik
+                                Memastikan semua peralatan dalam keadaan yang baik.
                             </p>
                             <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
                         </div>
@@ -58,8 +58,7 @@
                             <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/2.png') }}" alt="">
                         </div>
                         <div class="feature-info-content">
-                            <p>Memastikan semua petugas mematuhi masa</p>
-                            <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
+                            <p>Memastikan</p>
                         </div>
                     </div>
                 </div>
@@ -77,151 +76,47 @@
             </div>
         </div>
     </section>
+    <section class="space-ptb bg-info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <h2 class="text-white">Award Winning Digital Agency</h2>
+                        <p class="text-white">We take pride in helping our clients deliver marvelous results when it comes to their projects. From data to performance, we’ve got you covered.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <ul class="list list-unstyled">
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>The sad thing is the majority of people have no clue about what they truly want. They have no clarity. When asked the question</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>If success is a process with a number of defined steps,</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>Without clarity, you send a very garbled message out to the Universe.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>This is perhaps the single biggest obstacle that all of us must overcome in order to be successful.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>Once you have a clear understanding of what you want,</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list list-unstyled mt-3 mt-lg-0">
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>Commitment is something that comes from understanding that everything has its price.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>you may want to reconsider doing it at that time.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>What steps are required to get you to the goals? Make the plan as detailed as possible.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>The best way is to develop and follow a plan. Start with your goals in mind and then work backwards to develop the plan.</span></li>
+                        <li class="d-flex text-white"><i class="fas fa-check fa-2x pr-3 pt-1 text-white"></i><span>Before starting any new activity,</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     <!--=================================
     About -->
 
-{{--    <section class="space-pb">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row d-lg-flex align-items-center justify-content-center pb-4 pb-md-5">--}}
-{{--                <div class="col-lg-6">--}}
-{{--                    <h2 class="mb-3 mb-lg-0">Gambar Semasa Bertugas</h2>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <!-- owl carousel -->--}}
-{{--                    <div class="owl-carousel text-left" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1">--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">The Sports Space</a>--}}
-{{--                                    <a class="case-study-services" href="#">Sports</a>--}}
-{{--                                    <p class="mt-2">From its founding in 1990 in Cambridge in the UK, it has grown to become a …</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Educatgenix</a>--}}
-{{--                                    <a class="case-study-services" href="#">Education</a>--}}
-{{--                                    <p class="mt-2">We all carry a lot of baggage, thanks to our upbringing...</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Financeoont</a>--}}
-{{--                                    <a class="case-study-services" href="#">Finance</a>--}}
-{{--                                    <p class="mt-2">It is truly amazing the damage that we, as parents, can inflict on our children...</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Healthque</a>--}}
-{{--                                    <a class="case-study-services" href="#">Health</a>--}}
-{{--                                    <p class="mt-2">Get the oars in the water and start rowing. Execution is the single biggest...</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Travelomatic</a>--}}
-{{--                                    <a class="case-study-services" href="#">Traveling</a>--}}
-{{--                                    <p class="mt-2">Success is something of which we all want more.</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Mobifluent</a>--}}
-{{--                                    <a class="case-study-services" href="#">Mobile</a>--}}
-{{--                                    <p class="mt-2">Most people believe that success is difficult.</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Dentzoid</a>--}}
-{{--                                    <a class="case-study-services" href="#">Dental</a>--}}
-{{--                                    <p class="mt-2">Commitment – understanding the price and having the willingness to pay that price</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Gozzby</a>--}}
-{{--                                    <a class="case-study-services" href="#">Music</a>--}}
-{{--                                    <p class="mt-2">If success is a process with a number of defined steps, then it is just like any other process.</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Foodocity</a>--}}
-{{--                                    <a class="case-study-services" href="#">Food</a>--}}
-{{--                                    <p class="mt-2">Without clarity, you send a very garbled message out to the Universe.</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="items">--}}
-{{--                            <div class="case-study case-study-style-02">--}}
-{{--                                <div class="case-study-img case-study-lg bg-holder" style="background-image: url('{{ asset('img/portal/asrama/3.jpg') }}');">--}}
-{{--                                </div>--}}
-{{--                                <div class="case-study-info">--}}
-{{--                                    <a class="case-study-title font-weight-bold" href="#">Petfluent</a>--}}
-{{--                                    <a class="case-study-services" href="#">Pet Care</a>--}}
-{{--                                    <p class="mt-2">You will drift aimlessly until you arrive back at the original dock</p>--}}
-{{--                                    <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 
     <section class="space-pb">
         <div class="container">
             <div class="row d-lg-flex align-items-center justify-content-center pb-4 pb-md-5">
                 <div class="col-lg-6">
-                    <h3 class="mb-3 mb-lg-0 text-center">Senarai Dokumen PPK</h3>
+                    <h3 class="mb-3 mt-3 mb-lg-0 text-center">Senarai Dokumen PPK</h3>
                 </div>
             </div>
             <div class="row justify-content-center mb-4">
