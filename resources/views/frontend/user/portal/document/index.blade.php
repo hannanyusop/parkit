@@ -27,7 +27,7 @@ $breadcrumbs = [
 
                     <form class="form-inline mb-3" method="get">
                         <label class="sr-only" for="name">Tajuk</label>
-                        <input type="text" name="name" class="form-control mb-2 mr-sm-2 col-md-4" id="name" value="{{ request('name') }}" placeholder="Tajuk Pengunguman">
+                        <input type="text" name="name" class="form-control mb-2 mr-sm-2 col-md-4" id="name" value="{{ request('name') }}" placeholder="Tajuk Pengumuman">
 
                         <label class="sr-only" for="group">Tajuk</label>
                         <select class="form-control mb-2 mr-sm-2 col-md-4" name="group" id="group">
@@ -71,7 +71,7 @@ $breadcrumbs = [
                                             <div class="dropdown-menu" style="">
                                                 <a class="dropdown-item text-primary" href="{{ route('frontend.user.portal.document.view', $document->id) }}"><i class="fa fa-eye"></i> Lihat</a>
                                                 <a class="dropdown-item text-info" href="{{ route('frontend.user.portal.document.edit', $document->id) }}"><i class="fa fa-edit"></i> Kemaskini</a>
-                                                <button class="dropdown-item text-danger text-sm" data-url="{{ route('frontend.user.portal.document.delete', $document->id) }}" data-title="Pengunguman" data-delete="Adakah anda ingin memadam ini pengunguman ini?"><i class="fa fa-trash"></i> Padam</button>
+                                                <button class="dropdown-item text-danger text-sm" data-url="{{ route('frontend.user.portal.document.delete', $document->id) }}" data-title="Pengumuman" data-delete="Adakah anda ingin memadam ini Pengumuman ini?"><i class="fa fa-trash"></i> Padam</button>
                                             </div>
                                         </div>
                                     </td>

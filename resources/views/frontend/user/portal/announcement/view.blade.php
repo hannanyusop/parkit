@@ -1,12 +1,12 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Tambah Pengunguman')
+@section('title', 'Tambah Pengumuman')
 
 <?php
     $breadcrumbs = [
         'Dashboard' => route('frontend.user.dashboard'),
         'Pengurusan Portal' => route('frontend.user.portal.index'),
-        'Pengunguman' => route('frontend.user.portal.announcement.index'),
+        'Pengumuman' => route('frontend.user.portal.announcement.index'),
         'Lihat' => '#',
     ];
 ?>
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date" class="col-sm-2 col-form-label">Tarkh Pengunguman</label>
+                            <label for="date" class="col-sm-2 col-form-label">Tarkh Pengumuman</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control datepicker"  name="date" id="date" value="{{ $announcement->date }}" readonly>
                             </div>
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="text" class="col-sm-2 col-form-label">Pengunguman</label>
+                            <label for="text" class="col-sm-2 col-form-label">Pengumuman</label>
                             <div class="col-sm-10">
                                 <div class="m-2">{!!  (old('text'))? old('text') : $announcement->text !!}</div>
                             </div>

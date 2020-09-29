@@ -1,12 +1,12 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Kemaskini Pengunguman')
+@section('title', 'Kemaskini Pengumuman')
 
 <?php
     $breadcrumbs = [
         'Dashboard' => route('frontend.user.dashboard'),
         'Pengurusan Portal' => route('frontend.user.portal.index'),
-        'Pengunguman' => route('frontend.user.portal.announcement.index'),
+        'Pengumuman' => route('frontend.user.portal.announcement.index'),
         'kemaskini' => '#',
     ];
 ?>
@@ -45,13 +45,13 @@
                                 <label class="custom-switch mt-2">
                                     <input type="checkbox" name="is_show" id="is_show" value="1" class="custom-switch-input" {{ (old('is_show') == 1)? "checked" : (($announcement->is_show == 1)? "checked" : "") }}>
                                     <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Papar Pengunguman</span>
+                                    <span class="custom-switch-description">Papar Pengumuman</span>
                                 </label>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="date" class="col-sm-2 col-form-label">Tarkh Pengunguman</label>
+                            <label for="date" class="col-sm-2 col-form-label">Tarkh Pengumuman</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control datepicker"  name="date" id="date" value="{{ (old('date'))? old('date') : $announcement->date }}">
                             </div>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="text" class="col-sm-2 col-form-label">Pengunguman</label>
+                            <label for="text" class="col-sm-2 col-form-label">Pengumuman</label>
                             <div class="col-sm-10">
                                 <textarea class="summernote" name="text" id="text">{!!  (old('text'))? old('text') : $announcement->text !!}</textarea>
                             </div>

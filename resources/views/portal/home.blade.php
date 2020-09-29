@@ -84,7 +84,7 @@
 
                                         <?php $announcements = portalGetAnnouncementsByGroup($key); ?>
                                         @if($announcements->count() == 0)
-                                            Tiada Pengunguman Buat Masa Kini
+                                            Tiada Pengumuman Buat Masa Kini
                                         @else
                                             <div class="col-lg-12">
                                                 <div class="accordion" id="group-{{ $key }}">

@@ -1,12 +1,12 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Kemaskini Pengunguman')
+@section('title', 'Kemaskini Pengumuman')
 
 <?php
     $breadcrumbs = [
         'Dashboard' => route('frontend.user.dashboard'),
         'Pengurusan Portal' => route('frontend.user.portal.index'),
-        'Pengunguman' => route('frontend.user.portal.document.index'),
+        'Pengumuman' => route('frontend.user.portal.document.index'),
         'kemaskini' => '#',
     ];
 ?>
@@ -45,7 +45,7 @@
                                 <label class="custom-switch mt-2">
                                     <input type="checkbox" name="is_show" id="is_show" value="1" class="custom-switch-input" {{ (old('is_show') == 1)? "checked" : (($document->is_show == 1)? "checked" : "") }}>
                                     <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Papar Pengunguman</span>
+                                    <span class="custom-switch-description">Papar Pengumuman</span>
                                 </label>
                             </div>
                         </div>

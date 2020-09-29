@@ -44,7 +44,7 @@ class AnnouncementController extends Controller{
 
         $announcement->save();
 
-        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengunguman berjaya dibuat');
+        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengumuman berjaya dibuat');
 
 
     }
@@ -76,7 +76,7 @@ class AnnouncementController extends Controller{
 
         $announcement->save();
 
-        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengunguman berjaya dikemaskini');
+        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengumuman berjaya dikemaskini');
     }
 
     public function delete($id){
@@ -84,7 +84,7 @@ class AnnouncementController extends Controller{
         $announcement = PortalAnnouncement::findOrFail($id);
 
         $announcement->delete();
-        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengunguman berjaya dipadam');
+        return redirect()->route('frontend.user.portal.announcement.index')->withFlashSuccess('Pengumuman berjaya dipadam');
 
     }
 

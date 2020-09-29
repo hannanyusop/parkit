@@ -32,12 +32,12 @@ class UpdateRequest extends FormRequest
     {
         return [
             'group.required' => 'Sila pilih kumpulan',
-            'title.required' => 'Sila masukan tajuk pengunguman',
+            'title.required' => 'Sila masukan tajuk Pengumuman',
             'show_until.required' => 'Sila pilih tarikh papar sehingga',
             'show_until.date' => 'Format tarikh papar sehingga tidak tepat',
-            'show_until.after' => 'Sila pilih tarikh papar sehingga sebelum tarikh pengunguman',
-            'date' => 'Sila pilih tarikh pengunguman',
-            'date.date' => 'Format tarikh pengunguman tidak tepat'
+            'show_until.after' => 'Sila pilih tarikh papar sehingga sebelum tarikh Pengumuman',
+            'date' => 'Sila pilih tarikh Pengumuman',
+            'date.date' => 'Format tarikh Pengumuman tidak tepat'
         ];
     }
 }

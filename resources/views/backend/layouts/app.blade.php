@@ -94,7 +94,7 @@
 <script type="text/javascript">
 
     @if(session()->has('login_message'))
-        swal('Pengunguman', '{{ session()->get('login_message') }}', 'info');
+        swal('Pengumuman', '{{ session()->get('login_message') }}', 'info');
      <?php session()->forget('login_message'); ?>
     @endif
 

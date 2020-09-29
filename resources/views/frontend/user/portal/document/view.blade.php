@@ -1,6 +1,6 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Tambah Pengunguman')
+@section('title', 'Tambah Pengumuman')
 
 <?php
     $breadcrumbs = [

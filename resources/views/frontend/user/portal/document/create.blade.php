@@ -38,7 +38,7 @@
                                 <label class="custom-switch mt-2">
                                     <input type="checkbox" name="is_show" id="is_show" value="1" class="custom-switch-input" {{ (old('is_show') == 1)? "checked" : "" }}>
                                     <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Papar Pengunguman</span>
+                                    <span class="custom-switch-description">Papar Pengumuman</span>
                                 </label>
                             </div>
                         </div>
