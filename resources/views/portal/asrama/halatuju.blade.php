@@ -1,7 +1,7 @@
 @extends('portal.layout.app')
 
 @section('content')
-    <section class="header-inner header-inner-menu bg-overlay-black-50" style="background-image: url('{{ asset('img/portal/asrama/6.jpg') }}');">
+    <section class="header-inner header-inner-menu bg-overlay-black-50" style="background-image: url('{{ asset('img/portal/asrama/6.JPG') }}');">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
