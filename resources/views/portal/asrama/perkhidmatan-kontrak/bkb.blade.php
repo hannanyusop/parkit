@@ -15,71 +15,6 @@
         @include('portal.include.kontrak')
     </section>
 
-    <section class="space-ptb">
-        <div class="container">
-            <div class="row justify-content-center pb-4 pb-md-5">
-                <div class="col-lg-12">
-                    <div class="row d-lg-flex align-items-center justify-content-center pb-4 pb-md-5">
-                        <div class="mr-3">
-                            <h2 class="mb-3 mb-lg-0">Prosidur Oprasi Standard(SOP) Yang Ditetapkan</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <div class="feature-info feature-info-style-07">
-                        <div class="feature-info-img">
-                            <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/2.png') }}" alt="">
-                        </div>
-                        <div class="feature-info-content">
-                            <h4 class="feature-info-title mb-2">Pemakaian</h4>
-                            <p>Menggunakan (Costume) yang lengkap dan kemas sepanjang waktu bertugas</p>
-                            <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <div class="feature-info feature-info-style-07">
-                        <div class="feature-info-img">
-                            <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/2.png') }}" alt="">
-                        </div>
-                        <div class="feature-info-content">
-                            <h4 class="feature-info-title mb-2">Peralatan</h4>
-                            <p>
-                                Memastikan semua peralatan dalam keadaan yang baik
-                            </p>
-                            <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  mb-4 mb-md-0">
-                    <div class="feature-info feature-info-style-07">
-                        <div class="feature-info-img">
-                            <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/2.png') }}" alt="">
-                        </div>
-                        <div class="feature-info-content">
-                            <h4 class="feature-info-title mb-2">Masa</h4>
-                            <p>Memastikan semua petugas mematuhi masa</p>
-                            <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  mb-4 mb-md-0">
-                    <div class="feature-info feature-info-style-07">
-                        <div class="feature-info-img">
-                            <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/2.png') }}" alt="">
-                        </div>
-                        <div class="feature-info-content">
-                            <h4 class="feature-info-title mb-2">Masa</h4>
-                            <p>Memastikan semua petugas mematuhi masa</p>
-                            <a href="#" class="icon-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!--=================================
     About -->
 
@@ -90,16 +25,39 @@
                     <img class="img-fluid" src="{{ asset('img/portal/asrama/pkk/1.png') }}" alt="">
                 </div>
                 <div class="col-lg-6">
-                    <span class="text-uppercase text-mutedq">Years of experience </span>
-                    <h3>Website development</h3>
-                    <p>The following outlines our web-development process, which can be split into several sensible elements:</p>
+                    <span class="text-uppercase text-mutedq"> </span>
+                    <h3>PEMATUHAN SPESIFIKASI KERJA</h3>
+                    <p>Setiap Pekerja Kotrak Perkhidmatan Kebersihan Dan Kawasan perlu:</p>
                     <ul class="list-unstyled list-number mb-0">
-                        <li class="mb-2"><span>01</span> Technical analysis</li>
-                        <li class="mb-2"><span>02</span> Planning and Idea</li>
-                        <li class="mb-2"><span>03</span> Design and Copywriting</li>
-                        <li class="mb-2"><span>04</span> Front- &amp; Back-End Coding</li>
-                        <li class="mb-2"><span>05</span> Quality Assurance</li>
-                        <li class="mb-2"><span>06</span> Testing and Launch</li>
+                        <li class="mb-2"><span>01</span> Memastikan bangunan seliaan masing-masing dalam keadaan kemas, selesa, bersih dan selamat.</li>
+
+                        <li class="mb-2"><span>02</span> Pekerja membersih kawasan bangunan berdasarkan perturan yang ditetapkan dalam spesifikasi kontrak pembersih.</li>
+
+                        <li class="mb-2"><span>03</span> Setiap pekerja diberi kawasan bangunan berdasarkan peraturan yang ditetapkan dalam spesifikasi kontrak pembersih.</li>
+
+                        <li class="mb-2"><span>04</span> Pelbagai hiasan, landskap dan pembaikan dilakukan oleh pihak sekolah.</li>
+
+                        <li class="mb-2"><span>05</span> Memastikan konsep tandas kering kepada pelajar selepas mereka menggunanakan tandas agar kebersihan
+                        dan kekemasan tandas dapat dikekalkan malah keselamatan pelajar ditandas juga terjamin.</li>
+
+                        <li class="mb-2"><span>06</span> Memberi krusus atau bengkel seperti nengkel membuat bahan hiasan menggunakan bahan terbuang
+                        , bengkel pengurusan landskap kursus pengendalian bunga dan sebagainya meningkatkan kemahiran pekerja dalam menghias kawasan bangunan masing-masing.</li>
+
+                        <li class="mb-2"><span>07</span> Pekerja mematuhi segala spesifikasi kerja mereka.</li>
+
+                        <li class="mb-2"><span>08</span> Sekolah dengan pekerja pembersih kawasan berkerjasama untuk melahirkan perkembangan positif dan boleh
+                        membuat landskap atas inisiatif dan inovasi pekerja itu sendiri.</li>
+
+                        <li class="mb-2"><span>09</span> Memastikan semua pekerja membuat laporan tugas harian yang telah disediakan dan menghantar laporan tersebut setiap jumaat sebelah petang.</li>
+
+
+
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>
