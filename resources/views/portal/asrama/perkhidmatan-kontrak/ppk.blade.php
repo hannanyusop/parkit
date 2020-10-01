@@ -52,6 +52,153 @@
     <!--=================================
     About -->
 
+    <section class="space-ptb bg-light position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="section-title is-sticky" style="top: 80px;">
+                        <h2>Penekanan Pemahaman
+                            Dokumen Kontrak & Borang
+                            Pengesahan Pelaksanann Kerja</h2>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="feature-info feature-info-style-01">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">SIJIL TAPISAN KESELAMATAN</h5>
+                                    <p class="mb-0">
+                                        Kontraktor wajib mengemukakan salinan Sijil Lulus Tapisan
+                                        Keselamatan dari KDN bagi setiap pengawal yang dibekalkan
+                                        kepada pihak pentadbir sekolah dalam tempoh tiga puluh (30) hari
+                                        sebelum tarikh kontrak berkuatkuasa<br><br>
+                                        Sekiranya Kontraktor masih dalam proses mendapatkan Sijil Lulus
+                                        Tapisan Keselamatan dari KDN, Kontraktor wajib mengemukakan
+                                        bukti atau dokumen permohonan proses tapisan keselamatan
+                                        masih di dalam tindakan KDN.<br><br>
+                                        Bukti atau dokumen yang dikemukakan ini hanya boleh diguna
+                                        pakai tidak lebih daripada tempoh enam puluh (60) hari dari tarikh
+                                        berkuatkuasa perjanjian ini atau tarikh pengawal mula berkhidmat,
+                                        mengikut mana yang terkemudian.
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">UMUR PENGAWAL</h5>
+                                    <p class="mb-0">
+                                        Pengawal warganegara Malaysia yang berumur tidak kurang 18 tahun
+                                        dan tidak melebihi 60 tahun sepanjang Tempoh Perjanjian.<br><br>
+
+                                        Kontraktor hendaklah mengemukakan laporan pemeriksaan kesihatan
+                                        yang dijalankan SETIAP TAHUN bagi pekerja yang berumur di antara 55
+                                        tahun sehingga 60 tahun mengesahkan bahawa pekerja-pekerja ini
+                                        disahkan sihat untuk bekerja (fit for duty) dan tidak menghidap
+                                        penyakit berjangkit berbahaya oleh pihak hospital atau klinik Kerajaan.<br><br>
+
+                                        Laporan hendaklah ditandatangani/ disahkan oleh sekurang-kurangnya
+                                        Pegawai Perubatan KERAJAAN Gred 41 dan dikemukakan kepada
+                                        untuk kelulusan. Kelulusan untuk bekerja diberikan secara tahunan
+                                        oleh pihak SEKOLAH tertakluk kepada pemeriksaan kesihatan yang
+                                        dijalankan secara berkala pada setiap tahun.<br><br>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">UNIFORM SERAGAM</h5>
+                                    <p class="mb-0">
+                                        Semua pengawal yang ditugaskan hendaklah berpakaian
+                                        seragam lengkap seperti di Lampiran 2.<br><br>
+
+                                        Kemas berpakaian di samping menjaga tingkahlaku yang
+                                        baik. Setiap pengawal menghormati pengetua, guru besar,
+                                        guru dan penjawat awam yang diberi kuasa di Premis dan
+                                        mematuhi arahan semasa yang ditetapkan oleh pentadbir
+                                        Premis.<br><br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">“Close Circuit Television” (CCTV)</h5>
+                                    <p class="mb-0">
+                                        Pihak Kontraktor wajib memasang ”Close Circuit
+                                        Television” (CCTV) bagi sekolah-sekolah/institusi
+                                        pendidikan seperti di Jadual Harga, Lampiran E dan
+                                        Lampiran 1 bagi membantu pihak Kerajaan,
+                                        memantau terhadap premis dan merekod segala
+                                        bentuk pencerobohan jika terdapat keperluan.<br><br>
+
+                                        Pemasangan sistem pengawasan ini hendaklah
+                                        disokong oleh “Central Monitoring System” (CMS)
+                                        yang membolehkan pihak Kontraktor mengawasi dari
+                                        jauh (remote monitoring) dan menghantar pasukan
+                                        bertindak (response team) dengan serta merta.<br><br>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">PERAKAM WAKTU (WATCHMAN CLOCK)</h5>
+                                    <p class="mb-0">
+                                        Kontraktor wajib memasang Analog Watchman
+                                        Clock di lokasi-lokasi yang dipersetujui oleh
+                                        pihak pentadbir sekolah/Institusi Pendidikan.<br><br>
+
+                                        Segala kos pemasangan dan penyelenggaraan
+                                        peralatan pengawasan tersebut akan
+                                        ditanggung oleh pihak Kontraktor.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">PEMATUHAN TUGAS</h5>
+                                    <p class="mb-0">
+                                        Pengawal hendaklah berdisiplin dan mematuhi
+                                        peraturan-peraturan yang sedang berkuatkuasa yang
+                                        ditetapkan oleh pihak Kerajaan dari semasa ke semasa.
+                                        <br><br>
+
+                                        Semua pengawal hendaklah memakai pakaian seragam
+                                        yang disediakan dengan sempurna dan mempunyai
+                                        kad/pas pengenalan diri yang dibekalkan oleh Kontraktor;
+                                        <br><br>
+
+                                        Kontraktor hendaklah memastikan rekod kedatangan dan
+                                        jadual bertugas dikemaskini pada setiap hari;
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="feature-info feature-info-style-01 mt-4 mt-lg-5">
+                                <div class="feature-info-content">
+                                    <h5 class="mb-3 feature-info-title">KEROSAKKAN</h5>
+                                    <p class="mb-0">
+                                        Kontraktor adalah dikehendaki membaiki atau
+                                        mengganti apa-apa kerosakan yang berlaku
+                                        kepada harta benda premis akibat daripada
+                                        kelalaian/ kecuaian pihak Pengawal
+                                        Kontraktor semasa mengendalikan
+                                        perkhidmatan berkenaan;
+                                        <br><br>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="space-pb">
         <div class="container">
