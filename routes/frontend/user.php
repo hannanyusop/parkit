@@ -423,6 +423,11 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
                 Route::get('print-label-remove/{id}', [AdminBookController::class, 'printLabelRemove'])->name('print-label-remove');
                 Route::get('print-label-remove-all', [AdminBookController::class, 'printLabelRemoveAll'])->name('print-label-remove-all');
 
+                Route::get('print-label-range', [AdminBookController::class, 'printLabelRange'])->name('print-label-range');
+
+
+
+
                 Route::get('print-list/', [AdminBookController::class, 'printList'])->name('print-list');
 
                 #ajax

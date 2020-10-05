@@ -16,9 +16,15 @@
             <a href="{{ route('frontend.user.library.admin.book.print-label') }}" class="btn btn-app bg-white">
                 <i class="fa fa-print"></i> Cetak Label
             </a>
+
+            <a href="{{ route('frontend.user.library.admin.book.print-label-range') }}" class="btn btn-app bg-white">
+                <i class="fa fa-print"></i> Cetak Label v2
+            </a>
+
             <a target="_blank" href="{{ route('frontend.user.library.admin.book.print-list') }}" class="btn btn-app bg-white">
                 <i class="fa fa-table"></i> Cetak Senarai
             </a>
+
             <a href="{{ route('frontend.user.library.admin.book.group.index') }}" class="btn btn-app bg-white">
                 <i class="fa fa-bookmark"></i> Pengkelasan
             </a>

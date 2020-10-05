@@ -482,6 +482,18 @@ class AdminBookController extends Controller{
 
     }
 
+    public function printLabelRange(Request $request){
+
+        $books = null;
+        if(!is_null($request->start) && !is_null($request->end)){
+
+            $books = Book::whereBetween('id', [$request->start, $request->end])
+                ->get();
+        }
+
+        return view('frontend.user.library.admin.book.print-label-range', compact('books'));
+    }
+
     public function printList(Request $request){
 
         $books = null;
