@@ -24,7 +24,7 @@
 
                             <label class="sr-only" for="dewey_code">Kod Dewey</label>
                             <div class="input-group mb-2 mr-sm-2">
-                                <input name="dewey_code" type="number" step=".01" class="form-control" id="dewey_code" value="{{ old('dewey_code') }}" placeholder="Cth:220" required>
+                                <input name="dewey_code" type="number" step=".0001" class="form-control" id="dewey_code" value="{{ old('dewey_code') }}" placeholder="Cth:220" required>
                             </div>
                             <label class="sr-only" for="dewey_name">Nama Pengekelasan</label>
                             <div class="input-group mb-2 mr-sm-2">
