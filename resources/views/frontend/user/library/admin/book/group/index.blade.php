@@ -47,8 +47,8 @@
                             @foreach($subGroups as $key => $sub)
                             <tr class="{{ ($sub->books->count() ==  0)? '' : 'bg-white' }}" >
                                 <td>{{ $key+1 }}</td>
-                                <td><b>{!! $sub->code."</b> ".$sub->name !!}</td>
-                                <td><b>{!! $sub->parent->code."</b> ".$sub->parent->name !!}</td>
+                                <td><b>{!! $sub->code."</b> ".$sub->name !!}</b></td>
+                                <td><b>{!! $sub->parent->code."</b> ".$sub->parent->name !!}</b></td>
                                 <td class="font-weight-bold text-center">{{ $sub->books->count() }}</td>
                             </tr>
                             @endforeach

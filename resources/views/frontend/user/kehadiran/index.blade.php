@@ -25,10 +25,15 @@ $breadcrumbs = [
                 </div>
                 <div class="card-body">
                     <div class="alert alert-light">
+
                         <div class="alert-body">
                             Modul Rekod Kehadiran ini masih dalam fasa pembinaan dan percubaan. Jika anda menghadapi ralat sistem sila
                             <i>screenshot</i> dan laporkan kepada pihak teknikal kami.
                         </div>
+
+                        <p class="m-2">
+                            * Sila rujuk  <a href="{{ asset('user_guide/ug_mrk.pdf') }}" download="" class="text-primary font-weight-bold">Manual Pengguna</a>.
+                        </p>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datable">
