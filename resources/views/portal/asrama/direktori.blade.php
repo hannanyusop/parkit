@@ -34,4 +34,40 @@
             </div>
         </div>
     </section>
+
+    <section class="space-pb mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 order-lg-1 order-1">
+                    <div class="case-study">
+                        <div class="case-study-img case-study-lg" style="background-image: url('{{ asset('img/portal/pengurusan/1.jpeg') }}');">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4 order-lg-2 order-3">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-12">
+                            <div class="case-study">
+                                <div class="case-study-img" style="background-image: url('{{ asset('img/portal/pengurusan/2.jpeg') }}');">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-12">
+                            <div class="case-study">
+                                <div class="case-study-img" style="background-image: url('{{ asset('img/portal/pengurusan/3.jpeg') }}');">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 order-lg-3 order-2">
+                    <div class="case-study">
+                        <div class="case-study-img case-study-lg" style="background-image: url('{{ asset('img/portal/pengurusan/4.jpeg') }}');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection
