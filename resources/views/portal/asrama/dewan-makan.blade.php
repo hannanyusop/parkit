@@ -72,7 +72,7 @@
             </div>
             <div class="row">
                 <div class="col-12 d-flex justify-content-center mt-0 mt-md-4">
-                    <a href="#" class="btn btn-primary-round btn-round mx-3">Load More<i class="fas fa-arrow-right pl-3"></i></a>
+                    <a href="{{ route('frontend.portal.asrama.bmb') }}" class="btn btn-primary-round btn-round mx-3">Seterusnya<i class="fas fa-arrow-right pl-3"></i></a>
                 </div>
             </div>
         </div>
