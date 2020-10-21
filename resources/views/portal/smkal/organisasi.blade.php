@@ -45,7 +45,7 @@
                             <h3 class="display-3 font-weight-bold text-primary mb-0">2020</h3>
                         </div>
                         <div class="mr-3">
-                            <h2 class="mb-3 mb-lg-0">Barisan Pentadbiran SMK AGAMA LIMBANG</h2>
+                            <h2 class="mb-3 mb-lg-0">Barisan Pentadbiran Sekolah</h2>
                         </div>
                         <div class="ml-auto">
                             <a href="{{ route('frontend.portal.smkal.pengetua') }}" class="btn btn-light-round btn-round w-space">Perutusan Pengetua<i class="fas fa-arrow-right pl-3"></i></a>
