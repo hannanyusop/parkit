@@ -41,14 +41,14 @@
                 <div class="col-lg-12">
                     <div class="d-lg-flex align-items-center">
                         <div class="mr-4">
-                            <p class="mb-0">Established in</p>
-                            <h3 class="display-3 font-weight-bold text-primary mb-0">2010</h3>
+                            <p class="mb-0">Tahun</p>
+                            <h3 class="display-3 font-weight-bold text-primary mb-0">2020</h3>
                         </div>
                         <div class="mr-3">
-                            <h2 class="mb-3 mb-lg-0">We enable constant enterprise transformation at speed and scale.</h2>
+                            <h2 class="mb-3 mb-lg-0">Barisan Pentadbiran SMK AGAMA LIMBANG</h2>
                         </div>
                         <div class="ml-auto">
-                            <a href="#" class="btn btn-light-round btn-round w-space">Know More About<i class="fas fa-arrow-right pl-3"></i></a>
+                            <a href="{{ route('frontend.portal.smkal.pengetua') }}" class="btn btn-light-round btn-round w-space">Perutusan Pengetua<i class="fas fa-arrow-right pl-3"></i></a>
                         </div>
                     </div>
                 </div>
