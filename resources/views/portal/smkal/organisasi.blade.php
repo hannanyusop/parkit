@@ -37,6 +37,22 @@
 
     <section class="space-pb mt-5">
         <div class="container">
+            <div class="row justify-content-center pb-4 pb-md-5">
+                <div class="col-lg-12">
+                    <div class="d-lg-flex align-items-center">
+                        <div class="mr-4">
+                            <p class="mb-0">Established in</p>
+                            <h3 class="display-3 font-weight-bold text-primary mb-0">2010</h3>
+                        </div>
+                        <div class="mr-3">
+                            <h2 class="mb-3 mb-lg-0">We enable constant enterprise transformation at speed and scale.</h2>
+                        </div>
+                        <div class="ml-auto">
+                            <a href="#" class="btn btn-light-round btn-round w-space">Know More About<i class="fas fa-arrow-right pl-3"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6 col-lg-4 order-lg-1 order-1">
                     <div class="case-study">

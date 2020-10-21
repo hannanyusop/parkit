@@ -20,16 +20,6 @@
         @include('portal.include.kemudahan')
     </section>
 
-    <section class="space-pb mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center mt-0 mt-md-4">
-                    <a href="{{ route('frontend.portal.asrama.bmb') }}" class="btn btn-primary-round btn-round mx-3">Seterusnya<i class="fas fa-arrow-right pl-3"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="space-ptb">
         <div class="container">
             <div class="row justify-content-center">
@@ -144,6 +134,16 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-pb mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center mt-0 mt-md-4">
+                    <a href="{{ route('frontend.portal.asrama.bmb') }}" class="btn btn-primary-round btn-round mx-3">Seterusnya<i class="fas fa-arrow-right pl-3"></i></a>
                 </div>
             </div>
         </div>
