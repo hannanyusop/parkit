@@ -44,7 +44,7 @@
                                                                 <tr>
                                                                     <td>{{ $key+1 }}</td>
                                                                     <td>{{ $document->name }}</td>
-                                                                    <td><a class="text-info" href="#"><i class="fa fa-download"></i> Muat Turun</a> </td>
+                                                                    <td><a class="text-info" href="{{ $document->file }}"><i class="fa fa-download"></i> Muat Turun</a> </td>
                                                                 </tr>
                                                             @endforeach
                                                         </table>
