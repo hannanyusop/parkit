@@ -65,6 +65,7 @@ $breadcrumbs = [
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="{{ route('frontend.user.student.view', $student->id) }}">Lihat</a>
+                                                        <a class="dropdown-item" href="{{ route('frontend.user.student.print-card', $student->id) }}">Cetak Kad Pelajar</a>
                                                         <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $student->id) }}">Kemaskini</a>
                                                     </div>
                                                 </div>
