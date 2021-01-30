@@ -12,30 +12,34 @@
         }
         .container{
             position: absolute;
-            left: 25%;
-            top:20%;
+            /*left: 25%;*/
+            /*top:20%;*/
         }
         .card{
-            height: 4.375in;
-            width: 3.275in;
+            height: 6.375in;
+            width: 4.375in;
             padding: 1.3rem 0 1.3rem 0;
             box-shadow: 0 0 5px #b4b4b4;
-            {{--background-image: url('{{ asset('img/card/bgecard.jpg') }}');--}}
             background-repeat: no-repeat;
             background-size: 100% 100%;
-            border-radius: 20px;
+            border-radius: 30px;
+            background-image: url('{{ asset('img/card/front.png') }}');
 
-
+        }
+        .front{
+        }
+        .back{
+            background-image: url('{{ asset('img/card/back.png') }}');
         }
         .companyname{
             color: #000000;
             position: absolute;
             font-weight: 500;
             text-transform: uppercase;
-            font-size: 1.09rem;
+            font-size: 2.09rem;
             margin-top: .5rem;
-            top: 26%;
-            left: 20%;
+            top: 20%;
+            left: 10%;
 
 
         }
@@ -45,17 +49,17 @@
 
             top: 4.3%;
             margin-bottom: 5px;
-            max-width: 80px;
+            width: 90px;
         }
         .companyname-back{
-            color: #000000;
+            color: #ffffff;
             position: absolute;
-            font-weight: 500;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 1.09rem;
-            margin-top: .5rem;
+            font-size: 1.50rem;
+            margin-top:1.3rem;
             top: 4.3%;
-            left: 20%;
+            left: 10%;
 
         }
         .names{
@@ -67,7 +71,7 @@
             top: 70%;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 1.1rem;
+            font-size: 1.6rem;
             margin-top: 1rem;
             color: #000000;
             text-align: center;
@@ -80,7 +84,7 @@
             top: 78%;
             font-weight: 300;
             text-transform: lowercase;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-top: .5rem;
             text-align: center;
             margin-left: 20px;
@@ -89,7 +93,7 @@
         .squre-qr{
             position: absolute;
             align-items: center;
-            top: 38%;
+            top: 40%;
             left: 30%;
             height: 100px;
             width: 100px;
@@ -105,7 +109,7 @@
             left: 4%;
         }
         .dt1{
-            top: 42%;
+            top: 36%;
             position: absolute;
             font-weight: 400;
             font-size: 1.0rem;
@@ -138,14 +142,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
+            <div class="card front">
                 <div class="text-xenter">
                     <div class="pp">
-                        <img class="company-img" src="{{ asset('img/card/planics.png') }}" alt="" >
+                        <img class="company-img" src="{{ asset('img/card/logo.png') }}" alt="" >
                         <h4 class="companyname">SMK AGAMA LIMBANG</h4>
 {{--                        <img class="squre-qr" src="{{ asset('img/card/qr sample.png') }}" alt="">--}}
 {{--                        {{ getKehadiranStudent(9423423)  }}--}}
-                        <div class="squre-qr">
+                        <div class="squre-qr text-center">
                             {{ getKehadiranStudent($student->no_ic) }}
                         </div>
 
@@ -159,7 +163,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
+            <div class="card back">
                 <div class="pp">
                     <h4 class="companyname-back">SMK AGAMA LIMBANG</h4>
                 </div>

@@ -150,7 +150,7 @@ if(!function_exists('getKehadiranStudent')){
 
     function getKehadiranStudent($ic){
 
-        return QRCode::url($ic)
+        return QRCode::url(route('frontend.student-info', ['ic' => $ic]))
             ->setSize(6)
             ->setMargin(1)
             ->svg();
