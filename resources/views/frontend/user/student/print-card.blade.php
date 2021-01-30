@@ -63,15 +63,16 @@
 
         }
         .names{
-            justify-content: center;
-
+            height: 6.375in;
+            width: 4.375in;
+            top: 66%;
+            position: relative;
         }
         .profile-name{
-            position: absolute;
             top: 70%;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             margin-top: 1rem;
             color: #000000;
             text-align: center;
@@ -80,7 +81,6 @@
 
         }
         .profile-username{
-            position: absolute;
             top: 78%;
             font-weight: 300;
             text-transform: lowercase;
@@ -147,13 +147,9 @@
                     <div class="pp">
                         <img class="company-img" src="{{ asset('img/card/logo.png') }}" alt="" >
                         <h4 class="companyname">SMK AGAMA LIMBANG</h4>
-{{--                        <img class="squre-qr" src="{{ asset('img/card/qr sample.png') }}" alt="">--}}
-{{--                        {{ getKehadiranStudent(9423423)  }}--}}
                         <div class="squre-qr text-center">
                             {{ getKehadiranStudent($student->no_ic) }}
                         </div>
-
-
                     </div>
                     <div class="names">
                         <h2 class="profile-name">{{ $student->name }}</h2>
@@ -168,7 +164,7 @@
                     <h4 class="companyname-back">SMK AGAMA LIMBANG</h4>
                 </div>
                 <div class="details">
-                    <h4 class="dt"><b>NAMA. : </b>{{ $student->name }}</h4>
+                    <h4 class="dt"><b>NAMA : </b>{{ $student->name }}</h4>
                     <h4 class="dt1"><b>NO K/P  : </b>{{ $student->no_ic }}</h4>
                     <h4 class="dt2">Kad ini adalah pengesahan diri pelajar bahawa pemegang kad ini adalah pelajar Sekolah Menengah Kebangsaan Limbang</h4>
 
