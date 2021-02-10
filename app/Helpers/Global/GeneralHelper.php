@@ -151,7 +151,7 @@ if(!function_exists('getKehadiranStudent')){
     function getKehadiranStudent($ic){
 
         return QRCode::url(route('frontend.student-info', ['id' => $ic]))
-            ->setSize(6)
+            ->setSize(5)
             ->setMargin(1)
             ->svg();
     }
@@ -1304,6 +1304,17 @@ if(!function_exists('limitString')){
             return substr($string, 0, 50) . $replace;
         }
     }
+}
+
+ function toDiscord($notifiable){
+    return (new \Awssat\Notifications\Messages\DiscordMessage())
+        ->from('Laravel')
+        ->content('Content')
+        ->embed(function ($embed) {
+            $embed->title('Discord is cool')->description('Slack nah')
+                ->field('Laravel', '8.0.0', true)
+                ->field('PHP', '8.0.0', true);
+        });
 }
 
 
