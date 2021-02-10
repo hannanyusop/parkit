@@ -59,12 +59,12 @@ $breadcrumbs = [
                                 <td>{{ getGender($has_student->student->gender) }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a target="_blank" href="{{ route('frontend.user.kehadiran.ct.download-qr', $has_student->student->no_ic) }}" class="btn btn-icon btn-primary"><i class="fa fa-qrcode"></i> </a>
+                                        <a target="_blank" href="{{ route('frontend.user.student.print-card', $has_student->id) }}" class="btn btn-icon btn-primary"><i class="fa fa-id-card"></i> </a>
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
                                             <a class="dropdown-item" href="{{ route('frontend.user.student.view', $has_student->student_id) }}">Lihat</a>
                                             <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $has_student->student_id) }}">Kemaskini</a>
-                                            <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card', $has_student->student_id) }}">Cetak Kad Pelajar</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.download-qr', $has_student->student->no_ic) }}">Cetak Kad Pelajar</a>
                                             <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
                                         </div>
                                     </div>
