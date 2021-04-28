@@ -9,7 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.2||^8.0",
         "albertcht/invisible-recaptcha": "^1.9",
         "arcanedev/log-viewer": "7.x",
         "darkghosthunter/laraguard": "^2.0",
