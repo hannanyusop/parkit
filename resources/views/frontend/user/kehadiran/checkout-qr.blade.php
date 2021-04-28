@@ -6,9 +6,14 @@
     <section class="content">
         <div class="row">
             <div class="col-md-6 offset-md-3">
+                <div class="alert alert-info" role="alert">
+                    {{ __('To use camera, you need to access this page by using https:// ') }}
+                </div>
                 <div class="card">
                     <div class="card-body text-center">
-                        <h6>Daftar Keluar E-hadir</h6>
+                        <h4>{{ __('Check-out Scanner') }}</h4>
+                        <h6>{{ __('Event') }} : {{ $uga->title }}</h6>
+                        <h6>{{ __('Date/Time : ') }} {{ reformatDatetime($uga->start). " - ".reformatDatetime($uga->end)  }}</h6>
                         <div>
                             <b>Device has camera: </b>
                             <span id="cam-has-camera"></span>

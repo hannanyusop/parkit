@@ -1,13 +1,13 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Program:'. $uga->title)
+@section('title', __("Event :"). $uga->title)
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.index'),
-    'Senarai Kehadiran' => '#',
-    $uga->title => '#'
+    'Event List' => route('frontend.user.kehadiran.index'),
+    $uga->title => '#',
+    'View' => '#',
 ];
 ?>
 
@@ -19,32 +19,32 @@ $breadcrumbs = [
                     <div class="card-body">
                         <ul class="nav nav-pills" id="myTab3" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link {{ (session('att_manual_tab') == "checkin")? "active" : "" }}" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="{{ (session('att_manual_tab') == "checkin")? "true" : "false" }}">Daftar Masuk</a>
+                                <a class="nav-link {{ (session('att_manual_tab') == "checkin")? "active" : "" }}" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="{{ (session('att_manual_tab') == "checkin")? "true" : "false" }}">{{ __('Check-in') }}</a>
                             </li>
                             @if($uga->is_checkout == 1)
                                 <li class="nav-item">
-                                    <a class="nav-link {{ (session('att_manual_tab') == "checkout")? "active" : "" }}" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="{{ (session('att_manual_tab') == "checkout")? "true" : "false" }}">Daftar Keluar</a>
+                                    <a class="nav-link {{ (session('att_manual_tab') == "checkout")? "active" : "" }}" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="{{ (session('att_manual_tab') == "checkout")? "true" : "false" }}">{{ __('Check-out') }}</a>
                                 </li>
                             @endif
                         </ul>
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane fade {{ (session('att_manual_tab') == "checkin")? "show active" : "" }}" id="home3" role="tabpanel" aria-labelledby="home-tab3">
                                 <form class="form-inline mb-3" action="{{ route('frontend.user.kehadiran.checkin-insert', $uga->id) }}" method="get">
-                                    <label class="sr-only" for="ic-checkin">NO K/P Pelajar</label>
-                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkin" value="{{ old('ic') }}" placeholder="NO. K/P Pelajar">
+                                    <label class="sr-only" for="ic-checkin">{{ __('MyKad No.') }}</label>
+                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkin" value="{{ old('ic') }}" placeholder="{{ __('Student\'s MyKad No.') }}">
 
                                     <div class="input-group mr-sm-2">
-                                        <button type="submit" class="btn btn-success btn-block">Daftar Masuk Manual</button>
+                                        <button type="submit" class="btn btn-success btn-block">{{ __('Manual Check-in') }}</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="tab-pane fade {{ (session('att_manual_tab') == "checkout")? "show active" : "" }}" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
                                 <form class="form-inline mb-3" action="{{ route('frontend.user.kehadiran.checkout-insert', $uga->id) }}" method="get">
-                                    <label class="sr-only" for="ic-checkout">NO K/P Pelajar</label>
-                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkout" value="{{ old('ic') }}" placeholder="NO. K/P Pelajar">
+                                    <label class="sr-only" for="ic-checkout">{{ __('MyKad No.') }}</label>
+                                    <input type="text" name="ic" class="form-control mb-2 mr-sm-2 col-md-12" id="ic-checkout" value="{{ old('ic') }}" placeholder="{{ __('Student\'s MyKad No.') }}">
 
                                     <div class="input-group mr-sm-2">
-                                        <button type="submit" class="btn btn-danger btn-block">Daftar Keluar Manual</button>
+                                        <button type="submit" class="btn btn-danger btn-block">{{ __('Manual Check-out') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -55,14 +55,14 @@ $breadcrumbs = [
                 <div class="card text-center">
                     <div class="card-body">
                         @if($uga->status == 1)
-                            <a href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($uga->id)) }}" class="btn btn-success btn-sm mb-2">Scan Masuk</a>
+                            <a href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($uga->id)) }}" class="btn btn-success btn-sm mb-2">{{ __("Check-in Scanner") }}</a>
                         @if($uga->is_checkout == 1)
-                                <a href="{{ route('frontend.user.kehadiran.checkout-qr', encrypt($uga->id)) }}" class="btn btn-success btn-sm mb-2">Scan Keluar</a>
+                                <a href="{{ route('frontend.user.kehadiran.checkout-qr', encrypt($uga->id)) }}" class="btn btn-success btn-sm mb-2">{{ __('Check-out Scanner') }}</a>
                             @endif
                         @endif
-                        <a href="{{ route('frontend.user.kehadiran.checkin-list', encrypt($uga->id)) }}" class="btn btn-primary btn-sm mb-2">Senarai Penuh</a>
+                        <a href="{{ route('frontend.user.kehadiran.checkin-list', encrypt($uga->id)) }}" class="btn btn-primary btn-sm mb-2">{{ __("Particpant List") }}</a>
                         @if(auth()->user()->id == $uga->user_id)
-                            <a href="{{ route('frontend.user.kehadiran.edit', encrypt($uga->id)) }}" class="btn btn-light btn-sm mb-2">Kemaskini</a>
+                            <a href="{{ route('frontend.user.kehadiran.edit', encrypt($uga->id)) }}" class="btn btn-light btn-sm mb-2">{{ __('Edit Event') }}</a>
                         @endif
 
 
@@ -77,31 +77,31 @@ $breadcrumbs = [
                         @endphp
 
                         <div class="text-left mt-3">
-                            <p class="text-muted mb-2 font-13 font-weight-bold">Kelas Terlibat  :</p>
+                            <p class="text-muted mb-2 font-13 font-weight-bold">{{ __('Classes Involved') }}  :</p>
                             <p class="text-muted font-13 mb-3 text-uppercase">
                                 @foreach($tag['kelas'] as $class_id)
                                     {{ getClass($class_id)->generate_name }},
                                 @endforeach
                             </p>
-                            <p class="text-muted mb-2 font-13"><strong>Jantina :</strong>
+                            <p class="text-muted mb-2 font-13"><strong>{{ __('Gender') }} :</strong>
                                 <span class="ml-2">{{ $tag['jantina'] }}</span>
                             </p>
-                            <p class="text-muted mb-2 font-13"><strong>Status Pelajar : </strong>
+                            <p class="text-muted mb-2 font-13"><strong>{{ __('Status') }} : </strong>
                                 <span class="ml-2"> {{ $tag['status pelajar'] }}</span>
                             </p>
-                            <p class="text-muted mb-2 font-13"><strong>Kegunaan : </strong>
+                            <p class="text-muted mb-2 font-13"><strong>{{ __('Manage by') }} : </strong>
                                 <span class="ml-2">{{ ($uga->type == 1)? "Ramai" : "Sendiri" }}</span>
                             </p>
                         </div>
 
                         @if($uga->type == 1)
                             <div class="jumbotron text-center">
-                                <p class="text-primary font-weight-bold">Kongsi kod jemputan ini kepada staff bertugas</p>
+                                <p class="text-primary font-weight-bold">{{ __('Share this invitation code to the staff on duty') }}</p>
                                 <div class="form-group">
                                     <div class="input-group mb-3">
                                         <input type="text" id="url" value="{{ route('frontend.user.kehadiran.join', $uga->code) }}" class="form-control form-control-sm" readonly>
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary btn-sm" type="button" onclick="copyToClipboard('#url')">Salin <i class="fa fa-copy"></i> </button>
+                                            <button class="btn btn-primary btn-sm" type="button" onclick="copyToClipboard('#url')">{{ __('Copy') }} <i class="fa fa-copy"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -119,24 +119,24 @@ $breadcrumbs = [
                             <div class="statistic-details-item">
                                 <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{ number_format((float)($attend/$total*100), 2, '.', '') }}%</span>
                                 <div class="detail-value">{{ $attend }}</div>
-                                <div class="detail-name">Daftar Masuk</div>
+                                <div class="detail-name">{{ __('Cheked-in') }}</div>
                             </div>
                             @if($uga->is_checkout == 1)
                                 <div class="statistic-details-item">
                                     <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{ number_format((float)($checkouts/$total*100), 2, '.', '') }}%</span>
                                     <div class="detail-value">{{ $checkouts }}</div>
-                                    <div class="detail-name">Daftar Keluar</div>
+                                    <div class="detail-name">{{ __('Checked-out') }}</div>
                                 </div>
                             @endif
                             <div class="statistic-details-item">
                                 <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span>{{ number_format((float)($absent/$total*100), 2, '.', '') }}%</span>
                                 <div class="detail-value">{{ $absent }}</div>
-                                <div class="detail-name">Tidak Hadir</div>
+                                <div class="detail-name">{{ __('Absent') }}</div>
                             </div>
                             <div class="statistic-details-item">
                                 <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 0%</span>
                                 <div class="detail-value">{{ $total }}</div>
-                                <div class="detail-name">Jumlah Pelajar</div>
+                                <div class="detail-name">{{ __('Total Of Participant') }}</div>
                             </div>
                         </div>
 
@@ -145,10 +145,10 @@ $breadcrumbs = [
                                 <thead>
                                 <tr class="text-center">
                                     <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Daftar Masuk</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Checked-in Time') }}</th>
                                     @if($uga->is_checkout == 1)
-                                        <th>Daftar Keluar</th>
+                                        <th>{{ __('Checked-out Time') }}</th>
                                     @endif
                                 </tr>
                                 </thead>

@@ -78,18 +78,29 @@
                 <ul class="sidebar-menu">
                     <li>
                         <a class="nav-link" href="{{ route('frontend.user.dashboard') }}">
-                            <i class="fas fa-home"></i> <span>Dashboard</span>
+                            <i class="fas fa-home"></i> <span>{{ __('Dashboard') }}</span>
                         </a>
                     </li>
-                    <li class="menu-header">Maklumat Pelajar</li>
+                    <li class="menu-header">{{ __('Student Management') }}</li>
+                    <li>
+                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.ct.index') }}">
+                            <i class="fas fa-users"></i> <span>{{ __('Student List') }}</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="nav-link" href="{{ route('frontend.user.student.index') }}">
-                            <i class="fas fa-search"></i> <span>Carian Pelajar</span>
+                            <i class="fas fa-search"></i> <span>{{ __('Search Student') }}</span>
+                        </a>
+                    </li>
+                    <li class="menu-header">{{ __('Event Attendance Management') }}</li>
+                    <li>
+                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.index') }}">
+                            <i class="fas fa-chalkboard-teacher"></i> <span>{{ __('Event List') }}</span>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('frontend.user.kehadiran.index') }}">
-                            <i class="fas fa-chalkboard-teacher"></i> <span>Modul Rekod Kehadiran</span>
+                            <i class="fas fa-calendar-plus"></i> <span>{{ __('Organize New Event') }}</span>
                         </a>
                     </li>
                     @can('lib_can')

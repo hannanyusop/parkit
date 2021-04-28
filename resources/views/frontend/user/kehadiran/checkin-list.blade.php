@@ -5,10 +5,9 @@
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.index'),
-    'Senarai Kehadiran' => '#',
+    'Event List' => route('frontend.user.kehadiran.index'),
     $uga->title => route('frontend.user.kehadiran.checkin', encrypt($uga->id)),
-    'Senarai Penuh' => '',
+    'Participant List' => '#',
 ];
 ?>
 

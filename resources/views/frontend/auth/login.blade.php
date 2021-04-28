@@ -17,7 +17,7 @@
             <div class="card-body login-card-body">
 
                 <div class="login-logo">
-                    <a href=""><b>{{ appName() }}</b></a>
+                    <img src="{{ getLogoUrl() }}" class="img-fluid" width="100px">
                 </div>
 
                 <p class="login-box-msg">Sign in to start your session</p>
@@ -62,17 +62,9 @@
                     Hannan Yusop <a href="https://wa.me/+60105960586"><i class="fa fa-whatsapp-square"></i> +60105960586</a>
                 </p>
 
-                <div class="text-center">
-                    <a href="{{ asset('installer/devtech.apk') }}" download>
-                        <img src="{{ asset('img/google-play.png') }}" height="50px" >
-                    </a>
-                    </small>
-                </div>
-
                 <p class="mt-5">
                     <a class="font-weight-bold text-success text-sm float-right" href="{{ route('frontend.auth.password.request') }}">Reset Password</a>
-                    <a class="font-weight-bold text-success text-sm float-left" href="{{ route('frontend.auth.register') }}" class="text-center">Create Account</a>
-
+{{--                    <a class="font-weight-bold text-success text-sm float-left" href="{{ route('frontend.auth.register') }}" class="text-center">Create Account</a>--}}
                 </p>
             </div>
         </div>

@@ -260,7 +260,7 @@ if (! function_exists('badgeEventStatus')) {
 
 if(!function_exists('reformatDatetime')){
 
-    function reformatDatetime($datetime, $format = 'd-m-Y H:i:s'){
+    function reformatDatetime($datetime, $format = 'd-m-Y H:i A'){
         return date($format, strtotime($datetime));
     }
 
@@ -1162,8 +1162,8 @@ if(!function_exists('getUgaType')){
     function getUgaType($type=null){
 
         $types = [
-            0 => 'Kegunaan Sendiri',
-            1 => 'Kegunaan Ramai'
+            0 => __('Personal'),
+            1 => __('Multi Organizer')
         ];
 
         return (is_null($type))? $types : $types[$type];
@@ -1315,6 +1315,13 @@ if(!function_exists('limitString')){
                 ->field('Laravel', '8.0.0', true)
                 ->field('PHP', '8.0.0', true);
         });
+}
+
+if(!function_exists('getLogoUrl')){
+
+    function getLogoUrl(){
+        return "https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png";
+    }
 }
 
 

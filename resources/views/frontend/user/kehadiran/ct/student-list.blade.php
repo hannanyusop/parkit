@@ -1,12 +1,13 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Senarai Pelajar')
+@section('title', __('Student List'))
 
 <?php
 $breadcrumbs = [
-    'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
-    'Senarai Kelas' => '#'
+    __('Dashboard') => route('frontend.user.dashboard'),
+    __('Student Management') => route('frontend.user.kehadiran.ct.index'),
+    $class->generate_name => "#",
+    __('Student List') => "#"
 ];
 ?>
 
@@ -15,38 +16,36 @@ $breadcrumbs = [
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR {{ $class->generate_name }} <br>BAGI TAHUN {{ date('Y') }}</p>
+                    <p class="text-center text-uppercase font-weight-bold">{{ __('List Of Student For ') }}{{ $class->generate_name }} ( {{ date('Y') }})
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-4">
                                 <table class="table-borderless">
                                     <tr>
-                                        <td>Bilangan Pelajar</td>
+                                        <td>{{ __('Total Students') }}</td>
                                         <td>: {{ $class->currentStudent->count() }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Bilagan Pelajar Lelaki</td>
+                                        <td>{{ __('Male') }}</td>
                                         <td>: {{ $class->currentStudentM->count() }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Bilangan Pelajar Perempuan</td>
+                                        <td>{{ __('Female') }}</td>
                                         <td>: {{ $class->currentStudentF->count() }}</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
-
-                    <b>Senarai Pelajar</b><br><br>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datable">
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>NAMA</th>
-                                <th>NO. K/P</th>
-                                <th>Jantina</th>
+                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('MyKad No.') }}</th>
+                                <th>{{ __('Gender') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -62,10 +61,10 @@ $breadcrumbs = [
                                         <a target="_blank" href="{{ route('frontend.user.student.print-card', $has_student->id) }}" class="btn btn-icon btn-primary"><i class="fa fa-id-card"></i> </a>
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
-                                            <a class="dropdown-item" href="{{ route('frontend.user.student.view', $has_student->student_id) }}">Lihat</a>
-                                            <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $has_student->student_id) }}">Kemaskini</a>
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.download-qr', $has_student->student->no_ic) }}">Cetak Kad Pelajar</a>
-                                            <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">QR Meja v2</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.student.view', $has_student->student_id) }}">{{ __('View') }}</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.student.edit', $has_student->student_id) }}">{{ __('Edit') }}</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.download-qr', $has_student->student->no_ic) }}">{{ __('Print QR') }}</a>
+                                            <a class="dropdown-item" target="_blank" href="{{ route('frontend.user.kehadiran.ct.print-student-card-v2', $has_student->student_id) }}">{{ __('Print Student Label') }}</a>
                                         </div>
                                     </div>
                                 </td>

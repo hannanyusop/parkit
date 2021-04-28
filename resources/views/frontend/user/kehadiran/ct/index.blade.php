@@ -1,32 +1,29 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Senarai Kelas')
+@section('title', __('Student List'))
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'Pangkalan Data Pelajar' => '',
-    'Senarai Kelas' => route('frontend.user.kehadiran.ct.index')
+    __('Student Management') => '',
+    __('List') => route('frontend.user.kehadiran.ct.index')
 ];
 ?>
 
 @section('content')
     <section class="content">
         <div class="col-md-12">
-            @include('frontend.user.student.layout.topbar')
+{{--            @include('frontend.user.student.layout.topbar')--}}
             <div class="card">
-                <div class="card-header">
-                    <h4>Senarai Kelas</h4>
-                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datable">
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Kelas</th>
-                                <th>Guru Kelas</th>
-                                <th>Senarai Pelajar</th>
+                                <th>{{ __('Class') }}</th>
+                                <th>{{ __('Classroom Teacher') }}</th>
+                                <th>{{ __('Total Student') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -42,8 +39,8 @@ $breadcrumbs = [
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
 {{--                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.view-today-attendance', $class->id) }}">Laporan Kehadiran</a>--}}
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', $class->id) }}">Senarai Pelajar</a>
-                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.printQrByClass', $class->id) }}">Print QR</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.student-list', $class->id) }}">{{ __('View All Student') }}</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.ct.printQrByClass', $class->id) }}">{{ __('Print QR') }}</a>
                                         </div>
                                     </div>
                                 </td>

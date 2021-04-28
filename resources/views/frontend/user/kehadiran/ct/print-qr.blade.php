@@ -1,13 +1,13 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Senarai Pelajar')
+@section('title', __('Print QR'))
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
-    'Senarai Kelas' => route('frontend.user.kehadiran.ct.index'),
-    'Cetak QR' => ''
+    'Student Management' => route('frontend.user.kehadiran.ct.index'),
+    $class->generate_name => "#",
+    'Print QR' => ''
 ];
 ?>
 
@@ -18,9 +18,9 @@ $breadcrumbs = [
                 <div class="card-body">
 
                     <div class="" id="print">
-                        <p class="text-center text-uppercase font-weight-bold">SENARAI PELAJAR {{ $class->generate_name }} BAGI TAHUN {{ date('Y') }}
+                        <p class="text-center text-uppercase font-weight-bold">{{ __('List Of Student For ') }}{{ $class->generate_name }} ( {{ date('Y') }})
                             <br>
-                            {{ $class->currentStudent->count() }} Pelajar
+                            {{ __('Total Students: ') }}{{ $class->currentStudent->count() }}
                         </p>
                         <div class="row">
                             @foreach($class->currentStudent as $key=> $has_student)
@@ -35,8 +35,8 @@ $breadcrumbs = [
 
                 </div>
                 <div class="card-footer">
-                    <a href="" type="submit" class="btn btn-info" onclick="printContent('print');"><i class="fa fa-print"></i> Cetak QR</a>
-                    <a href="{{ route('frontend.user.kehadiran.ct.index') }}" type="submit" class="btn btn-warning"> Kembali</a>
+                    <a href="" type="submit" class="btn btn-info" onclick="printContent('print');"><i class="fa fa-print"></i>{{ __('Print') }}</a>
+                    <a href="{{ route('frontend.user.kehadiran.ct.index') }}" type="submit" class="btn btn-warning"> {{ __('Back') }}</a>
                 </div>
                     <!-- /.card-footer -->
             </div>
