@@ -17,6 +17,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'category' => 'required',
 //            'start' => 'required',
 //            'end' => 'required|after:start',
             'type' => 'required'

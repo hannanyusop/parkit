@@ -35,6 +35,16 @@ $breadcrumbs = [
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="category" class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                            <div class="col-sm-4">
+                                <select id="category" name="category" class="form-control" required>
+                                    @foreach(getEventCategory() as $key => $category)
+                                        <option value="{{ $key }}" {{ ($uga->category == $key)? "selected" : "" }}>{{ $category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="type" class="col-sm-2 col-form-label">{{ __('For') }}</label>
                             <div class="col-sm-10">
                                 <div class="selectgroup">

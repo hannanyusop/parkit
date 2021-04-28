@@ -1,12 +1,14 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Keterangan Pelajar')
+@section('title', __('Biodata'))
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'Pengkalan Data' => route('frontend.user.kehadiran.index'),
-    'Pelajar' => ""
+    __('Student Management') => route('frontend.user.student.index'),
+    __('Search') => route('frontend.user.student.index'),
+    $student->name => "",
+    'Biodata' => ''
 ];
 ?>
 
@@ -26,10 +28,10 @@ $breadcrumbs = [
 
                     <div class="text-left mt-3">
                         <p class="text-muted mb-2 font-13">
-                            <strong>Kelas :</strong>
+                            <strong>{{ __('Class') }} :</strong>
                             <span class="ml-2">{{ $student->currentClass->classroom->generate_name }}</span>
                         </p>
-                        <p class="text-muted mb-2 font-13"><strong>Alamat :</strong></p>
+                        <p class="text-muted mb-2 font-13"><strong>{{ __('Address') }} :</strong></p>
                         <p class="text-muted font-13 mb-3">
                             {{ $student->address }}
                         </p>
@@ -45,17 +47,17 @@ $breadcrumbs = [
                     <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                         <li class="nav-item">
                             <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                Maklumat Ibubapa/Pengjaga
+                                {{ __('Parent/Guardian Information') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
-                                Maklumat Tambahan
+                               {{ __('Additional Information') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                Lain-lain
+                                {{ __('Other Information') }}
                             </a>
                         </li>
                     </ul>

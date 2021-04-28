@@ -429,8 +429,8 @@ if(!function_exists('studentType')){
     function studentType($type = null   ){
 
         $types = [
-           1 => "ASRAMA",
-            0 => "HARIAN"
+           1 => __('Dormitory Students'),
+            0 => __('Daily Student')
         ];
 
         return (isset($type)) ? $types[$type] : $types;
@@ -442,24 +442,11 @@ if(!function_exists('badgeStudentType')){
     function badgeStudentType($type){
 
         $types = [
-            1 => "<span class=\"badge bg-success\">ASRAMA</span>",
-            0 => "<span class=\"badge bg-info\">HARIAN</span>",
+            1 => "<span class=\"badge bg-success text-white\">".__('Dormitory Students')."</span>",
+            0 => "<span class=\"badge bg-info text-white\">".__('Daily Student')."</span>",
         ];
 
         return $types[$type];
-    }
-}
-
-if(!function_exists('getGender')){
-
-    function getGender($type = null){
-
-        $types = [
-            'M' => "LELAKI",
-            'F' => "PERMPUAN"
-        ];
-
-        return (isset($type)) ? $types[$type] : $types;
     }
 }
 
@@ -468,11 +455,11 @@ if(!function_exists('badgeStudentStatus')){
     function badgeStudentStatus($status){
 
         $statuses = [
-            1 => "<span class=\"badge bg-success\">AKTIF</span>",
-            2 => "<span class=\"badge bg-info\">PINDAH</span>",
-            3 => "<span class=\"badge bg-primary\">TAMAT</span>",
-            4 => "<span class=\"badge bg-warning\">BERHENTI</span>",
-            5 => "<span class=\"badge bg-warning\">LAIN-LAIN</span>",
+            1 => "<span class=\"badge bg-success text-white\">".__('Active')."</span>",
+            2 => "<span class=\"badge bg-info text-white\">".__('Transfer')."</span>",
+            3 => "<span class=\"badge bg-primary text-white\">".__('Graduated')."</span>",
+            4 => "<span class=\"badge bg-warning text-white\">".__('Resign')."</span>",
+            5 => "<span class=\"badge bg-warning text-white\">".__('Other')."</span>",
         ];
 
         return $statuses[$status];
@@ -484,11 +471,11 @@ if(!function_exists('studentStatus')){
     function studentStatus($status = null){
 
         $statuses = [
-            1 => "AKTIF",
-            2 => "PINDAH",
-            3 => "TAMAT",
-            4 => "BERHENTI",
-            5 => "LAIN-LAIN"
+            1 => __('Active'),
+            2 => __('Transfer'),
+            3 => __('Graduated'),
+            4 => __('Resign'),
+            5 => __('Other')
         ];
 
         return (isset($status)) ? $statuses[$status] : $statuses;
@@ -1170,6 +1157,41 @@ if(!function_exists('getUgaType')){
     }
 }
 
+if(!function_exists('getHostels')){
+
+    function getHostels($status = null){
+
+        $statuses = [
+            '2' => __('All'),
+            '1' => __('Dormitory Students Only'),
+            '0' => __('Daily Students Only')
+        ];
+
+        return (is_null($status))? $statuses : $statuses[$status];
+    }
+}
+
+if(!function_exists('getGender')){
+
+    function getGender($gender = null, $all = true){
+
+        if($all == false){
+            $genders = [
+                'M' => __('Male Only'),
+                'F' => __('Female Only'),
+            ];
+        }else{
+            $genders = [
+                'S' => __('All'),
+                'M' => __('Male Only'),
+                'F' => __('Female Only')
+            ];
+        }
+
+        return (is_null($gender))? $genders : $genders[$gender];
+    }
+}
+
 if (! function_exists('kehadiranCodeGenerator')) {
 
     function kehadiranCodeGenerator(){
@@ -1306,6 +1328,23 @@ if(!function_exists('limitString')){
     }
 }
 
+if(!function_exists('getEventCategory')){
+
+    function getEventCategory($type = null){
+
+        $types = [
+            0 => __('Others'),
+            1 => __('Curriculum'),
+            2 => __('Co-curriculum'),
+            3 => __('Dormitory program'),
+            4 => __('Helping / Guidance and Counseling Services')
+        ];
+
+        return (is_null($type))? $types : $types[$type];
+
+    }
+
+}
  function toDiscord($notifiable){
     return (new \Awssat\Notifications\Messages\DiscordMessage())
         ->from('Laravel')

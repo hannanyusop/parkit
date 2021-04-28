@@ -1,12 +1,12 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Jana Kehadiran')
+@section('title', __('Organize New Event'))
 
 <?php
 $breadcrumbs = [
-    'Dashboard' => route('frontend.user.dashboard'),
-    'E-Hadir' => route('frontend.user.kehadiran.ct.index'),
-    'Jana Kehadiran' => '#'
+    __('Dashboard') => route('frontend.user.dashboard'),
+    __('Event List') => route('frontend.user.kehadiran.index'),
+    __('Organize New Event') => '#'
 ];
 ?>
 @section('content')
@@ -16,19 +16,19 @@ $breadcrumbs = [
                 <x-forms.post :action="route('frontend.user.kehadiran.insert')" class="form-horizontal" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="title" class="col-sm-2 col-form-label">Nama Program</label>
+                            <label for="title" class="col-sm-2 col-form-label">{{ __('Event Name') }}</label>
                             <div class="col-sm-10">
                                 <input name="title" value="{{ old('title') }}" type="text" class="form-control" id="title" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="class" class="col-sm-2 col-form-label">Senarai Kelas</label>
+                            <label for="class" class="col-sm-2 col-form-label">{{ __('List Of Class') }}</label>
                             <div class="col-sm-10">
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>Tingkatan</th>
-                                            <th>Senarai Kelas</th>
+                                            <th>{{ __('Form') }}</th>
+                                            <th>{{ __('Class List') }}</th>
                                         </tr>
                                         @foreach(formList() as $form => $formName)
                                             <tr>
@@ -37,7 +37,7 @@ $breadcrumbs = [
                                                     <div class="form-group">
                                                         <div class="form-check form-check-inline">
                                                             <input class="all form-check-input" name="form[{{ $form }}]" type="checkbox" data-form="{{ $form }}" id="all-{{ $form }}" value="{{ $form }}">
-                                                            <label class="form-check-label" for="all-{{ $form }}">SEMUA</label>
+                                                            <label class="form-check-label" for="all-{{ $form }}">{{ __('All') }}</label>
                                                         </div>
                                                         <div id="group-{{ $form }}">
                                                             @foreach(getFormClass($form) as $class)
@@ -56,10 +56,20 @@ $breadcrumbs = [
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="hostel" class="col-sm-2 col-form-label">Status Pelajar</label>
+                            <label for="category" class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                            <div class="col-sm-4">
+                                <select id="category" name="category" class="form-control" required>
+                                    @foreach(getEventCategory() as $key => $category)
+                                        <option value="{{ $key }}">{{ $category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="hostel" class="col-sm-2 col-form-label">{{ __('Student Status') }}</label>
                             <div class="col-sm-10">
                                 <div class="selectgroup">
-                                    @foreach($hostels as $key => $hostel)
+                                    @foreach(getHostels() as $key => $hostel)
                                         <label class="selectgroup-item">
                                             <input type="radio" name="hostel" value="{{ $key }}" class="selectgroup-input" {{ (old('hostel') == $key)? "checked" : "" }} required>
                                             <span class="selectgroup-button">{{ $hostel }}</span>
@@ -69,10 +79,10 @@ $breadcrumbs = [
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="group" class="col-sm-2 col-form-label">Jantina</label>
+                            <label for="group" class="col-sm-2 col-form-label">{{ __('Gender') }}</label>
                             <div class="col-sm-10">
                                 <div class="selectgroup">
-                                    @foreach($genders as $key => $gender)
+                                    @foreach(getGender() as $key => $gender)
                                         <label class="selectgroup-item">
                                             <input type="radio" name="gender" value="{{ $key }}" class="selectgroup-input" {{ (old('gender') == $key)? "checked" : "" }} required>
                                             <span class="selectgroup-button">{{ $gender }}</span>
@@ -82,19 +92,19 @@ $breadcrumbs = [
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="start" class="col-sm-2 col-form-label">Mula</label>
+                            <label for="start" class="col-sm-2 col-form-label">{{ __('Start Date/Time') }}</label>
                             <div class="col-sm-3">
                                 <input name="start" id="start" value="{{ old('start') }}" type="text" class="form-control datetimepicker">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="end" class="col-sm-2 col-form-label">Tamat</label>
+                            <label for="end" class="col-sm-2 col-form-label">{{ __('End Date/Time') }}</label>
                             <div class="col-sm-3">
                                 <input name="end" id="end" value="{{ old('end') }}" type="text" class="form-control datetimepicker">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="type" class="col-sm-2 col-form-label">Kegunaan</label>
+                            <label for="type" class="col-sm-2 col-form-label">{{ __('For') }}</label>
                             <div class="col-sm-10">
                                 <div class="selectgroup">
                                     @foreach(getUgaType() as $key => $type)
@@ -108,13 +118,13 @@ $breadcrumbs = [
                         </div>
 
                         <div class="form-group row">
-                            <label for="type" class="col-sm-2 col-form-label">Jenis kehadiran</label>
+                            <label for="type" class="col-sm-2 col-form-label">{{ __('Attendance Type') }}</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <label class="custom-switch mt-2">
                                         <input type="checkbox" name="is_checkout" class="custom-switch-input" {{ (old('is_checkout'))? "checked" : "" }}>
                                         <span class="custom-switch-indicator"></span>
-                                        <span class="custom-switch-description">Log Masuk Sahaja</span>
+                                        <span class="custom-switch-description">{{ __('Check-in Only') }}</span>
                                     </label>
                                 </div>
                             </div>
@@ -122,8 +132,8 @@ $breadcrumbs = [
 
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Hantar</button>
-                        <a class="btn btn-white" href="{{ route('frontend.user.kehadiran.index') }}">Kembali</a>
+                        <button type="submit" class="btn btn-primary">{{ __('Create Event') }}</button>
+                        <a class="btn btn-white" href="{{ route('frontend.user.kehadiran.index') }}">{{ __('Back') }}</a>
                     </div>
                 </x-forms.post>
             </div>

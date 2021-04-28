@@ -1,44 +1,41 @@
 @extends('frontend.user.layouts.app')
 
-@section('title', 'Kemaskini Data Pelajar')
+@section('title', __("Edit"))
 
 <?php
 $breadcrumbs = [
     'Dashboard' => route('frontend.user.dashboard'),
-    'Pelajar' => route('frontend.user.student.index'),
-    'Carian Pelajar' => route('frontend.user.student.index'),
-    'Kemaskini Pelajar' => ''
+    __('Student Management') => route('frontend.user.student.index'),
+    __('Search') => route('frontend.user.student.index'),
+    $student->name => "",
+    'Edit' => ''
 ];
 ?>
 
 @section('content')
     <section class="content">
         <div class="col-md-12">
-            @include('frontend.user.student.layout.topbar')
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Kemaskini Maklumat Pelajar</h3>
-                </div>
                 <x-forms.post :action="route('frontend.user.student.update', $student->id   )" class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                             <div class="col-sm-10">
                                 <input name="name" value="{{ $student->name }}"  type="text" class="form-control text-uppercase" id="name" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="no_ic" class="col-sm-2 col-form-label">No. K/P</label>
+                            <label for="no_ic" class="col-sm-2 col-form-label">{{ __('MyKad No.') }}</label>
                             <div class="col-sm-6">
                                 <input name="no_ic" value="{{ $student->no_ic }}" type="text" class="form-control text-uppercase" id="no_ic" readonly>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-sm-2 col-form-label">Jantina</label>
+                            <label for="author" class="col-sm-2 col-form-label">{{ __('Gender') }}</label>
                             <div class="col-md-4">
 
-                                @foreach(getGender() as $key => $type)
+                                @foreach(getGender(null, false) as $key => $type)
                                     <div class="form-check">
                                         <div class="icheck-success d-inline">
                                             <input id="gender_{{ $key }}" class="form-check-input" value="{{ $key }}" type="radio" name="gender" {{ ($student->gender == $key)? "checked=''" : "disabled" }}>
@@ -50,7 +47,7 @@ $breadcrumbs = [
                         </div>
 
                         <div class="form-group row">
-                            <label for="dob" class="col-sm-2 col-form-label form">Tarikh Lahir</label>
+                            <label for="dob" class="col-sm-2 col-form-label form">{{ __('Date Of Birth') }}</label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -62,7 +59,7 @@ $breadcrumbs = [
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-sm-2 col-form-label">Asrama/Harian</label>
+                            <label for="author" class="col-sm-2 col-form-label">{{ __('Dormitory Status') }}</label>
                             <div class="col-md-4">
 
                                 @foreach(studentType() as $key => $type)
@@ -75,7 +72,7 @@ $breadcrumbs = [
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-sm-2 col-form-label">Status</label>
+                            <label for="author" class="col-sm-2 col-form-label">{{ __('Status') }}</label>
                             <div class="col-md-4">
 
                                 <select class="form-control" id="status" name="status">
@@ -87,7 +84,7 @@ $breadcrumbs = [
                         </div>
 
                         <div class="form-group row">
-                            <label for="class_id" class="col-sm-2 col-form-label form">Kelas</label>
+                            <label for="class_id" class="col-sm-2 col-form-label form">{{ __('Class') }}</label>
                             <div class="col-md-4">
                                 <select class="form-control select2" id="class_id" name="class_id">
                                     <option value="">--SILA ABAIKAN JIKA TIADA--</option>
@@ -100,7 +97,7 @@ $breadcrumbs = [
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Hantar</button>
+                        <button type="submit" class="btn btn-info">{{ __('Update') }}</button>
                     </div>
                     <!-- /.card-footer -->
                 </x-forms.post>

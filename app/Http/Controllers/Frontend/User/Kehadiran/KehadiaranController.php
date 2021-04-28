@@ -29,19 +29,7 @@ class KehadiaranController extends Controller{
             ->orderBy('form', 'ASC')
             ->get();
 
-        $hostels = [
-            '2' => 'SEMUA',
-            '1' => 'ASRAMA SAHAJA',
-            '0' => 'PELAJAR HARIAN'
-        ];
-
-        $genders = [
-            'S' => 'SEMUA',
-            'M' => 'LELAKI SAHAJA',
-            'F' => 'PEREMPUAN SAHAJA'
-        ];
-
-        return view('frontend.user.kehadiran.create', compact('classes', 'hostels', 'genders'));
+        return view('frontend.user.kehadiran.create', compact('classes'));
 
     }
 
@@ -76,6 +64,7 @@ class KehadiaranController extends Controller{
         $generate->title = strtoupper($request->title);
         $generate->status = 1;
         $generate->tag = "";
+        $generate->category = $request->category;
         $generate->start = $request->start;
         $generate->end = $request->end;
         $generate->is_checkout = ($request->has('is_checkout'))? 0 : 1;
@@ -152,6 +141,7 @@ class KehadiaranController extends Controller{
 
         $generate->title = strtoupper($request->title);
         $generate->status = 1;
+        $generate->category = $request->category;
         $generate->start = $request->start;
         $generate->end = $request->end;
         $generate->is_checkout = ($request->has('is_checkout'))? 0 : 1;

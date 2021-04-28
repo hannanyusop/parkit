@@ -70,10 +70,10 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="{{ route('admin.dashboard') }}"><img style="width: 100%; height: auto" alt="logo" src="{{ asset('img/logo2.PNG') }}"></a>
+                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="80px"  alt="logo" src="{{ getLogoUrl()}}"></a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
-                    <a href="{{ route('admin.dashboard') }}"><img width="30px" alt="logo" src="{{ asset('img/smkal-logo.png') }}"></a>
+                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="80px  alt="logo" src="{{ getLogoUrl()}}"></a>
                 </div>
                 <ul class="sidebar-menu">
                     <li>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.index') }}">
+                        <a class="nav-link" href="{{ route('frontend.user.kehadiran.create') }}">
                             <i class="fas fa-calendar-plus"></i> <span>{{ __('Organize New Event') }}</span>
                         </a>
                     </li>
