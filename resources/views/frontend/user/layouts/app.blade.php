@@ -84,7 +84,7 @@
                     <li class="menu-header">{{ __('Student Management') }}</li>
                     <li>
                         <a class="nav-link" href="{{ route('frontend.user.kehadiran.ct.index') }}">
-                            <i class="fas fa-users"></i> <span>{{ __('Student List') }}</span>
+                            <i class="fas fa-users"></i> <span>{{ __('List By Class') }}</span>
                         </a>
                     </li>
                     <li>

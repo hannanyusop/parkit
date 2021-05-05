@@ -271,7 +271,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
     Route::group([
         'as' => 'kehadiran.',
-        'prefix' => 'kehadiran/',
+        'prefix' => 'attendance/',
         'middleware' => 'permission:hostel_can'
     ], function (){
 
@@ -286,7 +286,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::post('edit/{id}', [KehadiaranController::class, 'update'])->name('update');
             Route::get('delete/{id}', [KehadiaranController::class, 'delete'])->name('delete');
 
-            Route::get('join/{code}', [KehadiaranController::class, 'code'])->name('join');
+            Route::get('join/{code}', [KehadiaranController::class, 'join'])->name('join');
 
             Route::get('checkin/{id}', [KehadiaranController::class, 'checkin'])->name('checkin');
             Route::get('checkin/list/{id}', [KehadiaranController::class, 'checkinList'])->name('checkin-list');
@@ -301,7 +301,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
         });
 
         Route::group([
-            'prefix' => 'classroom-teacher/',
+            'prefix' => 'classroom/',
             'as' => 'ct.',
             'middleware' => 'permission:hostel_can'
         ], function (){

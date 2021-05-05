@@ -17,7 +17,7 @@ $breadcrumbs = [
                     <div class="alert alert-light">
 
                         <div class="alert-body">
-                            This module is still in the development phase. If you encounter a system error please
+                            This module is still in the development phase. If you encounter any system error please
                             <b>screenshot</b> and report to our technical team.
                         </div>
 

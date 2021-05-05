@@ -42,7 +42,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="m-2 text-center">Sub-module System</h5>
+                                <h5 class="m-2 text-center">Sub-module</h5>
                             </div>
                         </div>
 
