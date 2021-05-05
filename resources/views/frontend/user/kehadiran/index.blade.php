@@ -32,6 +32,7 @@ $breadcrumbs = [
                                 <th style="width: 10px">#</th>
                                 <th>{{ __('Event') }}</th>
                                 <th>{{ __('Organized By') }}</th>
+                                <th>{{ __('Category') }}</th>
                                 <th class="text-center">{{ __('Status') }}</th>
                                 <th class="text-center">{{ __('Total of participants') }}</th>
                                 <th class="text-center">{{ __('Attendance Percentage') }}</th>
@@ -47,6 +48,7 @@ $breadcrumbs = [
                                     <small>{{ reformatDatetime('created_at', $data->created_at) }}</small>
                                 </td>
                                 <td>{{ $data->admin->name }}</td>
+                                <td>{{ getEventCategory($data->category) }}</td>
                                 <td class="text-center">{!! attendanceGetUgaStatus($data->status) !!}</td>
                                 <td class="text-center">{{ $data->attendances->count() }}</td>
                                 <td class="text-center">{{ number_format((float)$data->attends->count()/$data->attendances->count()*100, 2, '.', '') }}%</td>

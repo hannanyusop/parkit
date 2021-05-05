@@ -20,17 +20,17 @@ $breadcrumbs = [
 
                     @if(!is_null($students ))
                         @if($students->count() > 0)
-                            <p class="text-center font-weight-bold">{{ $students->count() }} Pelajar dijumpai</p>
+                            <p class="text-center font-weight-bold">{{ $students->count() }} {{ __('student(s) found') }}</p>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="datable">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombor K/P</th>
-                                        <th>Nama</th>
-                                        <th>Jantina</th>
-                                        <th>Asrama/Harian</th>
-                                        <th>Status</th>
+                                        <th>{{ __('MyKad No.') }}</th>
+                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('Gender') }}</th>
+                                        <th>{{ __('Dormitory Status') }}</th>
+                                        <th>{{ __('Status') }}</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -47,8 +47,8 @@ $breadcrumbs = [
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span> </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{ route('admin.student.view', $student->id) }}">Lihat</a>
-                                                        <a class="dropdown-item" href="{{ route('admin.student.edit', $student->id) }}">Kemaskini</a>
+                                                        <a class="dropdown-item" href="{{ route('admin.student.view', $student->id) }}">{{ __('View') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('admin.student.edit', $student->id) }}">{{ __('Edit') }}</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -58,7 +58,7 @@ $breadcrumbs = [
                                 </table>
                             </div>
                         @else
-                            <h6 class="text-center">Tiada Maklumat Pelajar Dijumpai Bagi "{{ request('search') }}"</h6>
+                            <h6 class="text-center">{{ __('No student information found for ') }} "{{ request('search') }}"</h6>
                         @endif
                     @endif
 

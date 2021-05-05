@@ -18,6 +18,9 @@ Route::group([
     'as' => 'student.'
 ], function (){
 
+    Route::get('add/', [StudentController::class, 'add'])->name('add');
+    Route::post('add/', [StudentController::class, 'insert'])->name('insert');
+
     Route::get('', [StudentController::class, 'index'])->name('index');
     Route::get('view/{id}', [StudentController::class, 'view'])->name('view');
     Route::get('edit/{id}', [StudentController::class, 'edit'])->name('edit');

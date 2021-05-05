@@ -259,9 +259,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
 
         Route::get('', [StudentMainController::class, 'index'])->name('index');
 
-        Route::get('add/', [StudentMainController::class, 'add'])->name('add');
-        Route::post('add/', [StudentMainController::class, 'insert'])->name('insert');
-
         Route::get('edit/{student_id}', [StudentMainController::class, 'edit'])->name('edit');
         Route::post('edit/{student_id}', [StudentMainController::class, 'update'])->name('update');
 

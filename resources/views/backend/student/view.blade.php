@@ -21,8 +21,6 @@ $breadcrumbs = [
                     <h4 class="mb-0 mt-2">{{ $student->name }}</h4>
                     <p class="text-muted font-14">{{ $student->no_ic }}</p>
 
-                    <button type="button" class="btn btn-success btn-sm mb-2">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm mb-2">Message</button>
 
                     <div class="text-left mt-3">
                         <p class="text-muted mb-2 font-13">
@@ -45,17 +43,17 @@ $breadcrumbs = [
                     <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                         <li class="nav-item">
                             <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                Maklumat Ibubapa/Pengjaga
+                                {{ __('Parent Information') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
-                                Maklumat Tambahan
+                                {{ __('Additional Information') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                Lain-lain
+                                {{ __('Others') }}
                             </a>
                         </li>
                     </ul>

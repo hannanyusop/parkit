@@ -1170,6 +1170,17 @@ if(!function_exists('getHostels')){
         return (is_null($status))? $statuses : $statuses[$status];
     }
 }
+if(!function_exists('getGenderList')){
+
+    function getGenderList($gender = null){
+
+        $genders = [
+            'M' => __('Male'),
+            'F' => __('Female'),
+        ];
+        return (is_null($gender))? $genders : $genders[$gender];
+    }
+}
 
 if(!function_exists('getGender')){
 
@@ -1361,6 +1372,23 @@ if(!function_exists('getLogoUrl')){
     function getLogoUrl(){
         return "https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png";
     }
+}
+
+if(!function_exists('getHumanDiff')){
+
+    function getHumanDiff($datetime){
+
+        return Carbon::parse($datetime)->diffForHumans();
+    }
+}
+
+if(!function_exists('getMonth')){
+
+    function getMonth(){
+
+        return ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun', 'July', 'Aug', 'Sept','Oct',  'Nov', 'Dec'];
+    }
+
 }
 
 

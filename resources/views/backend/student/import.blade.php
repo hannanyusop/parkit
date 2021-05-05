@@ -12,17 +12,17 @@
                 <x-forms.post :action="route('admin.student.upload')" class="form-horizontal"  enctype="multipart/form-data"  id="reset">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Dokumen</label>
+                            <label for="name" class="col-sm-2 col-form-label">{{ __('Document') }}</label>
                             <div class="col-sm-10">
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input" id="file">
                                     <label class="custom-file-label" for="file">Pilih</label>
                                 </div>
-                                <span class="font-13 text-muted">Sila rujuk panduan sebelum memuatnaik data</span>
+                                <small class="font-13 text-warning mt-2">{{ __('Please refer make sure all data are exported from APDM') }}</small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="year" class="col-sm-2 col-form-label">Tahun</label>
+                            <label for="year" class="col-sm-2 col-form-label">{{ __('Year') }}</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <select class="form-control" name="year" id="year">
@@ -31,14 +31,13 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <span class="font-13 text-muted">Sila rujuk panduan sebelum memuatnaik data</span>
                             </div>
                         </div>
 
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Hantar</button>
+                        <button type="submit" class="btn btn-info">{{ __('Import data from Excel') }}</button>
                     </div>
                     <!-- /.card-footer -->
                 </x-forms.post>

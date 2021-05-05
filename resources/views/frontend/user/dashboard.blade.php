@@ -42,7 +42,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="m-2 text-center">Submodul Sistem</h5>
+                                <h5 class="m-2 text-center">Sub-module System</h5>
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-vote-yea"></i> </h3>
 
-                                            <p>Modul Undian Parking</p>
+                                            <p>{{ __('Voting') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -67,7 +67,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-qrcode"></i> </h3>
 
-                                            <p>Modul Pengawasan CV-19</p>
+                                            <p>{{ __('C19 Checkin') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -79,7 +79,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-book-reader"></i> </h3>
 
-                                            <p>Modul Pengurusan Perpustakaan</p>
+                                            <p>{{ __('Library Management System') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -89,9 +89,9 @@
                                     <!-- small box -->
                                     <a href="{{ route('frontend.user.student.index') }}" class="small-box bg-white">
                                         <div class="inner text-center">
-                                            <h3><i class="fa fa-database"></i> </h3>
+                                            <h3><i class="fa fa-users"></i> </h3>
 
-                                            <p>Pangkalan Data Pelajar</p>
+                                            <p>{{ __('Student Management') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -102,7 +102,7 @@
                                         <div class="inner text-center">
                                             <h3><i class="fa fa-chalkboard-teacher"></i> </h3>
 
-                                            <p>Modul Rekod Kehadiran</p>
+                                            <p>{{ __('Event Attendance Management') }}</p>
                                         </div>
                                     </a>
                                 </div>
