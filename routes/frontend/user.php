@@ -399,11 +399,12 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
         Route::group([
             'as' => 'admin.',
             'prefix' => 'admin/',
-            'middleware' => 'permission:lib_admin,lib_staff'
+            'middleware' => 'permission:lib_staff'
         ], function (){
             Route::group([
                 'as' => 'book.',
-                'prefix' => 'book/'
+                'prefix' => 'book/',
+                'middleware' => 'permission:lib_admin'
             ], function (){
                 Route::get('', [AdminBookController::class, 'index'])->name('index');
                 Route::get('view/{id}', [AdminBookController::class, 'view'])->name('view');
