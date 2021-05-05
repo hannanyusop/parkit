@@ -15,7 +15,7 @@
                     <div class="text-left mt-3">
                         <p class="text-muted mb-2 font-13">
                             <strong>Kelas :</strong>
-                            <span class="ml-2">{{ $student->currentClass->classroom->generate_name }}</span>
+                            <span class="ml-2">{{ $student->currentClass->classroom->generate_name ?? "" }}</span>
                         </p>
                         <p class="text-muted mb-2 font-13"><strong>Alamat :</strong></p>
                         <p class="text-muted font-13 mb-3">
