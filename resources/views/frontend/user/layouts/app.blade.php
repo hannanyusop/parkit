@@ -222,7 +222,7 @@
 <script type="text/javascript">
 
     @if(session()->has('login_message'))
-        swal('Pengumuman', '{{ session()->get('login_message') }}', 'info');
+        swal('{{ __('Announcement') }}', '{{ session()->get('login_message') }}', 'info');
      <?php session()->forget('login_message'); ?>
     @endif
 

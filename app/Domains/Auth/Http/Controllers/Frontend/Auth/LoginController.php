@@ -105,7 +105,7 @@ class LoginController extends Controller
             return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account has been deactivated.'));
         }
 
-        session()->put('login_message', 'Sistem ini masih dalam fasa pembangunan dan percubaan. Sebarang ralat amatlah dikesali.');
+        session()->put('login_message', 'The system is still in the development and testing phase.');
 
         event(new UserLoggedIn($user));
 
