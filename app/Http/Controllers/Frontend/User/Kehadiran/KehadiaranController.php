@@ -152,7 +152,7 @@ class KehadiaranController extends Controller{
         $generate->type = $request->type;
 
         $generate->save();
-        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($generate->id))->withFlashSuccess('Kehadiran berjaya dikemaskini');
+        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($generate->id))->withFlashSuccess('Event updated');
 
 
     }
@@ -227,7 +227,7 @@ class KehadiaranController extends Controller{
         $student = Student::where('no_ic', $request->ic)->first();
 
         if(!$student){
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('MyKad Not exist');
         }
 
         $sa = StudentAttendance::where('uga_id', $uga->id)
@@ -236,15 +236,15 @@ class KehadiaranController extends Controller{
 
         if(!$sa){
 
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Pelajar tiada dalam senarai.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Student not in list');
         }
 
         if(!is_null($sa->checkin)){
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar sudah didaftar masuk.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Student already check-in');
         }
 
         $sa->update(['checkin' => now(), 'status' => 2]);
-        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Student '.$sa->student->name.' successfully checked-in');
 
     }
 
@@ -258,13 +258,13 @@ class KehadiaranController extends Controller{
 
         if($uga->is_checkout == 0){
 
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Program ini tidak mempunyai modul daftar keluar.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('This program does\'t have check-out module');
         }
 
         $student = Student::where('no_ic', $request->ic)->first();
 
         if(!$student){
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('MyKad Not exist');
         }
 
         $sa = StudentAttendance::where('uga_id', $uga->id)
@@ -273,19 +273,19 @@ class KehadiaranController extends Controller{
 
         if(!$sa){
 
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Pelajar tiada dalam senarai.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withErrors('Student not in list');
         }
 
         if(is_null($sa->checkin)){
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar belum di daftar masuk.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Student need to checkin before can check-out');
         }
 
         if(!is_null($sa->checkout)){
-            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Pelajar sudah belum di daftar keluar.');
+            return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashWarning('Student already check-out');
         }
 
         $sa->update(['checkout' => now(), 'status' => 2]);
-        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar keluar.');
+        return redirect()->route('frontend.user.kehadiran.checkin', encrypt($id))->withFlashSuccess('Student '.$sa->student->name.' successfully check-out.');
 
     }
 
@@ -296,7 +296,7 @@ class KehadiaranController extends Controller{
             ->findOrFail(decrypt($id));
 
         if(!$uga){
-            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Event not exist!');
         }
 
         return view('frontend.user.kehadiran.checkin-qr', compact('uga'));
@@ -309,7 +309,7 @@ class KehadiaranController extends Controller{
             ->findOrFail(decrypt($id));
 
         if(!$uga){
-            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Evenet not exist!');
         }
 
 
@@ -318,7 +318,7 @@ class KehadiaranController extends Controller{
             $student = Student::where('no_ic', $request->id)->first();
 
             if(!$student){
-                return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Nombor Kad Pengenalan pelajar tidak wujud.');
+                return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('MyKad not exist.');
             }
 
             $sa = StudentAttendance::where('uga_id', $uga->id)
@@ -327,18 +327,18 @@ class KehadiaranController extends Controller{
 
             if(!$sa){
 
-                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withErrors('Pelajar tiada dalam senarai.');
+                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withErrors('Student not in list');
             }
 
             if(!is_null($sa->checkin)){
-                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashWarning('Pelajar sudah didaftar masuk.');
+                return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashWarning('Student already check-in');
             }
 
             $sa->update(['checkin' => now(), 'status' => 2]);
-            return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashSuccess('Pelajar '.$sa->student->name.' berjaya didaftar masuk.');
+            return redirect()->route('frontend.user.kehadiran.checkin-qr', $id)->withFlashSuccess('Student '.$sa->student->name.' successfully check-in.');
 
         }else{
-            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Parameter tidak sah!');
+            return redirect()->route('frontend.user.kehadiran.checkin', $id)->withErrors('Invalid parameter!');
 
         }
 
@@ -351,11 +351,11 @@ class KehadiaranController extends Controller{
             ->findOrFail(decrypt($id));
 
         if(!$uga){
-            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Program tidak wujud!');
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Event not exist!');
         }
 
         if($uga->is_checkout == 0){
-            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('Jenis Kehadiran : Log masuk sahaja!');
+            return  redirect()->route('frontend.user.kehadiran.index')->withErrors('This program does\'t have check-out module');
         }
 
         return view('frontend.user.kehadiran.checkout-qr', compact('uga'));
