@@ -18,14 +18,10 @@ $breadcrumbs = [
         <div class="col-xl-4 col-lg-5">
             <div class="card text-center">
                 <div class="card-body">
-                    <img src="{{ asset('img/student.png') }}" class="rounded-circle avatar-lg img-thumbnail w-25" alt="profile-image">
+                    <img src="{{ $student->avatar }}" class="rounded-circle avatar-lg img-thumbnail w-25" alt="profile-image">
 
                     <h4 class="mb-0 mt-2">{{ $student->name }}</h4>
                     <p class="text-muted font-14">{{ $student->no_ic }}</p>
-
-                    <button type="button" class="btn btn-success btn-sm mb-2">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm mb-2">Message</button>
-
                     <div class="text-left mt-3">
                         <p class="text-muted mb-2 font-13">
                             <strong>{{ __('Class') }} :</strong>

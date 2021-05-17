@@ -9,6 +9,7 @@ use App\Models\Library\Borrow;
 use App\Models\Portal\PortalAnnouncement;
 use App\Models\Portal\PortalDownload;
 use App\Models\Classroom;
+use Illuminate\Support\Facades\Storage;
 
 if (! function_exists('appName')) {
     /**
@@ -1149,7 +1150,7 @@ if(!function_exists('getUgaType')){
     function getUgaType($type=null){
 
         $types = [
-            0 => __('Personal'),
+            0 => __('Single Organizer'),
             1 => __('Multi Organizer')
         ];
 
@@ -1391,6 +1392,19 @@ if(!function_exists('getMonth')){
 
 }
 
+if(!function_exists('getStudentImage')){
+
+    function getStudentImage($image){
+
+        if(is_null($image)){
+            $url = asset('img/student.png');
+        }else{
+            $url = Storage::url($image);
+        }
+
+        return $url;
+    }
+}
 
 
 

@@ -10,6 +10,7 @@ use App\Models\Classroom;
 use App\Models\Student;
 use App\Models\StudentHasClass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentMainController extends Controller{
@@ -34,7 +35,7 @@ class StudentMainController extends Controller{
         $student = Student::find($student_id);
 
         if(!$student){
-            return redirect()->back()->withErrors('Data Pelajar tidak wujud');
+            return redirect()->back()->withErrors(__('Student not exist.'));
         }
         return view('frontend.user.student.view', compact('student'));
     }
@@ -44,7 +45,7 @@ class StudentMainController extends Controller{
         $student = Student::find($student_id);
 
         if(!$student){
-            return redirect()->back()->withErrors('Data Pelajar tidak wujud');
+            return redirect()->back()->withErrors(__('Student not exist.'));
         }
 
         return view('frontend.user.student.print-card', compact('student'));
@@ -117,7 +118,7 @@ class StudentMainController extends Controller{
         $student = Student::find($student_id);
 
         if(!$student){
-            return redirect()->route('frontend.user.student.index')->withErrors('Data pelajar tidak wujud.');
+            return redirect()->route('frontend.user.student.index')->withErrors(__('Student not exist.'));
         }
 
         $classes = Classroom::get();
@@ -130,13 +131,31 @@ class StudentMainController extends Controller{
         $student = Student::find($student_id);
 
         if(!$student){
-            return redirect()->route('frontend.user.student.index')->withErrors('Data pelajar tidak wujud.');
+            return redirect()->route('frontend.user.student.index')->withErrors(__('Student not exist.'));
         }
 
 
+        if($request->image){
+
+            $old = $student->image;
+
+            $imageName = time().'.'.$request->image->extension();
+            $file = $request->image->storeAs('student_image', $imageName, 'public');
+
+            if(!is_null($old)){
+                try {
+                    Storage::delete($old);
+
+                }catch (\Exception $e){
+
+                }
+            }
+            $student->image = $file;
+        }
+
         $student->no_ic = $request->no_ic;
         $student->name = strtoupper($request->name);
-        $student->type = $request->type; #asrama = 1, harian = 2;
+        $student->is_hostel = $request->type; #asrama = 1, harian = 2;
         $student->class_id = ($request->class_id == "")? null : $request->class_id;
         $student->status  = $request->status; #1 aktif, 2#pindah, 3tamat,  4 berhenti, 5 lain2
         $student->gender = $request->gender;
@@ -144,9 +163,9 @@ class StudentMainController extends Controller{
 
         if($student->save()){
             $this->changeStudentClass($student->id, $student->class_id);
-            return redirect()->back()->withFlashSuccess('Data '.$student->name.' berjaya dikemaskini.');
+            return redirect()->back()->withFlashSuccess('Data '.$student->name.' updated.');
         }else{
-            return redirect()->back()->withErrors('Data pelajar gagal dikemaskini.');
+            return redirect()->back()->withErrors('Failed to update data.');
 
         }
     }

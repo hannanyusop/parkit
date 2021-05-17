@@ -7,7 +7,7 @@
         <div class="col-md-4 offset-md-4">
             <div class="card text-center">
                 <div class="card-body">
-                    <img src="{{ asset('img/student.png') }}" class="rounded-circle avatar-lg img-thumbnail w-25" alt="profile-image">
+                    <img src="{{ $student->avatar }}" class="rounded-circle avatar-lg img-thumbnail w-25" alt="profile-image">
 
                     <h4 class="mb-0 mt-2">{{ $student->name }}</h4>
                     <p class="text-muted font-14">{{ $student->no_ic }}</p>

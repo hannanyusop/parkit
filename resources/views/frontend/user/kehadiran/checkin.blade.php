@@ -90,7 +90,7 @@ $breadcrumbs = [
                                 <span class="ml-2"> {{ $tag['status pelajar'] }}</span>
                             </p>
                             <p class="text-muted mb-2 font-13"><strong>{{ __('Manage by') }} : </strong>
-                                <span class="ml-2">{{ ($uga->type == 1)? "Ramai" : "Sendiri" }}</span>
+                                <span class="ml-2">{{ getUgaType($uga->type) }}</span>
                             </p>
                         </div>
 
@@ -136,7 +136,7 @@ $breadcrumbs = [
                             <div class="statistic-details-item">
                                 <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 0%</span>
                                 <div class="detail-value">{{ $total }}</div>
-                                <div class="detail-name">{{ __('Total Of Participant') }}</div>
+                                <div class="detail-name">{{ __('Expected Participant') }}</div>
                             </div>
                         </div>
 

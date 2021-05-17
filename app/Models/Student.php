@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Domains\Auth\Models\User;
 use App\Models\Library\Borrow;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Student extends Model{
 
@@ -31,6 +32,17 @@ class Student extends Model{
         'address',
         'image_url',
     ];
+
+    public function getAvatarAttribute(){
+
+        $image = $this->image;
+        if(is_null($image)){
+            $url = asset('img/student.png');
+        }else{
+            $url = Storage::url($image);
+        }
+        return $url;
+    }
 
     public function notReturnBook(){
         return $this->hasMany(Borrow::class, 'student_id', 'id')

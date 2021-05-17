@@ -34,7 +34,7 @@ $breadcrumbs = [
                                 <th>{{ __('Organized By') }}</th>
                                 <th>{{ __('Category') }}</th>
                                 <th class="text-center">{{ __('Status') }}</th>
-                                <th class="text-center">{{ __('Total of participants') }}</th>
+                                <th class="text-center">{{ __('Expected participants') }}</th>
                                 <th class="text-center">{{ __('Attendance Percentage') }}</th>
                                 <th></th>
                             </tr>

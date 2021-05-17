@@ -15,13 +15,13 @@ class FrontendStudentController extends Controller{
                 ->first();
 
             if(!$student){
-                return redirect()->route('frontend.student-search')->withErrors('Data Pelajar tidak wujud');
+                return redirect()->route('frontend.student-search')->withErrors(__('Student Not Exist.'));
             }
 
             return  view('frontend.student.info', compact('student'));
 
         }else{
-            return redirect()->route('frontend.student-search')->withErrors('Data Pelajar tidak wujud');
+            return redirect()->route('frontend.student-search')->withErrors(__('Invalid URL'));
         }
     }
 

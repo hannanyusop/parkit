@@ -11,11 +11,11 @@
                     <div class="page-inner">
                         <h1>404</h1>
                         <div class="page-description">
-                            Data Pelajar Tidak Dijumapai
+                            {{ __('Student Not Found') }}
                         </div>
                         <div class="page-search">
                             <div class="mt-3">
-                                <a href="{{ route('frontend.portal.home') }}">Kembali Ke Portal</a>
+                                <a href="{{ route('frontend.auth.login') }}">{{ __('Back') }}</a>
                             </div>
                         </div>
                     </div>

@@ -16,8 +16,15 @@ $breadcrumbs = [
     <section class="content">
         <div class="col-md-12">
             <div class="card">
-                <x-forms.post :action="route('frontend.user.student.update', $student->id   )" class="form-horizontal">
+                <x-forms.post :action="route('frontend.user.student.update', $student->id)" class="form-horizontal" enctype="multipart/form-data">
                     <div class="card-body">
+                        <div class="form-group row">
+                            <label for="image" class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                            <div class="col-sm-10">
+                                <img src="{{ $student->avatar }}" class="rounded-circle avatar-lg img-thumbnail" width="100px" alt="profile-image">
+                                <input name="image" type="file" class="form-control" id="image">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                             <div class="col-sm-10">
@@ -64,7 +71,7 @@ $breadcrumbs = [
 
                                 @foreach(studentType() as $key => $type)
                                     <div class="form-check">
-                                        <input id="type_{{ $key }}" class="form-check-input" value="{{ $key }}" type="radio" name="type" {{ ($student->is_hostel == $key)? "checked=''" : "" }} required>
+                                        <input id="type_{{ $key }}" class="form-check-input" value="{{ $key }}" type="radio" name="is_hostel" {{ ($student->is_hostel == $key)? "checked=''" : "" }} required>
                                         <label for="type_{{ $key }}" class="form-check-label">{{ $type }}</label>
                                     </div>
                                 @endforeach

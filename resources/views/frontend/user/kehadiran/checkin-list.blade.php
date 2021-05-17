@@ -38,10 +38,10 @@ $breadcrumbs = [
                                 <thead>
                                 <tr class="text-center">
                                     <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Daftar Masuk</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Checked-in') }}</th>
                                     @if($uga->is_checkout == 1)
-                                        <th>Daftar Keluar</th>
+                                        <th>{{ __('Checked-out') }}</th>
                                     @endif
                                 </tr>
                                 </thead>
