@@ -155,7 +155,7 @@ class StudentMainController extends Controller{
 
         $student->no_ic = $request->no_ic;
         $student->name = strtoupper($request->name);
-        $student->is_hostel = $request->type; #asrama = 1, harian = 2;
+        $student->is_hostel = $request->is_hostel; #asrama = 1, harian = 2;
         $student->class_id = ($request->class_id == "")? null : $request->class_id;
         $student->status  = $request->status; #1 aktif, 2#pindah, 3tamat,  4 berhenti, 5 lain2
         $student->gender = $request->gender;

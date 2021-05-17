@@ -447,7 +447,7 @@ if(!function_exists('badgeStudentType')){
             0 => "<span class=\"badge bg-info text-white\">".__('Daily Student')."</span>",
         ];
 
-        return $types[$type];
+        return $types[$type] ?? "";
     }
 }
 
