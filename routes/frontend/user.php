@@ -282,6 +282,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'checkLibSelfLogin', 'pa
             Route::get('view/{id}', [KehadiaranController::class, 'view'])->name('view');
             Route::get('create/', [KehadiaranController::class, 'create'])->name('create');
             Route::post('create/', [KehadiaranController::class, 'insert'])->name('insert');
+            Route::get('report/{id}', [KehadiaranController::class, 'report'])->name('report');
             Route::get('edit/{id}', [KehadiaranController::class, 'edit'])->name('edit');
             Route::post('edit/{id}', [KehadiaranController::class, 'update'])->name('update');
             Route::get('delete/{id}', [KehadiaranController::class, 'delete'])->name('delete');

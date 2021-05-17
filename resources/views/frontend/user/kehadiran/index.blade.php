@@ -57,12 +57,13 @@ $breadcrumbs = [
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> {{ __('Action') }} <span class="caret"></span> </button>
                                         <div class="dropdown-menu" style="">
                                             <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin', encrypt($data->id)) }}">{{ __('View') }}</a>
-                                            @if($data->status == 1)
+                                        @if($data->status == 1)
                                                 <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkin-qr', encrypt($data->id)) }}">{{ __('Check-in Scanner') }}</a>
                                                 @if($data->is_checkout == 1)
                                                     <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.checkout-qr', encrypt($data->id)) }}">{{ __('Check-out Scanner') }}</a>
                                                 @endif
                                             @endif
+                                            <a class="dropdown-item" href="{{ route('frontend.user.kehadiran.report', encrypt($data->id)) }}">{{ __('Report') }}</a>
                                         </div>
                                     </div>
                                 </td>

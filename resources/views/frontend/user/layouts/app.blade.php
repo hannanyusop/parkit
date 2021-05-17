@@ -210,6 +210,7 @@
 <script src="{{ asset('ui/modules/fullcalendar/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('ui/modules/summernote/summernote-bs4.js') }}"></script>
 <script src="{{ asset('ui/modules/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('ui/modules/chart.min.js') }}"></script>
 
 
 <script src="{{ asset('ui/modules/datatables/datatables.min.js') }}"></script>

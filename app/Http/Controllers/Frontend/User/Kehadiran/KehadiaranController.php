@@ -157,6 +157,58 @@ class KehadiaranController extends Controller{
 
     }
 
+    public function report($id){
+
+        $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
+            ->orWhereIn('id', getUgaAccess())
+            ->findOrFail($id);
+
+        $attend = $uga->attends->count();
+        $total = $uga->attendances->count();
+        $absent = $uga->absents->count();
+        $checkouts = $uga->checkouts->count();
+
+        $tag = json_decode($uga->tag, true);
+
+        $attendance = StudentAttendance::where('uga_id', $uga->id)
+            ->get();
+
+        $attend_ids = $uga->attends->pluck('student_id');
+
+        $attend_students = Student::whereIn('id', $attend_ids)->get();
+
+        $collect_students = collect($attend_students);
+
+        $short_bys = ['race', 'gender', 'nationality', 'religion', 'is_hostel'];
+
+        foreach ($short_bys as $groupBy){
+
+
+            $grouped = $collect_students->groupBy($groupBy);
+            $arr = [];
+            $dataset = [];
+            $labels = [];
+            foreach ($grouped as $key => $d){
+                $dataset[] = $d->count();
+                $labels[]  = $key;
+                $arr[$key] = $d->count();
+            }
+
+            $d = [
+                'data' => $dataset,
+                'backgroundColor' => ['#191d21', '#63ed7a', '#ffa426', '#fc544b', '#6777ef'],
+                'label' => $groupBy
+            ];
+
+            $data[$groupBy] = [
+                'datasets' => [$d],
+                'labels' => $labels
+            ];
+        }
+
+        return view('frontend.user.kehadiran.report', compact('uga','attend', 'total', 'absent', 'checkouts', 'tag', 'data'));
+    }
+
     public function delete($id){
 
         $uga = UserGenerateAttendance::where('user_id', auth()->user()->id)
@@ -179,7 +231,14 @@ class KehadiaranController extends Controller{
 
         $uga = UserGenerateAttendance::findOrFail(decrypt($id));
 
-        return view('frontend.user.kehadiran.checkin', compact('uga'));
+        $attend = $uga->attends->count();
+        $total = $uga->attendances->count();
+        $absent = $uga->absents->count();
+        $checkouts = $uga->checkouts->count();
+
+        $tag = json_decode($uga->tag, true);
+
+        return view('frontend.user.kehadiran.checkin', compact('uga', 'attend', 'total', 'absent', 'checkouts', 'tag'));
     }
 
     public function checkinList(Request $request, $id){
