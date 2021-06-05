@@ -181,6 +181,8 @@ class KehadiaranController extends Controller{
 
         $short_bys = ['race', 'gender', 'nationality', 'religion', 'is_hostel'];
 
+        $is_hostel = [0 => 'Daily Student', 1 => 'Hostel Student', '' => 'Daily Student'];
+        $gender = ['M' => 'MALE', 'F' => 'FEMALE'];
         foreach ($short_bys as $groupBy){
 
 
@@ -190,19 +192,35 @@ class KehadiaranController extends Controller{
             $labels = [];
             foreach ($grouped as $key => $d){
                 $dataset[] = $d->count();
-                $labels[]  = $key;
+
+                if($groupBy == "is_hostel"){
+
+                    $labels[]  = $is_hostel[$key];
+                }elseif($groupBy == 'gender'){
+                    $labels[] = $gender[$key];
+                }else{
+                    $labels[]  = $key;
+                }
+
                 $arr[$key] = $d->count();
             }
 
             $d = [
                 'data' => $dataset,
-                'backgroundColor' => ['#191d21', '#63ed7a', '#ffa426', '#fc544b', '#6777ef'],
+                'backgroundColor' => [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
                 'label' => $groupBy
             ];
 
             $data[$groupBy] = [
-                'datasets' => [$d],
-                'labels' => $labels
+                'labels' => $labels,
+                'datasets' => [$d]
             ];
         }
 

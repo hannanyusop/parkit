@@ -1,10 +1,15 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}">ADMIN PANEL</a>
+
+            <a href="{{ route('admin.dashboard') }}">
+                <img class="img-fluid" width="180px"  alt="logo" src="{{ getLogoUrlNormal()}}">
+            </a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('admin.dashboard') }}">AP</a>
+            <a href="{{ route('admin.dashboard') }}">
+                <img class="img-fluid" width="80px"  alt="logo" src="{{ getLogoUrlNormal()}}">
+            </a>
         </div>
         <ul class="sidebar-menu">
             <li>

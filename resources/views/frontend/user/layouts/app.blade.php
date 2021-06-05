@@ -70,10 +70,10 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="80px"  alt="logo" src="{{ getLogoUrl()}}"></a>
+                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="180px"  alt="logo" src="{{ getLogoUrlNormal()}}"></a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
-                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="80px  alt="logo" src="{{ getLogoUrl()}}"></a>
+                    <a href="{{ route('admin.dashboard') }}"><img class="img-fluid" width="120px" src="{{ getLogoUrlNormal()}}"></a>
                 </div>
                 <ul class="sidebar-menu">
                     <li>

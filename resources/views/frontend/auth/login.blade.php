@@ -13,12 +13,11 @@
 
     <div class="login-box">
 
-        <div class="card mt-5">
+        <div class="login-logo">
+            <img src="{{ getLogoUrl() }}" class="img-fluid" width="200px">
+        </div>
+        <div class="card">
             <div class="card-body login-card-body">
-
-                <div class="login-logo">
-                    <img src="{{ getLogoUrl() }}" class="img-fluid" width="100px">
-                </div>
 
                 <p class="login-box-msg">Sign in to start your session</p>
                 @include('includes.partials.messages')

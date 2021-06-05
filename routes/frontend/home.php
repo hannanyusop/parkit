@@ -31,10 +31,10 @@ Route::group([
     'as' => 'portal.'
 ], function (){
 
-//    Route::get('', [MainController::class, 'home'])->name('home');
-    Route::get('', function (){
-        return redirect()->route('frontend.auth.login');
-    })->name('index');
+    Route::get('', [MainController::class, 'home'])->name('home');
+//    Route::get('', function (){
+//        return redirect()->route('frontend.auth.login');
+//    })->name('index');
 
     Route::group([
         'as' => 'smkal.'

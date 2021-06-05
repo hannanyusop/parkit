@@ -1371,7 +1371,14 @@ if(!function_exists('getEventCategory')){
 if(!function_exists('getLogoUrl')){
 
     function getLogoUrl(){
-        return "https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png";
+        return asset('img/dark-logo.png');
+    }
+}
+
+if(!function_exists('getLogoUrlNormal')){
+
+    function getLogoUrlNormal(){
+        return asset('img/logo.png');
     }
 }
 
